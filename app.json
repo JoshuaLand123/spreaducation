@@ -1,0 +1,24 @@
+{
+  "name": "spreaducation",
+  "description": "Seed project to show how Silhouette can be implemented into a Play Framework application.",
+  "keywords": [
+    "Play",
+    "Silhouette"
+  ],
+  "website": "https://github.com/ishishov/spreaducation",
+  "repository": "https://github.com/ishishov/spreaducation",
+  "success_url": "/",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-scala.git",
+    "PLAY_CONF_FILE": "application.conf",
+    "APPLICATION_SECRET": "",
+    "DB_URL": "",
+    "DB_USER": "",
+    "DB_PASSWORD": "",
+    "MAIL_HOST": "",
+    "MAIL_PORT": "",
+    "MAIL_MOCK": "",
+    "MAIL_USER": "",
+    "MAIL_PASSWORD": ""
+  }
+}
