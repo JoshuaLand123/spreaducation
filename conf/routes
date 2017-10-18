@@ -4,6 +4,8 @@
 
 # Home page
 GET         /                                controllers.ApplicationController.index
+GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
+
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)
 

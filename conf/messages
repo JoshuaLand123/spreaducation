@@ -4,13 +4,13 @@ invalid.credentials = Invalid credentials!
 access.denied = Access denied!
 could.not.authenticate = Could not authenticate with social provider! Please try again!
 
-home.title = Silhouette - Home
-sign.up.title = Silhouette - Sign Up
-sign.in.title = Silhouette - Sign In
-forgot.password.title = Silhouette - Forgot Password
-reset.password.title = Silhouette - Reset Password
-change.password.title = Silhouette - Change Password
-activate.account.title = Silhouette - Activate Account
+home.title = Spreaducation - Home
+sign.up.title = Spreaducation - Sign Up
+sign.in.title = Spreaducation - Sign In
+forgot.password.title = Spreaducation - Forgot Password
+reset.password.title = Spreaducation - Reset Password
+change.password.title = Spreaducation - Change Password
+activate.account.title = Spreaducation - Activate Account
 
 toggle.navigation = Toggle navigation
 welcome.signed.in = Welcome, you are now signed in!

@@ -5,8 +5,8 @@ import javax.inject.Inject
 import com.mohiva.play.silhouette.api.actions.SecuredRequest
 import com.mohiva.play.silhouette.api.{ LogoutEvent, Silhouette }
 import org.webjars.play.WebJarsUtil
-import play.api.i18n.I18nSupport
-import play.api.mvc.{ AbstractController, AnyContent, ControllerComponents }
+import play.api.i18n._
+import play.api.mvc._
 import utils.auth.DefaultEnv
 
 import scala.concurrent.Future
@@ -25,7 +25,8 @@ class ApplicationController @Inject() (
 )(
   implicit
   webJarsUtil: WebJarsUtil,
-  assets: AssetsFinder
+  assets: AssetsFinder,
+  messagesApi: MessagesApi
 ) extends AbstractController(components) with I18nSupport {
 
   /**
@@ -35,6 +36,10 @@ class ApplicationController @Inject() (
    */
   def index = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     Future.successful(Ok(views.html.home(request.identity)))
+  }
+
+  def changeLanguage(language: String) = Action { implicit request =>
+    Redirect(routes.ApplicationController.index()).withLang(Lang(language))
   }
 
   /**
