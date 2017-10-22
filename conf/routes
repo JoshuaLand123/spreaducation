@@ -6,6 +6,9 @@
 GET         /                                controllers.ApplicationController.index
 GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
 
+GET         /questions                       controllers.QuestionsController.view
+POST        /questions                       controllers.QuestionsController.submit
+
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)
 

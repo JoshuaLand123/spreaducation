@@ -7,6 +7,7 @@ CREATE TABLE users (
   full_name text,
   email text,
   avatar_url text,
+  user_type text,
   activated BOOLEAN DEFAULT FALSE
 );
 

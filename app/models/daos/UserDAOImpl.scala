@@ -9,8 +9,7 @@ import models.daos.UserDAOImpl._
 import models.tables._
 import play.api.db.slick.DatabaseConfigProvider
 import slick.basic.DatabaseConfig
-import slick.jdbc.JdbcProfile
-import slick.jdbc.JdbcBackend
+import slick.jdbc.{ JdbcBackend, JdbcProfile }
 import slick.lifted.TableQuery
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -45,7 +44,7 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
 
     db.run(userQuery.result.headOption).map { dbUserOption =>
       dbUserOption.map {
-        user => User(user.userID, loginInfo, user.firstName, user.lastName, user.fullName, user.email, user.avatarUrl, user.activated)
+        user => User(user.userID, loginInfo, user.firstName, user.lastName, user.fullName, user.email, user.avatarUrl, user.userType, user.activated)
       }
     }
   }
@@ -57,26 +56,26 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
    * @return The found user or None if no user for the given ID could be found.
    */
   def find(userID: UUID): Future[Option[User]] = {
-    {
-      val userQuery = for {
-        dbUser <- users.filter(_.userID === userID)
-        dbUserLoginInfo <- userLoginInfos.filter(_.userId === dbUser.userID)
-        dbLoginInfo <- loginInfos.filter(_.id === dbUserLoginInfo.loginInfoId)
-      } yield (dbUser, dbLoginInfo)
 
-      db.run(userQuery.result.headOption).map { resultOption =>
-        resultOption.map {
-          case (user, loginInfo) => User(
-            user.userID,
-            LoginInfo(loginInfo.providerId, loginInfo.providerKey),
-            user.firstName,
-            user.lastName,
-            user.fullName,
-            user.email,
-            user.avatarUrl,
-            user.activated
-          )
-        }
+    val userQuery = for {
+      dbUser <- users.filter(_.userID === userID)
+      dbUserLoginInfo <- userLoginInfos.filter(_.userId === dbUser.userID)
+      dbLoginInfo <- loginInfos.filter(_.id === dbUserLoginInfo.loginInfoId)
+    } yield (dbUser, dbLoginInfo)
+
+    db.run(userQuery.result.headOption).map { resultOption =>
+      resultOption.map {
+        case (user, loginInfo) => User(
+          user.userID,
+          LoginInfo(loginInfo.providerId, loginInfo.providerKey),
+          user.firstName,
+          user.lastName,
+          user.fullName,
+          user.email,
+          user.avatarUrl,
+          user.userType,
+          user.activated
+        )
       }
     }
   }
@@ -88,7 +87,7 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
    * @return The saved user.
    */
   def save(user: User): Future[User] = {
-    val dbUser = DbUser(user.userID, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL, user.activated)
+    val dbUser = DbUser(user.userID, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL, user.userType, user.activated)
     val dbLoginInfo = DbLoginInfo(None, user.loginInfo.providerID, user.loginInfo.providerKey)
 
     val loginInfoAction = {

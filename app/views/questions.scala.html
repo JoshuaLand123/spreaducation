@@ -1,0 +1,42 @@
+@import play.api.data.Form
+@import forms.QuestionsForm.Data
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+@import play.twirl.api.Html
+
+@(questionnaireForm: Form[Data], questions: Seq[models.QuestionWithAnswer], user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main("Questions", Some(user)) {
+<script src="@assets.path("javascripts/bootstrap-slider.min.js")"></script>
+
+    <div class="user col-md-6 col-md-offset-3">
+        <div class="row">
+            <hr class="col-md-12" />
+            <h4 class="col-md-8">Questions</h4>
+            <div class="col-md-4 text-right">
+                <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
+            </div>
+            <hr class="col-md-12" />
+        </div>
+        <div class="col-md-12">
+            @helper.form(action = controllers.routes.QuestionsController.submit()) {
+            @helper.CSRF.formField
+                @for(i <- 0 to questions.length - 1) {
+                    <div class="form-group">
+                        <p>@questions(i).questionText</p>
+                        <input type="hidden" name='questions[@i].questionId' value='@questions(i).questionId' />
+                        <input type="hidden" name='questions[@i].answerId' value='@questions(i).answerId' />
+                        <input id="slider-@questions(i).questionId" name='questions[@i].value' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@questions(i).score'/>
+                    </div>
+                }
+                <button type="submit" name="submit" id="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+            }
+        </div>
+
+            <script>
+                $('input[id^="slider-"]').slider()
+            </script>
+    </div>
+}

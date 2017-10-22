@@ -9,8 +9,8 @@ import com.mohiva.play.silhouette.api.services.AvatarService
 import com.mohiva.play.silhouette.api.util.PasswordHasherRegistry
 import com.mohiva.play.silhouette.impl.providers._
 import forms.SignUpForm
-import models.User
 import models.services.{ AuthTokenService, UserService }
+import models.{ User, UserType }
 import org.webjars.play.WebJarsUtil
 import play.api.i18n.{ I18nSupport, Messages }
 import play.api.libs.mailer.{ Email, MailerClient }
@@ -92,6 +92,7 @@ class SignUpController @Inject() (
               fullName = Some(data.firstName + " " + data.lastName),
               email = Some(data.email),
               avatarURL = None,
+              userType = UserType.Tutee,
               activated = false
             )
             for {

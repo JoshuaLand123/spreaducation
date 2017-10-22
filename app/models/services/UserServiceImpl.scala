@@ -4,11 +4,10 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.LoginInfo
 import com.mohiva.play.silhouette.impl.providers.CommonSocialProfile
-import models.User
+import models.{ User, UserType }
 import models.daos.UserDAO
 
 import scala.concurrent.ExecutionContext.Implicits.global
-
 import scala.concurrent.Future
 
 /**
@@ -69,6 +68,7 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
           fullName = profile.fullName,
           email = profile.email,
           avatarURL = profile.avatarURL,
+          userType = UserType.Tutee,
           activated = true
         ))
     }

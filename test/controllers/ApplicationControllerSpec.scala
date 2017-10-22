@@ -3,15 +3,15 @@ package controllers
 import java.util.UUID
 
 import com.google.inject.AbstractModule
-import com.mohiva.play.silhouette.api.{ Environment, LoginInfo }
+import com.mohiva.play.silhouette.api.{Environment, LoginInfo}
 import com.mohiva.play.silhouette.test._
-import models.User
+import models.{User, UserType}
 import net.codingwell.scalaguice.ScalaModule
 import org.specs2.mock.Mockito
 import org.specs2.specification.Scope
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.test.CSRFTokenHelper._
-import play.api.test.{ FakeRequest, PlaySpecification, WithApplication }
+import play.api.test.{FakeRequest, PlaySpecification, WithApplication}
 import utils.auth.DefaultEnv
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -26,8 +26,7 @@ class ApplicationControllerSpec extends PlaySpecification with Mockito {
     "redirect to login page if user is unauthorized" in new Context {
       new WithApplication(application) {
         val Some(redirectResult) = route(app, FakeRequest(routes.ApplicationController.index())
-          .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid"))
-        )
+          .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid")))
 
         status(redirectResult) must be equalTo SEE_OTHER
 
@@ -45,8 +44,7 @@ class ApplicationControllerSpec extends PlaySpecification with Mockito {
     "return 200 if user is authorized" in new Context {
       new WithApplication(application) {
         val Some(result) = route(app, addCSRFToken(FakeRequest(routes.ApplicationController.index())
-          .withAuthenticator[DefaultEnv](identity.loginInfo))
-        )
+          .withAuthenticator[DefaultEnv](identity.loginInfo)))
 
         status(result) must beEqualTo(OK)
       }
@@ -78,6 +76,7 @@ class ApplicationControllerSpec extends PlaySpecification with Mockito {
       fullName = None,
       email = None,
       avatarURL = None,
+      userType = UserType.Tutee,
       activated = true
     )
 

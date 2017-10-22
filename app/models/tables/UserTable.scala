@@ -2,6 +2,8 @@ package models.tables
 
 import java.util.UUID
 
+import models.UserType
+import models.UserType.UserType
 import slick.jdbc.PostgresProfile.api._
 import slick.lifted.ProvenShape
 
@@ -12,6 +14,7 @@ case class DbUser(
   fullName: Option[String],
   email: Option[String],
   avatarUrl: Option[String],
+  userType: UserType,
   activated: Boolean
 )
 
@@ -61,6 +64,10 @@ case class DbOpenIDAttribute(
 )
 
 class UserTable(tag: Tag) extends Table[DbUser](tag, "users") {
+  implicit val userTypeMapper = MappedColumnType.base[UserType, String](
+    e => e.toString,
+    s => UserType.withName(s)
+  )
 
   def userID = column[UUID]("user_id", O.PrimaryKey)
 
@@ -76,7 +83,9 @@ class UserTable(tag: Tag) extends Table[DbUser](tag, "users") {
 
   def activated = column[Boolean]("activated")
 
-  override def * = (userID, firstName, lastName, fullName, email, avatarURL, activated) <> (DbUser.tupled, DbUser.unapply)
+  def userType = column[UserType]("user_type")
+
+  override def * = (userID, firstName, lastName, fullName, email, avatarURL, userType, activated) <> (DbUser.tupled, DbUser.unapply)
 
 }
 
