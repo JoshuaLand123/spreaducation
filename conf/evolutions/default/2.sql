@@ -19,6 +19,7 @@ CREATE UNIQUE INDEX user_answer_idx ON answers(user_id, question_id);
 
 # --- !Downs
 
+DROP INDEX user_answer_idx;
 DROP TABLE answers;
 DROP TABLE questions;
-DROP INDEX user_answer_idx;
+
