@@ -9,6 +9,10 @@ GET         /lang/:lang                      controllers.ApplicationController.c
 GET         /questions                       controllers.QuestionsController.view
 POST        /questions                       controllers.QuestionsController.submit
 
+GET         /matching                        controllers.MatchingController.view
+
+GET         /profile                         controllers.ProfileController.view
+
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)
 

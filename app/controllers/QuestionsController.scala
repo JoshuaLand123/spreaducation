@@ -17,7 +17,6 @@ import scala.concurrent.{ ExecutionContext, Future }
 class QuestionsController @Inject() (
   components: ControllerComponents,
   silhouette: Silhouette[DefaultEnv],
-  userService: UserService,
   questionService: QuestionService,
   answerService: AnswerService
 )(
