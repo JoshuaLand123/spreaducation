@@ -35,7 +35,7 @@ class QuestionsController @Inject() (
     }, model.total)).map {
       case (q, total) =>
         val totalPages = Math.ceil(total / 5.0).toInt
-        if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("info" -> "Saved successfully")
+        if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("success" -> "Questionnaire successfully")
         else Ok(views.html.questions(QuestionsForm.form, q, request.identity, page, totalPages))
     }
   }
@@ -43,7 +43,7 @@ class QuestionsController @Inject() (
   def submit = silhouette.SecuredAction.async { implicit request =>
     Future.successful(form.bindFromRequest.fold(
       errors =>
-        Ok(views.html.home(request.identity)),
+        Redirect(routes.ApplicationController.index).flashing("error" -> s"Something went wrong: ${errors.toString}"),
       questionnaire => {
         val answers = questionnaire.questions.map(r => Answer(id = r.answerId, userId = request.identity.userID, questionId = r.questionId, score = r.value))
         answerService.saveAll(answers)
