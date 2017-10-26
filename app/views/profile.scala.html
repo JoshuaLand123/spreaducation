@@ -8,8 +8,8 @@
 @main("Profile", Some(user)) {
     <div class="user col-md-6 col-md-offset-3">
         <div class="row">
-            <hr class="col-md-12" />
-            <div class="col-md-4 text-right">
+            <legend>Profile</legend>
+            <div class="col-md-12 text-right">
                 <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
             </div>
             <hr class="col-md-12" />
