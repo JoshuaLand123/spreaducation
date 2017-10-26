@@ -5,8 +5,8 @@ import javax.inject.Inject
 import com.mohiva.play.silhouette.api._
 import forms.QuestionsForm
 import forms.QuestionsForm._
-import models.services.{ AnswerService, QuestionService, UserService }
-import models.{ Answer, Question, QuestionWithAnswer }
+import models.services.{ AnswerService, QuestionService }
+import models.{ Answer, QuestionWithAnswer }
 import org.webjars.play.WebJarsUtil
 import play.api.i18n.I18nSupport
 import play.api.mvc.{ AbstractController, ControllerComponents }
@@ -26,11 +26,18 @@ class QuestionsController @Inject() (
   ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
-  def view = silhouette.SecuredAction.async { implicit request =>
+  def index = view(1)
 
-    questionService.retrieve(request.identity).map(_.map {
-      case (q: Question, a: Option[Answer]) => QuestionWithAnswer(q.id, a.flatMap(_.id), q.questionText, a.map(_.score).getOrElse(3))
-    }).map(q => Ok(views.html.questions(QuestionsForm.form, q, request.identity)))
+  def view(page: Int) = silhouette.SecuredAction.async { implicit request =>
+
+    questionService.retrieve(request.identity, page, 5).map(model => (model.questionWithAnswers.map {
+      case (q, a) => QuestionWithAnswer(q.id, a.flatMap(_.id), q.questionText, a.map(_.score).getOrElse(3))
+    }, model.total)).map {
+      case (q, total) =>
+        val totalPages = Math.ceil(total / 5.0).toInt
+        if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("info" -> "Saved successfully")
+        else Ok(views.html.questions(QuestionsForm.form, q, request.identity, page, totalPages))
+    }
   }
 
   def submit = silhouette.SecuredAction.async { implicit request =>
@@ -40,7 +47,7 @@ class QuestionsController @Inject() (
       questionnaire => {
         val answers = questionnaire.questions.map(r => Answer(id = r.answerId, userId = request.identity.userID, questionId = r.questionId, score = r.value))
         answerService.saveAll(answers)
-        Ok(views.html.home(request.identity))
+        Redirect(routes.QuestionsController.view(questionnaire.page + 1))
       }
     ))
   }

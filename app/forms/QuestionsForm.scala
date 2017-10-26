@@ -7,6 +7,7 @@ object QuestionsForm {
 
   val form = Form(
     mapping(
+      "page" -> number,
       "questions" -> list[Result](
         mapping(
           "questionId" -> number,
@@ -18,7 +19,7 @@ object QuestionsForm {
 
   )
 
-  case class Data(questions: List[Result])
+  case class Data(page: Int, questions: List[Result])
 
   case class Result(questionId: Int, value: Int, answerId: Option[Int])
 }

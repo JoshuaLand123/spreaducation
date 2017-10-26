@@ -1,0 +1,36 @@
+@(currentPage: Integer, pageCount: Integer, blockPageSize: Integer)
+
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+
+        @if(currentPage == 1) {
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">&laquo;</a></li>
+        } else {
+            <li><a class="page-link" aria-label="Previous" href="@controllers.routes.QuestionsController.view(currentPage-1)">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a></li>
+        }
+
+        @for(index <- utils.TemplateHelpers.createRange(currentPage, blockPageSize, pageCount)) {
+            @if(currentPage == index) {
+                <li class="page-item active">
+                    <span class="page-link">@index</span>
+                </li>
+            } else {
+                <li class="page-item">
+                    <a class="page-link" href="@controllers.routes.QuestionsController.view(index)">@index</a>
+                </li>
+        }
+        }
+
+        @if(currentPage == pageCount) {
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">&raquo;</a></li>
+        } else {
+            <li><a class="page-link" aria-label="Next" href="@controllers.routes.QuestionsController.view(currentPage+1)">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a></li>
+        }
+    </ul>
+</nav>

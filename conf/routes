@@ -6,7 +6,8 @@
 GET         /                                controllers.ApplicationController.index
 GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
 
-GET         /questions                       controllers.QuestionsController.view
+GET         /questions                       controllers.QuestionsController.index
+GET         /questions/:page                 controllers.QuestionsController.view(page: Int)
 POST        /questions                       controllers.QuestionsController.submit
 
 GET         /matching                        controllers.MatchingController.view
