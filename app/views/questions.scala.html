@@ -8,8 +8,8 @@
 
 @(questionnaireForm: Form[Data], questions: Seq[models.QuestionWithAnswer], user: models.User, currentPage: Int, totalPages: Int)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
-@main("Questions", Some(user)) {
-<script src="@assets.path("javascripts/bootstrap-slider.min.js")"></script>
+@main(messages("questionnaire.title"), Some(user)) {
+<script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 
     <div class="user col-md-6 col-md-offset-3">
         <div class="row">

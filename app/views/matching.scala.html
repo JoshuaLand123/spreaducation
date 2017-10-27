@@ -5,7 +5,7 @@
 
 @(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
-@main("Matching", Some(user)) {
+@main(messages("matching.title"), Some(user)) {
     <div class="user col-md-6 col-md-offset-3">
         <legend>Matching! Work in progress! :)</legend>
     </div>

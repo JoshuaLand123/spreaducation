@@ -11,6 +11,10 @@ forgot.password.title = Spreaducation - Passwort vergessen
 reset.password.title = Spreaducation - Passwort zurücksetzen
 change.password.title = Spreaducation - Passwort ändern
 activate.account.title = Spreaducation - Konto aktivieren
+dashboard.title = Spreaducation - Instrumententafel
+profile.title = Spreaducation - Mein Profil
+questionnaire.title = Spreaducation - Fragebogen
+matching.title = Spreaducation - Abgleich
 
 toggle.navigation = Toggle navigation
 welcome.signed.in = Willkommen, Sie sind jetzt angemeldet!

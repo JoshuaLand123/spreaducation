@@ -11,6 +11,10 @@ forgot.password.title = Spreaducation - Forgot Password
 reset.password.title = Spreaducation - Reset Password
 change.password.title = Spreaducation - Change Password
 activate.account.title = Spreaducation - Activate Account
+dashboard.title = Spreaducation - Dashboard
+profile.title = Spreaducation - My Profile
+questionnaire.title = Spreaducation - Questionnaire
+matching.title = Spreaducation - Matching
 
 toggle.navigation = Toggle navigation
 welcome.signed.in = Welcome, you are now signed in!
