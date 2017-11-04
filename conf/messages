@@ -1,47 +1,47 @@
-error.email = Gültige E-Mail erforderlich
-error.required = Sein Feld ist erforderlich
-invalid.credentials = Ungültige Anmeldedaten!
+error.email = Bitte gib eine gültige E-Mail Adresse ein.
+error.required = Du musst hier etwas eintragen.
+invalid.credentials = Deine Anmeldedaten sind ungültig.
 access.denied = Zugriff abgelehnt!
-could.not.authenticate = Konnte sich nicht bei einem sozialen Anbieter authentifizieren! Bitte versuche es erneut!
+could.not.authenticate = Wir konnten dich nicht bei einem sozialen Netzwerk finden! Bitte versuche es erneut!
 
 home.title = Spreaducation - Home
-sign.up.title = Spreaducation - Anmelden
+sign.up.title = Spreaducation - Registrieren
 sign.in.title = Spreaducation - Einloggen
 forgot.password.title = Spreaducation - Passwort vergessen
 reset.password.title = Spreaducation - Passwort zurücksetzen
 change.password.title = Spreaducation - Passwort ändern
 activate.account.title = Spreaducation - Konto aktivieren
-dashboard.title = Spreaducation - Instrumententafel
+dashboard.title = Spreaducation - Übersicht
 profile.title = Spreaducation - Mein Profil
 questionnaire.title = Spreaducation - Fragebogen
-matching.title = Spreaducation - Abgleich
+matching.title = Spreaducation - Matching
 
-toggle.navigation = Toggle navigation
-welcome.signed.in = Willkommen, Sie sind jetzt angemeldet!
+toggle.navigation = Navigation ändern.
+welcome.signed.in = Willkommen, du bist jetzt angemeldet!
 
-sign.up.account = Registrieren sie sich für ein neues Konto
-sign.in.credentials = Melden Sie sich mit Ihren Anmeldedaten an
+sign.up.account = Erstelle ein neues Konto.
+sign.in.credentials = Logge dich mit deinen Daten ein.
 
 error = Error!
 info = Info!
-success = Success!
+success = Wunderbar.
 home = Home
 first.name = Vorname
 last.name = Nachname
 full.name = Vollständiger Name
-email = Email
+email = E-Mail Adresse
 password = Passwort
 send = Senden
-change = Veränderung
-reset = Reset
-sign.up = Anmelden
+change = Ändern
+reset = Zurücksetzen
+sign.up = Registrieren
 sign.in = Einloggen
 sign.out = Ausloggen
-sign.in.now = Schreib dich jetzt ein
-sign.up.now = Jetzt anmelden
-already.a.member = Schon ein Mitglied?
+sign.in.now = Logge dich jetzt ein.
+sign.up.now = Erstelle jetzt ein neues Konto.
+already.a.member = Schon Mitglied?
 not.a.member = Kein Mitglied?
-forgot.your.password = Haben Sie Ihr Passwort vergessen?
+forgot.your.password = Hast du dein Passwort vergessen?
 forgot.password = Passwort vergessen
 reset.password = Passwort zurücksetzen
 change.password = Passwort ändern
@@ -49,25 +49,25 @@ activate.account = Konto aktivieren
 current.password = Aktuelles Passwort
 new.password = Neues Kennwort
 
-remember.me = Erinnere dich an meine Anmeldung auf diesem Computer
-or.use.social = Oder verwenden Sie Ihr vorhandenes Konto für einen der folgenden Dienste, um sich anzumelden:
-forgot.password.info = Bitte geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen eine E-Mail mit weiteren Anweisungen, um Ihr Passwort zurückzusetzen.
+remember.me = Angemeldet bleiben.
+or.use.social = Oder verwendene eins deiner anderen Konten, um dich anzumelden:
+forgot.password.info = Bitte gib deine E-Mail-Adresse ein und wir senden dir eine E-Mail mit weiteren Anweisungen, um dein Passwort zurückzusetzen.
 strong.password.info = Starke Passwörter enthalten Zahlen, Buchstaben und Satzzeichen.
-current.password.invalid = Das eingegebene Passwort ist ungültig. Bitte geben Sie das korrekte Passwort ein!
-activate.account.text1 = Sie können sich noch nicht anmelden. Wir haben zuvor eine Aktivierungs-E-Mail an folgende Adresse gesendet:
-activate.account.text2 = Bitte folgen Sie den Anweisungen in dieser E-Mail, um Ihr Konto zu aktivieren.
-activate.account.text3 = Klicken Sie <a href="{0}">hier</a>, um die Aktivierungs-E-Mail erneut zu senden.
+current.password.invalid = Oops, das eingegebene Passwort ist ungültig. Bitte gib das korrekte Passwort ein!
+activate.account.text1 = Du kannst dich noch nicht einloggen. Wir haben dir eine Aktivierungs-E-Mail an folgende Adresse gesendet:
+activate.account.text2 = Bitte folge den Anweisungen in dieser E-Mail, um dein Konto zu aktivieren.
+activate.account.text3 = Klicke <a href="{0}">hier</a>, um die Aktivierungs-E-Mail nochmal zu senden.
 
-sign.up.email.sent = Du bist fast fertig! Wir haben eine Aktivierungsmail an {0}. Bitte folgen Sie den Anweisungen in der E-Mail, um Ihr Konto zu aktivieren. Wenn es nicht ankommt, überprüfen Sie Ihren Spamordner oder versuchen Sie sich erneut anzumelden, um eine weitere Aktivierungsmail zu senden.
-activation.email.sent = Wir haben eine Aktivierungs-E-Mail an {0} gesendet. Es könnte ein paar Minuten dauern, bis es eintrifft; achten Sie darauf, Ihren Spam-Ordner zu überprüfen.
-reset.email.sent = Wir haben Ihnen eine E-Mail mit weiteren Anweisungen zum Zurücksetzen Ihres Passworts gesendet, sofern die Adresse in unserem System gefunden wurde. Wenn Sie innerhalb der nächsten 5 Minuten keine E-Mail erhalten, überprüfen Sie die eingegebene E-Mail-Adresse erneut und versuchen Sie es erneut.
+sign.up.email.sent = Du bist fast fertig! Wir haben eine Aktivierungsmail an {0}. Bitte folge den Anweisungen in der E-Mail, um dein Konto zu aktivieren. Solltest du die Mail nicht bekommen, überprüfe doch mal deinen Spamordner oder versuche dich erneut zu registrieren, um eine weitere Aktivierungsmail zu bekommen.
+activation.email.sent = Wir haben eine Aktivierungs-E-Mail an {0} gesendet. Es könnte ein paar Minuten dauern, bis sie eintrifft. Schau auch mal in deinen Spam-Ordner.
+reset.email.sent = Wir haben dir eine E-Mail mit weiteren Anweisungen zum Zurücksetzen deines Passworts gesendet, sofern die Adresse in unserem System gefunden wurde. Wenn du innerhalb der nächsten 5 Minuten keine E-Mail erhalten solltest, überprüfe die eingegebene E-Mail-Adresse. Versuche es dann nochmal.
 
-invalid.activation.link = Der Link ist nicht mehr gültig! Bitte melden Sie sich an, um die Aktivierungs-E-Mail erneut zu senden.
-invalid.reset.link = Der Link ist nicht mehr gültig! Bitte fordern Sie einen neuen Link an, um Ihr Passwort zurückzusetzen.
+invalid.activation.link = Der Link ist nicht mehr gültig! Bitte registriere dich nochmal, um die Aktivierungs-E-Mail erneut zu senden.
+invalid.reset.link = Der Link ist nicht mehr gültig! Bitte fordere einen neuen Link an, um dein Passwort zurückzusetzen.
 
-password.reset = Wir haben Ihr Passwort zurückgesetzt. Sie können sich jetzt mit Ihren Anmeldedaten anmelden.
-account.activated = Dein Account ist jetzt aktiviert! Bitte melden Sie sich an, um Ihr neues Konto zu verwenden.
-password.changed = Ihr Passwort wurde geändert.
+password.reset = Wir haben dein Passwort zurückgesetzt. Du kannst dich jetzt mit deinen Anmeldedaten einloggen.
+account.activated = Dein Account ist jetzt aktiviert! Bitte logge dich ein, um dein neues Konto zu verwenden.
+password.changed = Dein Passwort wurde erfolgreich geändert.
 
 google = Google
 facebook = Facebook
@@ -79,25 +79,25 @@ facebook = Facebook
 email.from = Spreaducation <team@spreaducation.de>
 
 # Sign Up
-email.sign.up.subject = Herzlich willkommen
+email.sign.up.subject = Herzlich Willkommen bei Spreaducation.
 email.sign.up.hello = Hallo {0},
-email.sign.up.html.text = Bitte folgen Sie <a href="{0}">seinem Link</a>, um Ihr neues Konto zu bestätigen und zu aktivieren.
-email.sign.up.txt.text = Bitte folgen Sie dem Link zur Bestätigung und Aktivierung Ihres neuen Kontos: {0}
+email.sign.up.html.text = Wir freuen uns dich bei uns begrüßen zu dürfen. Klicke auf den Link <a href="{0}">seinem Link</a>, um dein neues Konto zu bestätigen und zu aktivieren. Freue dich auf ein einzigartiges gemeinsames Lernen!
+email.sign.up.txt.text = Wir freuen uns dich bei uns begrüßen zu dürfen. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0} . Freue dich auf ein einzigartiges gemeinsames Lernen!
 
 # Already Signed Up
 email.already.signed.up.subject = Herzlich willkommen
 email.already.signed.up.hello = Hallo {0},
-email.already.signed.up.html.text = Sie haben bereits ein Konto registriert. Bitte folgen Sie <a href="{0}">seinem Link</a>, um sich in Ihrem Konto anzumelden.
-email.already.signed.up.txt.text = Sie haben bereits ein Konto registriert. Bitte folgen Sie dem Link, um sich in Ihrem Konto anzumelden: {0}
+email.already.signed.up.html.text = Du hast bereits ein Konto angelegt. Folge diesem Link: <a href="{0}">seinem Link</a>, um dich in dein Konto einzuloggen.
+email.already.signed.up.txt.text = Du hast bereits ein Konto angelegt. Folge diesem Link, um dich in dein Konto einzuloggen: {0}
 
 # Reset Password
 email.reset.password.subject = Passwort zurücksetzen
 email.reset.password.hello = Hallo {0},
-email.reset.password.html.text = Bitte folgen Sie <a href="{0}">diesem Link</a>, um Ihr Passwort zurückzusetzen.
-email.reset.password.txt.text = Bitte folgen Sie dem Link, um Ihr Passwort zurückzusetzen: {0}
+email.reset.password.html.text = Bitte folge diesem Link <a href="{0}">diesem Link</a>, um dein Passwort zurückzusetzen.
+email.reset.password.txt.text = Bitte folge diesem Link, um dein Passwort zurückzusetzen: {0}
 
 # Activate Account
 email.activate.account.subject = Konto aktivieren
 email.activate.account.hello = Hallo {0},
-email.activate.account.html.text = Bitte folgen Sie <a href="{0}">diesem Link</a>, um Ihr neues Konto zu bestätigen und zu aktivieren.
-email.activate.account.txt.text = Bitte folgen Sie dem Link zur Bestätigung und Aktivierung Ihres neuen Kontos: {0}
+email.activate.account.html.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf dem Link <a href="{0}">diesem Link</a>, um dein neues Konto zu bestätigen und zu aktivieren.
+email.activate.account.txt.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0}
