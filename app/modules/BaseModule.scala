@@ -18,7 +18,5 @@ class BaseModule extends AbstractModule with ScalaModule {
     bind[AuthTokenService].to[AuthTokenServiceImpl]
     bind[QuestionDAO].to[QuestionDAOImpl]
     bind[QuestionService].to[QuestionServiceImpl]
-    bind[AnswerDAO].to[AnswerDAOImpl]
-    bind[AnswerService].to[AnswerServiceImpl]
   }
 }

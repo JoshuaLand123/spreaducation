@@ -64,10 +64,6 @@ case class DbOpenIDAttribute(
 )
 
 class UserTable(tag: Tag) extends Table[DbUser](tag, "users") {
-  implicit val userTypeMapper = MappedColumnType.base[UserType, String](
-    e => e.toString,
-    s => UserType.withName(s)
-  )
 
   def userID = column[UUID]("user_id", O.PrimaryKey)
 

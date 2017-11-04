@@ -4,7 +4,7 @@ import java.util.UUID
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.LoginInfo
-import models.User
+import models.{ User, UserProfile }
 import models.daos.UserDAOImpl._
 import models.tables._
 import play.api.db.slick.DatabaseConfigProvider
@@ -15,9 +15,6 @@ import slick.lifted.TableQuery
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-/**
- * Give access to the user object.
- */
 class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvider) extends UserDAO {
 
   val dbConfig: DatabaseConfig[JdbcProfile] = dbConfigProvider.get[JdbcProfile]
@@ -29,12 +26,6 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
     loginInfos.filter(dbLoginInfo => dbLoginInfo.providerId === loginInfo.providerID && dbLoginInfo.providerKey === loginInfo.providerKey)
   }
 
-  /**
-   * Finds a user by its login info.
-   *
-   * @param loginInfo The login info of the user to find.
-   * @return The found user or None if no user for the given login info could be found.
-   */
   def find(loginInfo: LoginInfo): Future[Option[User]] = {
     val userQuery = for {
       dbLoginInfo <- loginInfoQuery(loginInfo)
@@ -49,12 +40,6 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
     }
   }
 
-  /**
-   * Finds a user by its user ID.
-   *
-   * @param userID The ID of the user to find.
-   * @return The found user or None if no user for the given ID could be found.
-   */
   def find(userID: UUID): Future[Option[User]] = {
 
     val userQuery = for {
@@ -80,12 +65,6 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
     }
   }
 
-  /**
-   * Saves a user.
-   *
-   * @param user The user to save.
-   * @return The saved user.
-   */
   def save(user: User): Future[User] = {
     val dbUser = DbUser(user.userID, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL, user.userType, user.activated)
     val dbLoginInfo = DbLoginInfo(None, user.loginInfo.providerID, user.loginInfo.providerKey)
@@ -113,15 +92,19 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
 
     db.run(actions).map(_ => user)
   }
+
+  override def saveProfile(profile: UserProfile) =
+    db.run(userProfiles.insertOrUpdate(profile))
+
+  override def findProfile(userID: UUID) =
+    db.run(userProfiles.filter(_.userID === userID).result.headOption)
 }
 
-/**
- * The companion object.
- */
 object UserDAOImpl {
 
   private val loginInfos = TableQuery[LoginInfoTable]
   private val users = TableQuery[UserTable]
-  private var userLoginInfos = TableQuery[UserLoginInfoTable]
+  private val userLoginInfos = TableQuery[UserLoginInfoTable]
+  private val userProfiles = TableQuery[UserProfileTable]
 
 }

@@ -18,7 +18,8 @@ import scala.concurrent.Future
 
 class PasswordInfoDAO @Inject() (
   protected val dbConfigProvider: DatabaseConfigProvider,
-  userDAO: UserDAO) extends DelegableAuthInfoDAO[PasswordInfo] {
+  userDAO: UserDAO
+) extends DelegableAuthInfoDAO[PasswordInfo] {
 
   val dbConfig: DatabaseConfig[JdbcProfile] = dbConfigProvider.get[JdbcProfile]
   val db: JdbcBackend#DatabaseDef = dbConfig.db

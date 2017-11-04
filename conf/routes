@@ -4,7 +4,7 @@
 
 # Home page
 GET         /                                controllers.ApplicationController.index
-GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
+#GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
 
 GET         /questions                       controllers.QuestionsController.index
 GET         /questions/:page                 controllers.QuestionsController.view(page: Int)
@@ -13,6 +13,8 @@ POST        /questions                       controllers.QuestionsController.sub
 GET         /matching                        controllers.MatchingController.view
 
 GET         /profile                         controllers.ProfileController.view
+GET         /profile/edit                    controllers.ProfileController.edit
+POST        /profile                         controllers.ProfileController.submit
 
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)

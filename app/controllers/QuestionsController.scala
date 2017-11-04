@@ -5,7 +5,7 @@ import javax.inject.Inject
 import com.mohiva.play.silhouette.api._
 import forms.QuestionsForm
 import forms.QuestionsForm._
-import models.services.{ AnswerService, QuestionService }
+import models.services.QuestionService
 import models.{ Answer, QuestionWithAnswer }
 import org.webjars.play.WebJarsUtil
 import play.api.i18n.I18nSupport
@@ -18,7 +18,6 @@ class QuestionsController @Inject() (
   components: ControllerComponents,
   silhouette: Silhouette[DefaultEnv],
   questionService: QuestionService,
-  answerService: AnswerService
 )(
   implicit
   webJarsUtil: WebJarsUtil,
@@ -46,7 +45,7 @@ class QuestionsController @Inject() (
         Redirect(routes.ApplicationController.index).flashing("error" -> s"Something went wrong: ${errors.toString}"),
       questionnaire => {
         val answers = questionnaire.questions.map(r => Answer(id = r.answerId, userId = request.identity.userID, questionId = r.questionId, score = r.value))
-        answerService.saveAll(answers)
+        questionService.saveAnswers(answers)
         Redirect(routes.QuestionsController.view(questionnaire.page + 1))
       }
     ))

@@ -89,7 +89,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
   def provideEnvironment(
     userService: UserService,
     authenticatorService: AuthenticatorService[CookieAuthenticator],
-    eventBus: EventBus): Environment[DefaultEnv] = {
+    eventBus: EventBus
+  ): Environment[DefaultEnv] = {
 
     Environment[DefaultEnv](
       userService,
@@ -109,7 +110,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
   @Provides
   def provideSocialProviderRegistry(
     facebookProvider: FacebookProvider,
-    googleProvider: GoogleProvider): SocialProviderRegistry = {
+    googleProvider: GoogleProvider
+  ): SocialProviderRegistry = {
 
     SocialProviderRegistry(Seq(
       facebookProvider
@@ -208,7 +210,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
     passwordInfoDAO: DelegableAuthInfoDAO[PasswordInfo],
     oauth1InfoDAO: DelegableAuthInfoDAO[OAuth1Info],
     oauth2InfoDAO: DelegableAuthInfoDAO[OAuth2Info],
-    openIDInfoDAO: DelegableAuthInfoDAO[OpenIDInfo]): AuthInfoRepository = {
+    openIDInfoDAO: DelegableAuthInfoDAO[OpenIDInfo]
+  ): AuthInfoRepository = {
 
     new DelegableAuthInfoRepository(passwordInfoDAO, oauth1InfoDAO, oauth2InfoDAO, openIDInfoDAO)
   }
@@ -233,7 +236,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
     fingerprintGenerator: FingerprintGenerator,
     idGenerator: IDGenerator,
     configuration: Configuration,
-    clock: Clock): AuthenticatorService[CookieAuthenticator] = {
+    clock: Clock
+  ): AuthenticatorService[CookieAuthenticator] = {
 
     val config = configuration.underlying.as[CookieAuthenticatorSettings]("silhouette.authenticator")
     val authenticatorEncoder = new CrypterAuthenticatorEncoder(crypter)
@@ -264,7 +268,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
     @Named("oauth1-token-secret-signer") signer: Signer,
     @Named("oauth1-token-secret-crypter") crypter: Crypter,
     configuration: Configuration,
-    clock: Clock): OAuth1TokenSecretProvider = {
+    clock: Clock
+  ): OAuth1TokenSecretProvider = {
 
     val settings = configuration.underlying.as[CookieSecretSettings]("silhouette.oauth1TokenSecretProvider")
     new CookieSecretProvider(settings, signer, crypter, clock)
@@ -282,7 +287,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
   def provideCsrfStateItemHandler(
     idGenerator: IDGenerator,
     @Named("csrf-state-item-signer") signer: Signer,
-    configuration: Configuration): CsrfStateItemHandler = {
+    configuration: Configuration
+  ): CsrfStateItemHandler = {
     val settings = configuration.underlying.as[CsrfStateSettings]("silhouette.csrfStateItemHandler")
     new CsrfStateItemHandler(settings, idGenerator, signer)
   }
@@ -296,7 +302,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
   @Provides
   def provideSocialStateHandler(
     @Named("social-state-signer") signer: Signer,
-    csrfStateItemHandler: CsrfStateItemHandler): SocialStateHandler = {
+    csrfStateItemHandler: CsrfStateItemHandler
+  ): SocialStateHandler = {
 
     new DefaultSocialStateHandler(Set(csrfStateItemHandler), signer)
   }
@@ -321,7 +328,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
   @Provides
   def provideCredentialsProvider(
     authInfoRepository: AuthInfoRepository,
-    passwordHasherRegistry: PasswordHasherRegistry): CredentialsProvider = {
+    passwordHasherRegistry: PasswordHasherRegistry
+  ): CredentialsProvider = {
 
     new CredentialsProvider(authInfoRepository, passwordHasherRegistry)
   }
@@ -338,7 +346,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
   def provideFacebookProvider(
     httpLayer: HTTPLayer,
     socialStateHandler: SocialStateHandler,
-    configuration: Configuration): FacebookProvider = {
+    configuration: Configuration
+  ): FacebookProvider = {
 
     new FacebookProvider(httpLayer, socialStateHandler, configuration.underlying.as[OAuth2Settings]("silhouette.facebook"))
   }
@@ -355,7 +364,8 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
   def provideGoogleProvider(
     httpLayer: HTTPLayer,
     socialStateHandler: SocialStateHandler,
-    configuration: Configuration): GoogleProvider = {
+    configuration: Configuration
+  ): GoogleProvider = {
 
     new GoogleProvider(httpLayer, socialStateHandler, configuration.underlying.as[OAuth2Settings]("silhouette.google"))
   }
