@@ -17,4 +17,4 @@ score_subject_goodat_1 int
 
 # --- !Downs
 
-DROP INDEX user_profile;
+DROP TABLE user_profile;
