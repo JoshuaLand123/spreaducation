@@ -8,6 +8,7 @@
 @(profileForm: Form[models.UserProfile], user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
+<script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
     <div class="user col-md-6 col-md-offset-3">
         <div class="row">
             <legend>@messages("profile.edit")</legend>
@@ -24,20 +25,25 @@
                     <div class="form-group">
                         @b3.select(profileForm("gender"),  options=Seq("m"->"profile.gender.m","f"->"profile.gender.f"), '_label -> "profile.gender")
                         @b3.date(profileForm("dob"), '_label -> "profile.dob", 'class -> "form-control input-lg")
-                        @b3.text(profileForm("classLevel"), '_label -> "profile.class.level.edit", 'class -> "form-control input-lg")
+                        <label for="slider-classLevel">@messages("profile.class.level.edit")</label>
+                        <p><input id="slider-classLevel" name='classLevel' data-slider-id='ex1Slider' type="text" data-slider-min="5" data-slider-max="12" data-slider-step="1" data-slider-value='@profileForm.data.get("classLevel")'/></p>
                         @b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control input-lg")
                         @b3.text(profileForm("mainLanguage"), '_label -> "profile.language.edit", 'class -> "form-control input-lg")
                         @b3.text(profileForm("subjectImprove"), '_label -> "profile.subject.improve.edit", 'class -> "form-control input-lg")
-                        @b3.text(profileForm("scoreSubjectImprove"), '_label -> "profile.subject.improve.score.edit", 'class -> "form-control input-lg")
+                        <div class="col-md-12"><label for="slider-scoreSubjectImprove">@messages("profile.subject.improve.edit")</label></div>
+                        <p><input id="slider-scoreSubjectImprove" name='scoreSubjectImprove' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectImprove")'/></p>
                         @b3.text(profileForm("subjectGoodAt"), '_label -> "profile.subject.goodat.edit", 'class -> "form-control input-lg")
-                        @b3.text(profileForm("scoreSubjectGoodAt"), '_label -> "profile.subject.goodat.score.edit", 'class -> "form-control input-lg")
+                        <label for="slider-scoreSubjectGoodAt">@messages("profile.subject.goodat.score.edit")</label>
+                        <p><input id="slider-scoreSubjectGoodAt" name='scoreSubjectGoodAt' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectGoodAt")'/></p>
                         @b3.text(profileForm("interest1"), '_label -> "profile.interest.edit", 'class -> "form-control input-lg")
-                        @b3.text(profileForm("timeInterest1"), '_label -> "profile.interest.time.edit", 'class -> "form-control input-lg")
+                        <label for="slider-interest1">@messages("profile.interest.time.edit")</label>
+                        <p><input id="slider-interest1" name='timeInterest1' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="12" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest1")'/></p>
                         @b3.text(profileForm("interest2"), '_label -> "profile.interest.edit", 'class -> "form-control input-lg")
-                        @b3.text(profileForm("timeInterest2"), '_label -> "profile.interest.time.edit", 'class -> "form-control input-lg")
+                        <label for="slider-interest2">@messages("profile.interest.time.edit")</label>
+                        <p><input id="slider-interest2" name='timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="12" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest2")'/></p>
                         @b3.text(profileForm("interest3"), '_label -> "profile.interest.edit", 'class -> "form-control input-lg")
-                        @b3.text(profileForm("timeInterest3"), '_label -> "profile.interest.time.edit", 'class -> "form-control input-lg")
-
+                        <label for="slider-interest3">@messages("profile.interest.time.edit")</label>
+                        <p><input id="slider-interest3" name='timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="12" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
                         @b3.free('_id -> "idFormGroup") {
                             <a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>
                             <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-ok"></span>@messages("save")</button>
@@ -46,5 +52,8 @@
                 }
             </div>
         </div>
+        <script>
+                $('input[id^="slider-"]').slider()
+            </script>
     </div>
 }
