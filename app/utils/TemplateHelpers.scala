@@ -1,6 +1,11 @@
 package utils
 
+import java.text.SimpleDateFormat
+import java.util.Date
+
 object TemplateHelpers {
+
+  val dateFormat = new SimpleDateFormat("dd.MM.yyyy")
 
   def createRange(page: Int, max: Int, pageCount: Int): Range = {
     val middle: Int = max / 2
@@ -12,6 +17,10 @@ object TemplateHelpers {
       case (minN, maxN) if maxN > pageCount         => minN until pageCount
       case (minN, maxN)                             => minN to maxN
     }
+  }
+
+  def parseDate(date: Date): String = {
+    dateFormat.format(date)
   }
 
 }

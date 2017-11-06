@@ -10,7 +10,7 @@
 @main(messages("profile.title"), Some(user)) {
     <div class="user col-md-6 col-md-offset-3">
         <div class="row">
-            <legend>Edit Profile</legend>
+            <legend>@messages("profile.edit")</legend>
             <div class="col-md-12 text-right">
                 <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
             </div>
@@ -19,23 +19,30 @@
         <div class="row data">
             <div class="col-md-12">
                 @helper.form(action = controllers.routes.ProfileController.submit()) {
-                @helper.CSRF.formField
-                <input type="hidden" name='userID' value='@java.util.UUID.randomUUID()' />
-                <div class="form-group">
-                    @b3.select(profileForm("gender"),  options=Seq("M"->"M","F"->"F"), '_label -> "Select")
-                    @b3.date(profileForm("dob"), '_hiddenLabel -> "Birth date", 'placeholder -> "Birth date", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("classLevel"), '_hiddenLabel -> "Class level", 'placeholder -> "Class level", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("schoolName"), '_hiddenLabel -> "School Name", 'placeholder -> "School Name", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("mainLanguage"), '_hiddenLabel -> "Main Language", 'placeholder -> "Main Language", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("subjectImprove1"), '_hiddenLabel -> "Subject to improve", 'placeholder -> "Subject to improve", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("scoreSubjectImprove1"), '_hiddenLabel -> "Score", 'placeholder -> "Score", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("interest1"), '_hiddenLabel -> "Interest", 'placeholder -> "Interest", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("timeInterest1"), '_hiddenLabel -> "Time interest", 'placeholder -> "Time interest", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("subjectGoodAt1"), '_hiddenLabel -> "Subject good at", 'placeholder -> "Subject good at", 'class -> "form-control input-lg")
-                    @b3.text(profileForm("scoreSubjectGoodAt1"), '_hiddenLabel -> "Score", 'placeholder -> "Score", 'class -> "form-control input-lg")
-                </div>
-                <a href="@controllers.routes.ProfileController.view" class="btn btn-default">Cancel</a>
-                <button type="submit" name="submit" id="submit" class="btn btn-primary">Save</button>
+                    @helper.CSRF.formField
+                    <input type="hidden" name='userID' value='@java.util.UUID.randomUUID()' />
+                    <div class="form-group">
+                        @b3.select(profileForm("gender"),  options=Seq("m"->"profile.gender.m","f"->"profile.gender.f"), '_label -> "profile.gender")
+                        @b3.date(profileForm("dob"), '_label -> "profile.dob", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("classLevel"), '_label -> "profile.class.level.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("mainLanguage"), '_label -> "profile.language.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("subjectImprove"), '_label -> "profile.subject.improve.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("scoreSubjectImprove"), '_label -> "profile.subject.improve.score.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("subjectGoodAt"), '_label -> "profile.subject.goodat.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("scoreSubjectGoodAt"), '_label -> "profile.subject.goodat.score.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("interest1"), '_label -> "profile.interest.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("timeInterest1"), '_label -> "profile.interest.time.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("interest2"), '_label -> "profile.interest.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("timeInterest2"), '_label -> "profile.interest.time.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("interest3"), '_label -> "profile.interest.edit", 'class -> "form-control input-lg")
+                        @b3.text(profileForm("timeInterest3"), '_label -> "profile.interest.time.edit", 'class -> "form-control input-lg")
+
+                        @b3.free('_id -> "idFormGroup") {
+                            <a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>
+                            <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-ok"></span>@messages("save")</button>
+                        }
+                    </div>
                 }
             </div>
         </div>

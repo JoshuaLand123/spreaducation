@@ -101,3 +101,48 @@ email.activate.account.subject = Konto aktivieren
 email.activate.account.hello = Hallo {0},
 email.activate.account.html.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf dem Link <a href="{0}">diesem Link</a>, um dein neues Konto zu bestätigen und zu aktivieren.
 email.activate.account.txt.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0}
+
+# Dashboard
+dashboard = Instrumententafel
+
+# Profile
+profile = Profil
+profile.edit = Profil bearbeiten
+profile.gender = Geschlecht
+profile.gender.m = Männlich
+profile.gender.f = Weiblich
+profile.dob = Geburtstag
+profile.dob.edit = Wann hast du Geburtstag?
+profile.class.level = Klasse
+profile.class.level.edit = In welche Klasse gehst du?
+profile.school.name = Schule Name
+profile.school.name.edit = Wie ist der Name deiner Schule?
+profile.language = Muttersprache
+profile.language.edit = Was ist deine Muttersprache?
+profile.subject.improve = Subject to improve
+profile.subject.improve.edit = Wähle ein Fach, in dem dich dein Tutor unterstützen soll
+profile.subject.improve.score = Note
+profile.subject.improve.score.edit = Gib uns deine Note
+profile.subject.goodat = Fach du bist sehr gut
+profile.subject.goodat.edit = Wähle ein Fach, in dem du sehr gut bist
+profile.subject.goodat.score = Note
+profile.subject.goodat.score.edit = Gib uns deine Note
+profile.interest = Freizeit
+profile.interest.edit = Was machst du so in deiner Freizeit?
+profile.interest.time = Stunden pro Woche
+profile.interest.time.edit = Wie viel Zeit verbringst du damit in der Woche?
+
+# Questionnaire
+questionnaire = Fragebogen
+
+# Matching
+matching = Passend
+
+
+# General
+edit = Bearbeiten
+cancel = Stornieren
+back = Zurück
+save = Sparen
+save.and.quit = Speichern und Beenden
+save.and.continue = Speichern und Fortfahren

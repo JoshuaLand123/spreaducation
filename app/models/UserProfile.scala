@@ -9,10 +9,14 @@ case class UserProfile(
   classLevel: Int,
   schoolName: String,
   mainLanguage: String,
-  subjectImprove1: String,
-  scoreSubjectImprove1: Int,
+  subjectImprove: String,
+  scoreSubjectImprove: Int,
+  subjectGoodAt: String,
+  scoreSubjectGoodAt: Int,
   interest1: String,
-  timeInterest1: String,
-  subjectGoodAt1: String,
-  scoreSubjectGoodAt1: Int
+  timeInterest1: Int,
+  interest2: String,
+  timeInterest2: Int,
+  interest3: String,
+  timeInterest3: Int
 )

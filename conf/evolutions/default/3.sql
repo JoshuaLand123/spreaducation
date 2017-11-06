@@ -7,12 +7,16 @@ dob date,
 class_level int,
 school_name text,
 main_language text,
-subject_improve_1 text,
-score_subject_improve_1 text,
+subject_improve text,
+score_subject_improve int,
+subject_goodat text,
+score_subject_goodat int,
 interest_1 text,
-time_interest_1 text,
-subject_goodat_1 text,
-score_subject_goodat_1 int
+time_interest_1 int,
+interest_2 text,
+time_interest_2 int,
+interest_3 text,
+time_interest_3 int
 );
 
 # --- !Downs

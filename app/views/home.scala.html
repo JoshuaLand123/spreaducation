@@ -6,10 +6,16 @@
 @(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("dashboard.title"), Some(user)) {
-<div class="user col-md-4 col-md-offset-3">
-    <legend>This is Dashboard! We need Some stylings here!</legend>
-    <a href="@controllers.routes.ProfileController.view" class="btn btn-default">Profile</a>
-    <a href="@controllers.routes.QuestionsController.view(1)" class="btn btn-default">Questionnaire</a>
-    <a href="@controllers.routes.MatchingController.view" class="btn btn-default">Matching</a>
+<div class="user col-md-6 col-md-offset-3">
+    <legend>@messages("dashboard")</legend>
+    <div class="user col-md-12">
+        <a href="@controllers.routes.ProfileController.view" class="btn btn-default">@messages("profile")</a>
+    </div>
+    <div class="user col-md-12">
+        <a href="@controllers.routes.QuestionsController.view(1)" class="btn btn-default">@messages("questionnaire")</a>
+    </div>
+    <div class="user col-md-12">
+        <a href="@controllers.routes.MatchingController.view" class="btn btn-default">@messages("matching")</a>
+    </div>
 </div>
 }

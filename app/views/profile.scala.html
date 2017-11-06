@@ -2,13 +2,14 @@
 @import play.api.mvc.RequestHeader
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
+@import utils.TemplateHelpers._
 
 @(user: models.User, profile: Option[models.UserProfile])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <div class="user col-md-6 col-md-offset-3">
     <div class="row">
-        <legend>Profile</legend>
+        <legend>@messages("profile")</legend>
         <div class="col-md-12 text-right">
             <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
         </div>
@@ -25,51 +26,67 @@
                 <p class="col-md-6">@user.lastName.getOrElse("None")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Gender:</strong></p>
-                <p class="col-md-6">@profile.map(_.gender).getOrElse("")</p>
+                <p class="col-md-6"><strong>@messages("profile.gender"):</strong></p>
+                <p class="col-md-6">@profile.map(p => messages("profile.gender." + p.gender)).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Date of birth:</strong></p>
-                <p class="col-md-6">@profile.map(_.dob).getOrElse("")</p>
+                <p class="col-md-6"><strong>@messages("profile.dob"):</strong></p>
+                <p class="col-md-6">@profile.map(p => parseDate(p.dob)).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Class level:</strong></p>
+                <p class="col-md-6"><strong>@messages("profile.class.level"):</strong></p>
                 <p class="col-md-6">@profile.map(_.classLevel).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>School Name:</strong></p>
+                <p class="col-md-6"><strong>@messages("profile.school.name"):</strong></p>
                 <p class="col-md-6">@profile.map(_.schoolName).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Main language:</strong></p>
+                <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
                 <p class="col-md-6">@profile.map(_.mainLanguage).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Subject to improve:</strong></p>
-                <p class="col-md-6">@profile.map(_.subjectImprove1).getOrElse("")</p>
+                <p class="col-md-6"><strong>@messages("profile.subject.improve"):</strong></p>
+                <p class="col-md-6">@profile.map(_.subjectImprove).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Score:</strong></p>
-                <p class="col-md-6">@profile.map(_.scoreSubjectImprove1).getOrElse("")</p>
+                <p class="col-md-6"><strong>@messages("profile.subject.improve.score"):</strong></p>
+                <p class="col-md-6">@profile.map(_.scoreSubjectImprove).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Interest 1:</strong></p>
+                <p class="col-md-6"><strong>@messages("profile.subject.goodat"):</strong></p>
+                <p class="col-md-6">@profile.map(_.subjectGoodAt).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.subject.goodat.score"):</strong></p>
+                <p class="col-md-6">@profile.map(_.scoreSubjectGoodAt).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.interest") 1:</strong></p>
                 <p class="col-md-6">@profile.map(_.interest1).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Time interest:</strong></p>
+                <p class="col-md-6"><strong>@messages("profile.interest.time") 1:</strong></p>
                 <p class="col-md-6">@profile.map(_.timeInterest1).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Subject you're good at:</strong></p>
-                <p class="col-md-6">@profile.map(_.subjectGoodAt1).getOrElse("")</p>
+                <p class="col-md-6"><strong>@messages("profile.interest") 2:</strong></p>
+                <p class="col-md-6">@profile.map(_.interest2).getOrElse("")</p>
             </div>
             <div class="row">
-                <p class="col-md-6"><strong>Score:</strong></p>
-                <p class="col-md-6">@profile.map(_.scoreSubjectGoodAt1).getOrElse("")</p>
+                <p class="col-md-6"><strong>@messages("profile.interest.time") 2:</strong></p>
+                <p class="col-md-6">@profile.map(_.timeInterest2).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.interest") 3:</strong></p>
+                <p class="col-md-6">@profile.map(_.interest3).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.interest.time") 3:</strong></p>
+                <p class="col-md-6">@profile.map(_.timeInterest3).getOrElse("")</p>
             </div>
         </div>
-        <a href="@controllers.routes.ProfileController.edit" class="btn btn-default">Edit</a>
+        <a href="@controllers.routes.ProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
     </div>
 </div>
 }

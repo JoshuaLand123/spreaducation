@@ -4,10 +4,10 @@ import javax.inject.Inject
 
 import models.daos.QuestionDAOImpl._
 import models.tables._
-import models.{Answer, QuestionModel, User}
+import models.{ Answer, QuestionModel, User }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.basic.DatabaseConfig
-import slick.jdbc.{JdbcBackend, JdbcProfile}
+import slick.jdbc.{ JdbcBackend, JdbcProfile }
 import slick.lifted.TableQuery
 
 import scala.concurrent.ExecutionContext.Implicits.global

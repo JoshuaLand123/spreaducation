@@ -7,10 +7,10 @@ import forms.ProfileForm
 import models.services.UserService
 import org.webjars.play.WebJarsUtil
 import play.api.i18n.I18nSupport
-import play.api.mvc.{AbstractController, ControllerComponents}
+import play.api.mvc.{ AbstractController, ControllerComponents }
 import utils.auth.DefaultEnv
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ ExecutionContext, Future }
 
 class ProfileController @Inject() (
   components: ControllerComponents,
@@ -28,8 +28,13 @@ class ProfileController @Inject() (
   }
 
   def edit = silhouette.SecuredAction.async { implicit request =>
-
-    Future.successful(Ok(views.html.profileEdit(ProfileForm.form, request.identity)))
+    userService.retrieveProfile(request.identity.userID).map(profile => {
+      val form = profile match {
+        case Some(p) => ProfileForm.form.fill(p)
+        case _       => ProfileForm.form
+      }
+      Ok(views.html.profileEdit(form, request.identity))
+    })
   }
 
   def submit = silhouette.SecuredAction.async { implicit request =>
