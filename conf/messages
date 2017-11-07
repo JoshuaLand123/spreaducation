@@ -134,6 +134,9 @@ profile.interest.time.edit = Wie viel Zeit verbringst du damit in der Woche?
 
 # Questionnaire
 questionnaire = Fragebogen
+finish.and.view.profile = Beenden und Profil ansehen
+strongly.agree = stimmt
+strongly.disagree = stimmt nicht
 
 # Matching
 matching = Passend

@@ -35,7 +35,8 @@ class QuestionsController @Inject() (
     }, model.total)).map {
       case (q, total) =>
         val totalPages = Math.ceil(total / PaginationCount.toDouble).toInt
-        if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("success" -> "Questionnaire successfully"  )
+        // if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("success" -> "Questionnaire successfully"  )
+        if (page > totalPages) Redirect(routes.ProfileController.view)
         else Ok(views.html.questions(QuestionsForm.form, q, request.identity, page, totalPages))
     }
   }

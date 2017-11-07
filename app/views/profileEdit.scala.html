@@ -45,8 +45,8 @@
                         <label for="slider-interest3">@messages("profile.interest.time.edit")</label>
                         <p><input id="slider-interest3" name='timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="12" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
                         @b3.free('_id -> "idFormGroup") {
-                            <a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>
-                            <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-ok"></span>@messages("save")</button>
+                            @*<a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>*@
+                            <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-ok"></span>@messages("next")</button>
                         }
                     </div>
                 }

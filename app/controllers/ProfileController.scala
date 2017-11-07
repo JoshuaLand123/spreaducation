@@ -41,11 +41,13 @@ class ProfileController @Inject() (
 
     Future.successful(ProfileForm.form.bindFromRequest.fold(
       errors =>
-        Redirect(routes.ApplicationController.index).flashing("error" -> s"Something went wrong: ${errors.toString}"),
+        //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error"),
+        Redirect(routes.ProfileController.edit).flashing("error" -> s"Error"),
       profileSuccess => {
         val profile = profileSuccess.copy(userID = request.identity.userID)
         userService.saveProfile(profile)
-        Redirect(routes.ProfileController.view())
+        //Redirect(routes.ProfileController.view())
+        Redirect(routes.QuestionsController.index)
       }
     ))
   }
