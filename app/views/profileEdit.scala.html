@@ -26,7 +26,7 @@
                         @b3.select(profileForm("gender"),  options=Seq("m"->"profile.gender.m","f"->"profile.gender.f"), '_label -> "profile.gender")
                         @b3.date(profileForm("dob"), '_label -> "profile.dob", 'class -> "form-control input-lg")
                         <label for="slider-classLevel">@messages("profile.class.level.edit")</label>
-                        <p><input id="slider-classLevel" name='classLevel' data-slider-id='ex1Slider' type="text" data-slider-min="5" data-slider-max="12" data-slider-step="1" data-slider-value='@profileForm.data.get("classLevel")'/></p>
+                        <p><input id="slider-classLevel" name='classLevel' data-slider-id='ex1Slider' type="text" data-slider-min="7" data-slider-max="13" data-slider-step="1" data-slider-value='@profileForm.data.get("classLevel")'/></p>
                         @b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control input-lg")
                         @b3.text(profileForm("mainLanguage"), '_label -> "profile.language.edit", 'class -> "form-control input-lg")
                         @b3.text(profileForm("subjectImprove"), '_label -> "profile.subject.improve.edit", 'class -> "form-control input-lg")

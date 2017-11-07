@@ -45,45 +45,6 @@
                 <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
                 <p class="col-md-6">@profile.map(_.mainLanguage).getOrElse("")</p>
             </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.subject.improve"):</strong></p>
-                <p class="col-md-6">@profile.map(_.subjectImprove).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.subject.improve.score"):</strong></p>
-                <p class="col-md-6">@profile.map(_.scoreSubjectImprove).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.subject.goodat"):</strong></p>
-                <p class="col-md-6">@profile.map(_.subjectGoodAt).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.subject.goodat.score"):</strong></p>
-                <p class="col-md-6">@profile.map(_.scoreSubjectGoodAt).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.interest") 1:</strong></p>
-                <p class="col-md-6">@profile.map(_.interest1).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.interest.time") 1:</strong></p>
-                <p class="col-md-6">@profile.map(_.timeInterest1).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.interest") 2:</strong></p>
-                <p class="col-md-6">@profile.map(_.interest2).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.interest.time") 2:</strong></p>
-                <p class="col-md-6">@profile.map(_.timeInterest2).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.interest") 3:</strong></p>
-                <p class="col-md-6">@profile.map(_.interest3).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.interest.time") 3:</strong></p>
-                <p class="col-md-6">@profile.map(_.timeInterest3).getOrElse("")</p>
             </div>
         </div>
         <a href="@controllers.routes.ProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>

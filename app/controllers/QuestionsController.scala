@@ -11,6 +11,7 @@ import org.webjars.play.WebJarsUtil
 import play.api.i18n.I18nSupport
 import play.api.mvc.{ AbstractController, ControllerComponents }
 import utils.auth.DefaultEnv
+import QuestionsController._
 
 import scala.concurrent.{ ExecutionContext, Future }
 
@@ -29,12 +30,12 @@ class QuestionsController @Inject() (
 
   def view(page: Int) = silhouette.SecuredAction.async { implicit request =>
 
-    questionService.retrieve(request.identity, page, 5).map(model => (model.questionWithAnswers.map {
+    questionService.retrieve(request.identity, page, PaginationCount).map(model => (model.questionWithAnswers.map {
       case (q, a) => QuestionWithAnswer(q.id, a.flatMap(_.id), q.questionText, a.map(_.score).getOrElse(3))
     }, model.total)).map {
       case (q, total) =>
-        val totalPages = Math.ceil(total / 5.0).toInt
-        if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("success" -> "Questionnaire successfully")
+        val totalPages = Math.ceil(total / PaginationCount.toDouble).toInt
+        if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("success" -> "Questionnaire successfully"  )
         else Ok(views.html.questions(QuestionsForm.form, q, request.identity, page, totalPages))
     }
   }
@@ -51,4 +52,9 @@ class QuestionsController @Inject() (
     ))
   }
 
+}
+
+object QuestionsController {
+
+  val PaginationCount = 8
 }
