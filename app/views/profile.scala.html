@@ -7,7 +7,9 @@
 @(user: models.User, profile: Option[models.UserProfile])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
-<div class="user col-md-6 col-md-offset-3">
+<script src='@assets.path("javascripts/jquery-radar-plus.js")'></script>
+<div class="col-md-12">
+<div class="user col-md-3">
     <div class="row">
         <legend>@messages("profile")</legend>
         <div class="col-md-12 text-right">
@@ -47,7 +49,30 @@
             </div>
             </div>
         </div>
-        @*<a href="@controllers.routes.ProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>*@
+        <a href="@controllers.routes.ProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
     </div>
+    <div class="col-md-6 сol-md-offset-3">
+        <div class="skillsPieChart"
+             data-values='{"Category1": 4.5,"Category2": 3.0,"Category3":3.0,"Category4":4.0,"Category5":4.0}'
+             data-width="600"
+             data-height="600"
+             data-red="0"
+             data-green="128"
+             data-blue="255">
+
+            <div class="chartCanvasWrap"></div>
+
+            <a href="@controllers.routes.MatchingController.view" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>@messages("profile.tutor.find")</a>
+
+        </div>
+    </div>
+    <script>
+        $('.skillsPieChart').radarChart({
+            size: [760, 600],
+            step: 1,
+            fixedMaxValue:5,
+            showAxisLabels: true
+            });
+    </script>
 </div>
 }

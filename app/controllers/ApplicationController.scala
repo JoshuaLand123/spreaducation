@@ -29,13 +29,9 @@ class ApplicationController @Inject() (
   messagesApi: MessagesApi
 ) extends AbstractController(components) with I18nSupport {
 
-  /**
-   * Handles the index action.
-   *
-   * @return The result to display.
-   */
   def index = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
-    Future.successful(Ok(views.html.home(request.identity)))
+    //Future.successful(Ok(views.html.home(request.identity)))
+    Future.successful(Redirect(routes.ProfileController.edit))
   }
 
   def changeLanguage(language: String) = Action { implicit request =>

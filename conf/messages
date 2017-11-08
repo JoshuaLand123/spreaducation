@@ -131,6 +131,7 @@ profile.interest = Freizeit
 profile.interest.edit = Was machst du so in deiner Freizeit?
 profile.interest.time = Stunden pro Woche
 profile.interest.time.edit = Wie viel Zeit verbringst du damit in der Woche?
+profile.tutor.find = Tutor Finden
 
 # Questionnaire
 questionnaire = Fragebogen
