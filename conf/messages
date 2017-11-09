@@ -50,7 +50,7 @@ current.password = Aktuelles Passwort
 new.password = Neues Kennwort
 
 remember.me = Angemeldet bleiben.
-or.use.social = Oder verwendene eins deiner anderen Konten, um dich anzumelden:
+or.use.social = Verwendene eins deiner anderen Konten, um dich anzumelden:
 forgot.password.info = Bitte gib deine E-Mail-Adresse ein und wir senden dir eine E-Mail mit weiteren Anweisungen, um dein Passwort zurückzusetzen.
 strong.password.info = Starke Passwörter enthalten Zahlen, Buchstaben und Satzzeichen.
 current.password.invalid = Oops, das eingegebene Passwort ist ungültig. Bitte gib das korrekte Passwort ein!
@@ -103,7 +103,7 @@ email.activate.account.html.text = Wir freuen uns, dass du dich angemeldet hast.
 email.activate.account.txt.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0}
 
 # Dashboard
-dashboard = Instrumententafel
+dashboard = Deine Übersicht
 
 # Profile
 profile = Profil
@@ -113,39 +113,39 @@ profile.dob = Geburtstag
 profile.dob.edit = Wann hast du Geburtstag?
 profile.class.level = Klasse
 profile.class.level.edit = In welche Klasse gehst du?
-profile.school.name = Schule Name
+profile.school.name = Schulname
 profile.school.name.edit = Wie ist der Name deiner Schule?
 profile.language = Muttersprache
 profile.language.edit = Was ist deine Muttersprache?
-profile.subject.improve = Subject to improve
-profile.subject.improve.edit = Wähle ein Fach, in dem dich dein Tutor unterstützen soll
+profile.subject.improve = Fach, das du verbessern willst
+profile.subject.improve.edit = Wähle ein Fach, in dem dich dein Tutor unterstützen soll.
 profile.subject.improve.score = Note
 profile.subject.improve.score.edit = Gib uns deine Note
-profile.subject.goodat = Fach du bist sehr gut
-profile.subject.goodat.edit = Wähle ein Fach, in dem du sehr gut bist
+profile.subject.goodat = Fach, in dem du sehr gut bist
+profile.subject.goodat.edit = Wähle ein Fach, in dem du sehr gut bist.
 profile.subject.goodat.score = Note
-profile.subject.goodat.score.edit = Gib uns deine Note
+profile.subject.goodat.score.edit = Gib uns deine Note.
 profile.interest = Freizeit
 profile.interest.edit = Was machst du so in deiner Freizeit?
 profile.interest.time = Stunden pro Woche
-profile.interest.time.edit = Wie viel Zeit verbringst du damit in der Woche?
+profile.interest.time.edit = Wie oft praktizierst du dein Hobby?
 profile.tutor.find = Tutor Finden
-profile.interest.time.very.little = sehr wenig
-profile.interest.time.many.hours = viele Stunden
+profile.interest.time.very.little = einmal im Monat
+profile.interest.time.many.hours = jeden Tag
 
 # Questionnaire
-questionnaire = Fragebogen
+questionnaire = Profilerstellung
 finish.and.view.profile = Beenden und Profil ansehen
 strongly.agree = stimmt
 strongly.disagree = stimmt nicht
 
 # Matching
-matching = Passend
+matching = Matching
 
 
 # General
 edit = Bearbeiten
-cancel = Stornieren
+cancel = Abbrechen
 back = Zurück
 save = Speichern
 next = Weiter
@@ -162,7 +162,7 @@ gender.Female = Weiblich
 language.Arabic = Arabisch
 language.English = Englisch
 language.French = Französisch
-language.German = Deutsche
+language.German = Deutsch
 language.Italian = Italienisch
 language.Russian = Russisch
 language.Turkish = Türkisch
@@ -185,7 +185,7 @@ subject.Music = Musik
 subject.Physics = Physik
 subject.Chemistry = Chemie
 subject.Geography = Erdkunde
-subject.Other = Andere
+subject.Other = Anderes
 
 # Interests
 
