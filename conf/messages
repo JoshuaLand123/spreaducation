@@ -103,10 +103,10 @@ email.activate.account.html.text = Wir freuen uns, dass du dich angemeldet hast.
 email.activate.account.txt.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0}
 
 # Dashboard
-dashboard = Deine Übersicht
+dashboard = Meine Übersicht
 
 # Profile
-profile = Profil
+profile = Mein Profil
 profile.edit = Profil bearbeiten
 profile.gender = Geschlecht
 profile.dob = Geburtstag
@@ -127,14 +127,14 @@ profile.subject.goodat.score = Note
 profile.subject.goodat.score.edit = Gib uns deine Note.
 profile.interest = Freizeit
 profile.interest.edit = Was machst du so in deiner Freizeit?
-profile.interest.time = Stunden pro Woche
+profile.interest.time = Häufigkeit
 profile.interest.time.edit = Wie oft praktizierst du dein Hobby?
 profile.tutor.find = Tutor Finden
 profile.interest.time.very.little = einmal im Monat
 profile.interest.time.many.hours = jeden Tag
 
 # Questionnaire
-questionnaire = Profilerstellung
+questionnaire = Wie lerne ich?
 finish.and.view.profile = Beenden und Profil ansehen
 strongly.agree = stimmt
 strongly.disagree = stimmt nicht
