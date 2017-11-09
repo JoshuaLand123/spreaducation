@@ -4,8 +4,9 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.LoginInfo
 import com.mohiva.play.silhouette.impl.providers.CommonSocialProfile
-import models.{ User, UserProfile, UserType }
+import models.{ User, UserProfile }
 import models.daos.UserDAO
+import models.enums.UserType
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future

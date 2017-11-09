@@ -4,6 +4,7 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api._
 import forms.ProfileForm
+import models.enums.Language
 import models.services.UserService
 import org.webjars.play.WebJarsUtil
 import play.api.i18n.I18nSupport

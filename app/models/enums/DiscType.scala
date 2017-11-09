@@ -1,4 +1,4 @@
-package models
+package models.enums
 
 object DiscType extends Enumeration {
   type DiscType = Value

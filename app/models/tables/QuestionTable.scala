@@ -1,8 +1,8 @@
 package models.tables
 
-import models.DiscType.DiscType
+import models.enums.DiscType.DiscType
 import models.Question
-import models.UserType.UserType
+import models.enums.UserType.UserType
 import slick.jdbc.PostgresProfile.api._
 
 class QuestionTable(tag: Tag) extends Table[Question](tag, "questions") {

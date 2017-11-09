@@ -31,7 +31,7 @@ class ApplicationController @Inject() (
 
   def index = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     //Future.successful(Ok(views.html.home(request.identity)))
-    Future.successful(Redirect(routes.ProfileController.edit))
+    Future.successful(Redirect(routes.ProfileController.view()))
   }
 
   def changeLanguage(language: String) = Action { implicit request =>

@@ -2,8 +2,7 @@ package models.tables
 
 import java.util.UUID
 
-import models.UserType
-import models.UserType.UserType
+import models.enums.UserType.UserType
 import slick.jdbc.PostgresProfile.api._
 import slick.lifted.ProvenShape
 

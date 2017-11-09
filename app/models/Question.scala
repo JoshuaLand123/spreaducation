@@ -1,7 +1,7 @@
 package models
 
-import models.DiscType.DiscType
-import models.UserType.UserType
+import models.enums.DiscType.DiscType
+import models.enums.UserType.UserType
 
 case class Question(
   id: Int,

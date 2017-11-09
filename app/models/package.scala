@@ -1,5 +1,7 @@
-import models.DiscType.DiscType
-import models.UserType.UserType
+import models.enums.DiscType.DiscType
+import models.enums.Language.Language
+import models.enums.{ DiscType, Language, UserType }
+import models.enums.UserType.UserType
 import slick.jdbc.PostgresProfile.api._
 
 package object models {
@@ -12,6 +14,11 @@ package object models {
   implicit val discCategoryTypeMapper = MappedColumnType.base[DiscType, String](
     e => e.toString,
     s => DiscType.withName(s)
+  )
+
+  implicit val languageTypeMapper = MappedColumnType.base[Language, String](
+    e => e.toString,
+    s => Language.withName(s)
   )
 
   implicit val dateMapper = MappedColumnType.base[java.util.Date, java.sql.Date](

@@ -132,6 +132,8 @@ profile.interest.edit = Was machst du so in deiner Freizeit?
 profile.interest.time = Stunden pro Woche
 profile.interest.time.edit = Wie viel Zeit verbringst du damit in der Woche?
 profile.tutor.find = Tutor Finden
+profile.interest.time.very.little = sehr wenig
+profile.interest.time.many.hours = viele Stunden
 
 # Questionnaire
 questionnaire = Fragebogen
@@ -151,3 +153,59 @@ save = Speichern
 next = Weiter
 save.and.quit = Speichern und Beenden
 save.and.continue = Speichern und Fortfahren
+
+# Languages
+
+language.Arabic = Arabisch
+language.English = Englisch
+language.French = Französisch
+language.German = Deutsche
+language.Italian = Italienisch
+language.Russian = Russisch
+language.Turkish = Türkisch
+language.Other = Andere
+
+# Subjects
+
+subject.Math = Mathe
+subject.German = Deutsch
+subject.English = Englisch
+subject.French = Französisch
+subject.Spanish = Spanisch
+subject.Latin = Latein
+subject.Italian = Italienisch
+subject.Chinese = Chinesisch
+subject.Politics = Politik
+subject.History = Geschichte
+subject.Art = Kunst
+subject.Music = Musik
+subject.Physics = Physik
+subject.Chemistry = Chemie
+subject.Geography = Erdkunde
+subject.Other = Andere
+
+# Interests
+
+interest.Music = Musik
+interest.Art = Kunst
+interest.VideoGames = Videospiele
+interest.MeetFriends = Freunde treffen
+interest.Fashion = Mode
+interest.Theater = Schauspiel
+interest.Mystery = Rätsel
+interest.Puzzle = Puzzle
+interest.Dance = Tanzen
+interest.ForeignLanguages = Fremdsprachen
+interest.Reading = Lesen
+interest.WatchTV = Fernsehen
+interest.Yoga = Yoga
+interest.Foosball = Fussball
+interest.Tennis = Tennis
+interest.TableTennis = Tischtennis
+interest.Rugby = Rugby
+interest.Football = Football
+interest.StrengthTraining = Krafttraining
+interest.Climbing = Klettern
+interest.Hockey = Hockey
+interest.SocialCommitment = Soziales Engagement
+interest.Other = Andere

@@ -5,7 +5,8 @@ import java.util.UUID
 import com.google.inject.AbstractModule
 import com.mohiva.play.silhouette.api.{ Environment, LoginInfo }
 import com.mohiva.play.silhouette.test._
-import models.{ User, UserType }
+import models.User
+import models.enums.UserType
 import net.codingwell.scalaguice.ScalaModule
 import org.specs2.mock.Mockito
 import org.specs2.specification.Scope
