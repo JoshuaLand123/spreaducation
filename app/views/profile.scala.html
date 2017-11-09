@@ -4,7 +4,7 @@
 @import controllers.AssetsFinder
 @import utils.TemplateHelpers._
 
-@(user: models.User, profile: Option[models.UserProfile])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(user: models.User, profile: Option[models.UserProfile], psychogramData: String)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <div class="col-md-12">
@@ -44,7 +44,7 @@
         </div>
 
     <div class="col-md-6 col-md-offset-1">
-        @psychogram(600, 600, user)
+        @psychogram("600px", "600px", user, psychogramData)
         <a href="@controllers.routes.MatchingController.view" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>@messages("profile.tutor.find")</a>
     </div>
 </div>
