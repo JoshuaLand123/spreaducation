@@ -29,15 +29,22 @@
                         <p><input id="slider-classLevel" name='classLevel' data-slider-id='ex1Slider' type="text" data-slider-min="7" data-slider-max="13" data-slider-step="1" data-slider-value='@profileForm.data.get("classLevel")'/></p>
                         @b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control input-lg")
                         @b3.select(profileForm("mainLanguage"),  options=models.enums.Language.values.toSeq.map(l => l.toString -> ("language."+l.toString)), '_label -> "profile.language.edit")
-                        @b3.select(profileForm("subjectImprove"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.improve.edit")
 
-                        <div class="col-md-12"><label for="slider-scoreSubjectImprove">@messages("profile.subject.improve.score.edit")</label></div>
-                        <p><input id="slider-scoreSubjectImprove" name='scoreSubjectImprove' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectImprove")'/></p>
+                        @b3.select(profileForm("subjectImprove1"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.improve.edit")
+                        <div class="col-md-12"><label for="slider-scoreSubjectImprove1">@messages("profile.subject.improve.score.edit")</label></div>
+                        <p><input id="slider-scoreSubjectImprove1" name='scoreSubjectImprove1' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectImprove1")'/></p>
 
-                        @b3.select(profileForm("subjectGoodAt"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.goodat.edit")
+                        @b3.select(profileForm("subjectImprove2"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.improve.edit")
+                        <div class="col-md-12"><label for="slider-scoreSubjectImprove2">@messages("profile.subject.improve.score.edit")</label></div>
+                        <p><input id="slider-scoreSubjectImprove2" name='scoreSubjectImprove2' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectImprove2")'/></p>
 
-                        <label for="slider-scoreSubjectGoodAt">@messages("profile.subject.goodat.score.edit")</label>
-                        <p><input id="slider-scoreSubjectGoodAt" name='scoreSubjectGoodAt' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectGoodAt")'/></p>
+                        @b3.select(profileForm("subjectGoodAt1"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.goodat.edit")
+                        <label for="slider-scoreSubjectGoodAt1">@messages("profile.subject.goodat.score.edit")</label>
+                        <p><input id="slider-scoreSubjectGoodAt1" name='scoreSubjectGoodAt1' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectGoodAt1")'/></p>
+
+                        @b3.select(profileForm("subjectGoodAt2"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.goodat.edit")
+                        <label for="slider-scoreSubjectGoodAt2">@messages("profile.subject.goodat.score.edit")</label>
+                        <p><input id="slider-scoreSubjectGoodAt2" name='scoreSubjectGoodAt2' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectGoodAt2")'/></p>
 
                         @b3.select(profileForm("interest1"),  options=models.enums.Interest.values.toSeq.map(i => i.toString -> ("interest."+i.toString)), '_label -> "profile.interest.edit")
                         <label for="slider-interest1">@messages("profile.interest.time.edit")</label>

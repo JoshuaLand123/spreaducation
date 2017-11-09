@@ -35,7 +35,7 @@ class ProfileController @Inject() (
         val interests = "interests" -> List((messages("interest." + p.interest1), p.timeInterest1), (messages("interest." + p.interest2), p.timeInterest2), (messages("interest." + p.interest3), p.timeInterest3))
         val surroundings = "surroundings" -> List(("", 0), ("", 0), ("", 0), ("", 0))
         val constitution = "constitution" -> List(("", 0), ("", 0), ("", 0), ("", 0))
-        val expertise = "expertise" -> List((messages("subject." + p.subjectGoodAt), p.scoreSubjectGoodAt), (messages("subject." + p.subjectGoodAt), p.scoreSubjectGoodAt), (messages("subject." + p.subjectImprove), p.scoreSubjectImprove), (messages("subject." + p.subjectImprove), p.scoreSubjectImprove))
+        val expertise = "expertise" -> List((messages("subject." + p.subjectGoodAt1), p.scoreSubjectGoodAt1), (messages("subject." + p.subjectGoodAt2), p.scoreSubjectGoodAt2), (messages("subject." + p.subjectImprove1), p.scoreSubjectImprove1), (messages("subject." + p.subjectImprove2), p.scoreSubjectImprove2))
         val operation = "operation" -> List(("", 0), ("", 0), ("", 0))
 
         val psychogramDataJson = Json.stringify(Json.toJson(map + interests + surroundings + constitution + expertise + operation))

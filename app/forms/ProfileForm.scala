@@ -6,9 +6,6 @@ import play.api.data.Forms._
 
 object ProfileForm {
 
-  /**
-   * A play framework form.
-   */
   val form = Form(
     mapping(
       "userID" -> uuid,
@@ -17,10 +14,14 @@ object ProfileForm {
       "classLevel" -> number(min = 7, max = 13),
       "schoolName" -> nonEmptyText,
       "mainLanguage" -> nonEmptyText,
-      "subjectImprove" -> nonEmptyText,
-      "scoreSubjectImprove" -> number(min = 1, max = 6),
-      "subjectGoodAt" -> nonEmptyText,
-      "scoreSubjectGoodAt" -> number(min = 1, max = 6),
+      "subjectImprove1" -> nonEmptyText,
+      "scoreSubjectImprove1" -> number(min = 1, max = 6),
+      "subjectImprove2" -> nonEmptyText,
+      "scoreSubjectImprove2" -> number(min = 1, max = 6),
+      "subjectGoodAt1" -> nonEmptyText,
+      "scoreSubjectGoodAt1" -> number(min = 1, max = 6),
+      "subjectGoodAt2" -> nonEmptyText,
+      "scoreSubjectGoodAt2" -> number(min = 1, max = 6),
       "interest1" -> nonEmptyText,
       "timeInterest1" -> number(min = 1, max = 12),
       "interest2" -> nonEmptyText,
