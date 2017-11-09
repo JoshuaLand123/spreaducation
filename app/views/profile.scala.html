@@ -21,7 +21,7 @@
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.gender"):</strong></p>
-                <p class="col-md-6">@profile.map(p => messages("profile.gender." + p.gender)).getOrElse("")</p>
+                <p class="col-md-6">@profile.map(p => messages("gender." + p.gender)).getOrElse("")</p>
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.dob"):</strong></p>

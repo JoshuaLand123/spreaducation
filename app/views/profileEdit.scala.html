@@ -23,7 +23,7 @@
                     @helper.CSRF.formField
                     <input type="hidden" name='userID' value='@java.util.UUID.randomUUID()' />
                     <div class="form-group">
-                        @b3.select(profileForm("gender"),  options=Seq("m"->"profile.gender.m","f"->"profile.gender.f"), '_label -> "profile.gender")
+                        @b3.select(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender")
                         @b3.date(profileForm("dob"), '_label -> "profile.dob", 'class -> "form-control input-lg")
                         <label for="slider-classLevel">@messages("profile.class.level.edit")</label>
                         <p><input id="slider-classLevel" name='classLevel' data-slider-id='ex1Slider' type="text" data-slider-min="7" data-slider-max="13" data-slider-step="1" data-slider-value='@profileForm.data.get("classLevel")'/></p>

@@ -109,8 +109,6 @@ dashboard = Instrumententafel
 profile = Profil
 profile.edit = Profil bearbeiten
 profile.gender = Geschlecht
-profile.gender.m = Männlich
-profile.gender.f = Weiblich
 profile.dob = Geburtstag
 profile.dob.edit = Wann hast du Geburtstag?
 profile.class.level = Klasse
@@ -153,6 +151,11 @@ save = Speichern
 next = Weiter
 save.and.quit = Speichern und Beenden
 save.and.continue = Speichern und Fortfahren
+
+#
+
+gender.Male = Männlich
+gender.Female = Weiblich
 
 # Languages
 
