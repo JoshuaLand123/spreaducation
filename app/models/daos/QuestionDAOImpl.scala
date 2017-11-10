@@ -1,5 +1,6 @@
 package models.daos
 
+import java.util.UUID
 import javax.inject.Inject
 
 import models.daos.QuestionDAOImpl._
@@ -31,6 +32,28 @@ class QuestionDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigP
   override def saveAnswers(answers: Seq[Answer]) = {
 
     db.run(DBIO.sequence(answers.map(a => answersTable.insertOrUpdate(a))).transactionally)
+  }
+
+  override def getPsychoSubcategoryScores(userID: UUID): Future[Seq[(String, String, Double)]] = {
+    val userIdString = userID.toString
+    val query = sql"""select
+                        q.psycho_category,
+                        q.psycho_subcategory,
+                        round (sum(case
+                                    when a.score = 1 then case when q.psycho_score_reverse then 1 else 0 end
+                                    when a.score = 2 then case when q.psycho_score_reverse then 0.75 else 0.25 end
+                                    when a.score = 3 then 0.5
+                                    when a.score = 4 then case when q.psycho_score_reverse then 0.25 else 0.75 end
+                                    else case when q.psycho_score_reverse then 0 else 1 end
+                                end) / count(1), 2) as score
+                     from answers a
+                     join questions q on q.id = a.question_id
+                     where a.user_id = '#$userIdString'
+                     group by q.psycho_category, q. psycho_subcategory
+                     order by q.psycho_category
+           """.as[(String, String, Double)]
+
+    db.run(query)
   }
 
 }

@@ -98,6 +98,7 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
 
   override def findProfile(userID: UUID) =
     db.run(userProfiles.filter(_.userID === userID).result.headOption)
+
 }
 
 object UserDAOImpl {

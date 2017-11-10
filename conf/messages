@@ -214,3 +214,22 @@ interest.Climbing = Klettern
 interest.Hockey = Hockey
 interest.SocialCommitment = Soziales Engagement
 interest.Other = Andere
+
+# Psychogram Subcategories
+
+environment.Leisure = FREIZEIT
+environment.Friends = FREUNDE
+environment.Class = KLASSE
+environment.Parents = ELTERN
+
+constitution.Anxiety = ANGST
+constitution.Concentration = KONZENTRATION
+constitution.Discipline = DISZIPLIN
+constitution.Self-efficacy = SELBSTWIRKSAMKEIT
+
+working.Learning-techniques = LERNTECHNIK
+working.Self-organization = SELBSTORGA
+working.Working-techniques = ARBEITSTECHNIK
+
+
+

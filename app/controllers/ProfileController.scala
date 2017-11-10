@@ -5,7 +5,7 @@ import javax.inject.Inject
 import com.mohiva.play.silhouette.api._
 import forms.ProfileForm
 import models.UserProfile
-import models.services.UserService
+import models.services.{ QuestionService, UserService }
 import org.webjars.play.WebJarsUtil
 import play.api.i18n._
 import play.api.libs.json.Json
@@ -21,16 +21,18 @@ class ProfileController @Inject() (
   implicit
   webJarsUtil: WebJarsUtil,
   userService: UserService,
+  questionService: QuestionService,
   assets: AssetsFinder,
   ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
   def view = silhouette.SecuredAction.async { implicit request =>
 
-    userService.retrieveProfile(request.identity.userID).map {
+    userService.retrieveProfile(request.identity.userID).flatMap {
       case Some(p) =>
-        Ok(views.html.profile(request.identity, Some(p), psychogramDataJsonString(p, request.messages)))
-      case None => Ok(views.html.profile(request.identity, None, "{}"))
+        questionService.getPsychoSubcategoryScores(request.identity.userID).map(psychoResult =>
+          Ok(views.html.profile(request.identity, Some(p), psychogramDataJsonString(p, psychoResult, request.messages))))
+      case None => Future.successful(Ok(views.html.profile(request.identity, None, "{}")))
     }
   }
 
@@ -59,8 +61,9 @@ class ProfileController @Inject() (
     ))
   }
 
-  private def psychogramDataJsonString(profile: UserProfile, messages: Messages): String = {
+  private def psychogramDataJsonString(profile: UserProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {
 
+    // TODO: refactor this whole method
     val expertise = {
       def reverseScore(score: Int) = score match {
         case 1 => 5
@@ -79,14 +82,21 @@ class ProfileController @Inject() (
       )
     }
 
+    def percentageToScore(percentage: Double) =
+      if (percentage < 0.2) 1
+      else if (percentage < 0.4) 2
+      else if (percentage < 0.6) 3
+      else if (percentage < 0.8) 4
+      else 5
+
     val interests = "interests" -> List(
       (messages("interest." + profile.interest1), profile.timeInterest1),
       (messages("interest." + profile.interest2), profile.timeInterest2),
       (messages("interest." + profile.interest3), profile.timeInterest3)
     )
-    val environment = "environment" -> List(("", 0), ("", 0), ("", 0), ("", 0))
-    val constitution = "constitution" -> List(("", 0), ("", 0), ("", 0), ("", 0))
-    val working = "working" -> List(("", 0), ("", 0), ("", 0))
+    val environment = "environment" -> psychoSubcategoryResult.groupBy(_._1).getOrElse("Environment", Seq()).map(g => (messages("environment." + g._2), percentageToScore(g._3)))
+    val constitution = "constitution" -> psychoSubcategoryResult.groupBy(_._1).getOrElse("Constitution", Seq()).map(g => (messages("constitution." + g._2), percentageToScore(g._3)))
+    val working = "working" -> psychoSubcategoryResult.groupBy(_._1).getOrElse("Working", Seq()).map(g => (messages("working." + g._2), percentageToScore(g._3)))
 
     Json.stringify(Json.toJson(Map(interests, environment, constitution, expertise, working)))
   }
