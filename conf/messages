@@ -132,6 +132,8 @@ profile.interest.time.edit = Wie oft praktizierst du dein Hobby?
 profile.tutor.find = Tutor Finden
 profile.interest.time.very.little = einmal im Monat
 profile.interest.time.many.hours = jeden Tag
+profile.score.very.good = sehr gut
+profile.score.very.bad = mangelhaft
 
 # Questionnaire
 questionnaire = Wie lerne ich?

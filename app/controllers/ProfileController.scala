@@ -23,7 +23,6 @@ class ProfileController @Inject() (
   userService: UserService,
   assets: AssetsFinder,
   ex: ExecutionContext
-
 ) extends AbstractController(components) with I18nSupport {
 
   def view = silhouette.SecuredAction.async { implicit request =>

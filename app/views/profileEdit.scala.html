@@ -32,19 +32,19 @@
 
                         @b3.select(profileForm("subjectImprove1"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.improve.edit")
                         <div class="col-md-12"><label for="slider-scoreSubjectImprove1">@messages("profile.subject.improve.score.edit")</label></div>
-                        <p><input id="slider-scoreSubjectImprove1" name='scoreSubjectImprove1' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectImprove1")'/></p>
+                        <p><input id="slider-scoreSubjectImprove1" name='scoreSubjectImprove1' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 6]" data-slider-ticks-labels='["@messages("profile.score.very.good")", "@messages("profile.score.very.bad")"]' data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectImprove1")'/></p>
 
                         @b3.select(profileForm("subjectImprove2"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.improve.edit")
                         <div class="col-md-12"><label for="slider-scoreSubjectImprove2">@messages("profile.subject.improve.score.edit")</label></div>
-                        <p><input id="slider-scoreSubjectImprove2" name='scoreSubjectImprove2' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectImprove2")'/></p>
+                        <p><input id="slider-scoreSubjectImprove2" name='scoreSubjectImprove2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 6]" data-slider-ticks-labels='["@messages("profile.score.very.good")", "@messages("profile.score.very.bad")"]' data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectImprove2")'/></p>
 
                         @b3.select(profileForm("subjectGoodAt1"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.goodat.edit")
                         <label for="slider-scoreSubjectGoodAt1">@messages("profile.subject.goodat.score.edit")</label>
-                        <p><input id="slider-scoreSubjectGoodAt1" name='scoreSubjectGoodAt1' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectGoodAt1")'/></p>
+                        <p><input id="slider-scoreSubjectGoodAt1" name='scoreSubjectGoodAt1' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 6]" data-slider-ticks-labels='["@messages("profile.score.very.good")", "@messages("profile.score.very.bad")"]' data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectGoodAt1")'/></p>
 
                         @b3.select(profileForm("subjectGoodAt2"),  options=models.enums.Subject.values.toSeq.map(s => s.toString -> ("subject."+s.toString)), '_label -> "profile.subject.goodat.edit")
                         <label for="slider-scoreSubjectGoodAt2">@messages("profile.subject.goodat.score.edit")</label>
-                        <p><input id="slider-scoreSubjectGoodAt2" name='scoreSubjectGoodAt2' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectGoodAt2")'/></p>
+                        <p><input id="slider-scoreSubjectGoodAt2" name='scoreSubjectGoodAt2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 6]" data-slider-ticks-labels='["@messages("profile.score.very.good")", "@messages("profile.score.very.bad")"]' data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value='@profileForm.data.get("scoreSubjectGoodAt2")'/></p>
 
                         @b3.select(profileForm("interest1"),  options=models.enums.Interest.values.toSeq.map(i => i.toString -> ("interest."+i.toString)), '_label -> "profile.interest.edit")
                         <label for="slider-interest1">@messages("profile.interest.time.edit")</label>
