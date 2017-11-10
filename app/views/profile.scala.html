@@ -4,48 +4,78 @@
 @import controllers.AssetsFinder
 @import utils.TemplateHelpers._
 
-@(user: models.User, profile: Option[models.UserProfile], psychogramData: String)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(user: models.User, profile: Option[models.UserProfile])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
+<script src='@assets.path("javascripts/jquery-radar-plus.js")'></script>
 <div class="col-md-12">
-        <legend>@messages("profile")</legend>
-    <div class="user row data col-md-4">
-        <div class="col-md-12">
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("first.name"):</strong></p>
-                <p class="col-md-6">@user.firstName.getOrElse("None")</p>
+    <div class="user col-md-4">
+        <div class="row">
+            <legend>@messages("profile")</legend>
+            <div class="col-md-12 text-center">
+                <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" class="img-circle" height="80px"/>
             </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("last.name"):</strong></p>
-                <p class="col-md-6">@user.lastName.getOrElse("None")</p>
+            <hr class="col-md-12"/>
+        </div>
+        <div class="row data">
+            <div class="col-md-12">
+                <div class="row">
+                    <p class="col-md-6"><strong>@messages("first.name"):</strong></p>
+                    <p class="col-md-6">@user.firstName.getOrElse("None")</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-6"><strong>@messages("last.name"):</strong></p>
+                    <p class="col-md-6">@user.lastName.getOrElse("None")</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-6"><strong>@messages("profile.gender"):</strong></p>
+                    <p class="col-md-6">@profile.map(p => messages("profile.gender." + p.gender)).getOrElse("")</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-6"><strong>@messages("profile.dob"):</strong></p>
+                    <p class="col-md-6">@profile.map(p => parseDate(p.dob)).getOrElse("")</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-6"><strong>@messages("profile.class.level"):</strong></p>
+                    <p class="col-md-6">@profile.map(_.classLevel).getOrElse("")</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-6"><strong>@messages("profile.school.name"):</strong></p>
+                    <p class="col-md-6">@profile.map(_.schoolName).getOrElse("")</p>
+                </div>
+                <div class="row">
+                    <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
+                    <p class="col-md-6">@profile.map(_.mainLanguage).getOrElse("")</p>
+                </div>
+                <div class="row">
+                    <a href="@controllers.routes.ProfileController.edit" class="btn btn-default center-block"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
+                </div>
             </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.gender"):</strong></p>
-                <p class="col-md-6">@profile.map(p => messages("gender." + p.gender)).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.dob"):</strong></p>
-                <p class="col-md-6">@profile.map(p => parseDate(p.dob)).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.class.level"):</strong></p>
-                <p class="col-md-6">@profile.map(_.classLevel).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.school.name"):</strong></p>
-                <p class="col-md-6">@profile.map(_.schoolName).getOrElse("")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
-                <p class="col-md-6">@profile.map(l => messages("language."+l.mainLanguage)).getOrElse("")</p>
-            </div>
-            </div>
-        <a href="@controllers.routes.ProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
         </div>
 
-    <div class="col-md-6 col-md-offset-1">
-        @psychogram("600px", "600px", user, psychogramData)
-        <a href="@controllers.routes.MatchingController.view" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>@messages("profile.tutor.find")</a>
     </div>
+    <div class="col-md-8 сol-md-offset-3">
+        <div class="skillsPieChart"
+             data-values='{"Category1": 4.5,"Category2": 3.0,"Category3":3.0,"Category4":4.0,"Category5":4.0}'
+             data-width="600"
+             data-height="600"
+             data-red="0"
+             data-green="128"
+             data-blue="255">
+
+            <div class="chartCanvasWrap"></div>
+
+            <a href="@controllers.routes.MatchingController.view" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>@messages("profile.tutor.find")</a>
+
+        </div>
+    </div>
+    <script>
+        $('.skillsPieChart').radarChart({
+            size: [760, 600],
+            step: 1,
+            fixedMaxValue:5,
+            showAxisLabels: true
+            });
+    </script>
 </div>
 }
