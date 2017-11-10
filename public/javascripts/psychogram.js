@@ -1,23 +1,25 @@
 function applyPsychogram(psychogramData) {
 
     var criticalValueColor = "#f57888";
+    var mediumValueColor = "#ffb900";
     var fineValueColor = "#b9e88b";
     var criticalLevel = 1;
+    var mediumLevel = 3;
 
     var scores = {
-        expertise: psychogramData["expertise"],
-        surroundings: psychogramData["surroundings"],
+        subjects: psychogramData["subjects"],
+        environment: psychogramData["environment"],
         constitution: psychogramData["constitution"],
         interests: psychogramData["interests"],
-        operation: psychogramData["operation"]
+        working: psychogramData["working"]
     };
 
     var categoryNameMapping = {
-        expertise: "e",
-        surroundings: "s",
+        subjects: "s",
+        environment: "e",
         constitution: "c",
         interests: "i",
-        operation: "o"
+        working: "w"
     };
 
     for (var categoryName in scores) {
@@ -33,7 +35,10 @@ function applyPsychogram(psychogramData) {
     function renderSubcategoryScore(categoryName, subcategoryIndex, score) {
         if (score > 0) {
             var affectedCells = Math.min(score, 5);
-            var color = score > criticalLevel ? fineValueColor : criticalValueColor;
+            var color;
+            if (score <= criticalLevel) color = criticalValueColor;
+                else if (score <= mediumLevel) color = mediumValueColor;
+                else color = fineValueColor;
             for (var counter = 0; counter < affectedCells; counter++) {
                 var cellId = getCellId(categoryName, subcategoryIndex, 5 - counter);
                 var cell = $('#' + cellId);
