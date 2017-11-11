@@ -1,5 +1,7 @@
 package models.enums
 
+import play.api.i18n.Messages
+
 object Interest extends Enumeration {
   type Interest = Value
   val Music = Value("Music")
@@ -24,6 +26,8 @@ object Interest extends Enumeration {
   val Climbing = Value("Climbing")
   val Hockey = Value("Hockey")
   val SocialCommitment = Value("SocialCommitment")
-  val Other = Value("Other")
+
+  def selectList(messages: Messages) =
+    Interest.values.toSeq.map(g => g.toString -> messages("interest." + g.toString)).sortBy(_._2) :+ ("Other" -> messages("interest.Other"))
 
 }
