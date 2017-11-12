@@ -16,11 +16,11 @@ import scala.concurrent.{ ExecutionContext, Future }
 
 class ProfileController @Inject() (
   components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv]
+  silhouette: Silhouette[DefaultEnv],
+  userService: UserService
 )(
   implicit
   webJarsUtil: WebJarsUtil,
-  userService: UserService,
   questionService: QuestionService,
   assets: AssetsFinder,
   ex: ExecutionContext
