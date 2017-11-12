@@ -1,6 +1,5 @@
 body {
     padding-top: 50px;
-    font-size: 16px;
     background: #C5F693;
     font-size: 18px;
     font-family: Arial;
@@ -10,9 +9,11 @@ h1 {
     text-align: center;
     font-size: 24px;
 }
-.starter-template {
-    padding: 40px 15px;
+
+main{
+    padding-top: 50px;
 }
+
 
 input, button {
     margin: 5px 0;
@@ -109,12 +110,32 @@ a {
     background: #FAFEF4;
     color: #000000 !important;
     height: 75px;
+
 }
-.nav > li > a{
+.navbar-toggle{
+    margin-top: 24px;
+}
+.nav{
+    background: #FAFEF4;
+}
+
+.nav > li > a {
     color: #7ED321 !important;
     margin-top: 20px;
+
 }
-.nav > li > a:hover{
+.dropdown-menu>li>a{
+    font-size: 18px;
+    color: #7ED321 !important;
+    background: #FAFEF4;
+}
+
+.dropdown-menu>li>a:hover{
+    color: #000000 !important;
+    background: #FAFEF4;
+}
+
+.nav > li > a:hover {
     color: #000000 !important;
     background: #FAFEF4;
     box-shadow: 0 8px 2px -2px #67B215;
@@ -124,7 +145,6 @@ a {
 }
 .navbar-brand>img {
     height: 60px;
-    ma
 }
 .slider-handle.round {
     background: #7ED321;
