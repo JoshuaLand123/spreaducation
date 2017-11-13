@@ -4,6 +4,7 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.actions.SecuredRequest
 import com.mohiva.play.silhouette.api.{ LogoutEvent, Silhouette }
+import forms.ProfileForm
 import org.webjars.play.WebJarsUtil
 import play.api.i18n._
 import play.api.mvc._
@@ -22,7 +23,6 @@ class ApplicationController @Inject() (
 ) extends AbstractController(components) with I18nSupport {
 
   def index = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
-    //Future.successful(Ok(views.html.home(request.identity)))
     Future.successful(Redirect(routes.ProfileController.view()))
   }
 
