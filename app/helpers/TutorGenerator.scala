@@ -2,35 +2,63 @@ package helpers
 
 import models.enums.Interest
 import models.{Tutor, UserProfile}
+import play.api.i18n.Messages
 
 import scala.util.Random
 
 object TutorGenerator {
   private def randomTutor = {
     val predefinedTutors = List(
-      ("Bugs", "Bunny", "avatar.jpeg", "Male"),
-      ("Homer", "Simpson", "avatar.jpeg", "Male"),
-      ("Mickey", "Mouse", "avatar.jpeg", "Male"),
-      ("Bart", "Simpson", "avatar.jpeg", "Male"),
-      ("Charlie", "Brown", "avatar.jpeg", "Male"),
-      ("Fred", "Flintstone", "avatar.jpeg", "Male"),
-      ("Wile", "E. Coyote", "avatar.jpeg", "Male"),
-      ("Eric", "Cartman", "avatar.jpeg", "Male"),
-      ("Daffy", "Duck", "avatar.jpeg", "Male"),
-      ("Porky", "Pig", "avatar.jpeg", "Male"),
-      ("Scooby", "Doo", "avatar.jpeg", "Male"),
-      ("Porky", "Pig", "avatar.jpeg", "Male"),
-      ("Pink", "Panther", "avatar.jpeg", "Male"),
-      ("Winnie", "the Pooh", "avatar.jpeg", "Male"),
-      ("Donald", "Duck", "avatar.jpeg", "Male"),
-      ("Woody", "Woodpecker", "avatar.jpeg", "Male"),
-      ("Spider", "Man", "avatar.jpeg", "Male"),
-      ("Turanga", "Leela", "avatar.jpeg", "Female"),
-      ("Princess", "Tiana", "avatar.jpeg", "Female"),
-      ("Lois", "Griffin", "avatar.jpeg", "Female"),
-      ("Lisa", "Simpson", "avatar.jpeg", "Female"),
-      ("Usagi", "Tsukino", "avatar.jpeg", "Female"),
-      ("Eliza", "Thornberry", "avatar.jpeg", "Female"))
+      ("Juliane", "Jüttner", "Female"),
+      ("Miriam", "Klein", "Female"),
+      ("Nora", "Meier", "Female"),
+      ("Aaron", "Dorsch", "Male"),
+      ("Edith", "Lamm", "Female"),
+      ("Rebecca", "Prieß", "Female"),
+      ("Noah", "Buschmann", "Male"),
+      ("Barbara", "Lehr", "Female"),
+      ("Birte", "Frosch", "Female"),
+      ("Linus", "Jarre", "Male"),
+      ("Daniela", "Marks", "Female"),
+      ("Benedikt", "Graefe", "Male"),
+      ("Claus", "Tittel", "Male"),
+      ("Erik", "Bargfrede", "Male"),
+      ("Laurin", "Schelle", "Female"),
+      ("Jennifer", "Fenten", "Female"),
+      ("Hella", "Jost", "Female"),
+      ("Waltraud", "Hase", "Male"),
+      ("Luisa", "Gmelin", "Female"),
+      ("Henrik", "Lochner", "Male"),
+      ("Katja", "Wütschner", "Female"),
+      ("Jürgen", "Vennemann", "Male"),
+      ("Rita", "Jansen", "Female"),
+      ("Marie", "Rhein", "Female"),
+      ("Barbara", "Bedner", "Female"),
+      ("Victoria", "Bülskämper", "Female"),
+      ("Sigrid", "Langhorst", "Female"),
+      ("Bärbel", "Müssemeier", "Female"),
+      ("Yvonne", "Seib", "Female"),
+      ("Stephanie", "Oßwald", "Female"),
+      ("Lisa", "Langenberg", "Female"),
+      ("Christa ", "Riegler", "Female"),
+      ("Regine ", "Groh", "Female"),
+      ("Thorben ", "Günther", "Male"),
+      ("Wilfried ", "Riehl", "Male"),
+      ("Robert ", "Thurner", "Male"),
+      ("Dieter ", "Swoboda", "Male"),
+      ("Phil ", "Seidel", "Male"),
+      ("Lasse", "Wildermuth", "Male"),
+      ("Jeremy ", "Brugger", "Male"),
+      ("Burkhard ", "Holthaus", "Male"),
+      ("Frank ", "Hochholzer", "Male"),
+      ("Noah ", "Rothert", "Male"),
+      ("Maximilian ", "Hünniger", "Male"),
+      ("Erwin ", "Baar", "Male"),
+      ("Vanessa ", "Rothmund", "Female"),
+      ("Lidia ", "Melchior", "Female"),
+      ("Jürgen ", "Frosch", "Male"),
+      ("Irene ", "Kantel", "Female"),
+      ("Joana ", "Knoth", "Female"))
     predefinedTutors(Random.nextInt(predefinedTutors.size))
   }
   private def randomPrice = {
@@ -62,19 +90,21 @@ object TutorGenerator {
     matchingScoreList(order) + Random.nextInt(3)
   }
 
-  def generateTutors(userProfile: UserProfile): List[Tutor] = {
+  def generateTutors(userProfile: UserProfile, messages: Messages): List[Tutor] = {
     (0 to Random.nextInt(5) + 1 ).toList.map { n =>
       val tutor = randomTutor
       val randomInterest = Interest.values.toList(Random.nextInt(Interest.values.size)).toString
-      val interest = if (n <= 1) userProfile.interest1 else randomInterest
-      val avatar = if (tutor._4 == "Male") s"avatars/male-${Random.nextInt(8) + 1 + n}.jpeg" else s"avatars/female-${Random.nextInt(3) + 1 + n}.jpeg"
+      val interest = messages(s"interest.${if (n <= 1) userProfile.interest1 else randomInterest}")
+      val subject = messages(s"subject.${userProfile.subjectImprove1}")
+      val gender = tutor._3
+      val avatar = if (gender == "Male") s"avatars/male-${Random.nextInt(8) + 1 + n}.jpeg" else s"avatars/female-${Random.nextInt(3) + 1 + n}.jpeg"
       Tutor(
         firstName = tutor._1,
         lastName = tutor._2,
-        description = randomDescription(userProfile.subjectImprove1, List(interest), tutor._4),
+        description = randomDescription(subject, List(interest), gender),
         avatarUrl = avatar,
         price = randomPrice,
-        subject = userProfile.subjectImprove1,
+        subject = subject,
         interest = interest,
         matchingScore = randomMatchingScore(n)
       )

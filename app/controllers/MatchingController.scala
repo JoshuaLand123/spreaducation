@@ -25,7 +25,7 @@ class MatchingController @Inject() (
 
   def view = silhouette.SecuredAction.async { implicit request =>
     userService.retrieveProfile(request.identity.userID).map {
-      case Some(p) => Ok(views.html.matching(request.identity, TutorGenerator.generateTutors(p)))
+      case Some(p) => Ok(views.html.matching(request.identity, TutorGenerator.generateTutors(p, request.messages)))
       case None    => Redirect(routes.ProfileController.edit()).flashing("error" -> "Please fill your profile first")
     }
 
