@@ -67,11 +67,12 @@ object TutorGenerator {
       val tutor = randomTutor
       val randomInterest = Interest.values.toList(Random.nextInt(Interest.values.size)).toString
       val interest = if (n <= 1) userProfile.interest1 else randomInterest
+      val avatar = if (tutor._4 == "Male") s"avatars/male-${Random.nextInt(8) + 1 + n}.jpeg" else s"avatars/female-${Random.nextInt(3) + 1 + n}.jpeg"
       Tutor(
         firstName = tutor._1,
         lastName = tutor._2,
         description = randomDescription(userProfile.subjectImprove1, List(interest), tutor._4),
-        avatarUrl = tutor._3,
+        avatarUrl = avatar,
         price = randomPrice,
         subject = userProfile.subjectImprove1,
         interest = interest,

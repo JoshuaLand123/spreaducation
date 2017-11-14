@@ -14,7 +14,7 @@
                 @grouped.map { tutor =>
                     <div class="col-md-4 text-center">
                         <div class="row>">
-                            <img class="img-circle" src="@assets.path(s"images/avatar.jpeg")" width="200px" height="200px">
+                            <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl)}'style="width:200px; height:200px; object-fit:cover;">
                         </div>
                         <div class="row>">
                             @tutor.matchingScore %
