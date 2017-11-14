@@ -7,14 +7,14 @@
 
 @main(messages("matching.title"), Some(user)) {
 <div class="col-md-12">
-    <legend>Matching! Work in progress! :)</legend>
+    <legend>@messages("matching")</legend>
         @tutors.grouped(3).toList.map { grouped =>
 
             <div class="row" style="margin-top:20px;">
                 @grouped.map { tutor =>
                     <div class="col-md-4 text-center">
                         <div class="row>">
-                            <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl)}'style="width:200px; height:200px; object-fit:cover;">
+                            <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl)}' style="width:200px; height:200px; object-fit:cover;">
                         </div>
                         <div class="row>">
                             @tutor.matchingScore %
