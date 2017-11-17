@@ -16,11 +16,11 @@ import scala.concurrent.{ ExecutionContext, Future }
 
 class ProfileController @Inject() (
   components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv]
+  silhouette: Silhouette[DefaultEnv],
+  userService: UserService
 )(
   implicit
   webJarsUtil: WebJarsUtil,
-  userService: UserService,
   questionService: QuestionService,
   assets: AssetsFinder,
   ex: ExecutionContext
@@ -32,16 +32,13 @@ class ProfileController @Inject() (
       case Some(p) =>
         questionService.getPsychoSubcategoryScores(request.identity.userID).map(psychoResult =>
           Ok(views.html.profile(request.identity, Some(p), psychogramDataJsonString(p, psychoResult, request.messages))))
-      case None => Future.successful(Ok(views.html.profile(request.identity, None, "{}")))
+      case None => Future.successful(Redirect(routes.ProfileController.edit()))
     }
   }
 
   def edit = silhouette.SecuredAction.async { implicit request =>
     userService.retrieveProfile(request.identity.userID).map(profile => {
-      val form = profile match {
-        case Some(p) => ProfileForm.form.fill(p)
-        case _       => ProfileForm.form
-      }
+      val form = profile.map(ProfileForm.form.fill).getOrElse(ProfileForm.form)
       Ok(views.html.profileEdit(form, request.identity))
     })
   }

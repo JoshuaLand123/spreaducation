@@ -2,7 +2,7 @@ name := "spreaducation"
 
 version := "1.0.0"
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.4"
 
 resolvers += Resolver.jcenterRepo
 
@@ -29,7 +29,6 @@ libraryDependencies ++= Seq(
   "com.enragedginger" %% "akka-quartz-scheduler" % "1.6.1-akka-2.5.x",
   "com.adrianhurt" %% "play-bootstrap" % "1.2-P26-B3",
   "com.mohiva" %% "play-silhouette-testkit" % silhouetteVersion % "test",
-  "com.builtamont" %% "play2-scala-pdf" % "2.0.0.P26",
   specs2 % Test,
   ehcache,
   guice,

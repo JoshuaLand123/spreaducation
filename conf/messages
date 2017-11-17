@@ -15,6 +15,7 @@ dashboard.title = Spreaducation - Übersicht
 profile.title = Spreaducation - Mein Profil
 questionnaire.title = Spreaducation - Fragebogen
 matching.title = Spreaducation - Matching
+feedback.title = Spreaducation - Feedback
 
 toggle.navigation = Navigation ändern.
 welcome.signed.in = Willkommen, du bist jetzt angemeldet!
