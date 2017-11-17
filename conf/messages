@@ -13,23 +13,23 @@ change.password.title = Spreaducation - Passwort ändern
 activate.account.title = Spreaducation - Konto aktivieren
 dashboard.title = Spreaducation - Übersicht
 profile.title = Spreaducation - Mein Profil
-questionnaire.title = Spreaducation - Fragebogen
-matching.title = Spreaducation - Matching
+questionnaire.title = Spreaducation - Wie lerne ich?
+matching.title = Spreaducation - Tutor Finden
 feedback.title = Spreaducation - Feedback
 
 toggle.navigation = Navigation ändern.
 welcome.signed.in = Willkommen, du bist jetzt angemeldet!
 
 sign.up.account = Erstelle ein neues Konto.
-sign.in.credentials = Logge dich mit deinen Daten ein.
+sign.in.credentials = Dein persönlicher Tutor wartet schon auf dich! Logge dich ein.
 
-error = Error!
-info = Info!
+error = Fehler
+info = Info
 success = Wunderbar.
 home = Home
 first.name = Vorname
 last.name = Nachname
-full.name = Vollständiger Name
+full.name = Name
 email = E-Mail Adresse
 password = Passwort
 send = Senden
@@ -51,7 +51,7 @@ current.password = Aktuelles Passwort
 new.password = Neues Kennwort
 
 remember.me = Angemeldet bleiben.
-or.use.social = Verwendene eins deiner anderen Konten, um dich anzumelden:
+or.use.social = Verwendene ein anderes Konto, um dich anzumelden:
 forgot.password.info = Bitte gib deine E-Mail-Adresse ein und wir senden dir eine E-Mail mit weiteren Anweisungen, um dein Passwort zurückzusetzen.
 strong.password.info = Starke Passwörter enthalten Zahlen, Buchstaben und Satzzeichen.
 current.password.invalid = Oops, das eingegebene Passwort ist ungültig. Bitte gib das korrekte Passwort ein!
@@ -128,13 +128,13 @@ profile.subject.goodat.score = Note
 profile.subject.goodat.score.edit = Gib uns deine Note.
 profile.interest = Freizeit
 profile.interest.edit = Was machst du so in deiner Freizeit?
-profile.interest.time = Häufigkeit
-profile.interest.time.edit = Wie oft praktizierst du dein Hobby?
+profile.interest.time = Level
+profile.interest.time.edit = Schätze dein Können ein.
 profile.tutor.find = Tutor Finden
-profile.interest.time.very.little = einmal im Monat
-profile.interest.time.many.hours = jeden Tag
+profile.interest.time.very.little = Anfänger
+profile.interest.time.many.hours = Profi
 profile.score.very.good = sehr gut
-profile.score.very.bad = mangelhaft
+profile.score.very.bad = ungenügend
 
 # Questionnaire
 questionnaire = Wie lerne ich?
