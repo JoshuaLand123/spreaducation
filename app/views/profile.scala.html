@@ -8,7 +8,7 @@
 
 @main(messages("profile.title"), Some(user)) {
 <div class="col-md-12">
-        <legend>@messages("profile")</legend>
+    <legend>@messages("profile")</legend>
     <div class="user row data col-md-4">
         <div class="col-md-12">
             <div class="row">
@@ -39,9 +39,9 @@
                 <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
                 <p class="col-md-6">@profile.map(l => messages("language."+l.mainLanguage)).getOrElse("")</p>
             </div>
-            </div>
-        <a href="@controllers.routes.ProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
         </div>
+        <a href="@controllers.routes.ProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
+    </div>
 
     <div class="col-md-6 col-md-offset-1">
         @psychogram("600px", "600px", user, psychogramData)
