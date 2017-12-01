@@ -4,7 +4,7 @@ import java.util.UUID
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.LoginInfo
-import models.{ User, UserProfile }
+import models.{ User, TuteeProfile }
 import models.daos.UserDAOImpl._
 import models.tables._
 import play.api.db.slick.DatabaseConfigProvider
@@ -93,11 +93,11 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
     db.run(actions).map(_ => user)
   }
 
-  override def saveProfile(profile: UserProfile) =
-    db.run(userProfiles.insertOrUpdate(profile))
+  override def saveProfile(profile: TuteeProfile) =
+    db.run(tuteeProfiles.insertOrUpdate(profile))
 
   override def findProfile(userID: UUID) =
-    db.run(userProfiles.filter(_.userID === userID).result.headOption)
+    db.run(tuteeProfiles.filter(_.userID === userID).result.headOption)
 
 }
 
@@ -106,6 +106,6 @@ object UserDAOImpl {
   private val loginInfos = TableQuery[LoginInfoTable]
   private val users = TableQuery[UserTable]
   private val userLoginInfos = TableQuery[UserLoginInfoTable]
-  private val userProfiles = TableQuery[UserProfileTable]
+  private val tuteeProfiles = TableQuery[TuteeProfileTable]
 
 }

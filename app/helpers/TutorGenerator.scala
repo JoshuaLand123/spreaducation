@@ -1,7 +1,7 @@
 package helpers
 
 import models.enums.Interest
-import models.{Tutor, UserProfile}
+import models.{Tutor, TuteeProfile}
 import play.api.i18n.Messages
 
 import scala.util.Random
@@ -90,12 +90,12 @@ object TutorGenerator {
     matchingScoreList(order) + Random.nextInt(3)
   }
 
-  def generateTutors(userProfile: UserProfile, messages: Messages): List[Tutor] = {
+  def generateTutors(tuteeProfile: TuteeProfile, messages: Messages): List[Tutor] = {
     (0 to Random.nextInt(5) + 1 ).toList.map { n =>
       val tutor = randomTutor
       val randomInterest = Interest.values.toList(Random.nextInt(Interest.values.size)).toString
-      val interest = messages(s"interest.${if (n <= 1) userProfile.interest1 else randomInterest}")
-      val subject = messages(s"subject.${userProfile.subjectImprove1}")
+      val interest = messages(s"interest.${if (n <= 1) tuteeProfile.interest1 else randomInterest}")
+      val subject = messages(s"subject.${tuteeProfile.subjectImprove1}")
       val gender = tutor._3
       val avatar = if (gender == "Male") s"avatars/male-${Random.nextInt(8) + 1 + n}.jpeg" else s"avatars/female-${Random.nextInt(3) + 1 + n}.jpeg"
       Tutor(

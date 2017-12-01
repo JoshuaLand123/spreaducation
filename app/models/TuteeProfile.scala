@@ -2,7 +2,7 @@ package models
 
 import java.util.{ Date, UUID }
 
-case class UserProfile(
+case class TuteeProfile(
   userID: UUID,
   gender: String,
   dob: Date,

@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.actions.SecuredRequest
 import com.mohiva.play.silhouette.api.{ LogoutEvent, Silhouette }
-import forms.ProfileForm
+import forms.TuteeProfileForm
 import org.webjars.play.WebJarsUtil
 import play.api.i18n._
 import play.api.mvc._

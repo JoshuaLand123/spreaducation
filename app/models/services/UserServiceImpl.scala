@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.LoginInfo
 import com.mohiva.play.silhouette.impl.providers.CommonSocialProfile
-import models.{ User, UserProfile }
+import models.{ User, TuteeProfile }
 import models.daos.UserDAO
 import models.enums.UserType
 
@@ -51,5 +51,5 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
 
   override def retrieveProfile(userID: UUID) = userDAO.findProfile(userID)
 
-  override def saveProfile(profile: UserProfile) = userDAO.saveProfile(profile: UserProfile)
+  override def saveProfile(profile: TuteeProfile) = userDAO.saveProfile(profile: TuteeProfile)
 }

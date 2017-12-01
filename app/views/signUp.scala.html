@@ -13,11 +13,12 @@
         <legend>@messages("sign.up.account")</legend>
         @helper.form(action = controllers.routes.SignUpController.submit()) {
             @helper.CSRF.formField
+            @b3.radio(signUpForm("userType"), options=models.enums.UserType.values.toSeq.map(u => u.toString -> u.toString))
             @b3.text(signUpForm("firstName"), '_hiddenLabel -> messages("first.name"), 'placeholder -> messages("first.name"), 'class -> "form-control input-lg")
             @b3.text(signUpForm("lastName"), '_hiddenLabel -> messages("last.name"), 'placeholder -> messages("last.name"), 'class -> "form-control input-lg")
             @b3.text(signUpForm("email"), '_hiddenLabel -> messages("email"), 'placeholder -> messages("email"), 'class -> "form-control input-lg")
             @passwordStrength(signUpForm("password"), '_hiddenLabel -> messages("password"), 'placeholder -> messages("password"), 'class -> "form-control input-lg")
-            <div class="form-group">
+        <div class="form-group">
                 <div>
                     <button id="submit" type="submit" value="submit" class="btn btn-lg btn-primary btn-block">@messages("sign.up")</button>
                 </div>

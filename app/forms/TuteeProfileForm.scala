@@ -1,10 +1,10 @@
 package forms
 
-import models.UserProfile
+import models.TuteeProfile
 import play.api.data.Form
 import play.api.data.Forms._
 
-object ProfileForm {
+object TuteeProfileForm {
 
   val form = Form(
     mapping(
@@ -28,6 +28,6 @@ object ProfileForm {
       "timeInterest2" -> number(min = 1, max = 12),
       "interest3" -> nonEmptyText,
       "timeInterest3" -> number(min = 1, max = 12)
-    )(UserProfile.apply)(UserProfile.unapply)
+    )(TuteeProfile.apply)(TuteeProfile.unapply)
   )
 }

@@ -3,8 +3,8 @@ package controllers
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api._
-import forms.ProfileForm
-import models.UserProfile
+import forms.TuteeProfileForm
+import models.TuteeProfile
 import models.services.{ QuestionService, UserService }
 import org.webjars.play.WebJarsUtil
 import play.api.i18n._
@@ -38,14 +38,14 @@ class ProfileController @Inject() (
 
   def edit = silhouette.SecuredAction.async { implicit request =>
     userService.retrieveProfile(request.identity.userID).map(profile => {
-      val form = profile.map(ProfileForm.form.fill).getOrElse(ProfileForm.form)
+      val form = profile.map(TuteeProfileForm.form.fill).getOrElse(TuteeProfileForm.form)
       Ok(views.html.profileEdit(form, request.identity))
     })
   }
 
   def submit = silhouette.SecuredAction.async { implicit request =>
 
-    Future.successful(ProfileForm.form.bindFromRequest.fold(
+    Future.successful(TuteeProfileForm.form.bindFromRequest.fold(
       errors =>
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
         Redirect(routes.ProfileController.edit).flashing("error" -> s"Error: ${errors.toString}"),
@@ -58,7 +58,7 @@ class ProfileController @Inject() (
     ))
   }
 
-  private def psychogramDataJsonString(profile: UserProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {
+  private def psychogramDataJsonString(profile: TuteeProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {
 
     // TODO: refactor this whole method
     val expertise = {

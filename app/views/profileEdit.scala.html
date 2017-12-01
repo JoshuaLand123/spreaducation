@@ -5,7 +5,7 @@
 @import controllers.AssetsFinder
 @import b3.inline.fieldConstructor
 
-@(profileForm: Form[models.UserProfile], user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(profileForm: Form[models.TuteeProfile], user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
@@ -28,7 +28,7 @@
                         @b3.select(profileForm("classLevel"),  options=(7 to 13).map(s => s.toString -> (s.toString + ". " + messages("profile.class.level"))), '_label -> "profile.class.level.edit")
 
                         @b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control")
-                        @b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit")
+                        @b3.select(profileForm("mainLanguage"), options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit")
 
                         @b3.select(profileForm("subjectImprove1"),  options=models.enums.Subject.selectList(messages), '_label -> "profile.subject.improve.edit")
                         @b3.select(profileForm("scoreSubjectImprove1"),  options=(1 to 6).map(s => s.toString -> s.toString), '_label -> "profile.subject.improve.score.edit")

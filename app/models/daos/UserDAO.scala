@@ -3,7 +3,7 @@ package models.daos
 import java.util.UUID
 
 import com.mohiva.play.silhouette.api.LoginInfo
-import models.{ User, UserProfile }
+import models.{ User, TuteeProfile }
 import models.tables.{ DbLoginInfo, LoginInfoTable }
 import slick.lifted.Query
 
@@ -19,8 +19,8 @@ trait UserDAO {
 
   def save(user: User): Future[User]
 
-  def saveProfile(profile: UserProfile): Future[Int]
+  def saveProfile(profile: TuteeProfile): Future[Int]
 
-  def findProfile(userID: UUID): Future[Option[UserProfile]]
+  def findProfile(userID: UUID): Future[Option[TuteeProfile]]
 
 }

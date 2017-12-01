@@ -4,7 +4,7 @@
 @import controllers.AssetsFinder
 @import utils.TemplateHelpers._
 
-@(user: models.User, profile: Option[models.UserProfile], psychogramData: String)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(user: models.User, profile: Option[models.TuteeProfile], psychogramData: String)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <div class="col-md-12">
