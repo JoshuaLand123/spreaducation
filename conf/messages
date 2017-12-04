@@ -216,21 +216,44 @@ interest.Hockey = Hockey
 interest.SocialCommitment = Soziales Engagement
 interest.Other = Andere
 
-# Psychogram Subcategories
+# Psychogram
 
-environment.Leisure = FREIZEIT
-environment.Friends = FREUNDE
-environment.Class = KLASSE
-environment.Parents = ELTERN
+interests = Interessen
+interests.description = Dieser Bereich zeigt, deine verschiedenen Interessen und wie gut du in ihnen bist.
 
-constitution.Anxiety = ANGST
-constitution.Concentration = KONZENTRATION
-constitution.Discipline = DISZIPLIN
-constitution.Self-efficacy = SELBSTWIRKSAMKEIT
+subjects = Fachwissen
+subjects.description = Dieser Bereich zeigt deine einzelnen Fächer. Je besser deine Noten werden, desto höher wird dein Score.
 
-working.Learning-techniques = LERNTECHNIK
-working.Self-organization = SELBSTORGANISATION
-working.Working-techniques = ARBEITSTECHNIK
+environment = Umfeld
+environment.description = Dieser Bereich beschreibt dich und dein Umfeld und wie sehr es dein Lernen unterstützt.
+environment.Leisure = Freizeit
+environment.Leisure.description = Dein Freizeit-Score. Hier geht es darum, inwiefern du dir genug Zeit nehmen kannst für die Schule etwas zu tun oder du in deiner Freizeit so viele verschiedene Dinge tust, dass für die Schule wenig Zeit übrig bleibt
+environment.Friends = Freunde
+environment.Friends.description = Dein Freunde-Score. Hier geht es nicht darum, ob du viele Freunde hast, sondern ob deine Freunde eher dein Lernen begünstigen oder es aufhalten. Triffst du dich oft mit Freunden anstatt für deine Klassenarbeiten zu lernen?
+environment.Class = Klasse
+environment.Class.description = Dein Klasse-Score. Hier siehst du, wie wohl du dich in deinem Lernumfeld fühlst und wie gern du dich in deiner Klasse aufhälst
+environment.Parents = Eltern
+environment.Parents.description = Dein Eltern-Score. Hier siehst du, wie sehr deine Eltern dich und dein Lernen begünstigen und versuchen sich die Zeit zu nehmen, dich beim Lernen zu unterstützen.
+
+constitution = Konstitution
+constitution.description = Dieser Bereich beschreibt Persönlichkeitseigenschaften, die aufs Lernen großen Einfluss nehmen.
+constitution.Anxiety = Angst
+constitution.Anxiety.description = Dein Angst-Score. Hier geht es darum, wie entspannt du bist, wenn es um Situation geht, in denen man sich unwohl fühlen könnte. Meldest du dich im Unterricht ohne Probleme? Gehst du entspannt in Präsentationen oder Klassenarbeiten?
+constitution.Concentration = Konzentration
+constitution.Concentration.description = Dein Konzentrations-Score. Hier geht es darum, wie leicht es dir fällt dich auf eine Sache zu fokussieren. Lässt du dich leicht durch äußere Einflüsse ablenken?
+constitution.Discipline = Disziplin
+constitution.Discipline.description = Dein Disziplin-Score. Hier siehst du, ob du Durchhaltevermögen beweist, dir Ziele setzst und sie disziplinert verfolgst. Hälst du Zeiten in denen du lernen willst auch wirklich ein?
+constitution.Self-efficacy = Selbstwirksamkeit
+constitution.Self-efficacy.description = Dein Selbstwirksamkeits-Score. Hier siehst du, wie sehr du von deiner Wirkung als Lernperson überzeugt bist. Falls eine neue Aufgabe auf dich zukommt, sagst du JA! das mach ich oder zweifelst du eher, ob du das schaffen kannst?
+
+working = Arbeitsweise
+working.description = Dieser Bereich beschreibt, wie du arbeitest.
+working.Learning-techniques = Lerntechnik
+working.Learning-techniques.description = Dein Lerntechnik-Score. Hier geht es darum, wie gut du dich auf eine Klassenarbeit vorbereiten kannst. Weißt du immer genau was du lernen musst und wie es am besten in deinen Kopf geht? Hast du coole Techniken für Eselsbrücken oder Karteikarten?
+working.Self-organization = Selbstorga
+working.Self-organization.description = Dein Selbstorganisations-Score. Hier geht es darum, wie gut dein Überblick über deine Klassenarbeiten und andere Abgabetermine ist. Bist du eher ein Chaot oder hast du strukturierte To-Do Listen?
+working.Working-techniques = Arbeitstechnik
+working.Working-techniques.description = Dein Arbeitstechnik-Score. Hier siehst du, wie gut du währen dem Schuljahr vorgehst um dein Wissen an den richtigen Stellen zu speichern. Hast du Hefter und Ordner? Bearbeitest du alle Aufgaben und verstehst sie auch? Kennst du gute Techniken, wie (Karteikarten, Mindmapping, Brainstorming)?
 
 
 
