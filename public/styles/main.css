@@ -14,11 +14,6 @@ main{
     padding-top: 50px;
 }
 
-
-input, button {
-    margin: 5px 0;
-}
-
 input:hover, input:focus {
     outline: 0;
     transition: all .5s linear;
@@ -90,15 +85,15 @@ a {
 }
 
 .btn:hover {
-	
-	font-family: 'Abrade Medium'; 
+
+	font-family: 'Abrade Medium';
 	color: #000000;
 	background: #C5F693;
 	border: 2px solid #C5F693;
 }
 
 .btn:target {
-	font-family: 'Abrade Medium'; 
+	font-family: 'Abrade Medium';
 	color: #000000;
 	background: #C5F693;
 	border: 2px solid #C5F693;
@@ -106,7 +101,6 @@ a {
 
 .btn {
     font-weight: bold;
-    font-size: 18px;
     border-radius: 2px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
     color: #FFFFFF;
@@ -222,7 +216,7 @@ meter::-webkit-meter-optimum-value {
 }
 
 .btn  {
-	font-family: 'Abrade Medium'; 
+	font-family: 'Abrade Medium';
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
@@ -233,7 +227,7 @@ meter::-webkit-meter-optimum-value {
 }
 
 .btn1 {
-	font-family: 'Abrade Medium'; 
+	font-family: 'Abrade Medium';
 	color: #FFFFFF;
 	background: #3b5998;
 	font-size: 18px;
@@ -252,7 +246,7 @@ meter::-webkit-meter-optimum-value {
 .form2 {
     float: right;
     width: 48%;
-    display: inline-block;   
+    display: inline-block;
 }
 
 .logo {
@@ -261,9 +255,9 @@ meter::-webkit-meter-optimum-value {
     max-width: 20%;
 	min-width: 200px;
     height: 100;
-    margin-top: 40px;	
+    margin-top: 40px;
 }
-	
+
 .facebook-logo {
 	width: 35px;
 	height: 35px;
@@ -271,7 +265,7 @@ meter::-webkit-meter-optimum-value {
 	position: absolute;
     top: 415px;
 	display: inline-block;
-}	
+}
 
 .row {
 	margin-top: 15px;
