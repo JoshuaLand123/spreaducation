@@ -268,3 +268,8 @@ meter::-webkit-meter-optimum-value {
     top: 415px;
 	display: inline-block;
 }	
+
+.row {
+	margin-top: 15px;
+}
+
