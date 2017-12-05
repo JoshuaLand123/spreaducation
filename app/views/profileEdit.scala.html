@@ -40,35 +40,35 @@
 						</div>
 						<label for="subjectsGoodAt">@messages("profile.subject.goodat.edit")</label>
 						<div id="subjectsGoodAt" class="col-md-6">
-                            @b3.select(profileForm("subjectGoodAt1"),  options=models.enums.Subject.selectList(messages))
-                            @b3.select(profileForm("subjectGoodAt2"),  options=models.enums.Subject.selectList(messages))
+							@b3.select(profileForm("subjectGoodAt1"),  options=models.enums.Subject.selectList(messages))
+							@b3.select(profileForm("subjectGoodAt2"),  options=models.enums.Subject.selectList(messages))
 						</div>
 						<div class="col-md-6">
-                            @b3.select(profileForm("scoreSubjectGoodAt1"),  options=(1 to 6).map(s => s.toString -> s.toString))
-                            @b3.select(profileForm("scoreSubjectGoodAt2"),  options=(1 to 6).map(s => s.toString -> s.toString))
-                        </div>
+							@b3.select(profileForm("scoreSubjectGoodAt1"),  options=(1 to 6).map(s => s.toString -> s.toString))
+							@b3.select(profileForm("scoreSubjectGoodAt2"),  options=(1 to 6).map(s => s.toString -> s.toString))
+						</div>
 
-                        <label for="interests">@messages("profile.interest.edit")</label>
-                        <div id="interests" class="col-md-6">
-                            @b3.select(profileForm("interest1"), options=models.enums.Interest.selectList(messages))
-                            @b3.select(profileForm("interest2"), options=models.enums.Interest.selectList(messages))
-                            @b3.select(profileForm("interest3"), options=models.enums.Interest.selectList(messages))
-                        </div>
-                        <div class="col-md-6">
-                            <p><input id="slider-interest1" name='timeInterest1' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest1")'/></p>
-                            <p><input id="slider-interest2" name='timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest2")'/></p>
-                            <p><input id="slider-interest3" name='timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
-                        </div>
-                        @b3.free('_id -> "idFormGroup") {
-                            @*<a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>*@
-                            <button type="submit" class="btn btn-primary pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
-                            }
-                        </div>
-                        }
+						<label for="interests">@messages("profile.interest.edit")</label>
+						<div id="interests" class="col-md-6">
+							@b3.select(profileForm("interest1"), options=models.enums.Interest.selectList(messages))
+							@b3.select(profileForm("interest2"), options=models.enums.Interest.selectList(messages))
+							@b3.select(profileForm("interest3"), options=models.enums.Interest.selectList(messages))
+						</div>
+						<div class="col-md-6">
+							<p><input id="slider-interest1" name='timeInterest1' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest1")'/></p>
+							<p><input id="slider-interest2" name='timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest2")'/></p>
+							<p><input id="slider-interest3" name='timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
+						</div>
+						@b3.free('_id -> "idFormGroup") {
+							@*<a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>*@
+							<button type="submit" class="btn btn-primary pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
+							}
+						</div>
+						}
 			</div>
 		</div>
 		<script>
-				$('input[id^="slider-"]').slider()
+				$('input[id^="slider-"]').slider();
 			</script>
 	</div>
 }
