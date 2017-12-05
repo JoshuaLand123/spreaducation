@@ -134,6 +134,10 @@ meter::-webkit-meter-optimum-value {
     transition: width .4s ease-out;
 }
 
+.slider-tick-label {
+    font-size: 12px;
+}
+
 .display {
     position: relative;
 }
