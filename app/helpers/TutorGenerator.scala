@@ -70,7 +70,7 @@ object TutorGenerator {
     val interests = allInterests.distinct.mkString(",")
     val tutorString = if (gender == "Female") "Tutorin" else "Tutor"
     val predefinedDescriptions = List(
-      s"Ich bin begeisterter $subject $tutorString und mache in meiner Freizeit gern $interests.",
+      s"Ich bin begeisterte${if (gender == "Male") "r" else ""} $subject $tutorString und mache in meiner Freizeit gern $interests.",
       s"Ich studiere $subject auf Lehramt und interessiere mich für $interests.",
       s"Dir $subject beizubringen ist für mich kein Problem. Neben dem Unterrichten interessiert mich $interests.",
       s"$subject macht mir viel Spaß. Dir vielleicht bald auch.",
