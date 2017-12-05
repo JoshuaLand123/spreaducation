@@ -77,7 +77,7 @@ class ProfileController @Inject() (
         PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt2), reverseScore(profile.scoreSubjectGoodAt2), messages("subject." + profile.subjectGoodAt2)),
         PsychogramSubcategoryData(messages("subject." + profile.subjectImprove1), reverseScore(profile.scoreSubjectImprove1), messages("subject." + profile.subjectImprove1)),
         PsychogramSubcategoryData(messages("subject." + profile.subjectImprove2), reverseScore(profile.scoreSubjectImprove2), messages("subject." + profile.subjectImprove2))
-      ), messages("subjects.description"))
+      ).sortBy(_.name)(Ordering[String].reverse), messages("subjects.description"))
     }
 
     def percentageToScore(percentage: Double) =
@@ -91,11 +91,11 @@ class ProfileController @Inject() (
       PsychogramSubcategoryData(messages("interest." + profile.interest1), profile.timeInterest1, messages("interest." + profile.interest1)),
       PsychogramSubcategoryData(messages("interest." + profile.interest2), profile.timeInterest2, messages("interest." + profile.interest2)),
       PsychogramSubcategoryData(messages("interest." + profile.interest3), profile.timeInterest3, messages("interest." + profile.interest3))
-    ), messages("interests.description"))
+    ).sortBy(_.name), messages("interests.description"))
 
-    val environment = "environment" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Environment", Seq()).map(g => PsychogramSubcategoryData(messages("environment." + g._2), percentageToScore(g._3), messages("environment." + g._2 + ".description"))).toList, messages("environment.description"))
-    val constitution = "constitution" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Constitution", Seq()).map(g => PsychogramSubcategoryData(messages("constitution." + g._2), percentageToScore(g._3), messages("constitution." + g._2 + ".description"))).toList, messages("constitution.description"))
-    val working = "working" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Working", Seq()).map(g => PsychogramSubcategoryData(messages("working." + g._2), percentageToScore(g._3), messages("working." + g._2 + ".description"))).toList, messages("working.description"))
+    val environment = "environment" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Environment", Seq()).map(g => PsychogramSubcategoryData(messages("environment." + g._2), percentageToScore(g._3), messages("environment." + g._2 + ".description"))).toList.sortBy(_.name), messages("environment.description"))
+    val constitution = "constitution" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Constitution", Seq()).map(g => PsychogramSubcategoryData(messages("constitution." + g._2), percentageToScore(g._3), messages("constitution." + g._2 + ".description"))).toList.sortBy(_.name), messages("constitution.description"))
+    val working = "working" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Working", Seq()).map(g => PsychogramSubcategoryData(messages("working." + g._2), percentageToScore(g._3), messages("working." + g._2 + ".description"))).toList.sortBy(_.name)(Ordering[String].reverse), messages("working.description"))
 
     Json.stringify(Json.toJson(Map(interests, environment, constitution, expertise, working)))
   }

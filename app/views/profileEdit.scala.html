@@ -41,10 +41,10 @@
 						<label for="subjectsGoodAt">@messages("profile.subject.goodat.edit")</label>
 						<div id="subjectsGoodAt" class="col-md-6">
                             @b3.select(profileForm("subjectGoodAt1"),  options=models.enums.Subject.selectList(messages))
-                            @b3.select(profileForm("scoreSubjectGoodAt1"),  options=(1 to 6).map(s => s.toString -> s.toString))
+                            @b3.select(profileForm("subjectGoodAt2"),  options=models.enums.Subject.selectList(messages))
 						</div>
 						<div class="col-md-6">
-                            @b3.select(profileForm("subjectGoodAt2"),  options=models.enums.Subject.selectList(messages))
+                            @b3.select(profileForm("scoreSubjectGoodAt1"),  options=(1 to 6).map(s => s.toString -> s.toString))
                             @b3.select(profileForm("scoreSubjectGoodAt2"),  options=(1 to 6).map(s => s.toString -> s.toString))
                         </div>
 
