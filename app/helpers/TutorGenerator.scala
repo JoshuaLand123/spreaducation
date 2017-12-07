@@ -104,7 +104,7 @@ object TutorGenerator {
         price = price,
         subject = subject,
         interest = interest,
-        matchingScore = score + Random.nextInt(3),
+        matchingScore = score + index % 3,
         status = status,
         order = order
       )
