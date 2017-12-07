@@ -27,7 +27,8 @@ class UserProfileTable(tag: Tag) extends Table[UserProfile](tag, "user_profile")
   def timeInterest2 = column[Int]("time_interest_2")
   def interest3 = column[String]("interest_3")
   def timeInterest3 = column[Int]("time_interest_3")
+  def tutorOrder = column[Option[Int]]("tutor_order")
 
-  override def * = (userID, gender, dob, classLevel, schoolName, mainLanguage, subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2, interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3) <> (UserProfile.tupled, UserProfile.unapply)
+  override def * = (userID, gender, dob, classLevel, schoolName, mainLanguage, subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2, interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3, tutorOrder) <> (UserProfile.tupled, UserProfile.unapply)
 
 }

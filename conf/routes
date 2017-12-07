@@ -4,7 +4,7 @@
 
 # Home page
 GET         /                                controllers.ApplicationController.index
-GET         /feedback                        controllers.ApplicationController.feedback
+GET         /feedback                        controllers.ApplicationController.feedback(order: Int)
 #GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
 
 GET         /questions                       controllers.QuestionsController.index

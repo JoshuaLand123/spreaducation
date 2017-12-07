@@ -8,5 +8,7 @@ case class Tutor(
   price: Double,
   subject: String,
   interest: String,
-  matchingScore: Int
+  matchingScore: Int,
+  status: String,
+  order: Int
 )

@@ -22,5 +22,6 @@ case class UserProfile(
   interest2: String,
   timeInterest2: Int,
   interest3: String,
-  timeInterest3: Int
+  timeInterest3: Int,
+  tutorOrder: Option[Int] = None
 )
