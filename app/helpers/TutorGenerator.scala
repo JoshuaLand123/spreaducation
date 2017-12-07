@@ -4,6 +4,8 @@ import models.enums.Interest
 import models.{Tutor, UserProfile}
 import play.api.i18n.Messages
 
+import scala.util.Random
+
 object TutorGenerator {
 
   private val predefinedTutors = List(
@@ -102,7 +104,7 @@ object TutorGenerator {
         price = price,
         subject = subject,
         interest = interest,
-        matchingScore = score,
+        matchingScore = score + Random.nextInt(3),
         status = status,
         order = order
       )
