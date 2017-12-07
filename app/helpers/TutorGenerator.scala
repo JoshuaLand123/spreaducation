@@ -64,7 +64,7 @@ object TutorGenerator {
     (2, 85, 60.50, "Profi"),
     (3, 75, 48.40, "Halb-Profi"),
     (4, 65, 36.30, "Fortgeschritten"),
-    (5, 55, 24.20, "Friscahling"),
+    (5, 55, 24.20, "Frischling"),
   )
 
   private def predefinedDescriptions(subject: String, interest: String, gender: String) = {
