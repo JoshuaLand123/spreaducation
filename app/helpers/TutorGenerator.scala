@@ -4,8 +4,6 @@ import models.enums.Interest
 import models.{Tutor, UserProfile}
 import play.api.i18n.Messages
 
-import scala.util.Random
-
 object TutorGenerator {
 
   private val predefinedTutors = List(
