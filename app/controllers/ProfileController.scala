@@ -45,16 +45,22 @@ class ProfileController @Inject() (
   }
 
   def submit = silhouette.SecuredAction.async { implicit request =>
-
+    val messages = request.messages
     Future.successful(ProfileForm.form.bindFromRequest.fold(
       errors =>
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
         Redirect(routes.ProfileController.edit).flashing("error" -> s"Error: ${errors.toString}"),
       profileSuccess => {
         val profile = profileSuccess.copy(userID = request.identity.userID)
-        userService.saveProfile(profile)
-        //Redirect(routes.ProfileController.view())
-        Redirect(routes.QuestionsController.index)
+        if (profile.subjectImprove1 == profile.subjectImprove2 ||
+          profile.subjectGoodAt1 == profile.subjectGoodAt2 ||
+          List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
+          Redirect(routes.ProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests"))
+        else {
+          userService.saveProfile(profile)
+          //Redirect(routes.ProfileController.view())
+          Redirect(routes.QuestionsController.index)
+        }
       }
     ))
   }
