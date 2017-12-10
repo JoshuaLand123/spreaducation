@@ -46,47 +46,36 @@ class ProfileController @Inject() (
 
   def submit = silhouette.SecuredAction.async { implicit request =>
 
+    val messages = request.messages
     Future.successful(TuteeProfileForm.form.bindFromRequest.fold(
       errors =>
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
         Redirect(routes.ProfileController.edit).flashing("error" -> s"Error: ${errors.toString}"),
       profileSuccess => {
         val profile = profileSuccess.copy(userID = request.identity.userID)
-        userService.saveProfile(profile)
-        //Redirect(routes.ProfileController.view())
-        Redirect(routes.QuestionsController.index)
+        if (profile.subjectImprove1 == profile.subjectImprove2 ||
+          profile.subjectGoodAt1 == profile.subjectGoodAt2 ||
+          List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
+          Redirect(routes.ProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests"))
+        else {
+          userService.saveProfile(profile)
+          //Redirect(routes.ProfileController.view())
+          Redirect(routes.QuestionsController.index)
+        }
       }
     ))
   }
 
   private def psychogramDataJsonString(profile: TuteeProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {
     import PsychogramData._
-
+    import utils.ScoreUtils._
     // TODO: refactor this whole method
-    val expertise = {
-      def reverseScore(score: Int) = score match {
-        case 1 => 5
-        case 2 => 4
-        case 3 => 3
-        case 4 => 2
-        case 5 => 1
-        case 6 => 1
-      }
-
-      "subjects" -> PsychogramCategoryData(List(
-        PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt1), reverseScore(profile.scoreSubjectGoodAt1), messages("subject." + profile.subjectGoodAt1)),
-        PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt2), reverseScore(profile.scoreSubjectGoodAt2), messages("subject." + profile.subjectGoodAt2)),
-        PsychogramSubcategoryData(messages("subject." + profile.subjectImprove1), reverseScore(profile.scoreSubjectImprove1), messages("subject." + profile.subjectImprove1)),
-        PsychogramSubcategoryData(messages("subject." + profile.subjectImprove2), reverseScore(profile.scoreSubjectImprove2), messages("subject." + profile.subjectImprove2))
-      ).sortBy(_.name)(Ordering[String].reverse), messages("subjects.description"))
-    }
-
-    def percentageToScore(percentage: Double) =
-      if (percentage < 0.2) 1
-      else if (percentage < 0.4) 2
-      else if (percentage < 0.6) 3
-      else if (percentage < 0.8) 4
-      else 5
+    val subjects = "subjects" -> PsychogramCategoryData(List(
+      PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt1), reverseScore(profile.scoreSubjectGoodAt1), messages("subject." + profile.subjectGoodAt1)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt2), reverseScore(profile.scoreSubjectGoodAt2), messages("subject." + profile.subjectGoodAt2)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjectImprove1), reverseScore(profile.scoreSubjectImprove1), messages("subject." + profile.subjectImprove1)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjectImprove2), reverseScore(profile.scoreSubjectImprove2), messages("subject." + profile.subjectImprove2))
+    ).sortBy(_.name)(Ordering[String].reverse), messages("subjects.description"))
 
     val interests = "interests" -> PsychogramCategoryData(List(
       PsychogramSubcategoryData(messages("interest." + profile.interest1), profile.timeInterest1, messages("interest." + profile.interest1)),
@@ -94,11 +83,16 @@ class ProfileController @Inject() (
       PsychogramSubcategoryData(messages("interest." + profile.interest3), profile.timeInterest3, messages("interest." + profile.interest3))
     ).sortBy(_.name), messages("interests.description"))
 
-    val environment = "environment" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Environment", Seq()).map(g => PsychogramSubcategoryData(messages("environment." + g._2), percentageToScore(g._3), messages("environment." + g._2 + ".description"))).toList.sortBy(_.name), messages("environment.description"))
-    val constitution = "constitution" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Constitution", Seq()).map(g => PsychogramSubcategoryData(messages("constitution." + g._2), percentageToScore(g._3), messages("constitution." + g._2 + ".description"))).toList.sortBy(_.name), messages("constitution.description"))
-    val working = "working" -> PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse("Working", Seq()).map(g => PsychogramSubcategoryData(messages("working." + g._2), percentageToScore(g._3), messages("working." + g._2 + ".description"))).toList.sortBy(_.name)(Ordering[String].reverse), messages("working.description"))
+    def psychoDataForSubcategory(subcategory: String) = {
+      PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse(subcategory.capitalize, Seq()).map(g => PsychogramSubcategoryData(messages(subcategory + "." + g._2), percentageToScore(g._3), messages(subcategory + "." + g._2 + ".description"))).toList.sortBy(_.name), messages(subcategory + ".description"))
+    }
 
-    Json.stringify(Json.toJson(Map(interests, environment, constitution, expertise, working)))
+    val environment = "environment" -> psychoDataForSubcategory("environment")
+    val constitution = "constitution" -> psychoDataForSubcategory("constitution")
+    val working = "working" -> psychoDataForSubcategory("working")
+
+    Json.stringify(Json.toJson(Map(interests, environment, constitution, subjects, working)))
+
   }
 
 }
