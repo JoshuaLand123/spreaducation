@@ -13,26 +13,29 @@
             <div class="row" style="margin-top:20px;">
                 @grouped.map { tutor =>
                     <div class="col-md-4 text-center">
-                        <div class="row>">
+                        <div class="row">
                             <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl)}' style="width:200px; height:200px; object-fit:cover;">
                         </div>
-                        <div class="row>">
+                        <div class="row">
                             @tutor.matchingScore %
                         </div>
-                        <div class="row>">
+                        <div class="row">
+                            @tutor.status
+                        </div>
+                        <div class="row">
                             @tutor.subject · @tutor.interest
                         </div>
-                        <div class="row>">
+                        <div class="row">
                             @tutor.firstName @tutor.lastName
                         </div>
-                        <div class="row>">
+                        <div class="row">
                             @tutor.description
                         </div>
-                        <div class="row>">
+                        <div class="row">
                             @tutor.price €
                         </div>
-                        <div class="row>">
-                            <a href="@controllers.routes.ApplicationController.feedback" class="btn btn-default">Choose</a>
+                        <div class="row">
+                            <a href="@controllers.routes.ApplicationController.feedback(tutor.order)" class="btn btn-default">Choose</a>
                         </div>
                     </div>
                 }

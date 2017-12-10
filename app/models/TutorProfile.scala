@@ -1,6 +1,6 @@
 package models
 
-import java.util.{Date, UUID}
+import java.util.{ Date, UUID }
 
 import models.enums.LessonType.LessonType
 
