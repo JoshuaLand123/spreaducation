@@ -26,7 +26,7 @@ class ApplicationController @Inject() (
 ) extends AbstractController(components) with I18nSupport {
 
   def index = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
-    Future.successful(Redirect(routes.ProfileController.view()))
+    Future.successful(Redirect(routes.TuteeProfileController.view()))
   }
 
   def changeLanguage(language: String) = Action { implicit request =>
@@ -40,7 +40,7 @@ class ApplicationController @Inject() (
   }
 
   def feedback(order: Int) = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveProfile(request.identity.userID).map(_.map(p => if (p.tutorOrder.isEmpty) userService.saveProfile(p.copy(tutorOrder = Some(order)))))
+    userService.retrieveTuteeProfile(request.identity.userID).map(_.map(p => if (p.tutorOrder.isEmpty) userService.saveTuteeProfile(p.copy(tutorOrder = Some(order)))))
     Future.successful(Ok(views.html.feedback(request.identity)))
   }
 }

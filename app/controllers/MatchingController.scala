@@ -24,9 +24,9 @@ class MatchingController @Inject() (
 ) extends AbstractController(components) with I18nSupport {
 
   def view = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveProfile(request.identity.userID).map {
+    userService.retrieveTuteeProfile(request.identity.userID).map {
       case Some(p) => Ok(views.html.matching(request.identity, TutorGenerator.generateTutors(p, request.messages)))
-      case None    => Redirect(routes.ProfileController.edit()).flashing("error" -> "Please fill your profile first")
+      case None    => Redirect(routes.TuteeProfileController.edit()).flashing("error" -> "Please fill your profile first")
     }
 
   }

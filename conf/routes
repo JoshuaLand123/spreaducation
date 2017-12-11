@@ -13,9 +13,13 @@ POST        /questions                       controllers.QuestionsController.sub
 
 GET         /matching                        controllers.MatchingController.view
 
-GET         /profile                         controllers.ProfileController.view
-GET         /profile/edit                    controllers.ProfileController.edit
-POST        /profile                         controllers.ProfileController.submit
+GET         /profile                         controllers.TuteeProfileController.view
+GET         /profile/edit                    controllers.TuteeProfileController.edit
+POST        /profile                         controllers.TuteeProfileController.submit
+
+#GET         /profile                         controllers.TutorProfileController.view
+#GET         /profile/edit                    controllers.TutorProfileController.edit
+#POST        /profile                         controllers.TutorProfileController.submit
 
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)

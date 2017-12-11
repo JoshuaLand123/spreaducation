@@ -8,23 +8,19 @@ case class TutorProfile(
   userID: UUID,
   gender: String,
   dob: Date,
+  mainLanguage: String,
   description: String,
-  classLevel: Int,
-  institutesAttended: List[String],
+  instituteAttended: String,
   occupation: String,
   occupationDegree: String,
-  mainLanguage: String,
-  workingLanguages: List[String],
-  subjectsAbleToTeach: List[String],
+  workingLanguage: String,
+  subjectAbleToTeach: String,
   interest1: String,
   timeInterest1: Int,
   interest2: String,
   timeInterest2: Int,
   interest3: String,
   timeInterest3: Int,
-  uploadedDocuments: List[String],
-  lessonType: LessonType,
-  wishedSalary: Int
+  wishedSalary: Int,
+  lessonType: LessonType
 )
-
-case class SubjectWithLevel(subject: String, level: Int)

@@ -15,7 +15,7 @@ import utils.auth.DefaultEnv
 
 import scala.concurrent.{ ExecutionContext, Future }
 
-class ProfileController @Inject() (
+class TuteeProfileController @Inject() (
   components: ControllerComponents,
   silhouette: Silhouette[DefaultEnv],
   userService: UserService
@@ -29,16 +29,16 @@ class ProfileController @Inject() (
 
   def view = silhouette.SecuredAction.async { implicit request =>
 
-    userService.retrieveProfile(request.identity.userID).flatMap {
+    userService.retrieveTuteeProfile(request.identity.userID).flatMap {
       case Some(p) =>
         questionService.getPsychoSubcategoryScores(request.identity.userID).map(psychoResult =>
           Ok(views.html.profile(request.identity, Some(p), psychogramDataJsonString(p, psychoResult, request.messages))))
-      case None => Future.successful(Redirect(routes.ProfileController.edit()))
+      case None => Future.successful(Redirect(routes.TuteeProfileController.edit()))
     }
   }
 
   def edit = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveProfile(request.identity.userID).map(profile => {
+    userService.retrieveTuteeProfile(request.identity.userID).map(profile => {
       val form = profile.map(TuteeProfileForm.form.fill).getOrElse(TuteeProfileForm.form)
       Ok(views.html.profileEdit(form, request.identity))
     })
@@ -50,15 +50,15 @@ class ProfileController @Inject() (
     Future.successful(TuteeProfileForm.form.bindFromRequest.fold(
       errors =>
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
-        Redirect(routes.ProfileController.edit).flashing("error" -> s"Error: ${errors.toString}"),
+        Redirect(routes.TuteeProfileController.edit).flashing("error" -> s"Error: ${errors.toString}"),
       profileSuccess => {
         val profile = profileSuccess.copy(userID = request.identity.userID)
         if (profile.subjectImprove1 == profile.subjectImprove2 ||
           profile.subjectGoodAt1 == profile.subjectGoodAt2 ||
           List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
-          Redirect(routes.ProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests"))
+          Redirect(routes.TuteeProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests"))
         else {
-          userService.saveProfile(profile)
+          userService.saveTuteeProfile(profile)
           //Redirect(routes.ProfileController.view())
           Redirect(routes.QuestionsController.index)
         }
