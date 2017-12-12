@@ -21,6 +21,6 @@ case class TutorProfile(
   timeInterest2: Int,
   interest3: String,
   timeInterest3: Int,
-  wishedSalary: Int,
-  lessonType: LessonType
+  wishedSalary: Double,
+  lessonType: String
 )

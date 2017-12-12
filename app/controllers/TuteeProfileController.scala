@@ -32,7 +32,7 @@ class TuteeProfileController @Inject() (
     userService.retrieveTuteeProfile(request.identity.userID).flatMap {
       case Some(p) =>
         questionService.getPsychoSubcategoryScores(request.identity.userID).map(psychoResult =>
-          Ok(views.html.profile(request.identity, Some(p), psychogramDataJsonString(p, psychoResult, request.messages))))
+          Ok(views.html.profileTutee(request.identity, Some(p), psychogramDataJsonString(p, psychoResult, request.messages))))
       case None => Future.successful(Redirect(routes.TuteeProfileController.edit()))
     }
   }
@@ -40,7 +40,7 @@ class TuteeProfileController @Inject() (
   def edit = silhouette.SecuredAction.async { implicit request =>
     userService.retrieveTuteeProfile(request.identity.userID).map(profile => {
       val form = profile.map(TuteeProfileForm.form.fill).getOrElse(TuteeProfileForm.form)
-      Ok(views.html.profileEdit(form, request.identity))
+      Ok(views.html.profileEditTutee(form, request.identity))
     })
   }
 

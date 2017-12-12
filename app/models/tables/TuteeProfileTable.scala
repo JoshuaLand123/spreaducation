@@ -5,7 +5,7 @@ import java.util.{ Date, UUID }
 
 import slick.jdbc.PostgresProfile.api._
 
-class TuteeProfileTable(tag: Tag) extends Table[TuteeProfile](tag, "user_profile") {
+class TuteeProfileTable(tag: Tag) extends Table[TuteeProfile](tag, "tutee_profile") {
 
   def userID = column[UUID]("user_id", O.PrimaryKey)
   def gender = column[String]("gender")

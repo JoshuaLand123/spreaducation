@@ -10,7 +10,7 @@ object TuteeProfileForm {
     mapping(
       "userID" -> uuid,
       "gender" -> nonEmptyText,
-      "dob" -> date(pattern = "yyyy-MM-dd"),
+      "dob" -> date,
       "classLevel" -> number(min = 7, max = 13),
       "schoolName" -> nonEmptyText,
       "mainLanguage" -> nonEmptyText,

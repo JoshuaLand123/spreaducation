@@ -24,8 +24,8 @@ class TutorProfileTable(tag: Tag) extends Table[TutorProfile](tag, "tutor_profil
   def timeInterest2 = column[Int]("time_interest_2")
   def interest3 = column[String]("interest_3")
   def timeInterest3 = column[Int]("time_interest_3")
-  def wishedSalary = column[Int]("wished_salary")
-  def lessonType = column[LessonType]("lesson_type")
+  def wishedSalary = column[Double]("wished_salary")
+  def lessonType = column[String]("lesson_type")
 
   override def * = (userID, gender, dob, mainLanguage, description, instituteAttended, occupation, occupationDegree, workingLanguage, subjectsAbleToTeach, interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3, wishedSalary, lessonType) <> (TutorProfile.tupled, TutorProfile.unapply)
 

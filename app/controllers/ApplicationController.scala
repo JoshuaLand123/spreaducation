@@ -6,6 +6,7 @@ import com.mohiva.play.silhouette.api.actions.SecuredRequest
 import com.mohiva.play.silhouette.api.{ LogoutEvent, Silhouette }
 import models.services.UserService
 import forms.TuteeProfileForm
+import models.enums.UserType
 import org.webjars.play.WebJarsUtil
 import play.api.i18n._
 import play.api.mvc._
@@ -25,8 +26,11 @@ class ApplicationController @Inject() (
   ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
-  def index = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
-    Future.successful(Redirect(routes.TuteeProfileController.view()))
+  def index = silhouette.SecuredAction.async { implicit request =>
+    if (request.identity.userType == UserType.Tutee)
+      Future.successful(Redirect(routes.TuteeProfileController.view()))
+    else
+      Future.successful(Redirect(routes.TutorProfileController.view()))
   }
 
   def changeLanguage(language: String) = Action { implicit request =>
