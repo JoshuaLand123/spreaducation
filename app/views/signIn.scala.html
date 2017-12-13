@@ -10,9 +10,9 @@
 @(signInForm: Form[Data], socialProviders: SocialProviderRegistry)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("sign.in.title")) {
-<img class="logo" src="@assets.path("images/logo_all_white.png")"/>
+<body id="page1">
     <fieldset class="col-md-6 col-md-offset-3">
-
+        <img class="logo" src="@assets.path("images/logo_all_white.png")"/>
         @helper.form(action = controllers.routes.SignInController.submit()) {
             @helper.CSRF.formField
             @b3.email(signInForm("email"), '_hiddenLabel -> messages("email"), 'placeholder -> messages("email"), 'class -> "form-control input-lg")
@@ -42,3 +42,4 @@
 
     </fieldset>
 }
+</body>

@@ -50,15 +50,15 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             @user.map { u =>
-                            <li>
+                            <li id="find-tutor">
                                 <a href="@controllers.routes.MatchingController.view">@messages("profile.tutor.find")</a>
                             </li>
-                            <li class="dropdown">
+                            <li id="my-profile" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     @u.name <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>
+                                    <li id="my-profile">
                                         <a href="@controllers.routes.ProfileController.view">@messages("profile")</a>
                                     </li>
                                     @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
@@ -107,5 +107,6 @@
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
         <script src="@assets.path("javascripts/zxcvbnShim.js")"></script>
+		
     </body>
 </html>

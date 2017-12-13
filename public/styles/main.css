@@ -1,6 +1,6 @@
 body {
     padding-top: 50px;
-    background: #7ED321;
+    background: #C5F693;
     font-size: 18px;
     font-family: Abrade Medium;
 }
@@ -84,27 +84,28 @@ a {
     padding-left: 42.5px;
 }
 
-.btn:hover {
 
-	font-family: 'Abrade Medium';
-	color: #000000;
-	background: #C5F693;
-	border: 2px solid #C5F693;
+
+.navbar-default .navbar-nav > .active {
+    color: #000000 !important;
+    background: #FAFEF4;
+    background-color: #FAFEF4;
+    box-shadow: 0 8px 2px -2px #67B215;
 }
 
-.btn:target {
-	font-family: 'Abrade Medium';
-	color: #000000;
-	background: #C5F693;
-	border: 2px solid #C5F693;
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    background-color: #FAFEF4;
+    background-image: none;
+    box-shadow: none;
 }
 
 .btn {
-    font-weight: bold;
     border-radius: 2px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
-    color: #FFFFFF;
-    background: #7ED321;
+    font-family: 'Abrade Medium';
+    color: #000000;
+    background: #C5F693;
+    border: 2px solid #C5F693;
 }
 
 .btn-lg {
@@ -140,7 +141,7 @@ a {
     background: #FAFEF4;
 }
 
-.dropdown-menu>li>a:hover{
+.dropdown-menu>li>a:hover {
     color: #000000 !important;
     background: #FAFEF4;
 }
@@ -215,28 +216,6 @@ meter::-webkit-meter-optimum-value {
     position: relative;
 }
 
-.btn  {
-	font-family: 'Abrade Medium';
-	color: #FFFFFF;
-	background: #7ED321;
-	border: 2px solid #FFFFFF;
-	width: 50%;
-	margin: auto;
-	text-align: center;
-	margin-top: 30px;
-}
-
-.btn1 {
-	font-family: 'Abrade Medium';
-	color: #FFFFFF;
-	background: #3b5998;
-	font-size: 18px;
-	max-width: 60%;
-	margin: auto;
-	text-align: center;
-	display: inline-block;
-}
-
 .form1 {
     float: left;
     width: 48%;
@@ -252,22 +231,27 @@ meter::-webkit-meter-optimum-value {
 .logo {
 	display: block;
     margin: auto;
-    max-width: 20%;
+    max-width: 25%;
 	min-width: 200px;
     height: 100;
-    margin-top: 40px;
-}
-
-.facebook-logo {
-	width: 35px;
-	height: 35px;
-    left: 23%;
-	position: absolute;
-    top: 415px;
-	display: inline-block;
+    margin-bottom: 40px;
 }
 
 .row {
 	margin-top: 15px;
+}
+
+.slider-tick.round.in-selection{
+	background: #C5F693;
+}
+
+.user.row.data.col-md-4 {
+	background: #C5F693;
+	border: 2px solid white;
+	margin-top: 80px;
+}
+
+#page1 {
+	background: #7ED321;
 }
 

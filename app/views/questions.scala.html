@@ -35,13 +35,13 @@
                 }
                     <div class="text-center">
                         @if(currentPage != 1) {
-                            <a class="glyphicon glyphicon-chevron-left btn btn-primary" href="@controllers.routes.QuestionsController.view(currentPage-1)"></a>
+                            <a class="btn btn-primary" href="@controllers.routes.QuestionsController.view(currentPage-1)">@messages("Zuruck")</a>
                         }
                         <span>@currentPage/@totalPages</span>
                         @if(currentPage == totalPages) {
-                            <button type="submit" name="submit" id="submit" class="btn btn-primary pull-right">@messages("finish.and.view.profile")</button>
+                            <button type="submit" name="submit" id="submit" class="btn btn-primary">@messages("finish.and.view.profile")</button>
                         } else {
-                            <button type="submit" name="submit" id="submit" class="glyphicon glyphicon-chevron-right btn btn-primary"></button>
+                            <button type="submit" name="submit" id="submit" class="btn btn-primary">@messages("Weiter")</button>
                         }
                     </div>
 
