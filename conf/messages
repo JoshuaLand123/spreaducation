@@ -145,6 +145,8 @@ profile.lesson.type = Online oder beim Schüler.
 profile.lesson.type.edit = Unterrichtest du lieber bei einem Schüler in deiner Nähe oder online?
 profile.wished.salary = Gewünschter Unterrichtslohn
 profile.wished.salary.edit = Was möchtest du pro Unterrichtseinheit (90 min) verdienen?
+profile.tutor.place = ???
+profile.tutor.place.description = Gebe deinen Wohnort ein.
 profile.error.duplicate.subjects.or.interests = Bitte wähle verschiedene Fächer und Interessen.
 
 # Questionnaire

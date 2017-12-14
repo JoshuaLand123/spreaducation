@@ -63,7 +63,7 @@
 						</div>
 						@b3.select(profileForm("wishedSalary"), options=List((20, "Frischling"), (30, "Fortgeschritten"), (40, "Halb-Profi"), (50, "Profi"), (60, "Legende")).map { case (s, d) => s.toString -> s"$s € ($d)"}, '_label -> "profile.wished.salary.edit")
 						@b3.select(profileForm("lessonType"), options=models.enums.LessonType.selectList(messages), '_label -> "profile.lesson.type.edit")
-
+						@b3.text(profileForm("place"), '_label -> "profile.tutor.place.description")
 						@b3.free('_id -> "idFormGroup") {
 							@*<a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>*@
 							<button type="submit" class="btn btn-primary pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>

@@ -39,7 +39,8 @@ object TutorProfileForm {
         "timeInterest3" -> number(min = 1, max = 12)
       )(TutorInterests.apply)(TutorInterests.unapply),
       "wishedSalary" -> of(doubleFormat),
-      "lessonType" -> nonEmptyText
+      "lessonType" -> nonEmptyText,
+      "place" -> optional(text)
     )(TutorProfile.apply)(TutorProfile.unapply)
   )
 }
