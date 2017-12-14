@@ -74,6 +74,17 @@
 		</div>
 		<script>
 				$('input[id^="slider-"]').slider();
+				if ($('#lessonType :selected').text() == 'Online') {
+						$('#place_field').hide();
+					};
+				$('#lessonType').change(function() {
+					if ($('#lessonType :selected').text() == 'Online') {
+						$('#place_field').hide();
+					} else {
+						$('#place_field').show();
+					}
+				});
+
 			</script>
 	</div>
 }
