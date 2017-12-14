@@ -25,6 +25,7 @@
 						@b3.select(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender", '_default -> "choose.one")
 						@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control")
 						@b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit", '_default -> "choose.one")
+						@b3.select(profileForm("workingLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.working.language.edit", '_default -> "choose.one")
 						@b3.textarea(profileForm("description"), '_label -> "profile.description.edit")
 						@b3.textarea(profileForm("instituteAttended"), '_label -> "profile.instituteAttended.edit")
 						<div class="row">
@@ -35,10 +36,6 @@
 								@b3.select(profileForm("occupation"), options=models.enums.Subject.selectList(messages), '_label -> "profile.occupation.edit", '_default -> "choose.one")
 							</div>
 						</div>
-						<div class="row">
-							@b3.select(profileForm("workingLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.working.language.edit", '_default -> "choose.one")
-						</div>
-
 						<label for="subjects">@messages("profile.subject.able.to.teach.edit")</label>
 						<div id="subjects" class="col-md-6">
 							@b3.select(profileForm("subjects.subject1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
