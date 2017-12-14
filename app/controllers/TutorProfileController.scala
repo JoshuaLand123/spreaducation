@@ -69,9 +69,9 @@ class TutorProfileController @Inject() (
     import utils.ScoreUtils._
     // TODO: refactor this whole methodPsychogramCategoryData(List(
     val subjects = "subjects" -> PsychogramCategoryData(List(Some(PsychogramSubcategoryData(messages("subject." + profile.subjects.subject1), profile.subjects.subject1Level, messages("subject." + profile.subjects.subject1))),
-      profile.subjects.subject2.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject2Level.getOrElse(3), messages("subject." + s))),
-      profile.subjects.subject3.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject3Level.getOrElse(3), messages("subject." + s))),
-      profile.subjects.subject4.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject4Level.getOrElse(3), messages("subject." + s))),
+      profile.subjects.subject2.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject2Level.getOrElse(9) - 6, messages("subject." + s))),
+      profile.subjects.subject3.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject3Level.getOrElse(9) - 6, messages("subject." + s))),
+      profile.subjects.subject4.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject4Level.getOrElse(9) - 6, messages("subject." + s))),
     ).flatten.sortBy(_.name)(Ordering[String].reverse), messages("subjects.description"))
 
     val interests = "interests" -> PsychogramCategoryData(List(

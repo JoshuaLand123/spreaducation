@@ -17,5 +17,4 @@ object ScoreUtils {
     case 5 => 1
     case 6 => 1
   }
-
 }

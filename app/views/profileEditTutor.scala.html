@@ -47,10 +47,10 @@
 							@b3.select(profileForm("subjects.subject4"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
-							@b3.select(profileForm("subjects.subject1Level"),  options=(7 to 13).map(s => (s-6).toString -> s"Klasse $s"), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject2Level"),  options=(7 to 13).map(s => (s-6).toString -> s"Klasse $s"), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject3Level"),  options=(7 to 13).map(s => (s-6).toString -> s"Klasse $s"), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject4Level"),  options=(7 to 13).map(s => (s-6).toString -> s"Klasse $s"), '_default -> "choose.one")
+							@b3.select(profileForm("subjects.subject1Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abirur"), '_default -> "choose.one")
+							@b3.select(profileForm("subjects.subject2Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abirur"), '_default -> "choose.one")
+							@b3.select(profileForm("subjects.subject3Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abirur"), '_default -> "choose.one")
+							@b3.select(profileForm("subjects.subject4Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abirur"), '_default -> "choose.one")
 						</div>
 
 						<label for="interests">@messages("profile.interest.edit")</label>
