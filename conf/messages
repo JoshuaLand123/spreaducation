@@ -128,6 +128,23 @@ profile.interest.time.very.little = Anfänger
 profile.interest.time.many.hours = Profi
 profile.score.very.good = sehr gut
 profile.score.very.bad = ungenügend
+profile.occupation = Fachrichtung
+profile.occupation.edit = In welcher Fachrichtung?
+profile.occupationDegree = Abschluss
+profile.occupationDegree.edit = Was ist dein höchster Abschluss?
+profile.instituteAttended = Schulen und Universitäten
+profile.instituteAttended.edit = Welche Schulen oder Universitäten hast du bisher besucht?
+profile.description = Kurzbeschreibung
+profile.description.edit = Füge eine Kurzbeschreibung, die deine Schüler sehen können, hinzu:
+profile.working.language = Working Language
+profile.working.language.edit = What is your working language?
+profile.subject.able.to.teach = ???
+profile.subject.able.to.teach.edit = Wähle ein bis vier Fächer, die du lehren kannst.
+profile.subject.able.to.teach.class.level.edit = Für welche Klassenstufen?
+profile.lesson.type = ???
+profile.lesson.type.edit = Unterrichtest du lieber bei einem Tutee in deiner Nähe oder online?
+profile.wished.salary = ???
+profile.wished.salary.edit = Was möchtest du pro Unterrichtseinheit (90 min) verdienen?
 profile.error.duplicate.subjects.or.interests = Bitte wählen Sie verschiedene Fächer und Interessen.
 
 # Questionnaire
@@ -149,8 +166,9 @@ save = Speichern
 next = Weiter
 save.and.quit = Speichern und Beenden
 save.and.continue = Speichern und Fortfahren
+choose.one = Bitte Auswählen
 
-#
+# Gender
 
 gender.Male = Männlich
 gender.Female = Weiblich
@@ -165,6 +183,21 @@ language.Italian = Italienisch
 language.Russian = Russisch
 language.Turkish = Türkisch
 language.Other = Andere
+
+# Occupation Degree
+occupationDegree.Middle = Mittlere Reife
+occupationDegree.HighSchool = Abitur
+occupationDegree.Diplima = Diplom
+occupationDegree.Bachelor = Bachelor
+occupationDegree.Master = Master
+occupationDegree.Doctor = Doktor
+occupationDegree.Professor = Professor
+occupationDegree.Other = Andere
+
+# Lesson type
+lessonType.Online = Online
+lessonType.Offline = Offline
+lessonType.Both = Beides
 
 # Subjects
 
@@ -249,6 +282,3 @@ working.Self-organization = Selbstorga
 working.Self-organization.description = Dein Selbstorganisations-Score. Hier geht es darum, wie gut dein Überblick über deine Klassenarbeiten und andere Abgabetermine ist. Bist du eher ein Chaot oder hast du strukturierte To-Do Listen?
 working.Working-techniques = Arbeitstechnik
 working.Working-techniques.description = Dein Arbeitstechnik-Score. Hier siehst du, wie gut du währen dem Schuljahr vorgehst um dein Wissen an den richtigen Stellen zu speichern. Hast du Hefter und Ordner? Bearbeitest du alle Aufgaben und verstehst sie auch? Kennst du gute Strategien für das Bearbeiten der Aufgaben?
-
-
-

@@ -47,23 +47,21 @@ class TuteeProfileController @Inject() (
   def submit = silhouette.SecuredAction.async { implicit request =>
 
     val messages = request.messages
-    Future.successful(TuteeProfileForm.form.bindFromRequest.fold(
+    TuteeProfileForm.form.bindFromRequest.fold(
       errors =>
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
-        Redirect(routes.TuteeProfileController.edit).flashing("error" -> s"Error: ${errors.toString}"),
+        Future.successful(Redirect(routes.TuteeProfileController.edit).flashing("error" -> s"Error: ${errors.toString}")),
       profileSuccess => {
         val profile = profileSuccess.copy(userID = request.identity.userID)
         if (profile.subjectImprove1 == profile.subjectImprove2 ||
           profile.subjectGoodAt1 == profile.subjectGoodAt2 ||
           List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
-          Redirect(routes.TuteeProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests"))
+          Future.successful(Redirect(routes.TuteeProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests")))
         else {
-          userService.saveTuteeProfile(profile)
-          //Redirect(routes.ProfileController.view())
-          Redirect(routes.QuestionsController.index)
+          userService.saveTuteeProfile(profile).map(_ => Redirect(routes.QuestionsController.index))
         }
       }
-    ))
+    )
   }
 
   private def psychogramDataJsonString(profile: TuteeProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {
@@ -71,10 +69,10 @@ class TuteeProfileController @Inject() (
     import utils.ScoreUtils._
     // TODO: refactor this whole method
     val subjects = "subjects" -> PsychogramCategoryData(List(
-      PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt1), reverseScore(profile.scoreSubjectGoodAt1), messages("subject." + profile.subjectGoodAt1)),
-      PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt2), reverseScore(profile.scoreSubjectGoodAt2), messages("subject." + profile.subjectGoodAt2)),
-      PsychogramSubcategoryData(messages("subject." + profile.subjectImprove1), reverseScore(profile.scoreSubjectImprove1), messages("subject." + profile.subjectImprove1)),
-      PsychogramSubcategoryData(messages("subject." + profile.subjectImprove2), reverseScore(profile.scoreSubjectImprove2), messages("subject." + profile.subjectImprove2))
+      PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt1), reverseTuteeSubjectScore(profile.scoreSubjectGoodAt1), messages("subject." + profile.subjectGoodAt1)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt2), reverseTuteeSubjectScore(profile.scoreSubjectGoodAt2), messages("subject." + profile.subjectGoodAt2)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjectImprove1), reverseTuteeSubjectScore(profile.scoreSubjectImprove1), messages("subject." + profile.subjectImprove1)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjectImprove2), reverseTuteeSubjectScore(profile.scoreSubjectImprove2), messages("subject." + profile.subjectImprove2))
     ).sortBy(_.name)(Ordering[String].reverse), messages("subjects.description"))
 
     val interests = "interests" -> PsychogramCategoryData(List(

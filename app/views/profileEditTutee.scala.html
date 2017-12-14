@@ -24,7 +24,7 @@
 					@b3.hidden(profileForm("userID"), 'value -> java.util.UUID.randomUUID())
 					<div class="form-group">
 						@b3.select(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender")
-						@b3.date(profileForm("dob"), '_label -> "profile.dob", 'class -> "form-control")
+						@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control")
 						@b3.select(profileForm("classLevel"), options=(7 to 13).map(s => s.toString -> (s.toString + ". " + messages("profile.class.level"))), '_label -> "profile.class.level.edit")
 
 						@b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control")

@@ -9,7 +9,7 @@ object ScoreUtils {
     else if (percentage < 0.8) 4
     else 5
 
-  def reverseScore(score: Int) = score match {
+  def reverseTuteeSubjectScore(score: Int) = score match {
     case 1 => 5
     case 2 => 4
     case 3 => 3

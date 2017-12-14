@@ -5,15 +5,15 @@ import javax.inject.Inject
 import com.mohiva.play.silhouette.api._
 import forms.TutorProfileForm
 import models.TutorProfile
-import models.services.{ QuestionService, UserService }
-import modules.{ PsychogramCategoryData, PsychogramData, PsychogramSubcategoryData }
+import models.services.{QuestionService, UserService}
+import modules.{PsychogramCategoryData, PsychogramData, PsychogramSubcategoryData}
 import org.webjars.play.WebJarsUtil
 import play.api.i18n._
 import play.api.libs.json.Json
-import play.api.mvc.{ AbstractController, ControllerComponents }
+import play.api.mvc.{AbstractController, ControllerComponents}
 import utils.auth.DefaultEnv
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.concurrent.{ExecutionContext, Future}
 
 class TutorProfileController @Inject() (
   components: ControllerComponents,
@@ -47,33 +47,37 @@ class TutorProfileController @Inject() (
   def submit = silhouette.SecuredAction.async { implicit request =>
 
     val messages = request.messages
-    Future.successful(TutorProfileForm.form.bindFromRequest.fold(
+    TutorProfileForm.form.bindFromRequest.fold(
       errors =>
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
-        Redirect(routes.TutorProfileController.edit).flashing("error" -> s"Error: ${errors.toString}"),
+        Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> s"Error: ${errors.toString}")),
       profileSuccess => {
         val profile = profileSuccess.copy(userID = request.identity.userID)
-        if (List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
-          Redirect(routes.TutorProfileController.edit).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests"))
+        val subjects = List(Some(profile.subjects.subject1), profile.subjects.subject2, profile.subjects.subject3, profile.subjects.subject4).flatten
+        if (subjects.size != subjects.distinct.size ||
+          List(profile.interests.interest1, profile.interests.interest2, profile.interests.interest3).distinct.size < 3)
+          Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests")))
         else {
-          userService.saveTutorProfile(profile)
-          //Redirect(routes.ProfileController.view())
-          Redirect(routes.QuestionsController.index)
+          userService.saveTutorProfile(profile).map(_ => Redirect(routes.QuestionsController.index))
         }
       }
-    ))
+    )
   }
 
   private def psychogramDataJsonString(profile: TutorProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {
     import PsychogramData._
     import utils.ScoreUtils._
-    // TODO: refactor this whole method
-    val subjects = "subjects" -> PsychogramCategoryData(List(), messages("subjects.description"))
+    // TODO: refactor this whole methodPsychogramCategoryData(List(
+    val subjects = "subjects" -> PsychogramCategoryData(List(Some(PsychogramSubcategoryData(messages("subject." + profile.subjects.subject1), profile.subjects.subject1Level, messages("subject." + profile.subjects.subject1))),
+      profile.subjects.subject2.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject2Level.getOrElse(3), messages("subject." + s))),
+      profile.subjects.subject3.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject3Level.getOrElse(3), messages("subject." + s))),
+      profile.subjects.subject4.map(s => PsychogramSubcategoryData(messages("subject." + s), profile.subjects.subject4Level.getOrElse(3), messages("subject." + s))),
+    ).flatten.sortBy(_.name)(Ordering[String].reverse), messages("subjects.description"))
 
     val interests = "interests" -> PsychogramCategoryData(List(
-      PsychogramSubcategoryData(messages("interest." + profile.interest1), profile.timeInterest1, messages("interest." + profile.interest1)),
-      PsychogramSubcategoryData(messages("interest." + profile.interest2), profile.timeInterest2, messages("interest." + profile.interest2)),
-      PsychogramSubcategoryData(messages("interest." + profile.interest3), profile.timeInterest3, messages("interest." + profile.interest3))
+      PsychogramSubcategoryData(messages("interest." + profile.interests.interest1), profile.interests.timeInterest1, messages("interest." + profile.interests.interest1)),
+      PsychogramSubcategoryData(messages("interest." + profile.interests.interest2), profile.interests.timeInterest2, messages("interest." + profile.interests.interest2)),
+      PsychogramSubcategoryData(messages("interest." + profile.interests.interest3), profile.interests.timeInterest3, messages("interest." + profile.interests.interest3))
     ).sortBy(_.name), messages("interests.description"))
 
     def psychoDataForSubcategory(subcategory: String) = {
