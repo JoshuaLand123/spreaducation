@@ -73,16 +73,16 @@ class TuteeProfileController @Inject() (
       PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt2), reverseTuteeSubjectScore(profile.scoreSubjectGoodAt2), messages("subject." + profile.subjectGoodAt2)),
       PsychogramSubcategoryData(messages("subject." + profile.subjectImprove1), reverseTuteeSubjectScore(profile.scoreSubjectImprove1), messages("subject." + profile.subjectImprove1)),
       PsychogramSubcategoryData(messages("subject." + profile.subjectImprove2), reverseTuteeSubjectScore(profile.scoreSubjectImprove2), messages("subject." + profile.subjectImprove2))
-    ).sortBy(_.name)(Ordering[String].reverse), messages("subjects.description"))
+    ).sortBy(_.name)(Ordering[String].reverse), messages("subjects.description.tutee"))
 
     val interests = "interests" -> PsychogramCategoryData(List(
       PsychogramSubcategoryData(messages("interest." + profile.interest1), profile.timeInterest1, messages("interest." + profile.interest1)),
       PsychogramSubcategoryData(messages("interest." + profile.interest2), profile.timeInterest2, messages("interest." + profile.interest2)),
       PsychogramSubcategoryData(messages("interest." + profile.interest3), profile.timeInterest3, messages("interest." + profile.interest3))
-    ).sortBy(_.name), messages("interests.description"))
+    ).sortBy(_.name), messages("interests.description.tutee"))
 
     def psychoDataForSubcategory(subcategory: String) = {
-      PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse(subcategory.capitalize, Seq()).map(g => PsychogramSubcategoryData(messages(subcategory + "." + g._2), percentageToScore(g._3), messages(subcategory + "." + g._2 + ".description"))).toList.sortBy(_.name), messages(subcategory + ".description"))
+      PsychogramCategoryData(psychoSubcategoryResult.groupBy(_._1).getOrElse(subcategory.capitalize, Seq()).map(g => PsychogramSubcategoryData(messages(subcategory + "." + g._2 + ".tutee"), percentageToScore(g._3), messages(subcategory + "." + g._2 + ".description.tutee"))).toList.sortBy(_.name), messages(subcategory + ".description.tutee"))
     }
 
     val environment = "environment" -> psychoDataForSubcategory("environment")

@@ -252,52 +252,70 @@ interest.Other = Andere
 # Psychogram
 
 interests = Interessen
-interests.description = Dieser Bereich zeigt deine verschiedenen Interessen und ob du Anfänger (rot) oder Profi (grün) bist.
+interests.description.tutee = Dieser Bereich zeigt deine verschiedenen Interessen und ob du Anfänger (rot) oder Profi (grün) bist.
+interests.description.tutor = ???
 
 subjects = Fachwissen
-subjects.description = Dieser Bereich zeigt deine angegebenen Fächer. Je besser deine Noten werden, desto höher (grüner) wird dein Score.
+subjects.description.tutee = Dieser Bereich zeigt deine angegebenen Fächer. Je besser deine Noten werden, desto höher (grüner) wird dein Score.
+subjects.description.tutor = ???
 
 environment = Umfeld
-environment.description = Dieser Bereich beschreibt dein Umfeld und wie sehr es dein Lernen unterstützt. Rot bedeutet wenig und grün bedeuted sehr.
-environment.Leisure = Freizeit
-environment.Leisure.description = Dein Freizeit-Score. Hier geht es darum, inwiefern du dir genug Zeit nehmen kannst für die Schule etwas zu tun oder du in deiner Freizeit so viele verschiedene Dinge tust, dass für die Schule wenig Zeit übrig bleibt.
-environment.Friends = Freunde
-environment.Friends.description = Dein Freunde-Score. Hier geht es nicht darum, ob du viele Freunde hast, sondern ob deine Freunde eher dein Lernen begünstigen oder es aufhalten. Triffst du dich oft mit Freunden anstatt für deine Klassenarbeiten zu lernen?
-environment.Class = Klasse
-environment.Class.description = Dein Klasse-Score. Hier siehst du, wie wohl du dich in deinem Lernumfeld fühlst und wie gern du dich in deiner Klasse aufhälst.
-environment.Parents = Eltern
-environment.Parents.description = Dein Eltern-Score. Hier siehst du, wie sehr deine Eltern dich und dein Lernen unterstützen. Versuchen sie sich Zeit für deine Fragen zu nehmen?
-environment.Occupation = ???
-environment.Occupation.description = ???
-environment.Extra-time = ???
-environment.Extra-time.description = ???
+environment.description.tutee = Dieser Bereich beschreibt dein Umfeld und wie sehr es dein Lernen unterstützt. Rot bedeutet wenig und grün bedeuted sehr.
+environment.Leisure.tutee = Freizeit
+environment.Leisure.description.tutee = Dein Freizeit-Score. Hier geht es darum, inwiefern du dir genug Zeit nehmen kannst für die Schule etwas zu tun oder du in deiner Freizeit so viele verschiedene Dinge tust, dass für die Schule wenig Zeit übrig bleibt.
+environment.Friends.tutee = Freunde
+environment.Friends.description.tutee = Dein Freunde-Score. Hier geht es nicht darum, ob du viele Freunde hast, sondern ob deine Freunde eher dein Lernen begünstigen oder es aufhalten. Triffst du dich oft mit Freunden anstatt für deine Klassenarbeiten zu lernen?
+environment.Class.tutee = Klasse
+environment.Class.description.tutee = Dein Klasse-Score. Hier siehst du, wie wohl du dich in deinem Lernumfeld fühlst und wie gern du dich in deiner Klasse aufhälst.
+environment.Parents.tutee = Eltern
+environment.Parents.description.tutee = Dein Eltern-Score. Hier siehst du, wie sehr deine Eltern dich und dein Lernen unterstützen. Versuchen sie sich Zeit für deine Fragen zu nehmen?
+
+environment.description.tutor = ???
+environment.description.tutor = ???
+environment.Occupation.tutor = ???
+environment.Occupation.description.tutor = ???
+environment.Extra-time.tutor = ???
+environment.Extra-time.description.tutor = ???
+environment.Leisure.tutor = ???
+environment.Leisure.description.tutor = ???
+
 
 constitution = Konstitution
-constitution.description = Dieser Bereich beschreibt Persönlichkeitseigenschaften, die aufs Lernen großen Einfluss nehmen. Rot heißt nicht so guter Einfluss und grün sehr guter Einfluss.
-constitution.Anxiety = Angst
-constitution.Anxiety.description = Dein Angst-Score. Hier geht es darum, wie entspannt du bist, wenn es um Situation geht, in denen man sich unwohl fühlen könnte. Meldest du dich im Unterricht ohne Probleme? Gehst du entspannt in Präsentationen oder Klassenarbeiten?
-constitution.Concentration = Konzentration
-constitution.Concentration.description = Dein Konzentrations-Score. Hier geht es darum, wie leicht es dir fällt dich nur mit einer Sache zu beschäftigen. Lässt du dich leicht durch äußere Einflüsse ablenken?
-constitution.Discipline = Disziplin
-constitution.Discipline.description = Dein Disziplin-Score. Hier siehst du, ob du Durchhaltevermögen beweist, dir Ziele setzst und sie disziplinert verfolgst. Hälst du Zeiten in denen du lernen willst auch wirklich ein?
-constitution.Self-efficacy = Selbstwirksamkeit
-constitution.Self-efficacy.description = Dein Selbstwirksamkeits-Score. Hier siehst du, wie sehr du von deiner Wirkung als Lernperson überzeugt bist. Falls eine neue Aufgabe auf dich zukommt, sagst du:"JA, das mach ich!", oder zweifelst du eher, ob du das schaffen kannst?
-constitution.Methodology = ???
-constitution.Methodology.description = ???
-constitution.Empathy = ???
-constitution.Empathy.description = ???
-constitution.Motivation = ???
-constitution.Motivation.description = ???
-constitution.Authority = ???
-constitution.Authority.description = ???
+constitution.description.tutee = Dieser Bereich beschreibt Persönlichkeitseigenschaften, die aufs Lernen großen Einfluss nehmen. Rot heißt nicht so guter Einfluss und grün sehr guter Einfluss.
+constitution.Anxiety.tutee = Angst
+constitution.Anxiety.description.tutee = Dein Angst-Score. Hier geht es darum, wie entspannt du bist, wenn es um Situation geht, in denen man sich unwohl fühlen könnte. Meldest du dich im Unterricht ohne Probleme? Gehst du entspannt in Präsentationen oder Klassenarbeiten?
+constitution.Concentration.tutee = Konzentration
+constitution.Concentration.description.tutee = Dein Konzentrations-Score. Hier geht es darum, wie leicht es dir fällt dich nur mit einer Sache zu beschäftigen. Lässt du dich leicht durch äußere Einflüsse ablenken?
+constitution.Discipline.tutee = Disziplin
+constitution.Discipline.description.tutee = Dein Disziplin-Score. Hier siehst du, ob du Durchhaltevermögen beweist, dir Ziele setzst und sie disziplinert verfolgst. Hälst du Zeiten in denen du lernen willst auch wirklich ein?
+constitution.Self-efficacy.tutee = Selbstwirksamkeit
+constitution.Self-efficacy.description.tutee = Dein Selbstwirksamkeits-Score. Hier siehst du, wie sehr du von deiner Wirkung als Lernperson überzeugt bist. Falls eine neue Aufgabe auf dich zukommt, sagst du:"JA, das mach ich!", oder zweifelst du eher, ob du das schaffen kannst?
+
+constitution.description.tutor = ???
+constitution.Methodology.tutor = ???
+constitution.Methodology.description.tutor = ???
+constitution.Empathy.tutor = ???
+constitution.Empathy.description.tutor = ???
+constitution.Motivation.tutor = ???
+constitution.Motivation.description.tutor = ???
+constitution.Authority.tutor = ???
+constitution.Authority.description.tutor = ???
 
 working = Arbeitsweise
-working.description = Dieser Bereich beschreibt, wie du gut du beim Lernen vorgehst. Rot heißt noch nicht so gut, grün dagegen schon super.
-working.Learning-techniques = Lerntechnik
-working.Learning-techniques.description = Dein Lerntechnik-Score. Hier geht es darum, wie gut du dich auf eine Klassenarbeit vorbereiten kannst. Weißt du immer genau was du lernen musst und wie es am besten in deinem Kopf bleibt ? Hast du coole Techniken für Eselsbrücken oder Karteikarten?
-working.Self-organization = Selbstorga
-working.Self-organization.description = Dein Selbstorganisations-Score. Hier geht es darum, wie gut dein Überblick über deine Klassenarbeiten und andere Abgabetermine ist. Bist du eher ein Chaot oder hast du strukturierte To-Do Listen?
-working.Working-techniques = Arbeitstechnik
-working.Working-techniques.description = Dein Arbeitstechnik-Score. Hier siehst du, wie gut du währen dem Schuljahr vorgehst um dein Wissen an den richtigen Stellen zu speichern. Hast du Hefter und Ordner? Bearbeitest du alle Aufgaben und verstehst sie auch? Kennst du gute Strategien für das Bearbeiten der Aufgaben?
-working.Organization = ???
-working.Organization.description = ???
+working.description.tutee = Dieser Bereich beschreibt, wie du gut du beim Lernen vorgehst. Rot heißt noch nicht so gut, grün dagegen schon super.
+working.Learning-techniques.tutee = Lerntechnik
+working.Learning-techniques.description.tutee = Dein Lerntechnik-Score. Hier geht es darum, wie gut du dich auf eine Klassenarbeit vorbereiten kannst. Weißt du immer genau was du lernen musst und wie es am besten in deinem Kopf bleibt ? Hast du coole Techniken für Eselsbrücken oder Karteikarten?
+working.Self-organization.tutee = Selbstorga
+working.Self-organization.description.tutee = Dein Selbstorganisations-Score. Hier geht es darum, wie gut dein Überblick über deine Klassenarbeiten und andere Abgabetermine ist. Bist du eher ein Chaot oder hast du strukturierte To-Do Listen?
+working.Working-techniques.tutee = Arbeitstechnik
+working.Working-techniques.description.tutee = Dein Arbeitstechnik-Score. Hier siehst du, wie gut du währen dem Schuljahr vorgehst um dein Wissen an den richtigen Stellen zu speichern. Hast du Hefter und Ordner? Bearbeitest du alle Aufgaben und verstehst sie auch? Kennst du gute Strategien für das Bearbeiten der Aufgaben?
+
+working.description.tutor = ???
+working.Organization.tutor = ???
+working.Organization.description.tutor = ???
+working.Working-techniques.tutor = ???
+working.Working-techniques.description.tutor = ???
+working.Learning-techniques.tutor = ???
+working.Learning-techniques.description.tutor = ???
+
+
