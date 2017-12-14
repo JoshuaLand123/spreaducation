@@ -149,6 +149,7 @@ profile.error.duplicate.subjects.or.interests = Bitte wählen Sie verschiedene F
 
 # Questionnaire
 questionnaire = Wie lerne ich?
+questionnaire.tutor = Wie lehre ich?
 finish.and.view.profile = Beenden und Profil ansehen
 strongly.agree = stimmt
 strongly.disagree = stimmt nicht
