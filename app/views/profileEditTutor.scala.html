@@ -33,7 +33,7 @@
 								@b3.select(profileForm("occupationDegree"), options=models.enums.OccupationDegree.selectList(messages), '_label -> "profile.occupationDegree.edit", '_default -> "choose.one")
 							</div>
 							<div class="col-md-5">
-								@b3.select(profileForm("occupation"), options=models.enums.Subject.selectList(messages), '_label -> "profile.occupation.edit", '_default -> "choose.one")
+								@b3.text(profileForm("occupation"), '_label -> "profile.occupation.edit")
 							</div>
 						</div>
 						<label for="subjects">@messages("profile.subject.able.to.teach.edit")</label>
