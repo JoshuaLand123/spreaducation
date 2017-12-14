@@ -57,5 +57,5 @@ class QuestionsController @Inject() (
 
 object QuestionsController {
 
-  val PaginationCount = 9
+  val PaginationCount = 10
 }
