@@ -138,6 +138,7 @@ meter::-webkit-meter-optimum-value {
     position: relative;
 }
 
-a{
-  vertical-align: middle;
+.form-inline {
+  vertical-align: top;
+  margin:5px 3px;
 }
