@@ -136,11 +136,11 @@ profile.occupation.degree.edit = Was ist dein höchster Abschluss?
 profile.institute.attended = Schulen und Universitäten
 profile.institute.attended.edit = Welche Schulen oder Universitäten hast du bisher besucht?
 profile.description = Kurzbeschreibung
-profile.description.edit = Füge eine Kurzbeschreibung mit über dich und deine verfügbaren Zeiten hinzu. Deine Schüler können diese sehen.
+profile.description.edit = Füge eine Kurzbeschreibung über dich und deine verfügbaren Zeiten hinzu. Was sollten deine Schüler über dich wissen?
 profile.working.language = Alltagssprache
 profile.working.language.edit = Welche Sprache sprichst du im Alltag?
 profile.subject.able.to.teach = Meine Fächer
-profile.subject.able.to.teach.edit = Wähle ein bis vier Fächer, die du lehren kannst.
+profile.subject.able.to.teach.edit = Wähle ein bis vier Fächer, die du lehren kannst. Bis auf welches Level?
 profile.subject.able.to.teach.class.level.edit = Für welche Klassenstufen?
 profile.lesson.type = Online oder beim Schüler
 profile.lesson.type.edit = Unterrichtest du lieber bei einem Schüler in deiner Nähe oder online?
@@ -258,11 +258,11 @@ interest.Other = Andere
 
 interests = Interessen
 interests.description.tutee = Dieser Bereich zeigt deine verschiedenen Interessen und ob du Anfänger (rot) oder Profi (grün) bist.
-interests.description.tutor = ???
+interests.description.tutor = Dieser Bereich zeigt deine verschiedenen Interessen und ob du Anfänger (rot) oder Profi (grün) bist.
 
 subjects = Fachwissen
 subjects.description.tutee = Dieser Bereich zeigt deine angegebenen Fächer. Je besser deine Noten werden, desto höher (grüner) wird dein Score.
-subjects.description.tutor = ???
+subjects.description.tutor = Dieser Bereich zeigt die Fächer, die du lehren kannst. Grün = bis auf Abiturniveau, rot = 7. Klasse.
 
 environment = Umfeld
 environment.description.tutee = Dieser Bereich beschreibt dein Umfeld und wie sehr es dein Lernen unterstützt. Rot bedeutet wenig und grün bedeuted sehr.
@@ -275,13 +275,14 @@ environment.Class.description.tutee = Dein Klasse-Score. Hier siehst du, wie woh
 environment.Parents.tutee = Eltern
 environment.Parents.description.tutee = Dein Eltern-Score. Hier siehst du, wie sehr deine Eltern dich und dein Lernen unterstützen. Versuchen sie sich Zeit für deine Fragen zu nehmen?
 
-environment.description.tutor = ???
-environment.Occupation.tutor = ???
-environment.Occupation.description.tutor = ???
-environment.Extra-time.tutor = ???
-environment.Extra-time.description.tutor = ???
-environment.Leisure.tutor = ???
-environment.Leisure.description.tutor = ???
+environment.description.tutor = Dieser Bereich zeigt, wie dein Umfeld dein Lehren beeinflusst.
+environment.description.tutor = Dieser Bereich zeigt, wie dein Umfeld dein Lehren beeinflusst.
+environment.Occupation.tutor = Beschäftigung
+environment.Occupation.description.tutor = Dieser Bereich zeigt, ob deine weiteren Beschäftigungen dein Lehren fördern. Grün = ja , rot = eher weniger
+environment.Extra-time.tutor = Zusätzliche Zeit. 
+environment.Extra-time.description.tutor = Dieser Bereich zeigt, ob du um den Unterricht weitere Zeit in deine Schüler investierst.
+environment.Leisure.tutor = Freizeit
+environment.Leisure.description.tutor = Dieser Bereich zeigt, wie viel freie Zeit du hast.
 
 
 constitution = Konstitution
@@ -295,15 +296,15 @@ constitution.Discipline.description.tutee = Dein Disziplin-Score. Hier siehst du
 constitution.Self-efficacy.tutee = Selbstwirksamkeit
 constitution.Self-efficacy.description.tutee = Dein Selbstwirksamkeits-Score. Hier siehst du, wie sehr du von deiner Wirkung als Lernperson überzeugt bist. Falls eine neue Aufgabe auf dich zukommt, sagst du:"JA, das mach ich!", oder zweifelst du eher, ob du das schaffen kannst?
 
-constitution.description.tutor = ???
-constitution.Methodology.tutor = ???
-constitution.Methodology.description.tutor = ???
-constitution.Empathy.tutor = ???
-constitution.Empathy.description.tutor = ???
-constitution.Motivation.tutor = ???
-constitution.Motivation.description.tutor = ???
-constitution.Authority.tutor = ???
-constitution.Authority.description.tutor = ???
+constitution.description.tutor = Dieser Bereich beschreibt Persönlichkeitseigenschaften, die aufs Lehren großen Einfluss nehmen. Rot heißt nicht so guter Einfluss und grün sehr guter Einfluss.
+constitution.Methodology.tutor = Methoden
+constitution.Methodology.description.tutor = Dieser Bereich zeigt, wie gut dein methodisches Vorgehen beim Unterrichten ist.
+constitution.Empathy.tutor = Empathie
+constitution.Empathy.description.tutor = Dieser Bereich zeigt, wie viel Empathie du gegenüber Schülern aufbringst.
+constitution.Motivation.tutor = Motivation
+constitution.Motivation.description.tutor = Dieser Bereich zeigt, wie motivierend du auf deine Schüler wirkst.
+constitution.Authority.tutor = Autorität
+constitution.Authority.description.tutor = Dieser bereich zeigt, wie viel Autotität du gegenüber deinem Schüler zeigst.
 
 working = Arbeitsweise
 working.description.tutee = Dieser Bereich beschreibt, wie du gut du beim Lernen vorgehst. Rot heißt noch nicht so gut, grün dagegen schon super.
@@ -314,12 +315,12 @@ working.Self-organization.description.tutee = Dein Selbstorganisations-Score. Hi
 working.Working-techniques.tutee = Arbeitstechnik
 working.Working-techniques.description.tutee = Dein Arbeitstechnik-Score. Hier siehst du, wie gut du währen dem Schuljahr vorgehst um dein Wissen an den richtigen Stellen zu speichern. Hast du Hefter und Ordner? Bearbeitest du alle Aufgaben und verstehst sie auch? Kennst du gute Strategien für das Bearbeiten der Aufgaben?
 
-working.description.tutor = ???
-working.Organization.tutor = ???
-working.Organization.description.tutor = ???
-working.Working-techniques.tutor = ???
-working.Working-techniques.description.tutor = ???
-working.Learning-techniques.tutor = ???
-working.Learning-techniques.description.tutor = ???
+working.description.tutor = Dieser Bereich beschreibt, welche Techniken du deinem Schüler bieten kannst.
+working.Organization.tutor = Organisation
+working.Organization.description.tutor = Dein Organisations-Score. Du organisierst das Lernen deiner Schüler gerne mit einem Kalender oder Ähnlichem. Grün = ja, Rot = nein
+working.Working-techniques.tutor = Arbeitstechnik
+working.Working-techniques.description.tutor = Dein Arbeitstechnik-Score. Du hast viele Techniken für das Vorgehen beim Speichern von Wissen während dem Schuljahr für deine Schüler. Du kennst gute Strategien für das Bearbeiten von verschiedenen Aufgaben. rot = nein , grün = ja
+working.Learning-techniques.tutor = Lerntechnik
+working.Learning-techniques.description.tutor = Dein Lerntechnik-Score. Du hast tolle Techniken, um deine Schüler gut auf Klassenarbeiten vorzubereiten. Grün = ja , rot = eher weniger.
 
 
