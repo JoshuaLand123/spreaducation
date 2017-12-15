@@ -56,6 +56,13 @@ class QuestionDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigP
     db.run(query)
   }
 
+  override def answeredAllQuestions(user: User): Future[Boolean] = {
+    val totalQuestions = db.run(questionsTable.filter(_.questionUserType === user.userType).size.result)
+    val answeredQuestions = db.run(answersTable.filter(_.userId === user.userID).size.result)
+    totalQuestions.flatMap(total => answeredQuestions.map(answered => answered == total))
+
+  }
+
 }
 
 object QuestionDAOImpl {

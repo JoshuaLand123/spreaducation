@@ -5,17 +5,16 @@
 @import controllers.AssetsFinder
 @import b3.inline.fieldConstructor
 
-@(profileForm: Form[models.TutorProfile], user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(profileForm: Form[models.TutorProfile], user: models.User, allowedToEditQuestions: Boolean)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
-	<div class="user col-md-6 col-md-offset-3">
+	<div class="col-md-6 col-md-offset-3">
 		<div class="row">
 			<legend>@messages("profile.edit")</legend>
 			<div class="col-md-12 text-right">
 				<img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
 			</div>
-			<hr class="col-md-12" />
 		</div>
 		<div class="row data">
 			<div class="col-md-12">
@@ -64,12 +63,13 @@
 						@b3.select(profileForm("wishedSalary"), options=List((20, "Frischling"), (30, "Fortgeschritten"), (40, "Halb-Profi"), (50, "Profi"), (60, "Legende")).map { case (s, d) => s.toString -> s"$s € ($d)"}, '_label -> "profile.wished.salary.edit")
 						@b3.select(profileForm("lessonType"), options=models.enums.LessonType.selectList(messages), '_label -> "profile.lesson.type.edit")
 						@b3.text(profileForm("place"), '_label -> "profile.tutor.place.description")
-						@b3.free('_id -> "idFormGroup") {
-							@*<a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>*@
+						@if(allowedToEditQuestions) {
 							<button type="submit" class="btn btn-primary pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
-							}
-						</div>
+						} else {
+							<button type="submit" class="btn btn-primary pull-right">@messages("save")<span class="glyphicon glyphicon-ok"></span></button>
 						}
+					</div>
+				}
 			</div>
 		</div>
 		<script>

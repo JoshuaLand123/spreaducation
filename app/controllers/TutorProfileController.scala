@@ -18,11 +18,11 @@ import scala.concurrent.{ExecutionContext, Future}
 class TutorProfileController @Inject() (
   components: ControllerComponents,
   silhouette: Silhouette[DefaultEnv],
-  userService: UserService
+  userService: UserService,
+  questionService: QuestionService
 )(
   implicit
   webJarsUtil: WebJarsUtil,
-  questionService: QuestionService,
   assets: AssetsFinder,
   ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
@@ -38,9 +38,10 @@ class TutorProfileController @Inject() (
   }
 
   def edit = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveTutorProfile(request.identity.userID).map(profile => {
+    userService.retrieveTutorProfile(request.identity.userID).flatMap(profile => {
       val form = profile.map(TutorProfileForm.form.fill).getOrElse(TutorProfileForm.form)
-      Ok(views.html.profileEditTutor(form, request.identity))
+      questionService.isAllowedToEditQuestions(request.identity).map(isAllowedToEditQuestions =>
+        Ok(views.html.profileEditTutor(form, request.identity, isAllowedToEditQuestions)))
     })
   }
 

@@ -14,4 +14,6 @@ trait QuestionDAO {
 
   def getPsychoSubcategoryScores(userID: UUID): Future[Seq[(String, String, Double)]]
 
+  def answeredAllQuestions(user: User): Future[Boolean]
+
 }
