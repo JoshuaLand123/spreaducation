@@ -41,7 +41,7 @@
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.occupation.degree"):</strong></p>
-                <p class="col-md-6">@profile.map(_.occupationDegree).getOrElse("")</p>
+                <p class="col-md-6">@profile.map(p => messages("occupationDegree." + p.occupationDegree)).getOrElse("")</p>
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.occupation"):</strong></p>
@@ -61,7 +61,7 @@
             </div>
             @if(profile.flatMap(_.place).isDefined) {
                 <div class="row">
-                    <p class="col-md-6"><strong>@messages("profile.place"):</strong></p>
+                    <p class="col-md-6"><strong>@messages("profile.tutor.place"):</strong></p>
                     <p class="col-md-6">@profile.flatMap(_.place).getOrElse("")</p>
                 </div>
             }
