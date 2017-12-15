@@ -5,27 +5,34 @@
 @import controllers.AssetsFinder
 @import b3.inline.fieldConstructor
 
-@(profileForm: Form[models.UserProfile], user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(profileForm: Form[models.TuteeProfile], user: models.User, profile: Option[models.TuteeProfile], allowedToEditQuestions: Boolean)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
-	<div class="user col-md-10 col-md-offset-1">
+	<div class="col-md-10 col-md-offset-1">
 		<div class="row">
 			<legend>@messages("profile.edit")</legend>
-			<div class="col-md-12 text-center">
-				<img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
+			<div class="col-md-4 col-md-offset-4 thumb-post">
+				@if(profile.map(p => p.profileImageByteArray.isDefined && p.profileImageByteArray.get.nonEmpty).getOrElse(false)) {
+					<img src="@controllers.routes.TuteeProfileController.getImage" />
+				} else {
+					<img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" />
+				}
 			</div>
-			
 		</div>
 		<div class="row data">
 			<div class="col-md-12">
-				@helper.form(action = controllers.routes.ProfileController.submit()) {
+				@helper.form(action = controllers.routes.TuteeProfileController.submit(), 'enctype -> "multipart/form-data") {
 					@helper.CSRF.formField
+					<div class="text-center">
+						<label for="picture" class="btn btn-xs">@messages("upload.image")</label>
+						<input id="picture" type="file" style="visibility:hidden;" name="picture" accept="image/*" >
+					</div>
 					@b3.hidden(profileForm("userID"), 'value -> java.util.UUID.randomUUID())
 					<div class="form-group">
 						@b3.select(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender")
-						@b3.date(profileForm("dob"), '_label -> "profile.dob", 'class -> "form-control")
-						@b3.select(profileForm("classLevel"),  options=(7 to 13).map(s => s.toString -> (s.toString + ". " + messages("profile.class.level"))), '_label -> "profile.class.level.edit")
+						@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control")
+						@b3.select(profileForm("classLevel"), options=(7 to 13).map(s => s.toString -> (s.toString + ". " + messages("profile.class.level"))), '_label -> "profile.class.level.edit")
 
 						@b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control")
 						@b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit")
@@ -59,12 +66,13 @@
 							<p><input id="slider-interest2" class="slider" name='timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest2")'/></p>
 							<p><input id="slider-interest3" class="slider" name='timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
 						</div>
-						@b3.free('_id -> "idFormGroup") {
-							@*<a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>*@
+						@if(allowedToEditQuestions) {
 							<button type="submit" class="btn btn-primary pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
-							}
-						</div>
+						} else {
+							<button type="submit" class="btn btn-primary pull-right">@messages("save")<span class="glyphicon glyphicon-ok"></span></button>
 						}
+						}
+					</div>
 			</div>
 		</div>
 		<script>

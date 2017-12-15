@@ -94,7 +94,7 @@ class SignUpController @Inject() (
               fullName = Some(data.firstName + " " + data.lastName),
               email = Some(data.email),
               avatarURL = None,
-              userType = UserType.Tutee,
+              userType = data.userType,
               activated = true
             )
             for {

@@ -15,13 +15,14 @@ dashboard.title = Spreaducation - Übersicht
 profile.title = Spreaducation - Mein Profil
 questionnaire.title = Spreaducation - Wie lerne ich?
 matching.title = Spreaducation - Tutor Finden
+tutor.my.students.title = Spreaducation - Meine Schüler
 feedback.title = Spreaducation - Feedback
 
 toggle.navigation = Navigation ändern.
 welcome.signed.in = Willkommen, du bist jetzt angemeldet!
 
 sign.up.account = Erstelle ein neues Konto.
-sign.in.credentials = Dein persönlicher Tutor wartet schon auf dich! Logge dich ein.
+sign.in.credentials = Logge dich ein.
 
 error = Fehler
 info = Info
@@ -118,8 +119,8 @@ profile.school.name = Schulname
 profile.school.name.edit = Wie ist der Name deiner Schule?
 profile.language = Muttersprache
 profile.language.edit = Was ist deine Muttersprache?
-profile.subject.improve.edit = Wähle zwei Fächer, in denen dich dein Tutor unterstützen soll und gib uns deine letzten Noten.
-profile.subject.goodat.edit = Wähle zwei Fächer, in denen du sehr gut bist und gib uns deine letzten Noten.
+profile.subject.improve.edit = Wähle zwei Fächer, in denen du Unterstützung brauchst und gib uns deine letzten Klassenarbeitsnoten.
+profile.subject.goodat.edit = Wähle zwei Fächer, in denen du sehr gut bist und gib uns deine letzten Klassenarbeitsnoten.
 profile.interest = Freizeit
 profile.interest.edit = Wähle drei Interessen aus deiner Freizeit und schätze dein Können ein.
 profile.interest.time = Level
@@ -128,15 +129,45 @@ profile.interest.time.very.little = Anfänger
 profile.interest.time.many.hours = Profi
 profile.score.very.good = sehr gut
 profile.score.very.bad = ungenügend
+profile.occupation = Fachrichtung
+profile.occupation.edit = In welcher Fachrichtung?
+profile.occupation.degree = Abschluss
+profile.occupation.degree.edit = Was ist dein höchster Abschluss?
+profile.institute.attended = Schulen und Universitäten
+profile.institute.attended.edit = Welche Schulen oder Universitäten hast du bisher besucht?
+profile.description = Kurzbeschreibung
+profile.description.edit = Füge eine Kurzbeschreibung über dich und deine verfügbaren Zeiten hinzu. Was sollten deine Schüler über dich wissen?
+profile.working.language = Alltagssprache
+profile.working.language.edit = Welche Sprache sprichst du im Alltag?
+profile.subject.able.to.teach = Meine Fächer
+profile.subject.able.to.teach.edit = Wähle ein bis vier Fächer, die du lehren kannst. Bis auf welches Level?
+profile.subject.able.to.teach.class.level.edit = Für welche Klassenstufen?
+profile.lesson.type = Unterrichtsform
+profile.lesson.type.edit = Unterrichtest du lieber bei einem Schüler in deiner Nähe oder online?
+profile.wished.salary = Gewünschter Unterrichtslohn
+profile.wished.salary.edit = Was möchtest du pro Unterrichtseinheit (90 min) verdienen?
+profile.tutor.place = Wohnort
+profile.tutor.place.description = Gebe deinen Wohnort ein.
+profile.error.duplicate.subjects.or.interests = Bitte wähle verschiedene Fächer und Interessen.
+
+
+tutee.feedback = FRAGEN BEANTWORTEN
+
+tutor.my.students = Meine Schüler
+tutor.your.profile.look = So werden deine Schüler dein Profil sehen
+tutor.wait.for.students = Danke für deine Registrierung. Wir sind noch dabei die am besten zu dir passenden Schüler zu finden … Komm doch morgen nochmal vorbei :)
+tutor.feedback = FRAGEN BEANTWORTEN
 
 # Questionnaire
 questionnaire = Wie lerne ich?
+questionnaire.tutor = Wie lehre ich?
 finish.and.view.profile = Beenden und Profil ansehen
 strongly.agree = stimmt
 strongly.disagree = stimmt nicht
 
 # Matching
 matching = Tutor finden
+matching.choose = Auswählen
 
 
 # General
@@ -147,8 +178,10 @@ save = Speichern
 next = Weiter
 save.and.quit = Speichern und Beenden
 save.and.continue = Speichern und Fortfahren
+choose.one = Bitte Auswählen
+upload.image = Bild hochladen
 
-#
+# Gender
 
 gender.Male = Männlich
 gender.Female = Weiblich
@@ -163,6 +196,21 @@ language.Italian = Italienisch
 language.Russian = Russisch
 language.Turkish = Türkisch
 language.Other = Andere
+
+# Occupation Degree
+occupationDegree.Middle = Mittlere Reife
+occupationDegree.HighSchool = Abitur
+occupationDegree.Diplima = Diplom
+occupationDegree.Bachelor = Bachelor
+occupationDegree.Master = Master
+occupationDegree.Doctor = Doktor
+occupationDegree.Professor = Professor
+occupationDegree.Other = Andere
+
+# Lesson type
+lessonType.Online = Online
+lessonType.Offline = Offline
+lessonType.Both = Beides
 
 # Subjects
 
@@ -189,6 +237,7 @@ interest.Music = Musik
 interest.Art = Kunst
 interest.VideoGames = Videospiele
 interest.MeetFriends = Freunde treffen
+interest.photography = Fotografie
 interest.Fashion = Mode
 interest.Theater = Schauspiel
 interest.Mystery = Rätsel
@@ -205,6 +254,7 @@ interest.Rugby = Rugby
 interest.Football = Football
 interest.StrengthTraining = Krafttraining
 interest.Climbing = Klettern
+interest.Painting = Malen
 interest.Hockey = Hockey
 interest.SocialCommitment = Soziales Engagement
 interest.Other = Andere
@@ -212,41 +262,70 @@ interest.Other = Andere
 # Psychogram
 
 interests = Interessen
-interests.description = Dieser Bereich zeigt, deine verschiedenen Interessen und wie gut du in ihnen bist.
+interests.description.tutee = Dieser Bereich zeigt deine verschiedenen Interessen und ob du Anfänger (rot) oder Profi (grün) bist.
+interests.description.tutor = Dieser Bereich zeigt deine verschiedenen Interessen und ob du Anfänger (rot) oder Profi (grün) bist.
 
 subjects = Fachwissen
-subjects.description = Dieser Bereich zeigt deine einzelnen Fächer. Je besser deine Noten werden, desto höher wird dein Score.
+subjects.description.tutee = Dieser Bereich zeigt deine angegebenen Fächer. Je besser deine Noten werden, desto höher (grüner) wird dein Score.
+subjects.description.tutor = Dieser Bereich zeigt die Fächer, die du lehren kannst. Grün = bis auf Abiturniveau, rot = 7. Klasse.
 
 environment = Umfeld
-environment.description = Dieser Bereich beschreibt dich und dein Umfeld und wie sehr es dein Lernen unterstützt.
-environment.Leisure = Freizeit
-environment.Leisure.description = Dein Freizeit-Score. Hier geht es darum, inwiefern du dir genug Zeit nehmen kannst für die Schule etwas zu tun oder du in deiner Freizeit so viele verschiedene Dinge tust, dass für die Schule wenig Zeit übrig bleibt
-environment.Friends = Freunde
-environment.Friends.description = Dein Freunde-Score. Hier geht es nicht darum, ob du viele Freunde hast, sondern ob deine Freunde eher dein Lernen begünstigen oder es aufhalten. Triffst du dich oft mit Freunden anstatt für deine Klassenarbeiten zu lernen?
-environment.Class = Klasse
-environment.Class.description = Dein Klasse-Score. Hier siehst du, wie wohl du dich in deinem Lernumfeld fühlst und wie gern du dich in deiner Klasse aufhälst
-environment.Parents = Eltern
-environment.Parents.description = Dein Eltern-Score. Hier siehst du, wie sehr deine Eltern dich und dein Lernen begünstigen und versuchen sich die Zeit zu nehmen, dich beim Lernen zu unterstützen.
+environment.description.tutee = Dieser Bereich beschreibt dein Umfeld und wie sehr es dein Lernen unterstützt. Rot bedeutet wenig und grün bedeuted sehr.
+environment.Leisure.tutee = Freizeit
+environment.Leisure.description.tutee = Dein Freizeit-Score. Hier geht es darum, inwiefern du dir genug Zeit nehmen kannst für die Schule etwas zu tun oder du in deiner Freizeit so viele verschiedene Dinge tust, dass für die Schule wenig Zeit übrig bleibt.
+environment.Friends.tutee = Freunde
+environment.Friends.description.tutee = Dein Freunde-Score. Hier geht es nicht darum, ob du viele Freunde hast, sondern ob deine Freunde eher dein Lernen begünstigen oder es aufhalten. Triffst du dich oft mit Freunden anstatt für deine Klassenarbeiten zu lernen?
+environment.Class.tutee = Klasse
+environment.Class.description.tutee = Dein Klasse-Score. Hier siehst du, wie wohl du dich in deinem Lernumfeld fühlst und wie gern du dich in deiner Klasse aufhälst.
+environment.Parents.tutee = Eltern
+environment.Parents.description.tutee = Dein Eltern-Score. Hier siehst du, wie sehr deine Eltern dich und dein Lernen unterstützen. Versuchen sie sich Zeit für deine Fragen zu nehmen?
+
+environment.description.tutor = Dieser Bereich zeigt, wie dein Umfeld dein Lehren beeinflusst.
+environment.description.tutor = Dieser Bereich zeigt, wie dein Umfeld dein Lehren beeinflusst.
+environment.Occupation.tutor = Beschäftigung
+environment.Occupation.description.tutor = Dein Beschäftigungs-Score. Dieser Bereich zeigt, ob deine weiteren Beschäftigungen dein Lehren fördern. Grün = ja , rot = eher weniger
+environment.Extra-time.tutor = Zusätzliche Zeit. 
+environment.Extra-time.description.tutor = Dein Zusätzlicher Zeit-Score. Dieser Bereich zeigt, ob du um den Unterricht weitere Zeit in deine Schüler investierst.
+environment.Leisure.tutor = Freizeit
+environment.Leisure.description.tutor = Dein Freizeit-Score. Dieser Bereich zeigt, wie viel freie Zeit du hast.
+
 
 constitution = Konstitution
-constitution.description = Dieser Bereich beschreibt Persönlichkeitseigenschaften, die aufs Lernen großen Einfluss nehmen.
-constitution.Anxiety = Angst
-constitution.Anxiety.description = Dein Angst-Score. Hier geht es darum, wie entspannt du bist, wenn es um Situation geht, in denen man sich unwohl fühlen könnte. Meldest du dich im Unterricht ohne Probleme? Gehst du entspannt in Präsentationen oder Klassenarbeiten?
-constitution.Concentration = Konzentration
-constitution.Concentration.description = Dein Konzentrations-Score. Hier geht es darum, wie leicht es dir fällt dich auf eine Sache zu fokussieren. Lässt du dich leicht durch äußere Einflüsse ablenken?
-constitution.Discipline = Disziplin
-constitution.Discipline.description = Dein Disziplin-Score. Hier siehst du, ob du Durchhaltevermögen beweist, dir Ziele setzst und sie disziplinert verfolgst. Hälst du Zeiten in denen du lernen willst auch wirklich ein?
-constitution.Self-efficacy = Selbstwirksamkeit
-constitution.Self-efficacy.description = Dein Selbstwirksamkeits-Score. Hier siehst du, wie sehr du von deiner Wirkung als Lernperson überzeugt bist. Falls eine neue Aufgabe auf dich zukommt, sagst du JA! das mach ich oder zweifelst du eher, ob du das schaffen kannst?
+constitution.description.tutee = Dieser Bereich beschreibt Persönlichkeitseigenschaften, die aufs Lernen großen Einfluss nehmen. Rot heißt nicht so guter Einfluss und grün sehr guter Einfluss.
+constitution.Anxiety.tutee = Angst
+constitution.Anxiety.description.tutee = Dein Angst-Score. Hier geht es darum, wie entspannt du bist, wenn es um Situation geht, in denen man sich unwohl fühlen könnte. Meldest du dich im Unterricht ohne Probleme? Gehst du entspannt in Präsentationen oder Klassenarbeiten?
+constitution.Concentration.tutee = Konzentration
+constitution.Concentration.description.tutee = Dein Konzentrations-Score. Hier geht es darum, wie leicht es dir fällt dich nur mit einer Sache zu beschäftigen. Lässt du dich leicht durch äußere Einflüsse ablenken?
+constitution.Discipline.tutee = Disziplin
+constitution.Discipline.description.tutee = Dein Disziplin-Score. Hier siehst du, ob du Durchhaltevermögen beweist, dir Ziele setzst und sie disziplinert verfolgst. Hälst du Zeiten in denen du lernen willst auch wirklich ein?
+constitution.Self-efficacy.tutee = Selbstwirksamkeit
+constitution.Self-efficacy.description.tutee = Dein Selbstwirksamkeits-Score. Hier siehst du, wie sehr du von deiner Wirkung als Lernperson überzeugt bist. Falls eine neue Aufgabe auf dich zukommt, sagst du:"JA, das mach ich!", oder zweifelst du eher, ob du das schaffen kannst?
+
+constitution.description.tutor = Dieser Bereich beschreibt Persönlichkeitseigenschaften, die aufs Lehren großen Einfluss nehmen. Rot heißt nicht so guter Einfluss und grün sehr guter Einfluss.
+constitution.Methodology.tutor = Methoden
+constitution.Methodology.description.tutor = Dein Methoden-Score. Dieser Bereich zeigt, wie gut dein methodisches Vorgehen beim Unterrichten ist.
+constitution.Empathy.tutor = Empathie
+constitution.Empathy.description.tutor = Dein Empathie-Score. Dieser Bereich zeigt, wie viel Empathie du gegenüber Schülern aufbringst.
+constitution.Motivation.tutor = Motivation
+constitution.Motivation.description.tutor = Dein Motivations-Score. Dieser Bereich zeigt, wie motivierend du auf deine Schüler wirkst.
+constitution.Authority.tutor = Autorität
+constitution.Authority.description.tutor = Dein Autoritäts-Score. Dieser Bereich zeigt, wie viel Autotität du gegenüber deinem Schüler zeigst.
 
 working = Arbeitsweise
-working.description = Dieser Bereich beschreibt, wie du arbeitest.
-working.Learning-techniques = Lerntechnik
-working.Learning-techniques.description = Dein Lerntechnik-Score. Hier geht es darum, wie gut du dich auf eine Klassenarbeit vorbereiten kannst. Weißt du immer genau was du lernen musst und wie es am besten in deinen Kopf geht? Hast du coole Techniken für Eselsbrücken oder Karteikarten?
-working.Self-organization = Selbstorga
-working.Self-organization.description = Dein Selbstorganisations-Score. Hier geht es darum, wie gut dein Überblick über deine Klassenarbeiten und andere Abgabetermine ist. Bist du eher ein Chaot oder hast du strukturierte To-Do Listen?
-working.Working-techniques = Arbeitstechnik
-working.Working-techniques.description = Dein Arbeitstechnik-Score. Hier siehst du, wie gut du währen dem Schuljahr vorgehst um dein Wissen an den richtigen Stellen zu speichern. Hast du Hefter und Ordner? Bearbeitest du alle Aufgaben und verstehst sie auch? Kennst du gute Techniken, wie (Karteikarten, Mindmapping, Brainstorming)?
+working.description.tutee = Dieser Bereich beschreibt, wie du gut du beim Lernen vorgehst. Rot heißt noch nicht so gut, grün dagegen schon super.
+working.Learning-techniques.tutee = Lerntechnik
+working.Learning-techniques.description.tutee = Dein Lerntechnik-Score. Hier geht es darum, wie gut du dich auf eine Klassenarbeit vorbereiten kannst. Weißt du immer genau was du lernen musst und wie es am besten in deinem Kopf bleibt ? Hast du coole Techniken für Eselsbrücken oder Karteikarten?
+working.Self-organization.tutee = Selbstorga
+working.Self-organization.description.tutee = Dein Selbstorganisations-Score. Hier geht es darum, wie gut dein Überblick über deine Klassenarbeiten und andere Abgabetermine ist. Bist du eher ein Chaot oder hast du strukturierte To-Do Listen?
+working.Working-techniques.tutee = Arbeitstechnik
+working.Working-techniques.description.tutee = Dein Arbeitstechnik-Score. Hier siehst du, wie gut du währen dem Schuljahr vorgehst um dein Wissen an den richtigen Stellen zu speichern. Hast du Hefter und Ordner? Bearbeitest du alle Aufgaben und verstehst sie auch? Kennst du gute Strategien für das Bearbeiten der Aufgaben?
 
+working.description.tutor = Dieser Bereich beschreibt, welche Techniken du deinem Schüler bieten kannst.
+working.Organization.tutor = Organisation
+working.Organization.description.tutor = Dein Organisations-Score. Du organisierst das Lernen deiner Schüler gerne mit einem Kalender oder Ähnlichem. Grün = ja, Rot = nein
+working.Working-techniques.tutor = Arbeitstechnik
+working.Working-techniques.description.tutor = Dein Arbeitstechnik-Score. Du hast viele Techniken für das Vorgehen beim Speichern von Wissen während dem Schuljahr für deine Schüler. Du kennst gute Strategien für das Bearbeiten von verschiedenen Aufgaben. rot = nein , grün = ja
+working.Learning-techniques.tutor = Lerntechnik
+working.Learning-techniques.description.tutor = Dein Lerntechnik-Score. Du hast tolle Techniken, um deine Schüler gut auf Klassenarbeiten vorzubereiten. Grün = ja , rot = eher weniger.
 
 

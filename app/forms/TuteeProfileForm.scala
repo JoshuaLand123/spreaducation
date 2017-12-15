@@ -1,16 +1,16 @@
 package forms
 
-import models.UserProfile
+import models.TuteeProfile
 import play.api.data.Form
 import play.api.data.Forms._
 
-object ProfileForm {
+object TuteeProfileForm {
 
   val form = Form(
     mapping(
       "userID" -> uuid,
       "gender" -> nonEmptyText,
-      "dob" -> date(pattern = "yyyy-MM-dd"),
+      "dob" -> date,
       "classLevel" -> number(min = 7, max = 13),
       "schoolName" -> nonEmptyText,
       "mainLanguage" -> nonEmptyText,
@@ -27,7 +27,9 @@ object ProfileForm {
       "interest2" -> nonEmptyText,
       "timeInterest2" -> number(min = 1, max = 12),
       "interest3" -> nonEmptyText,
-      "timeInterest3" -> number(min = 1, max = 12)
-    )(UserProfile.apply)(UserProfile.unapply)
+      "timeInterest3" -> number(min = 1, max = 12),
+      "tutorOrder" -> optional(number),
+      "image" -> ignored(Option(Array[Byte]()))
+    )(TuteeProfile.apply)(TuteeProfile.unapply)
   )
 }

@@ -4,7 +4,6 @@
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
 
-
 @(title: String, user: Option[models.User] = None)(content: Html)(implicit request: RequestHeader, messages: Messages, assets: AssetsFinder, webJarsUtil: WebJarsUtil)
 
 <!DOCTYPE html>
@@ -50,9 +49,13 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             @user.map { u =>
-                            <li id="find-tutor">
-                                <a href="@controllers.routes.MatchingController.view">@messages("profile.tutor.find")</a>
-                            </li>
+                            @if(u.userType == models.enums.UserType.Tutor) {
+                                <li><a href="@controllers.routes.TutorProfileController.students">@messages("tutor.my.students")</a></li>
+                            } else {
+                                <li id="find-tutor">
+                                    <a href="@controllers.routes.MatchingController.view">@messages("profile.tutor.find")</a>
+                                </li>
+                            }
                             <li id="my-profile" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     @u.name <span class="caret"></span>
@@ -107,6 +110,5 @@
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
         <script src="@assets.path("javascripts/zxcvbnShim.js")"></script>
-		
     </body>
 </html>

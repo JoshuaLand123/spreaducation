@@ -13,8 +13,8 @@
 
     <div class="user col-md-10 col-md-offset-1">
         <div class="row">
-           <legend>@messages("questionnaire")</legend>
-
+           <legend>@messages("questionnaire.tutor")</legend>
+            <hr class="col-md-12" />
         </div>
         <div class="col-md-12">
             @helper.form(action = controllers.routes.QuestionsController.submit()) {
@@ -35,13 +35,13 @@
                 }
                     <div class="text-center">
                         @if(currentPage != 1) {
-                            <a class="btn btn-primary" href="@controllers.routes.QuestionsController.view(currentPage-1)">@messages("Zuruck")</a>
+                            <a class="glyphicon glyphicon-chevron-left btn btn-primary" href="@controllers.routes.QuestionsController.view(currentPage-1)"></a>
                         }
                         <span>@currentPage/@totalPages</span>
                         @if(currentPage == totalPages) {
-                            <button type="submit" name="submit" id="submit" class="btn btn-primary">@messages("finish.and.view.profile")</button>
+                            <button type="submit" name="submit" id="submit" class="btn btn-primary pull-right">@messages("finish.and.view.profile")</button>
                         } else {
-                            <button type="submit" name="submit" id="submit" class="btn btn-primary">@messages("Weiter")</button>
+                            <button type="submit" name="submit" id="submit" class="glyphicon glyphicon-chevron-right btn btn-primary"></button>
                         }
                     </div>
 

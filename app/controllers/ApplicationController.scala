@@ -4,26 +4,33 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.actions.SecuredRequest
 import com.mohiva.play.silhouette.api.{ LogoutEvent, Silhouette }
-import forms.ProfileForm
+import models.services.UserService
+import forms.TuteeProfileForm
+import models.enums.UserType
 import org.webjars.play.WebJarsUtil
 import play.api.i18n._
 import play.api.mvc._
 import utils.auth.DefaultEnv
 
-import scala.concurrent.Future
+import scala.concurrent.{ ExecutionContext, Future }
 
 class ApplicationController @Inject() (
   components: ControllerComponents,
-  silhouette: Silhouette[DefaultEnv]
+  silhouette: Silhouette[DefaultEnv],
+  userService: UserService
 )(
   implicit
   webJarsUtil: WebJarsUtil,
   assets: AssetsFinder,
-  messagesApi: MessagesApi
+  messagesApi: MessagesApi,
+  ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
-  def index = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
-    Future.successful(Redirect(routes.ProfileController.view()))
+  def index = silhouette.SecuredAction.async { implicit request =>
+    if (request.identity.userType == UserType.Tutee)
+      Future.successful(Redirect(routes.TuteeProfileController.view()))
+    else
+      Future.successful(Redirect(routes.TutorProfileController.view()))
   }
 
   def changeLanguage(language: String) = Action { implicit request =>
@@ -36,7 +43,8 @@ class ApplicationController @Inject() (
     silhouette.env.authenticatorService.discard(request.authenticator, result)
   }
 
-  def feedback = silhouette.SecuredAction.async { implicit request =>
+  def feedback(order: Int) = silhouette.SecuredAction.async { implicit request =>
+    userService.retrieveTuteeProfile(request.identity.userID).map(_.map(p => if (p.tutorOrder.isEmpty) userService.saveTuteeProfile(p.copy(tutorOrder = Some(order)))))
     Future.successful(Ok(views.html.feedback(request.identity)))
   }
 }

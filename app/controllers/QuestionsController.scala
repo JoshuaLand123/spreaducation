@@ -30,15 +30,20 @@ class QuestionsController @Inject() (
 
   def view(page: Int) = silhouette.SecuredAction.async { implicit request =>
 
-    questionService.retrieve(request.identity, page, PaginationCount).map(model => (model.questionWithAnswers.map {
-      case (q, a) => QuestionWithAnswer(q.id, a.flatMap(_.id), q.questionText, a.map(_.score).getOrElse(3))
-    }, model.total)).map {
-      case (q, total) =>
-        val totalPages = Math.ceil(total / PaginationCount.toDouble).toInt
-        // if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("success" -> "Questionnaire successfully"  )
-        if (page > totalPages) Redirect(routes.ProfileController.view)
-        else Ok(views.html.questions(QuestionsForm.form, q, request.identity, page, totalPages))
-    }
+    questionService.isAllowedToEditQuestions(request.identity).flatMap(allowedToEditQuestions =>
+      if (allowedToEditQuestions) {
+        questionService.retrieve(request.identity, page, PaginationCount).map(model => (model.questionWithAnswers.map {
+          case (q, a) => QuestionWithAnswer(q.id, a.flatMap(_.id), q.questionText, a.map(_.score).getOrElse(3))
+        }, model.total)).map {
+          case (q, total) =>
+            val totalPages = Math.ceil(total / PaginationCount.toDouble).toInt
+            // if (page > totalPages) Redirect(routes.ApplicationController.index).flashing("success" -> "Questionnaire successfully"  )
+            if (page > totalPages) Redirect(routes.ApplicationController.index)
+            else Ok(views.html.questions(QuestionsForm.form, q, request.identity, page, totalPages))
+        }
+      } else {
+        Future.successful(Redirect(routes.ApplicationController.index()))
+      })
   }
 
   def submit = silhouette.SecuredAction.async { implicit request =>

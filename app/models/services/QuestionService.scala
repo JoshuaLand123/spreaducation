@@ -14,4 +14,6 @@ trait QuestionService {
 
   def getPsychoSubcategoryScores(userID: UUID): Future[Seq[(String, String, Double)]]
 
+  def isAllowedToEditQuestions(user: User): Future[Boolean]
+
 }

@@ -216,12 +216,11 @@ meter::-webkit-meter-optimum-value {
     position: relative;
 }
 
+
 .form1 {
     float: left;
     width: 48%;
     display: inline-block;
-}
-
 .form2 {
     float: right;
     width: 48%;
@@ -239,7 +238,7 @@ meter::-webkit-meter-optimum-value {
 
 .row {
 	margin-top: 20px;
-	
+
 }
 
 .slider-tick.round.in-selection{
@@ -257,7 +256,7 @@ meter::-webkit-meter-optimum-value {
 }
 
 .btn-sec {
-	font-family: 'Abrade Regular'; 
+	font-family: 'Abrade Regular';
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
