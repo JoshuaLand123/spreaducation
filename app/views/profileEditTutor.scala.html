@@ -26,10 +26,10 @@
 						@b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit", '_default -> "choose.one")
 						@b3.select(profileForm("workingLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.working.language.edit", '_default -> "choose.one")
 						@b3.textarea(profileForm("description"), '_label -> "profile.description.edit")
-						@b3.textarea(profileForm("instituteAttended"), '_label -> "profile.instituteAttended.edit")
+						@b3.textarea(profileForm("instituteAttended"), '_label -> "profile.institute.attended.edit")
 						<div class="row">
 							<div class="col-md-7">
-								@b3.select(profileForm("occupationDegree"), options=models.enums.OccupationDegree.selectList(messages), '_label -> "profile.occupationDegree.edit", '_default -> "choose.one")
+								@b3.select(profileForm("occupationDegree"), options=models.enums.OccupationDegree.selectList(messages), '_label -> "profile.occupation.degree.edit", '_default -> "choose.one")
 							</div>
 							<div class="col-md-5">
 								@b3.text(profileForm("occupation"), '_label -> "profile.occupation.edit")

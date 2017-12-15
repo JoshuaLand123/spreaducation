@@ -29,9 +29,43 @@
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
-                <p class="col-md-6">@profile.map(l => messages("language."+l.mainLanguage)).getOrElse("")</p>
+                <p class="col-md-6">@profile.map(p => messages("language."+p.mainLanguage)).getOrElse("")</p>
             </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.working.language"):</strong></p>
+                <p class="col-md-6">@profile.map(p => messages("language."+p.workingLanguage)).getOrElse("")</p>
             </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.description"):</strong></p>
+                <p class="col-md-6">@profile.map(_.description).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.occupation.degree"):</strong></p>
+                <p class="col-md-6">@profile.map(_.occupationDegree).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.occupation"):</strong></p>
+                <p class="col-md-6">@profile.map(_.occupation).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.institute.attended"):</strong></p>
+                <p class="col-md-6">@profile.map(_.instituteAttended).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.wished.salary"):</strong></p>
+                <p class="col-md-6">@profile.map(_.wishedSalary).getOrElse("")</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.lesson.type"):</strong></p>
+                <p class="col-md-6">@profile.map(p => messages("lessonType." + p.lessonType)).getOrElse("")</p>
+            </div>
+            @if(profile.flatMap(_.place).isDefined) {
+                <div class="row">
+                    <p class="col-md-6"><strong>@messages("profile.place"):</strong></p>
+                    <p class="col-md-6">@profile.flatMap(_.place).getOrElse("")</p>
+                </div>
+            }
+        </div>
         <a href="@controllers.routes.TutorProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
         </div>
 
