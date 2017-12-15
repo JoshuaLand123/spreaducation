@@ -276,3 +276,10 @@ meter::-webkit-meter-optimum-value {
   height: 6em;
   max-height: 8em;
 }
+
+.thumb-post img {
+  object-position: center;
+  width: 100%;
+  max-height: 250px;
+  margin-bottom: 1rem;
+}

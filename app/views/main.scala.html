@@ -62,7 +62,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li id="my-profile">
-                                        <a href="@controllers.routes.ProfileController.view">@messages("profile")</a>
+                                        <a href="@controllers.routes.ApplicationController.index">@messages("profile")</a>
                                     </li>
                                     @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
                                         <li><a href="@controllers.routes.ChangePasswordController.view">@messages("change.password")</a></li>
