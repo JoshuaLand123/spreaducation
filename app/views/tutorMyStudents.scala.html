@@ -1,0 +1,36 @@
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+
+@(user: models.User, tutor: models.TutorProfile)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main(messages("tutor.my.students.title"), Some(user)) {
+<div class="col-md-12">
+    <legend>@messages("tutor.my.students")</legend>
+
+            <div class="col-md-6 col-md-offset-3" style="margin-top:20px;">
+                <div class="text-center">
+                    <div style="font-size:20px">@messages("tutor.wait.for.students")</div>
+                    <br/>
+                    <div><b>@messages("tutor.your.profile.look"):</b></div>
+                    <br/>
+                    <div class="row">
+                        <img class="img-circle" src='@{assets.path("images/silhouette.png")}' style="width:200px; height:200px; object-fit:cover;">
+                    </div>
+                    <div class="row">
+                        @messages("subject." + tutor.subjects.subject1) · @messages("interest." + tutor.interests.interest1)
+                    </div>
+                    <div class="row">
+                        @user.firstName @user.lastName
+                    </div>
+                    <div class="row">
+                        @tutor.description
+                    </div>
+                    <div class="row">
+                        @tutor.wishedSalary €
+                    </div>
+
+            </div>
+</div>
+}

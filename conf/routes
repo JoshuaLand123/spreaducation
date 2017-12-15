@@ -18,8 +18,9 @@ GET         /tutee/profile/edit              controllers.TuteeProfileController.
 POST        /tutee/profile                   controllers.TuteeProfileController.submit
 
 GET         /tutor/profile                   controllers.TutorProfileController.view
-GET         /tutor/profile/edit                      controllers.TutorProfileController.edit
+GET         /tutor/profile/edit              controllers.TutorProfileController.edit
 POST        /tutor/profile                   controllers.TutorProfileController.submit
+GET         /tutor/students                  controllers.TutorProfileController.students
 
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)
