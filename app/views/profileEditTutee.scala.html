@@ -26,7 +26,7 @@
 					@helper.CSRF.formField
 					<div class="text-center">
 						<label for="picture" class="btn btn-xs">@messages("upload.image")</label>
-						<input id="picture" type="file" style="visibility:hidden;" name="picture">
+						<input id="picture" type="file" style="visibility:hidden;" name="picture" accept="image/*" >
 					</div>
 					@b3.hidden(profileForm("userID"), 'value -> java.util.UUID.randomUUID())
 					<div class="form-group">

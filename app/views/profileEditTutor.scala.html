@@ -26,7 +26,7 @@
 					@helper.CSRF.formField
 					<div class="text-center">
 						<label for="picture" class="btn btn-xs">@messages("upload.image")</label>
-						<input id="picture" type="file" style="visibility:hidden;" name="picture">
+						<input id="picture" type="file" style="visibility:hidden;" name="picture" accept="image/*" >
 					</div>
 					<div class="form-group">
 						@b3.select(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender", '_default -> "choose.one")
