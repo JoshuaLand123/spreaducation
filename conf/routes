@@ -16,6 +16,7 @@ GET         /matching                        controllers.MatchingController.view
 GET         /tutee/profile                   controllers.TuteeProfileController.view
 GET         /tutee/profile/edit              controllers.TuteeProfileController.edit
 POST        /tutee/profile                   controllers.TuteeProfileController.submit
+GET         /tutee/getImage                  controllers.TuteeProfileController.getImage
 
 GET         /tutor/profile                   controllers.TutorProfileController.view
 GET         /tutor/profile/edit              controllers.TutorProfileController.edit

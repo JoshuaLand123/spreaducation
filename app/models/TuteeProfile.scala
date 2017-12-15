@@ -23,5 +23,6 @@ case class TuteeProfile(
   timeInterest2: Int,
   interest3: String,
   timeInterest3: Int,
-  tutorOrder: Option[Int] = None
+  tutorOrder: Option[Int] = None,
+  profileImageByteArray: Option[Array[Byte]]
 )

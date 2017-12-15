@@ -1,5 +1,6 @@
 package controllers
 
+import java.nio.file.Files
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api._
@@ -40,11 +41,11 @@ class TuteeProfileController @Inject() (
   def edit = silhouette.SecuredAction.async { implicit request =>
     userService.retrieveTuteeProfile(request.identity.userID).map(profile => {
       val form = profile.map(TuteeProfileForm.form.fill).getOrElse(TuteeProfileForm.form)
-      Ok(views.html.profileEditTutee(form, request.identity))
+      Ok(views.html.profileEditTutee(form, request.identity, profile))
     })
   }
 
-  def submit = silhouette.SecuredAction.async { implicit request =>
+  def submit = silhouette.SecuredAction.async(parse.multipartFormData) { implicit request =>
 
     val messages = request.messages
     TuteeProfileForm.form.bindFromRequest.fold(
@@ -52,7 +53,8 @@ class TuteeProfileController @Inject() (
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
         Future.successful(Redirect(routes.TuteeProfileController.edit).flashing("error" -> s"Error: ${errors.toString}")),
       profileSuccess => {
-        val profile = profileSuccess.copy(userID = request.identity.userID)
+        val bytes: Option[Array[Byte]] = request.body.file("picture").map(p => Files.readAllBytes(p.ref))
+        val profile = profileSuccess.copy(userID = request.identity.userID, profileImageByteArray = bytes)
         if (profile.subjectImprove1 == profile.subjectImprove2 ||
           profile.subjectGoodAt1 == profile.subjectGoodAt2 ||
           List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
@@ -62,6 +64,13 @@ class TuteeProfileController @Inject() (
         }
       }
     )
+  }
+
+  def getImage = silhouette.SecuredAction.async { implicit request =>
+    userService.retrieveTuteeProfile(request.identity.userID).map {
+      case Some(p) => Ok(p.profileImageByteArray.get).as("image/jpg")
+      case None    => Ok("")
+    }
   }
 
   private def psychogramDataJsonString(profile: TuteeProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {
