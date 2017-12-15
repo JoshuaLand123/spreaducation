@@ -9,8 +9,16 @@
 @main(messages("profile.title"), Some(user)) {
 <div class="col-md-12">
         <legend>@messages("profile")</legend>
+
     <div class="user row data col-md-4">
         <div class="col-md-12">
+            <div class="col-md-8 col-md-offset-1 thumb-post">
+                @if(profile.map(p => p.profileImageByteArray.isDefined && p.profileImageByteArray.get.nonEmpty).getOrElse(false)) {
+                <img src="@controllers.routes.TutorProfileController.getImage" />
+                } else {
+                <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" />
+                }
+            </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("first.name"):</strong></p>
                 <p class="col-md-6">@user.firstName.getOrElse("None")</p>
