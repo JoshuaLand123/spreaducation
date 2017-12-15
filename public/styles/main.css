@@ -238,7 +238,8 @@ meter::-webkit-meter-optimum-value {
 }
 
 .row {
-	margin-top: 15px;
+	margin-top: 20px;
+	
 }
 
 .slider-tick.round.in-selection{
@@ -255,3 +256,24 @@ meter::-webkit-meter-optimum-value {
 	background: #7ED321;
 }
 
+.btn-sec {
+	font-family: 'Abrade Regular'; 
+	color: #FFFFFF;
+	background: #7ED321;
+	border: 2px solid #FFFFFF;
+	position: relative;
+	margin: auto;
+	text-align: center;
+	left: 120px;
+}
+
+.thumbnail__description {
+  display: block;
+  height: 2.4em;
+  overflow: hidden;
+}
+
+.thumbnail__description:hover {
+  height: 6em;
+  max-height: 8em;
+}

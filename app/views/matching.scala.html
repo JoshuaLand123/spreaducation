@@ -6,39 +6,36 @@
 @(user: models.User, tutors: Seq[models.Tutor])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("matching.title"), Some(user)) {
-<div class="col-md-6">
-    
+<div class="col-md-12">
         @tutors.grouped(3).toList.map { grouped =>
-
-            <div class="row" style="margin-top:20px;">
+            <div class="row" style="margin-top:20px; margin-bottom:20px;">
                 @grouped.map { tutor =>
-                    <div class="col-md-6 col-md-offset-1 text-center"  >
-                        <div class="row>">
+                    <div class="col-md-4 text-center" style="background:#FAFEF4; border-right: 20px solid #C5F693; ">
+                        <div class="row">
                             <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl)}' style="width:200px; height:200px; object-fit:cover;">
                         </div>
-                        <div class="row>">
+                        <div class="row">
                             @tutor.matchingScore %
                         </div>
-                        <div class="row>">
+                        <div class="row">
                             @tutor.subject · @tutor.interest
                         </div>
-                        <div class="row>">
-                            @tutor.firstName @tutor.lastName
+                        <div class="row">
+                           <strong>@tutor.firstName @tutor.lastName</strong>
+                        </div>	
+                        <br>						
+                        <div class="thumbnail__description">						
+                        @tutor.description                        
                         </div>
-                        <div class="row>">
-                            @tutor.description
+                        <div class="row">
+                            @tutor.price € / 90 min
                         </div>
-                        <div class="row>">
-                            @tutor.price €/90 min
-                        </div>
-                        <div class="row>">
+                        <div class="row">
                             <a href="@controllers.routes.ApplicationController.feedback" class="btn btn-default">Auswahlen</a>
                         </div>
                     </div>
-					
-</div>
                 }
-            </div>
+            </div>			
         }
 </div>
 }
