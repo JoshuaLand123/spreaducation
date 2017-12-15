@@ -282,11 +282,11 @@ environment.Parents.description.tutee = Dein Eltern-Score. Hier siehst du, wie s
 environment.description.tutor = Dieser Bereich zeigt, wie dein Umfeld dein Lehren beeinflusst.
 environment.description.tutor = Dieser Bereich zeigt, wie dein Umfeld dein Lehren beeinflusst.
 environment.Occupation.tutor = Beschäftigung
-environment.Occupation.description.tutor = Dieser Bereich zeigt, ob deine weiteren Beschäftigungen dein Lehren fördern. Grün = ja , rot = eher weniger
+environment.Occupation.description.tutor = Dein Beschäftigungs-Score. Dieser Bereich zeigt, ob deine weiteren Beschäftigungen dein Lehren fördern. Grün = ja , rot = eher weniger
 environment.Extra-time.tutor = Zusätzliche Zeit. 
-environment.Extra-time.description.tutor = Dieser Bereich zeigt, ob du um den Unterricht weitere Zeit in deine Schüler investierst.
+environment.Extra-time.description.tutor = Dein Zusätzlicher Zeit-Score. Dieser Bereich zeigt, ob du um den Unterricht weitere Zeit in deine Schüler investierst.
 environment.Leisure.tutor = Freizeit
-environment.Leisure.description.tutor = Dieser Bereich zeigt, wie viel freie Zeit du hast.
+environment.Leisure.description.tutor = Dein Freizeit-Score. Dieser Bereich zeigt, wie viel freie Zeit du hast.
 
 
 constitution = Konstitution
@@ -302,13 +302,13 @@ constitution.Self-efficacy.description.tutee = Dein Selbstwirksamkeits-Score. Hi
 
 constitution.description.tutor = Dieser Bereich beschreibt Persönlichkeitseigenschaften, die aufs Lehren großen Einfluss nehmen. Rot heißt nicht so guter Einfluss und grün sehr guter Einfluss.
 constitution.Methodology.tutor = Methoden
-constitution.Methodology.description.tutor = Dieser Bereich zeigt, wie gut dein methodisches Vorgehen beim Unterrichten ist.
+constitution.Methodology.description.tutor = Dein Methoden-Score. Dieser Bereich zeigt, wie gut dein methodisches Vorgehen beim Unterrichten ist.
 constitution.Empathy.tutor = Empathie
-constitution.Empathy.description.tutor = Dieser Bereich zeigt, wie viel Empathie du gegenüber Schülern aufbringst.
+constitution.Empathy.description.tutor = Dein Empathie-Score. Dieser Bereich zeigt, wie viel Empathie du gegenüber Schülern aufbringst.
 constitution.Motivation.tutor = Motivation
-constitution.Motivation.description.tutor = Dieser Bereich zeigt, wie motivierend du auf deine Schüler wirkst.
+constitution.Motivation.description.tutor = Dein Motivations-Score. Dieser Bereich zeigt, wie motivierend du auf deine Schüler wirkst.
 constitution.Authority.tutor = Autorität
-constitution.Authority.description.tutor = Dieser bereich zeigt, wie viel Autotität du gegenüber deinem Schüler zeigst.
+constitution.Authority.description.tutor = Dein Autoritäts-Score. Dieser Bereich zeigt, wie viel Autotität du gegenüber deinem Schüler zeigst.
 
 working = Arbeitsweise
 working.description.tutee = Dieser Bereich beschreibt, wie du gut du beim Lernen vorgehst. Rot heißt noch nicht so gut, grün dagegen schon super.
