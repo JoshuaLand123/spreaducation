@@ -9,11 +9,13 @@
 <div class="col-md-12">
     <legend>@messages("tutor.my.students")</legend>
 
-            <div class="col-md-6 col-md-offset-3" style="margin-top:20px;">
-                <div class="text-center">
-                    <div style="font-size:20px">@messages("tutor.wait.for.students")</div>
-                    <br/>
-                    <div><b>@messages("tutor.your.profile.look"):</b></div>
+            <div class="col-md-6 col-md-offset-3 text-center" style="margin-top:20px;">
+                <div style="font-size:20px">@messages("tutor.wait.for.students")</div>
+                <br/>
+                <div style="border: 2px solid black">
+                    <div class="row">
+                        <b>@messages("tutor.your.profile.look"):</b>
+                    </div>
                     <br/>
                     <div class="row">
                         <img class="img-circle" src='@{assets.path("images/silhouette.png")}' style="width:200px; height:200px; object-fit:cover;">
@@ -30,7 +32,8 @@
                     <div class="row">
                         @tutor.wishedSalary €
                     </div>
-
-            </div>
+                </div>
+                <br/>
+                <div><a href="https://docs.google.com/forms/d/1a5xs0ClDys34b8rFEV16gbffzL18P_NkyE7nsGgAZsc/edit" class="btn btn-default">@messages("tutor.feedback")</a></div>
 </div>
 }
