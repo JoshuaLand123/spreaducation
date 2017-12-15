@@ -5,7 +5,7 @@
 @import controllers.AssetsFinder
 @import b3.inline.fieldConstructor
 
-@(profileForm: Form[models.TuteeProfile], user: models.User, profile: Option[models.TuteeProfile])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(profileForm: Form[models.TuteeProfile], user: models.User, profile: Option[models.TuteeProfile], allowedToEditQuestions: Boolean)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
@@ -66,12 +66,13 @@
 							<p><input id="slider-interest2" name='timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest2")'/></p>
 							<p><input id="slider-interest3" name='timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
 						</div>
-						@b3.free('_id -> "idFormGroup") {
-							@*<a class="btn btn-default" href="@controllers.routes.ProfileController.view"> <span class="glyphicon glyphicon-remove"></span>@messages("cancel")</a>*@
+						@if(allowedToEditQuestions) {
 							<button type="submit" class="btn btn-primary pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
-							}
-						</div>
+						} else {
+							<button type="submit" class="btn btn-primary pull-right">@messages("save")<span class="glyphicon glyphicon-ok"></span></button>
 						}
+						}
+					</div>
 			</div>
 		</div>
 		<script>

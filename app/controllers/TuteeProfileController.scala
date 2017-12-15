@@ -39,9 +39,10 @@ class TuteeProfileController @Inject() (
   }
 
   def edit = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveTuteeProfile(request.identity.userID).map(profile => {
+    userService.retrieveTuteeProfile(request.identity.userID).flatMap(profile => {
       val form = profile.map(TuteeProfileForm.form.fill).getOrElse(TuteeProfileForm.form)
-      Ok(views.html.profileEditTutee(form, request.identity, profile))
+      questionService.isAllowedToEditQuestions(request.identity).map(isAllowedToEditQuestions =>
+        Ok(views.html.profileEditTutee(form, request.identity, profile, isAllowedToEditQuestions)))
     })
   }
 
