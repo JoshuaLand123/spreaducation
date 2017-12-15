@@ -85,7 +85,7 @@ object TutorGenerator {
 
   def generateTutors(tuteeProfile: TuteeProfile, messages: Messages): List[Tutor] = {
     predefinedPricesAndStatuses.map { case (order, score, price, status) =>
-      val index = tuteeProfile.userID.hashCode() + order
+      val index = Math.abs(tuteeProfile.userID.hashCode() + order)
       val tutor = predefinedTutors(index % predefinedTutors.size)
       val otherInterest = Interest.values.toList(index % Interest.values.size).toString
       val interest = messages(s"interest.${if (order <= 2) tuteeProfile.interest1 else otherInterest}")
