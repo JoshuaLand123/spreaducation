@@ -5,21 +5,29 @@
 @import controllers.AssetsFinder
 @import b3.inline.fieldConstructor
 
-@(profileForm: Form[models.TutorProfile], user: models.User, allowedToEditQuestions: Boolean)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(profileForm: Form[models.TutorProfile], user: models.User, profile: Option[models.TutorProfile], allowedToEditQuestions: Boolean)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 	<div class="col-md-6 col-md-offset-3">
 		<div class="row">
 			<legend>@messages("profile.edit")</legend>
-			<div class="col-md-12 text-right">
-				<img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
+			<div class="col-md-12 text-center">
+				@if(profile.map(p => p.profileImageByteArray.isDefined && p.profileImageByteArray.get.nonEmpty).getOrElse(false)) {
+					<img src="@controllers.routes.TutorProfileController.getImage" height="200px" />
+				} else {
+					<img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="200px" />
+				}
 			</div>
 		</div>
 		<div class="row data">
 			<div class="col-md-12">
-				@helper.form(action = controllers.routes.TutorProfileController.submit()) {
+				@helper.form(action = controllers.routes.TutorProfileController.submit(), 'enctype -> "multipart/form-data") {
 					@helper.CSRF.formField
+					<div class="text-center">
+						<label for="picture" class="btn btn-xs">@messages("upload.image")</label>
+						<input id="picture" type="file" style="visibility:hidden;" name="picture">
+					</div>
 					<div class="form-group">
 						@b3.select(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender", '_default -> "choose.one")
 						@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control")
@@ -79,9 +87,9 @@
 					};
 				$('#lessonType').change(function() {
 					if ($('#lessonType :selected').text() == 'Online') {
-						$('#place_field').hide();
+						$('#place_field').hide("slow");
 					} else {
-						$('#place_field').show();
+						$('#place_field').show("slow");
 					}
 				});
 

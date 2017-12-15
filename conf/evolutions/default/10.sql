@@ -1,7 +1,7 @@
 # --- !Ups
 
-ALTER TABLE tutor_profile ADD place text;
+ALTER TABLE tutor_profile ADD image_byte bytea;
 
 # --- !Downs
 
-ALTER TABLE tutor_profile DROP place;
+ALTER TABLE tutor_profile DROP tutor_profile;

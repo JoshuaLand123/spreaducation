@@ -21,6 +21,7 @@ GET         /tutor/profile                   controllers.TutorProfileController.
 GET         /tutor/profile/edit              controllers.TutorProfileController.edit
 POST        /tutor/profile                   controllers.TutorProfileController.submit
 GET         /tutor/students                  controllers.TutorProfileController.students
+GET         /tutor/getImage                  controllers.TutorProfileController.getImage
 
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)
