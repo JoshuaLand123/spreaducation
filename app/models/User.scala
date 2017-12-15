@@ -14,7 +14,8 @@ case class User(
   email: Option[String],
   avatarURL: Option[String],
   userType: UserType,
-  activated: Boolean
+  activated: Boolean,
+  image: Option[Array[Byte]] = None
 ) extends Identity {
 
   /**

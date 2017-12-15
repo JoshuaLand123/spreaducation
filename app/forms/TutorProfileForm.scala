@@ -40,8 +40,7 @@ object TutorProfileForm {
       )(TutorInterests.apply)(TutorInterests.unapply),
       "wishedSalary" -> of(doubleFormat),
       "lessonType" -> nonEmptyText,
-      "place" -> optional(text),
-      "image" -> ignored(Option(Array[Byte]()))
+      "place" -> optional(text)
     )(TutorProfile.apply)(TutorProfile.unapply)
   )
 }

@@ -42,7 +42,7 @@ class TuteeProfileController @Inject() (
     userService.retrieveTuteeProfile(request.identity.userID).flatMap(profile => {
       val form = profile.map(TuteeProfileForm.form.fill).getOrElse(TuteeProfileForm.form)
       questionService.isAllowedToEditQuestions(request.identity).map(isAllowedToEditQuestions =>
-        Ok(views.html.profileEditTutee(form, request.identity, profile, isAllowedToEditQuestions)))
+        Ok(views.html.profileEditTutee(form, request.identity, isAllowedToEditQuestions)))
     })
   }
 
@@ -55,23 +55,19 @@ class TuteeProfileController @Inject() (
         Future.successful(Redirect(routes.TuteeProfileController.edit).flashing("error" -> s"Error: ${errors.toString}")),
       profileSuccess => {
         val bytes: Option[Array[Byte]] = request.body.file("picture").map(p => Files.readAllBytes(p.ref))
-        val profile = profileSuccess.copy(userID = request.identity.userID, profileImageByteArray = bytes)
+        val profile = profileSuccess.copy(userID = request.identity.userID)
         if (profile.subjectImprove1 == profile.subjectImprove2 ||
           profile.subjectGoodAt1 == profile.subjectGoodAt2 ||
           List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
           Future.successful(Redirect(routes.TuteeProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests")))
         else {
+          if (bytes.isDefined && bytes.get.nonEmpty) {
+            userService.save(request.identity.copy(image = bytes))
+          }
           userService.saveTuteeProfile(profile).map(_ => Redirect(routes.QuestionsController.index))
         }
       }
     )
-  }
-
-  def getImage = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveTuteeProfile(request.identity.userID).map {
-      case Some(p) => Ok(p.profileImageByteArray.get).as("image/jpg")
-      case None    => Ok("")
-    }
   }
 
   private def psychogramDataJsonString(profile: TuteeProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {

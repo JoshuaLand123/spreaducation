@@ -47,4 +47,8 @@ class ApplicationController @Inject() (
     userService.retrieveTuteeProfile(request.identity.userID).map(_.map(p => if (p.tutorOrder.isEmpty) userService.saveTuteeProfile(p.copy(tutorOrder = Some(order)))))
     Future.successful(Ok(views.html.feedback(request.identity)))
   }
+
+  def getImage = silhouette.SecuredAction.async { implicit request =>
+    Future.successful(Ok(request.identity.image.get).as("image/jpg"))
+  }
 }

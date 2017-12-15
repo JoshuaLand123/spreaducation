@@ -14,7 +14,8 @@ case class DbUser(
   email: Option[String],
   avatarUrl: Option[String],
   userType: UserType,
-  activated: Boolean
+  activated: Boolean,
+  image: Option[Array[Byte]]
 )
 
 case class DbLoginInfo(
@@ -80,7 +81,9 @@ class UserTable(tag: Tag) extends Table[DbUser](tag, "users") {
 
   def userType = column[UserType]("user_type")
 
-  override def * = (userID, firstName, lastName, fullName, email, avatarURL, userType, activated) <> (DbUser.tupled, DbUser.unapply)
+  def image = column[Option[Array[Byte]]]("image")
+
+  override def * = (userID, firstName, lastName, fullName, email, avatarURL, userType, activated, image) <> (DbUser.tupled, DbUser.unapply)
 
 }
 

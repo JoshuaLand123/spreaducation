@@ -28,8 +28,7 @@ object TuteeProfileForm {
       "timeInterest2" -> number(min = 1, max = 12),
       "interest3" -> nonEmptyText,
       "timeInterest3" -> number(min = 1, max = 12),
-      "tutorOrder" -> optional(number),
-      "image" -> ignored(Option(Array[Byte]()))
+      "tutorOrder" -> optional(number)
     )(TuteeProfile.apply)(TuteeProfile.unapply)
   )
 }

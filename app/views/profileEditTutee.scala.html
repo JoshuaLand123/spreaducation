@@ -5,21 +5,19 @@
 @import controllers.AssetsFinder
 @import b3.inline.fieldConstructor
 
-@(profileForm: Form[models.TuteeProfile], user: models.User, profile: Option[models.TuteeProfile], allowedToEditQuestions: Boolean)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(profileForm: Form[models.TuteeProfile], user: models.User, allowedToEditQuestions: Boolean)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 	<div class="col-md-10 col-md-offset-1">
-		<div class="row">
 			<legend>@messages("profile.edit")</legend>
-			<div class="col-md-4 col-md-offset-4 thumb-post">
-				@if(profile.map(p => p.profileImageByteArray.isDefined && p.profileImageByteArray.get.nonEmpty).getOrElse(false)) {
-					<img src="@controllers.routes.TuteeProfileController.getImage" />
+			<div class="col-md-2 col-md-offset-5 thumb-post">
+				@if(user.image.isDefined && user.image.get.nonEmpty) {
+					<img src="@controllers.routes.ApplicationController.getImage" />
 				} else {
 					<img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" />
 				}
 			</div>
-		</div>
 		<div class="row data">
 			<div class="col-md-12">
 				@helper.form(action = controllers.routes.TuteeProfileController.submit(), 'enctype -> "multipart/form-data") {

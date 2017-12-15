@@ -42,7 +42,7 @@ class TutorProfileController @Inject() (
     userService.retrieveTutorProfile(request.identity.userID).flatMap(profile => {
       val form = profile.map(TutorProfileForm.form.fill).getOrElse(TutorProfileForm.form)
       questionService.isAllowedToEditQuestions(request.identity).map(isAllowedToEditQuestions =>
-        Ok(views.html.profileEditTutor(form, request.identity, profile, isAllowedToEditQuestions)))
+        Ok(views.html.profileEditTutor(form, request.identity, isAllowedToEditQuestions)))
     })
   }
 
@@ -55,12 +55,15 @@ class TutorProfileController @Inject() (
         Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> s"Error: ${errors.toString}")),
       profileSuccess => {
         val bytes: Option[Array[Byte]] = request.body.file("picture").map(p => Files.readAllBytes(p.ref))
-        val profile = profileSuccess.copy(userID = request.identity.userID, profileImageByteArray = bytes)
+        val profile = profileSuccess.copy(userID = request.identity.userID)
         val subjects: List[String] = List(Some(profile.subjects.subject1), profile.subjects.subject2, profile.subjects.subject3, profile.subjects.subject4).flatten
         if (subjects.size != subjects.distinct.size ||
           List(profile.interests.interest1, profile.interests.interest2, profile.interests.interest3).distinct.size < 3)
           Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests")))
         else {
+          if (bytes.isDefined && bytes.get.nonEmpty) {
+            userService.save(request.identity.copy(image = bytes))
+          }
           userService.saveTutorProfile(profile).map(_ => Redirect(routes.QuestionsController.index))
         }
       }
@@ -71,13 +74,6 @@ class TutorProfileController @Inject() (
     userService.retrieveTutorProfile(request.identity.userID).map {
       case Some(p) => Ok(views.html.tutorMyStudents(request.identity, p))
       case None => Redirect(routes.TutorProfileController.edit)
-    }
-  }
-
-  def getImage = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveTutorProfile(request.identity.userID).map {
-      case Some(p) => Ok(p.profileImageByteArray.get).as("image/jpg")
-      case None => Ok("")
     }
   }
 

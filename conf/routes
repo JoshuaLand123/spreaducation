@@ -6,6 +6,7 @@
 GET         /                                controllers.ApplicationController.index
 GET         /feedback                        controllers.ApplicationController.feedback(order: Int)
 #GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
+GET         /getImage                        controllers.ApplicationController.getImage
 
 GET         /questions                       controllers.QuestionsController.index
 GET         /questions/:page                 controllers.QuestionsController.view(page: Int)
@@ -16,13 +17,11 @@ GET         /matching                        controllers.MatchingController.view
 GET         /tutee/profile                   controllers.TuteeProfileController.view
 GET         /tutee/profile/edit              controllers.TuteeProfileController.edit
 POST        /tutee/profile                   controllers.TuteeProfileController.submit
-GET         /tutee/getImage                  controllers.TuteeProfileController.getImage
 
 GET         /tutor/profile                   controllers.TutorProfileController.view
 GET         /tutor/profile/edit              controllers.TutorProfileController.edit
 POST        /tutor/profile                   controllers.TutorProfileController.submit
 GET         /tutor/students                  controllers.TutorProfileController.students
-GET         /tutor/getImage                  controllers.TutorProfileController.getImage
 
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)

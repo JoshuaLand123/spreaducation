@@ -35,7 +35,7 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
 
     db.run(userQuery.result.headOption).map { dbUserOption =>
       dbUserOption.map {
-        user => User(user.userID, loginInfo, user.firstName, user.lastName, user.fullName, user.email, user.avatarUrl, user.userType, user.activated)
+        user => User(user.userID, loginInfo, user.firstName, user.lastName, user.fullName, user.email, user.avatarUrl, user.userType, user.activated, user.image)
       }
     }
   }
@@ -59,14 +59,15 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
           user.email,
           user.avatarUrl,
           user.userType,
-          user.activated
+          user.activated,
+          user.image
         )
       }
     }
   }
 
   def save(user: User): Future[User] = {
-    val dbUser = DbUser(user.userID, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL, user.userType, user.activated)
+    val dbUser = DbUser(user.userID, user.firstName, user.lastName, user.fullName, user.email, user.avatarURL, user.userType, user.activated, user.image)
     val dbLoginInfo = DbLoginInfo(None, user.loginInfo.providerID, user.loginInfo.providerKey)
 
     val loginInfoAction = {
