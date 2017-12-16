@@ -50,7 +50,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             @user.map { u =>
                             @if(u.userType == models.enums.UserType.Tutor) {
-                                <li><a href="@controllers.routes.TutorProfileController.students">@messages("tutor.my.students")</a></li>
+                                <li id="find-tutee"><a href="@controllers.routes.TutorProfileController.students">@messages("tutor.my.students")</a></li>
                             } else {
                                 <li id="find-tutor">
                                     <a href="@controllers.routes.MatchingController.view">@messages("profile.tutor.find")</a>
