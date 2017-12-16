@@ -56,16 +56,16 @@ class TuteeProfileController @Inject() (
       profileSuccess => {
         val bytes: Option[Array[Byte]] = request.body.file("picture").map(p => Files.readAllBytes(p.ref))
         val profile = profileSuccess.copy(userID = request.identity.userID)
-        if (profile.subjectImprove1 == profile.subjectImprove2 ||
+/*        if (profile.subjectImprove1 == profile.subjectImprove2 ||
           profile.subjectGoodAt1 == profile.subjectGoodAt2 ||
           List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
           Future.successful(Redirect(routes.TuteeProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests")))
-        else {
+        else {*/
           if (bytes.isDefined && bytes.get.nonEmpty) {
             userService.save(request.identity.copy(image = bytes))
           }
           userService.saveTuteeProfile(profile).map(_ => Redirect(routes.QuestionsController.index))
-        }
+        //}
       }
     )
   }
