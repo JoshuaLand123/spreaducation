@@ -18,7 +18,13 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <img class="img-circle" src='@{assets.path("images/silhouette.png")}' style="width:200px; height:200px; object-fit:cover;">
+                        <div class="col-md-4 col-md-offset-4 thumb-post">
+                            @if(user.image.isDefined && user.image.get.nonEmpty) {
+                            <img src="@controllers.routes.ApplicationController.getImage" />
+                            } else {
+                            <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" />
+                            }
+                        </div>
                     </div>
                     <div class="row">
                         @messages("subject." + tutor.subjects.subject1) · @messages("interest." + tutor.interests.interest1)
@@ -34,6 +40,6 @@
                     </div>
                 </div>
                 <br/>
-                <div><a href="https://docs.google.com/forms/d/1a5xs0ClDys34b8rFEV16gbffzL18P_NkyE7nsGgAZsc/edit" class="btn btn-default">@messages("tutor.feedback")</a></div>
+                <div><a href="https://docs.google.com/forms/d/1t42zSseAa1h_pPMYeXevbKTsZxiYATtIoJvh4i5O8QA" class="btn btn-default">@messages("tutor.feedback")</a></div>
 </div>
 }
