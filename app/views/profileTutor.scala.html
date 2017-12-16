@@ -8,11 +8,10 @@
 
 @main(messages("profile.title"), Some(user)) {
 <div class="col-md-12">
-        <legend>@messages("profile")</legend>
 
-    <div class="user row data col-md-4">
+    <div class="user row data col-md-4" style="margin-top:70px;">
         <div class="col-md-12">
-            <div class="col-md-8 col-md-offset-1 thumb-post">
+            <div class="col-md-6 col-md-offset-1 thumb-post">
                 @if(user.image.isDefined && user.image.get.nonEmpty) {
                     <img src="@controllers.routes.ApplicationController.getImage" />
                 } else {
@@ -47,7 +46,12 @@
                 <p class="col-md-6"><strong>@messages("profile.description"):</strong></p>
                 <p class="col-md-6">@profile.map(_.description).getOrElse("")</p>
             </div>
-            <div class="row">
+            </div>
+			</div>
+			
+			<div class="user row data col-md-4" style="margin-top:70px;">
+        <div class="col-md-12">			
+			<div class="row">
                 <p class="col-md-6"><strong>@messages("profile.occupation.degree"):</strong></p>
                 <p class="col-md-6">@profile.map(p => messages("occupationDegree." + p.occupationDegree)).getOrElse("")</p>
             </div>
@@ -67,6 +71,7 @@
                 <p class="col-md-6"><strong>@messages("profile.lesson.type"):</strong></p>
                 <p class="col-md-6">@profile.map(p => messages("lessonType." + p.lessonType)).getOrElse("")</p>
             </div>
+			
             @if(profile.flatMap(_.place).isDefined) {
                 <div class="row">
                     <p class="col-md-6"><strong>@messages("profile.tutor.place"):</strong></p>
@@ -74,10 +79,10 @@
                 </div>
             }
         </div>
-        <a href="@controllers.routes.TutorProfileController.edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
+        <a href="@controllers.routes.TutorProfileController.edit" class="btn btn-bearbeiten-tutor"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
         </div>
 
-    <div class="col-md-6 col-md-offset-1">
+    <div class="col-md-6 col-md-offset-1" style="margin-left:700px; margin-top:-550px;">
         @psychogram("600px", "600px", user, psychogramData)
     </div>
 </div>

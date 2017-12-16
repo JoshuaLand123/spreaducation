@@ -7,12 +7,10 @@
 
 @main(messages("tutor.my.students.title"), Some(user)) {
 <div class="col-md-12">
-    <legend>@messages("tutor.my.students")</legend>
-
-            <div class="col-md-6 col-md-offset-3 text-center" style="margin-top:20px;">
-                <div style="font-size:20px">@messages("tutor.wait.for.students")</div>
-                <br/>
-                <div style="border: 2px solid black">
+            
+            <div class="col-md-6 col-md-offset-3 text-center" style="margin-top:20px; margin-left:20px">
+                
+                <div style="background:#FAFEF4; border-right: 10px solid #C5F693; width:400px;">
                     <div class="row">
                         <b>@messages("tutor.your.profile.look"):</b>
                     </div>
@@ -32,8 +30,16 @@
                     <div class="row">
                         @tutor.wishedSalary €
                     </div>
-                </div>
+                </div>               
+				</div>
+				
+				<br/>
+				<div style="font-size:20px; margin-top:150px">@messages("tutor.wait.for.students")</div>
                 <br/>
-                <div><a href="https://docs.google.com/forms/d/1a5xs0ClDys34b8rFEV16gbffzL18P_NkyE7nsGgAZsc/edit" class="btn btn-default">@messages("tutor.feedback")</a></div>
+				<div><a href="https://docs.google.com/forms/d/1a5xs0ClDys34b8rFEV16gbffzL18P_NkyE7nsGgAZsc/edit" class="btn btn-feedback">@messages("Feedback geben")</a></div>
+
+                
+
+
 </div>
 }

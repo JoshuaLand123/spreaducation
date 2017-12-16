@@ -102,7 +102,6 @@ a {
 .btn {
     border-radius: 2px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
-    font-family: 'Abrade Medium';
     color: #000000;
     background: #C5F693;
     border: 2px solid #C5F693;
@@ -250,7 +249,7 @@ meter::-webkit-meter-optimum-value {
 .user.row.data.col-md-4 {
 	background: #C5F693;
 	border: 2px solid white;
-	margin-top: 80px;
+	margin-top: 10px;
 }
 
 #page1 {
@@ -258,14 +257,13 @@ meter::-webkit-meter-optimum-value {
 }
 
 .btn-sec {
-	font-family: 'Abrade Regular';
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
 	position: relative;
-	margin: auto;
+	margin-top: -50px;
 	text-align: center;
-	left: 120px;
+	right: -500px;
 }
 
 .thumbnail__description {
@@ -285,3 +283,40 @@ meter::-webkit-meter-optimum-value {
   max-height: 250px;
   margin-bottom: 1rem;
 }
+
+.btn-edit:hover {
+	background:#FFFFFF;
+}
+
+.btn-bearbeiten {
+	color: #FFFFFF;
+	background: #7ED321;
+	border: 2px solid #FFFFFF;
+	position: relative;
+	margin-bottom: 5px;
+	left: 100px;
+}
+
+.btn-feedback {
+	color: #FFFFFF;
+	background: #7ED321;
+	border: 2px solid #FFFFFF;
+	position: relative;
+	left: 170px;
+}
+
+.tutor-card {
+	float: left;
+	margin: auto;
+	
+}
+.btn-bearbeiten-tutor {
+	color: #FFFFFF;
+	background: #7ED321;
+	border: 2px solid #FFFFFF;
+	position: relative;
+	margin-bottom: 40px;
+	left: 100px;
+	margin-top:36px;
+}
+

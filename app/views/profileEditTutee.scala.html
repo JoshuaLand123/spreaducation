@@ -10,7 +10,7 @@
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 	<div class="col-md-10 col-md-offset-1">
-			<legend>@messages("profile.edit")</legend>
+			
 			<div class="col-md-2 col-md-offset-5 thumb-post">
 				@if(user.image.isDefined && user.image.get.nonEmpty) {
 					<img src="@controllers.routes.ApplicationController.getImage" />
@@ -65,9 +65,9 @@
 							<p><input id="slider-interest3" class="slider" name='timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
 						</div>
 						@if(allowedToEditQuestions) {
-							<button type="submit" class="btn btn-primary pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
+							<button type="submit" class="btn btn-edit pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
 						} else {
-							<button type="submit" class="btn btn-primary pull-right">@messages("save")<span class="glyphicon glyphicon-ok"></span></button>
+							<button type="submit" class="btn btn-edit pull-right">@messages("save")<span class="glyphicon glyphicon-ok"></span></button>
 						}
 						}
 					</div>

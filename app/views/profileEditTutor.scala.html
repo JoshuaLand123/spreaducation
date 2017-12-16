@@ -10,8 +10,7 @@
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 	<div class="col-md-6 col-md-offset-3">
-		<div class="row">
-			<legend>@messages("profile.edit")</legend>
+		<div class="row">			
 			<div class="col-md-4 col-md-offset-4 thumb-post">
 				@if(user.image.isDefined && user.image.get.nonEmpty) {
 					<img src="@controllers.routes.ApplicationController.getImage" />
@@ -46,14 +45,16 @@
 						<label for="subjects">@messages("profile.subject.able.to.teach.edit")</label>
 						<div id="subjects" class="col-md-6">
 							@b3.select(profileForm("subjects.subject1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject3"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject4"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-						</div>
-						<div class="col-md-6">
 							@b3.select(profileForm("subjects.subject1Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+							@b3.select(profileForm("subjects.subject2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 							@b3.select(profileForm("subjects.subject2Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+							
+							
+						</div>
+						<div class="col-md-6">							
+							@b3.select(profileForm("subjects.subject3"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 							@b3.select(profileForm("subjects.subject3Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+							@b3.select(profileForm("subjects.subject4"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 							@b3.select(profileForm("subjects.subject4Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
 						</div>
 

@@ -14,7 +14,7 @@
         <img class="logo" src="@assets.path("images/logo_all_white.png")"/>
         @helper.form(action = controllers.routes.SignUpController.submit()) {
         @helper.CSRF.formField
-        <div class="form-inline">
+        <div class="form-inline" style="font-size:22px;">
             @b3.radio(signUpForm("userType"), options=models.enums.UserType.values.toSeq.map(u => u.toString -> u.toString), 'class -> "radio-inline inline")
         </div>
         <div class="form1">
@@ -27,7 +27,7 @@
         @passwordStrength(signUpForm("password"), '_hiddenLabel -> messages("password"), 'placeholder -> messages("password"), 'class -> "form-control input-lg")
         <div class="form-group">
             <div>
-                <button id="submit" type="submit" value="submit" class="btn btn-lg btn-primary btn-block">@messages("sign.up")</button>
+                <button id="submit" type="submit" value="submit" class="btn btn-lg btn-edit btn-block">@messages("sign.up")</button>
             </div>
         </div>
         <div class="sign-in-now">
