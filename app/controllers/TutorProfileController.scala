@@ -52,7 +52,7 @@ class TutorProfileController @Inject() (
     TutorProfileForm.form.bindFromRequest.fold(
       errors =>
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
-        Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> s"Error: ${errors.toString}")),
+        Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> messages("error"))),
       profileSuccess => {
         val bytes: Option[Array[Byte]] = request.body.file("picture").map(p => Files.readAllBytes(p.ref))
         val profile = profileSuccess.copy(userID = request.identity.userID)

@@ -270,6 +270,7 @@ meter::-webkit-meter-optimum-value {
   display: block;
   height: 2.4em;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .thumbnail__description:hover {
@@ -315,8 +316,35 @@ meter::-webkit-meter-optimum-value {
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
 	position: relative;
-	margin-bottom: 40px;
+	margin-bottom: 53px;
 	left: 100px;
-	margin-top:36px;
+	margin-top:38px;
 }
 
+.btn-find-student {
+	color: #FFFFFF;
+	background: #7ED321;
+	border: 2px solid #FFFFFF;
+	position: relative;
+	margin-top: -150px;
+	text-align: center;
+	right: -500px;
+}
+
+#hover.row {
+	display: block;
+  height: 2.4em;
+  overflow: hidden;
+  width:auto;
+}
+
+#hover.row:hover {
+	height: 6em;
+  max-height: 18em;
+}
+
+.btn-edit-tutor {
+	color: #FFFFFF;
+	background: #7ED321;
+	border: 2px solid #FFFFFF;
+}

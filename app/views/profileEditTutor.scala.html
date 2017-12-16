@@ -15,7 +15,7 @@
 				@if(user.image.isDefined && user.image.get.nonEmpty) {
 					<img src="@controllers.routes.ApplicationController.getImage" />
 				} else {
-					<img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" />
+					<img src="@user.avatarURL.getOrElse(assets.path("images/yes.png"))" />
 				}
 			</div>
 		</div>
@@ -34,48 +34,67 @@
 						@b3.select(profileForm("workingLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.working.language.edit", '_default -> "choose.one")
 						@b3.textarea(profileForm("description"), '_label -> "profile.description.edit")
 						@b3.textarea(profileForm("instituteAttended"), '_label -> "profile.institute.attended.edit")
-						<div class="row">
-							<div class="col-md-7">
-								@b3.select(profileForm("occupationDegree"), options=models.enums.OccupationDegree.selectList(messages), '_label -> "profile.occupation.degree.edit", '_default -> "choose.one")
+						<label for="occupation">@messages("profile.occupation.degree.edit")</label>
+						<div id="occupation" class="row">
+							<div class="col-md-6">
+								@b3.select(profileForm("occupationDegree"), options=models.enums.OccupationDegree.selectList(messages), '_default -> "choose.one")
 							</div>
-							<div class="col-md-5">
-								@b3.text(profileForm("occupation"), '_label -> "profile.occupation.edit")
+							<div class="col-md-6">
+								@b3.text(profileForm("occupation"))
 							</div>
 						</div>
 						<label for="subjects">@messages("profile.subject.able.to.teach.edit")</label>
 						<div id="subjects" class="col-md-6">
-							@b3.select(profileForm("subjects.subject1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject1Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject2Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
-							
-							
-						</div>
-						<div class="col-md-6">							
-							@b3.select(profileForm("subjects.subject3"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject3Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject4"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("subjects.subject4Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
-						</div>
-
-						<label for="interests">@messages("profile.interest.edit")</label>
-						<div id="interests" class="col-md-6">
-							@b3.select(profileForm("interests.interest1"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("interests.interest2"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
-							@b3.select(profileForm("interests.interest3"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
+						@b3.select(profileForm("subjects.subject1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
-							<p><input id="slider-interest1" name='interests.timeInterest1' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("interests.timeInterest1")'/></p>
-							<p><input id="slider-interest2" name='interests.timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("interests.timeInterest2")'/></p>
-							<p><input id="slider-interest3" name='interests.timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("interests.timeInterest3")'/></p>
+						@b3.select(profileForm("subjects.subject1Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")						
+						</div>
+						<div class="col-md-6">
+						@b3.select(profileForm("subjects.subject2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
+						</div>
+						<div class="col-md-6">
+						@b3.select(profileForm("subjects.subject2Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+						</div>
+						<div class="col-md-6">
+						@b3.select(profileForm("subjects.subject3"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
+						</div>
+						<div class="col-md-6">
+						@b3.select(profileForm("subjects.subject3Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+						</div>
+						<div class="col-md-6">
+						@b3.select(profileForm("subjects.subject4"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
+						</div>						
+						<div class="col-md-6">							
+						@b3.select(profileForm("subjects.subject4Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+						</div>
+                         
+						<label for="interests">@messages("profile.interest.edit")</label>
+						<div id="interests" class="col-md-6">
+						@b3.select(profileForm("interests.interest1"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")	
+						</div>
+						<div class="col-md-6">
+						<p><input id="slider-interest1" name='interests.timeInterest1' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("interests.timeInterest1")'/></p>
+						</div>
+						<div class="col-md-6">
+						@b3.select(profileForm("interests.interest2"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
+						</div>
+						<div class="col-md-6">
+			            <p><input id="slider-interest2" name='interests.timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("interests.timeInterest2")'/></p>
+						</div>
+						<div class="col-md-6">
+						@b3.select(profileForm("interests.interest3"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
+						</div>
+						<div class="col-md-6">	
+						<p><input id="slider-interest3" name='interests.timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("interests.timeInterest3")'/></p>
 						</div>
 						@b3.select(profileForm("wishedSalary"), options=List((20, "Frischling"), (30, "Fortgeschritten"), (40, "Halb-Profi"), (50, "Profi"), (60, "Legende")).map { case (s, d) => s.toString -> s"$s € ($d)"}, '_label -> "profile.wished.salary.edit")
 						@b3.select(profileForm("lessonType"), options=models.enums.LessonType.selectList(messages), '_label -> "profile.lesson.type.edit")
 						@b3.text(profileForm("place"), '_label -> "profile.tutor.place.description")
 						@if(allowedToEditQuestions) {
-							<button type="submit" class="btn btn-primary pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
+							<button type="submit" class="btn btn-edit-tutor pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
 						} else {
-							<button type="submit" class="btn btn-primary pull-right">@messages("save")<span class="glyphicon glyphicon-ok"></span></button>
+							<button type="submit" class="btn btn-edit-tutor pull-right">@messages("save")<span class="glyphicon glyphicon-ok"></span></button>
 						}
 					</div>
 				}

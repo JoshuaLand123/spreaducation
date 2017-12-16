@@ -21,8 +21,8 @@ feedback.title = Spreaducation - Feedback
 toggle.navigation = Navigation ändern.
 welcome.signed.in = Willkommen, du bist jetzt angemeldet!
 
-sign.up.account = Erstelle ein neues Konto.
-sign.in.credentials = Logge dich ein.
+sign.up.account = Spreaducation bringt Tutoren und Schüler passend zusammen. Erstelle jetzt ein neues Konto.
+sign.in.credentials = Logge dich jetzt ein.
 
 error = Fehler
 info = Info
@@ -83,25 +83,25 @@ email.from = Spreaducation <team@spreaducation.de>
 # Sign Up
 email.sign.up.subject = Herzlich Willkommen bei Spreaducation.
 email.sign.up.hello = Hallo {0},
-email.sign.up.html.text = Wir freuen uns dich bei uns begrüßen zu dürfen. Klicke auf den Link <a href="{0}">seinem Link</a>, um dein neues Konto zu bestätigen und zu aktivieren. Freue dich auf ein einzigartiges gemeinsames Lernen!
+email.sign.up.html.text = Wir freuen uns dich bei uns begrüßen zu dürfen. Klicke auf <a href="{0}">diesen Link</a>, um dein neues Konto zu bestätigen und zu aktivieren. Freue dich auf ein einzigartiges gemeinsames Lernen!
 email.sign.up.txt.text = Wir freuen uns dich bei uns begrüßen zu dürfen. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0} . Freue dich auf ein einzigartiges gemeinsames Lernen!
 
 # Already Signed Up
 email.already.signed.up.subject = Herzlich willkommen
 email.already.signed.up.hello = Hallo {0},
-email.already.signed.up.html.text = Du hast bereits ein Konto angelegt. Folge diesem Link: <a href="{0}">seinem Link</a>, um dich in dein Konto einzuloggen.
+email.already.signed.up.html.text = Du hast bereits ein Konto angelegt. Folge <a href="{0}">diesem Link</a>, um dich in dein Konto einzuloggen.
 email.already.signed.up.txt.text = Du hast bereits ein Konto angelegt. Folge diesem Link, um dich in dein Konto einzuloggen: {0}
 
 # Reset Password
 email.reset.password.subject = Passwort zurücksetzen
 email.reset.password.hello = Hallo {0},
-email.reset.password.html.text = Bitte folge diesem Link <a href="{0}">diesem Link</a>, um dein Passwort zurückzusetzen.
+email.reset.password.html.text = Bitte folge <a href="{0}">diesem Link</a>, um dein Passwort zurückzusetzen.
 email.reset.password.txt.text = Bitte folge diesem Link, um dein Passwort zurückzusetzen: {0}
 
 # Activate Account
 email.activate.account.subject = Konto aktivieren
 email.activate.account.hello = Hallo {0},
-email.activate.account.html.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf dem Link <a href="{0}">diesem Link</a>, um dein neues Konto zu bestätigen und zu aktivieren.
+email.activate.account.html.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf <a href="{0}">diesen Link</a>, um dein neues Konto zu bestätigen und zu aktivieren.
 email.activate.account.txt.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0}
 
 # Dashboard
@@ -112,7 +112,7 @@ profile = Mein Profil
 profile.edit = Profil bearbeiten
 profile.gender = Geschlecht
 profile.dob = Geburtstag
-profile.dob.edit = Wann hast du Geburtstag?
+profile.dob.edit = Wann hast du Geburtstag? (Für Safari Nutzer: JJJJ-MM-TT)
 profile.class.level = Klasse
 profile.class.level.edit = In welche Klasse gehst du?
 profile.school.name = Schulname
@@ -132,11 +132,11 @@ profile.score.very.bad = ungenügend
 profile.occupation = Fachrichtung
 profile.occupation.edit = In welcher Fachrichtung?
 profile.occupation.degree = Abschluss
-profile.occupation.degree.edit = Was ist dein höchster Abschluss?
+profile.occupation.degree.edit = Was ist dein höchster Abschluss und in welcher Fachrichtung?
 profile.institute.attended = Schulen und Universitäten
 profile.institute.attended.edit = Welche Schulen oder Universitäten hast du bisher besucht?
 profile.description = Kurzbeschreibung
-profile.description.edit = Füge eine Kurzbeschreibung über dich und deine verfügbaren Zeiten hinzu. Was sollten deine Schüler über dich wissen?
+profile.description.edit = Füge eine Kurzbeschreibung über dich hinzu. Lass deine Schüler erfahren wer du bist und wann du in der Woche Zeit hast. 
 profile.working.language = Alltagssprache
 profile.working.language.edit = Welche Sprache sprichst du im Alltag?
 profile.subject.able.to.teach = Meine Fächer
@@ -156,7 +156,7 @@ tutee.feedback = FRAGEN BEANTWORTEN
 tutor.my.students = Meine Schüler
 tutor.your.profile.look = So werden deine Schüler dein Profil sehen
 tutor.wait.for.students = Danke für deine Registrierung. Wir sind noch dabei die am besten zu dir passenden Schüler zu finden … Komm doch morgen nochmal vorbei :)
-tutor.feedback = FRAGEN BEANTWORTEN
+tutor.feedback = Feedback geben
 
 # Questionnaire
 questionnaire = Wie lerne ich?
