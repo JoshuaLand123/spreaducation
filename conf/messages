@@ -285,9 +285,9 @@ environment.description.tutor = Dieser Bereich zeigt, wie dein Umfeld dein Lehre
 environment.Occupation.tutor = Beschäftigung
 environment.Occupation.description.tutor = Dein Beschäftigungs-Score. Dieser Bereich zeigt, ob deine weiteren Beschäftigungen dein Lehren fördern. Grün = ja , rot = eher weniger
 environment.Extra-time.tutor = Zusätzliche Zeit. 
-environment.Extra-time.description.tutor = Dein Zusätzlicher Zeit-Score. Dieser Bereich zeigt, ob du um den Unterricht weitere Zeit in deine Schüler investierst.
+environment.Extra-time.description.tutor = Dein Zusätzlicher Zeit-Score. Dieser Bereich zeigt, ob du um den Unterricht weitere Zeit in deine Schüler investierst. Grün = ja, rot = nein
 environment.Leisure.tutor = Freizeit
-environment.Leisure.description.tutor = Dein Freizeit-Score. Dieser Bereich zeigt, wie viel freie Zeit du hast.
+environment.Leisure.description.tutor = Dein Freizeit-Score. Dieser Bereich zeigt, wie viel freie Zeit du hast. rot = wenig, grün = viel
 
 
 constitution = Konstitution
