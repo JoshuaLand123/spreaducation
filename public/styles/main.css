@@ -261,21 +261,21 @@ meter::-webkit-meter-optimum-value {
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
 	position: relative;
-	margin-top: -50px;
+	margin-top: -100px;
 	text-align: center;
-	right: -500px;
+	left: 500px;
 }
 
 .thumbnail__description {
   display: block;
   height: 2.4em;
   overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-y: hidden;
 }
 
 .thumbnail__description:hover {
-  height: 6em;
-  max-height: 8em;
+  height: 8em;
+  overflow-y: auto;
 }
 
 .thumb-post img {
@@ -316,9 +316,9 @@ meter::-webkit-meter-optimum-value {
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
 	position: relative;
-	margin-bottom: 53px;
+	margin-bottom: 19px;
 	left: 100px;
-	margin-top:38px;
+	margin-top:16px;
 }
 
 .btn-find-student {
@@ -328,23 +328,42 @@ meter::-webkit-meter-optimum-value {
 	position: relative;
 	margin-top: -150px;
 	text-align: center;
-	right: -500px;
+	right: -400px;
 }
 
 #hover.row {
 	display: block;
-  height: 2.4em;
-  overflow: hidden;
-  width:auto;
+    height: 2.4em;
+    overflow: hidden;   
+	overflow-y: hidden;
+	
 }
 
 #hover.row:hover {
-	height: 6em;
-  max-height: 18em;
+	height: 12em;
+    overflow-y: auto;	
 }
 
-.btn-edit-tutor {
+.btn-default {
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
+}
+
+.user.row.data.col-md-3 {
+	background: #C5F693;
+	border: 2px solid white;
+	margin-top: 10px;
+	width:auto;
+}
+
+.feedback-logo {
+	max-width: 200px;
+	
+}
+
+.user.row.data.col-md-8 {
+	background: #C5F693;
+	border: 2px solid white;
+	margin-top: 10px;
 }

@@ -13,9 +13,9 @@
 			
 			<div class="col-md-2 col-md-offset-5 thumb-post">
 				@if(user.image.isDefined && user.image.get.nonEmpty) {
-					<img src="@controllers.routes.ApplicationController.getImage" />
+					<img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
 				} else {
-					<img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" />
+					<img class="img-circle" src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" style="width:130px; height:130px; object-fit:cover;"/>
 				}
 			</div>
 		<div class="row data">
