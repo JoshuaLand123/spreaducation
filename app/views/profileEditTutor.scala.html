@@ -48,7 +48,7 @@
 						@b3.select(profileForm("subjects.subject1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
-						@b3.select(profileForm("subjects.subject1Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+						@b3.select(profileForm("subjects.subject1Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one", 'required -> "true")
 						</div>
 						<div class="col-md-6">
 						@b3.select(profileForm("subjects.subject2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")

@@ -159,7 +159,7 @@ tutor.wait.for.students = Danke für deine Registrierung. Wir sind noch dabei di
 tutor.feedback = Feedback geben
 
 # Questionnaire
-questionnaire = Wie lerne ich?
+questionnaire.tutee = Wie lerne ich?
 questionnaire.tutor = Wie lehre ich?
 finish.and.view.profile = Beenden und Profil ansehen
 strongly.agree = stimmt

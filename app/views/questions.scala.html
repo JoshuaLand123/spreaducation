@@ -13,8 +13,11 @@
 
     <div class="user col-md-10 col-md-offset-1">
         <div class="row">
-           <legend>@messages("questionnaire.tutor")</legend>
-            <hr class="col-md-12" />
+            @if(user.userType == models.enums.UserType.Tutor) {
+                <legend>@messages("questionnaire.tutor")</legend>
+            } else {
+                <legend>@messages("questionnaire.tutee")</legend>
+            }
         </div>
         <div class="col-md-12">
             @helper.form(action = controllers.routes.QuestionsController.submit()) {
