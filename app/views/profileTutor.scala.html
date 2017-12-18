@@ -9,13 +9,13 @@
 @main(messages("profile.title"), Some(user)) {
 <div class="col-md-12">
 
-    <div class="user row data col-md-4" style="margin-top:70px; margin-left:-100px;">
+    <div class="user row data col-md-4" style="margin-top:20px; margin-right:10px;">
         <div class="col-md-12">
             <div class="col-md-6 col-md-offset-1 thumb-post">
                 @if(user.image.isDefined && user.image.get.nonEmpty) {
-                    <img src="@controllers.routes.ApplicationController.getImage" />
+                    <img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
                 } else {
-                    <img src="@user.avatarURL.getOrElse(assets.path("images/yes.png"))" />
+                    <img class="img-circle" src="@user.avatarURL.getOrElse(assets.path("images/yes.png"))" style="width:130px; height:130px; object-fit:cover;"/>
                 }
             </div>
             <div class="row">
@@ -42,14 +42,11 @@
                 <p class="col-md-6"><strong>@messages("profile.working.language"):</strong></p>
                 <p class="col-md-6">@profile.map(p => messages("language."+p.workingLanguage)).getOrElse("")</p>
             </div>
-            <div id="hover" class="row">
-                <p class="col-md-6"><strong>@messages("profile.description"):</strong></p>
-                <p class="col-md-6">@profile.map(_.description).getOrElse("")</p>
-            </div>
+            
             </div>
 			</div>
 			
-			<div class="user row data col-md-4" style="margin-top:70px; margin-left:20px;">
+			<div class="user row data col-md-4" style="margin-top:20px; ">
         <div class="col-md-12">			
 			<div class="row">
                 <p class="col-md-6"><strong>@messages("profile.occupation.degree"):</strong></p>
@@ -82,11 +79,21 @@
         <a href="@controllers.routes.TutorProfileController.edit" class="btn btn-bearbeiten-tutor"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
 		
         </div>
+		
+		
 
-    <div class="col-md-6 col-md-offset-1" style="margin-left:700px; margin-top:-550px;">
-        @psychogram("600px", "600px", user, psychogramData)
+    <div class="col-md-4" style="margin-left:750px; margin-top:-490px;">
+        @psychogram("500px", "500px", user, psychogramData)
         <a href="@controllers.routes.TutorProfileController.students" class="btn btn-find-student"><span class="glyphicon glyphicon-search"></span>  @messages("tutor.my.students")</a>
     </div>
+	
+	
+	<div class="user row data col-md-8" style=" margin-right: 500px; margin-bottom: 20px;">
+		<div id="hover" class="row">
+                <p class="col-md-6"><strong>@messages("profile.description"):</strong></p>
+                <p class="col-md-6">@profile.map(_.description).getOrElse("")</p>
+            </div>
+		</div>
 </div>
 }
 <script>$('#navbar .nav #my-profile').addClass('active');</script>
