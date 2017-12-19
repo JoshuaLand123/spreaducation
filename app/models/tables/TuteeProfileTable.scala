@@ -28,7 +28,8 @@ class TuteeProfileTable(tag: Tag) extends Table[TuteeProfile](tag, "tutee_profil
   def interest3 = column[String]("interest_3")
   def timeInterest3 = column[Int]("time_interest_3")
   def tutorOrder = column[Option[Int]]("tutor_order")
+  def tutorID = column[Option[UUID]]("tutor_id")
 
-  override def * = (userID, gender, dob, classLevel, schoolName, mainLanguage, subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2, interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3, tutorOrder) <> (TuteeProfile.tupled, TuteeProfile.unapply)
+  override def * = (userID, gender, dob, classLevel, schoolName, mainLanguage, subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2, interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3, tutorOrder, tutorID) <> (TuteeProfile.tupled, TuteeProfile.unapply)
 
 }

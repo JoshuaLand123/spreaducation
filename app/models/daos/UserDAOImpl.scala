@@ -4,12 +4,12 @@ import java.util.UUID
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.LoginInfo
-import models.{ TuteeProfile, TutorProfile, User }
 import models.daos.UserDAOImpl._
 import models.tables._
+import models.{ TuteeProfile, TutorMatchDB, TutorProfile, User }
 import play.api.db.slick.DatabaseConfigProvider
 import slick.basic.DatabaseConfig
-import slick.jdbc.{ JdbcBackend, JdbcProfile }
+import slick.jdbc.{ GetResult, JdbcBackend, JdbcProfile }
 import slick.lifted.TableQuery
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -106,6 +106,19 @@ class UserDAOImpl @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
   override def findTutorProfile(userID: UUID) =
     db.run(tutorProfiles.filter(_.userID === userID).result.headOption)
 
+  override def findMatches(userID: UUID): Future[Seq[TutorMatchDB]] = {
+    val userIdString = userID.toString
+    implicit val getTutorMatchResult = GetResult(r => TutorMatchDB(UUID.fromString(r.nextString()), r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<, r.<<))
+    val query = sql"""select
+                  distinct u.user_id, u.first_name, u.last_name, tutor.description, u.avatar_url, tutor.wished_salary,
+                     tutor.subject_1, tutor.subject_1_level, tutor.subject_2, tutor.subject_2_level, tutor.subject_3, tutor.subject_3_level, tutor.subject_4, tutor.subject_4_level,
+                     tutor.interest_1, tutor.interest_2, tutor.interest_3 from users u
+                     join tutor_profile tutor on tutor.user_id = u.user_id
+                     where ARRAY[tutor.subject_1, tutor.subject_2, tutor.subject_3, tutor.subject_4] && (select ARRAY[subject_improve_1, subject_improve_2] from tutee_profile where user_id = '#$userIdString')
+                     and u.activated = true;
+           """.as[TutorMatchDB]
+    db.run(query)
+  }
 }
 
 object UserDAOImpl {

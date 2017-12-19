@@ -10,7 +10,7 @@ import play.api.i18n.I18nSupport
 import play.api.mvc.{ AbstractController, ControllerComponents }
 import utils.auth.DefaultEnv
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ ExecutionContext, Future }
 
 class MatchingController @Inject() (
   components: ControllerComponents,
@@ -24,9 +24,15 @@ class MatchingController @Inject() (
 ) extends AbstractController(components) with I18nSupport {
 
   def view = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveTuteeProfile(request.identity.userID).map {
-      case Some(p) => Ok(views.html.matching(request.identity, TutorGenerator.generateTutors(p, request.messages)))
-      case None    => Redirect(routes.TuteeProfileController.edit()).flashing("error" -> "Please fill your profile first")
+    val messages = request.messages
+    userService.retrieveTuteeProfile(request.identity.userID).flatMap {
+      case Some(profile) => {
+        userService.findMatches(profile).map {
+          case Nil     => Ok(views.html.matching(request.identity, TutorGenerator.generateTutors(profile, messages)))
+          case matches => Ok(views.html.matching(request.identity, matches))
+        }
+      }
+      case None => Future.successful(Redirect(routes.TuteeProfileController.edit()).flashing("error" -> "Please fill your profile first"))
     }
 
   }

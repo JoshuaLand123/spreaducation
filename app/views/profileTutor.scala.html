@@ -42,7 +42,7 @@
                 <p class="col-md-6"><strong>@messages("profile.working.language"):</strong></p>
                 <p class="col-md-6">@profile.map(p => messages("language."+p.workingLanguage)).getOrElse("")</p>
             </div>
-            
+
             </div>
 			</div>
 			
@@ -79,15 +79,13 @@
         <a href="@controllers.routes.TutorProfileController.edit" class="btn btn-bearbeiten-tutor"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
 		
         </div>
-		
-		
 
     <div class="col-md-4" style="margin-left:750px; margin-top:-490px;">
         @psychogram("500px", "500px", user, psychogramData)
         <a href="@controllers.routes.TutorProfileController.students" class="btn btn-find-student"><span class="glyphicon glyphicon-search"></span>  @messages("tutor.my.students")</a>
     </div>
-	
-	
+
+
 	<div class="user row data col-md-8" style=" margin-right: 500px; margin-bottom: 20px;">
 		<div id="hover" class="row">
                 <p class="col-md-6"><strong>@messages("profile.description"):</strong></p>

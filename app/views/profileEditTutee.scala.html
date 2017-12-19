@@ -11,7 +11,7 @@
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 	<div class="col-md-10 col-md-offset-1">
 			
-			<div class="col-md-2 col-md-offset-5 thumb-post">
+			<div class="text-center thumb-post">
 				@if(user.image.isDefined && user.image.get.nonEmpty) {
 					<img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
 				} else {

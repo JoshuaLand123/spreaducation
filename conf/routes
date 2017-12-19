@@ -4,9 +4,10 @@
 
 # Home page
 GET         /                                controllers.ApplicationController.index
-GET         /feedback                        controllers.ApplicationController.feedback(order: Int)
+GET         /feedback                        controllers.ApplicationController.feedback(order: Int, userID: java.util.UUID)
 #GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
 GET         /getImage                        controllers.ApplicationController.getImage
+GET        /image/:userId                    controllers.ApplicationController.image(userId: java.util.UUID)
 
 GET         /questions                       controllers.QuestionsController.index
 GET         /questions/:page                 controllers.QuestionsController.view(page: Int)

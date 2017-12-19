@@ -1,7 +1,9 @@
 package helpers
 
+import java.util.UUID
+
 import models.enums.Interest
-import models.{Tutor, TuteeProfile}
+import models.{TuteeProfile, TutorMatch}
 import play.api.i18n.Messages
 
 object TutorGenerator {
@@ -83,7 +85,7 @@ object TutorGenerator {
     )
   }
 
-  def generateTutors(tuteeProfile: TuteeProfile, messages: Messages): List[Tutor] = {
+  def generateTutors(tuteeProfile: TuteeProfile, messages: Messages): List[TutorMatch] = {
     predefinedPricesAndStatuses.map { case (order, score, price, status) =>
       val index = Math.abs(tuteeProfile.userID.hashCode() + order)
       val tutor = predefinedTutors(index % predefinedTutors.size)
@@ -94,17 +96,19 @@ object TutorGenerator {
       val descriptionList = predefinedDescriptions(subject, interest, gender)
       val description = descriptionList(index % descriptionList.size)
       val avatar = if (gender == "Male") s"avatars/male-${index % 14 + 1}.jpeg" else s"avatars/female-${index % 9 + 1}.jpeg"
-      Tutor(
+      TutorMatch(
+        userID = UUID.randomUUID,
         firstName = tutor._1,
         lastName = tutor._2,
         description = description,
-        avatarUrl = avatar,
+        avatarUrl = Some(avatar),
         price = price,
-        subject = subject,
+        subject1 = subject,
         interest = interest,
         matchingScore = score + index % 3,
         status = status,
-        order = order
+        order = order,
+        isFake = true
       )
     }
   }

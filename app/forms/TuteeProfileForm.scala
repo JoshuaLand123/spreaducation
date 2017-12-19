@@ -1,5 +1,7 @@
 package forms
 
+import java.util.UUID
+
 import models.TuteeProfile
 import play.api.data.Form
 import play.api.data.Forms._
@@ -8,7 +10,7 @@ object TuteeProfileForm {
 
   val form = Form(
     mapping(
-      "userID" -> uuid,
+      "userID" -> ignored(UUID.randomUUID()),
       "gender" -> nonEmptyText,
       "dob" -> date,
       "classLevel" -> number(min = 7, max = 13),
@@ -28,7 +30,8 @@ object TuteeProfileForm {
       "timeInterest2" -> number(min = 1, max = 12),
       "interest3" -> nonEmptyText,
       "timeInterest3" -> number(min = 1, max = 12),
-      "tutorOrder" -> optional(number)
+      "tutorOrder" -> optional(number),
+      "tutorOrder" -> ignored(Option(UUID.randomUUID()))
     )(TuteeProfile.apply)(TuteeProfile.unapply)
   )
 }

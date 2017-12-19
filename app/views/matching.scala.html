@@ -3,7 +3,7 @@
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
 
-@(user: models.User, tutors: Seq[models.Tutor])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(user: models.User, tutors: Seq[models.TutorMatch])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("matching.title"), Some(user)) {
 <div class="col-md-12">
@@ -12,26 +12,30 @@
                 @grouped.map { tutor =>
                     <div class="col-md-4 text-center" style="background:#FAFEF4; border-right: 20px solid #C5F693; ">
                         <div class="row">
-                            <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl)}' style="width:200px; height:200px; object-fit:cover;">
+                            @if(!tutor.isFake) {
+                                <img class="img-circle" src='@controllers.routes.ApplicationController.image(tutor.userID)' style="width:200px; height:200px; object-fit:cover;">
+                            } else {
+                                <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl.get)}' style="width:200px; height:200px; object-fit:cover;">
+                            }
                         </div>
                         <div class="row>">
                             @tutor.matchingScore % Match
                         </div>
                         <div class="row">
-                            @tutor.subject · @tutor.interest
+                            @tutor.subject1 · @if(tutor.subject2.isDefined) {@tutor.subject2.get ·} @tutor.interest
                         </div>
                         <div class="row">
                            <strong>@tutor.firstName @tutor.lastName</strong>
                         </div>
                         <br>
                         <div class="thumbnail__description">
-                        @tutor.description
+                            @tutor.description
                         </div>
                         <div class="row">
-                            @tutor.price € / 90 min
+                            @tutor.price.ceil.toInt € / 90 min
                         </div>
                         <div class="row">
-                            <a href="@controllers.routes.ApplicationController.feedback(tutor.order)" class="btn btn-default">@messages("matching.choose")</a>
+                            <a href="@controllers.routes.ApplicationController.feedback(tutor.order, tutor.userID)" class="btn btn-default">@messages("matching.choose")</a>
                         </div>
                     </div>
                 }

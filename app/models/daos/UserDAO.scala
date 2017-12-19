@@ -3,8 +3,8 @@ package models.daos
 import java.util.UUID
 
 import com.mohiva.play.silhouette.api.LoginInfo
-import models.{ TuteeProfile, TutorProfile, User }
 import models.tables.{ DbLoginInfo, LoginInfoTable }
+import models.{ TuteeProfile, TutorMatchDB, TutorProfile, User }
 import slick.lifted.Query
 
 import scala.concurrent.Future
@@ -26,5 +26,7 @@ trait UserDAO {
   def findTuteeProfile(userID: UUID): Future[Option[TuteeProfile]]
 
   def findTutorProfile(userID: UUID): Future[Option[TutorProfile]]
+
+  def findMatches(userID: UUID): Future[Seq[TutorMatchDB]]
 
 }
