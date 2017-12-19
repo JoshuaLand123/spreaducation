@@ -7,6 +7,7 @@ import com.mohiva.play.silhouette.impl.providers.CommonSocialProfile
 import models.{ TuteeProfile, TutorMatch, TutorMatchDB, TutorProfile, User }
 import models.daos.UserDAO
 import models.enums.UserType
+import play.api.i18n.Messages
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -57,7 +58,7 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
 
   override def saveTutorProfile(profile: TutorProfile) = userDAO.saveTutorProfile(profile)
 
-  override def findMatches(profile: TuteeProfile) = {
+  override def findMatches(profile: TuteeProfile, messages: Messages) = {
     def mapToStatus(wishedSalary: Double): String =
       if (wishedSalary < 30) "Frischling"
       else if (wishedSalary < 40) "Fortgeschritten"
@@ -76,9 +77,9 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
             && Seq(profile.subjectImprove1, profile.subjectImprove2).contains(subject) => subject
         }.take(2)
 
-      val subject1 = subjects.headOption.getOrElse("")
-      val subject2 = if (subjects.size > 1) Some(subjects.tail.head) else None
-      val interest = Seq(Some(tutorMatchDB.interest1), tutorMatchDB.interest2, tutorMatchDB.interest3).flatten.find(Seq(profile.interest1, profile.interest2, profile.interest3).contains).getOrElse(tutorMatchDB.interest1)
+      val subject1 = subjects.headOption.map(s => messages(s"subject.$s")).getOrElse("")
+      val subject2 = if (subjects.size > 1) Some(messages(s"subject.${subjects.tail.head}")) else None
+      val interest = messages(s"interest.${Seq(Some(tutorMatchDB.interest1), tutorMatchDB.interest2, tutorMatchDB.interest3).flatten.find(Seq(profile.interest1, profile.interest2, profile.interest3).contains).getOrElse(tutorMatchDB.interest1)}")
       TutorMatch(
         userID = tutorMatchDB.userID,
         firstName = tutorMatchDB.firstName,

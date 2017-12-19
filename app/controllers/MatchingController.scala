@@ -27,7 +27,7 @@ class MatchingController @Inject() (
     val messages = request.messages
     userService.retrieveTuteeProfile(request.identity.userID).flatMap {
       case Some(profile) => {
-        userService.findMatches(profile).map {
+        userService.findMatches(profile, messages).map {
           case Nil     => Ok(views.html.matching(request.identity, TutorGenerator.generateTutors(profile, messages)))
           case matches => Ok(views.html.matching(request.identity, matches))
         }
