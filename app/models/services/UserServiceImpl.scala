@@ -96,6 +96,6 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
       )
     }
 
-    userDAO.findMatches(profile.userID).map(_.map(convert).filter(_.subject1 != "").sortBy(-_.price).zipWithIndex.map { case (a, order) => a.copy(order = order + 1, matchingScore = 100 - (order + 1) * 10 + profile.userID.hashCode() % 4 + order) })
+    userDAO.findMatches(profile.userID).map(_.map(convert).filter(_.subject1 != "").sortBy(-_.price).zipWithIndex.map { case (a, order) => a.copy(order = order + 1, matchingScore = 100 - (order + 1) * 5 + order) })
   }
 }
