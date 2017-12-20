@@ -151,7 +151,9 @@ profile.tutor.place.description = Gebe deinen Wohnort ein.
 profile.error.duplicate.subjects.or.interests = Bitte wähle verschiedene Fächer und Interessen.
 
 
-tutee.feedback = FRAGEN BEANTWORTEN
+tutee.feedback = Feedback geben
+tutee.feedback.text1 = Wir arbeiten gerade daran, dich mit deinem Tutor zu verbinden.
+tutee.feedback.text2 = Wir melden uns bei dir sobald es klappt.
 
 tutor.my.students = Meine Schüler
 tutor.your.profile.look = So werden deine Schüler dein Profil sehen
@@ -180,6 +182,7 @@ save.and.quit = Speichern und Beenden
 save.and.continue = Speichern und Fortfahren
 choose.one = Bitte Auswählen
 upload.image = Bild hochladen
+thanks = Lieben Dank
 
 # Gender
 
