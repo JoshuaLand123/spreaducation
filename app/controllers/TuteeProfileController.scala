@@ -54,7 +54,7 @@ class TuteeProfileController @Inject() (
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
         Future.successful(Redirect(routes.TuteeProfileController.edit).flashing("error" -> s"Error: ${errors.toString}")),
       profileSuccess => {
-        val bytes: Option[Array[Byte]] = request.body.file("picture").map(p => Files.readAllBytes(p.ref))
+        val bytes: Option[Array[Byte]] = request.body.file("upload").map(p => Files.readAllBytes(p.ref))
         val profile = profileSuccess.copy(userID = request.identity.userID)
         /*        if (profile.subjectImprove1 == profile.subjectImprove2 ||
           profile.subjectGoodAt1 == profile.subjectGoodAt2 ||

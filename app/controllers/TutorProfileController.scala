@@ -54,7 +54,7 @@ class TutorProfileController @Inject() (
         //Redirect(routes.ApplicationController.index).flashing("error" -> s"Error: $errors"),
         Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> messages("error"))),
       profileSuccess => {
-        val bytes: Option[Array[Byte]] = request.body.file("picture").map(p => Files.readAllBytes(p.ref))
+        val bytes: Option[Array[Byte]] = request.body.file("upload").map(p => Files.readAllBytes(p.ref))
         val profile = profileSuccess.copy(userID = request.identity.userID)
         /*val subjects: List[String] = List(Some(profile.subjects.subject1), profile.subjects.subject2, profile.subjects.subject3, profile.subjects.subject4).flatten
         if (subjects.size != subjects.distinct.size ||

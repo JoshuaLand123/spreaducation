@@ -11,7 +11,7 @@
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 	<div class="col-md-6 col-md-offset-3">
 		<div class="row">			
-			<div class="text-center thumb-post">
+			<div class="text-center avatar">
 				@if(user.image.isDefined && user.image.get.nonEmpty) {
 					<img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
 				} else {
@@ -24,8 +24,8 @@
 				@helper.form(action = controllers.routes.TutorProfileController.submit(), 'enctype -> "multipart/form-data", 'onsubmit -> "return validateProfileForm();") {
 					@helper.CSRF.formField
 					<div class="text-center">
-						<label for="picture" class="btn btn-xs">@messages("upload.image")</label>
-						<input id="picture" type="file" style="visibility:hidden;" name="picture" accept="image/*" >
+						<label for="upload" class="btn btn-xs">@messages("upload.image")</label>
+						<input id="upload" type="file" style="visibility:hidden;" name="upload" accept="image/*" >
 					</div>
 					<div class="form-group">
 						@b3.select(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender", '_default -> "choose.one")
@@ -111,6 +111,10 @@
 					} else {
 						$('#place_field').show("slow");
 					}
+				});
+
+				$("#upload").change(function() {
+				  readURL(this);
 				});
 
 			</script>

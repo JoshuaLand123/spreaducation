@@ -11,7 +11,7 @@
 
     <div class="user row data col-md-4" style="margin-top:20px; margin-right:10px;">
         <div class="col-md-12">
-            <div class="col-md-6 col-md-offset-1 thumb-post">
+            <div class="col-md-6 col-md-offset-1 avatar">
                 @if(user.image.isDefined && user.image.get.nonEmpty) {
                     <img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
                 } else {
