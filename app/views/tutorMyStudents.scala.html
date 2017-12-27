@@ -16,12 +16,8 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-md-4 col-md-offset-4 avatar">
-                            @if(user.image.isDefined && user.image.get.nonEmpty) {
-                            <img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
-                            } else {
-                            <img class="img-circle" src="@user.avatarURL.getOrElse(assets.path("images/yes.png"))" style="width:130px; height:130px; object-fit:cover;"/>
-                            }
+                        <div class="col-md-4 col-md-offset-4">
+                            @avatar(user)
                         </div>
                     </div>                    
 					<div class="row">

@@ -289,7 +289,7 @@ meter::-webkit-meter-optimum-value {
 	background:#FFFFFF;
 }
 
-.btn-bearbeiten {
+.btn-edit {
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
@@ -309,9 +309,9 @@ meter::-webkit-meter-optimum-value {
 .tutor-card {
 	float: left;
 	margin: auto;
-
 }
-.btn-bearbeiten-tutor {
+
+.btn-edit-tutor {
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;

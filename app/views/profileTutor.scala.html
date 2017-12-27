@@ -11,12 +11,8 @@
 
     <div class="user row data col-md-4" style="margin-top:20px; margin-right:10px;">
         <div class="col-md-12">
-            <div class="col-md-6 col-md-offset-1 avatar">
-                @if(user.image.isDefined && user.image.get.nonEmpty) {
-                    <img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
-                } else {
-                    <img class="img-circle" src="@user.avatarURL.getOrElse(assets.path("images/yes.png"))" style="width:130px; height:130px; object-fit:cover;"/>
-                }
+            <div class="col-md-6 col-md-offset-1">
+                @avatar(user)
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("first.name"):</strong></p>
@@ -76,7 +72,7 @@
                 </div>
             }
         </div>
-        <a href="@controllers.routes.TutorProfileController.edit" class="btn btn-bearbeiten-tutor"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
+        <a href="@controllers.routes.TutorProfileController.edit" class="btn btn-edit-tutor"><span class="glyphicon glyphicon-edit"></span>@messages("edit")</a>
 		
         </div>
 

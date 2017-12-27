@@ -10,13 +10,8 @@
 @main(messages("profile.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 	<div class="col-md-10 col-md-offset-1">
-			
-			<div class="text-center avatar">
-				@if(user.image.isDefined && user.image.get.nonEmpty) {
-					<img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
-				} else {
-					<img class="img-circle" src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" style="width:130px; height:130px; object-fit:cover;"/>
-				}
+			<div class="text-center">
+				@avatar(user)
 			</div>
 		<div class="row data">
 			<div class="col-md-12">
@@ -75,6 +70,9 @@
 		</div>
 		<script>
 			$('input[id^="slider-"]').slider();
+			$("#upload").change(function() {
+				readURL(this);
+			});
 		</script>
 	</div>
 }

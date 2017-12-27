@@ -11,12 +11,8 @@
         
     <div class="user row data col-md-4">
         <div class="col-md-12">
-            <div class="col-md-8 col-md-offset-1 avatar">
-                @if(user.image.isDefined && user.image.get.nonEmpty) {
-                    <img class="img-circle" src="@controllers.routes.ApplicationController.getImage" style="width:130px; height:130px; object-fit:cover;"/>
-                } else {
-                    <img class="img-circle" src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" style="width:130px; height:130px; object-fit:cover;"/>
-                }
+            <div class="col-md-8 col-md-offset-1">
+                @avatar(user)
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("first.name"):</strong></p>
@@ -47,7 +43,7 @@
                 <p class="col-md-6">@profile.map(l => messages("language."+l.mainLanguage)).getOrElse("")</p>
             </div>
             </div>
-            <a href="@controllers.routes.TuteeProfileController.edit" class="btn btn-bearbeiten"><span class="glyphicon glyphicon-edit"></span> @messages("edit")</a>
+            <a href="@controllers.routes.TuteeProfileController.edit" class="btn btn-edit"><span class="glyphicon glyphicon-edit"></span> @messages("edit")</a>
         </div>
 
     <div class="col-md-6 col-md-offset-1" style="display:block;">
