@@ -19,6 +19,8 @@ object Subject extends Enumeration {
   val Physics = Value("Physics")
   val Chemistry = Value("Chemistry")
   val Geography = Value("Geography")
+  val Biology = Value("Biology")
+  val ComputerScience = Value("ComputerScience")
 
   def selectList(messages: Messages) =
     Subject.values.toSeq.map(g => g.toString -> messages("subject." + g.toString)).sortBy(_._2) :+ ("Other" -> messages("subject.Other"))
