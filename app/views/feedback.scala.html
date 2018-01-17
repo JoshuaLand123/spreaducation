@@ -7,7 +7,7 @@
 @(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("feedback.title"), Some(user)) {
-<div class="col-md-4 col-md-offset-4 text-center" style="border: 2px solid white; margin-top: -20px;">
+<div class="col-md-4 text-center" style="border: 2px solid white; margin-top: -20px;">
 <img class="feedback-logo" src="@assets.path("images/pg.png")"/>
     <div class="row">
         @messages("thanks")!
@@ -28,5 +28,8 @@
     <div class="row">
         Falls du Fragen hast, frag uns jederzeit gern.
     </div>
+</div>
+<div class="col-md-8">
+    @calendar()
 </div>
 }

@@ -6,40 +6,37 @@
 @(user: models.User, tutor: models.TutorProfile)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("tutor.my.students.title"), Some(user)) {
-<div class="col-md-12" style="">
-            
-            <div class="col-md-6 col-md-offset-3 text-center" style="margin-top:20px; margin-left:20px; padding: 50px;">
-                
-                <div style="background:#FAFEF4; border-right: 10px solid #C5F693; width:auto;">
-                    <div class="row">
-                        <b>@messages("tutor.your.profile.look"):</b>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4">
-                            @avatar(user)
-                        </div>
-                    </div>                    
-					<div class="row">
-                        @messages("subject." + tutor.subjects.subject1) · @messages("interest." + tutor.interests.interest1)
-                    </div>
-                    <div class="row">
-                        <strong>@user.firstName @user.lastName</strong>
-                    </div>
-                    <div id="hover" class="row" style="padding-left: 15px;	padding-right: 10px; text-align: center;">
-                        @tutor.description
-                    </div>
-                    <div class="row">
-                        @tutor.wishedSalary € / 90 min
-                    </div>
-                </div>               
-				</div>
-				
-				<br/>
-				<div style="font-size:20px; margin-top:150px">@messages("tutor.wait.for.students")</div>
-                <br/>
+<div class="col-md-4 text-center" style="margin-top:20px; ">
+    <div style="font-size:20px;">@messages("tutor.wait.for.students")</div>
+    <div><a href="https://docs.google.com/forms/d/1t42zSseAa1h_pPMYeXevbKTsZxiYATtIoJvh4i5O8QA" class="btn btn-feedback">@messages("Feedback geben")</a></div>
 
-				<div><a href="https://docs.google.com/forms/d/1t42zSseAa1h_pPMYeXevbKTsZxiYATtIoJvh4i5O8QA" class="btn btn-feedback">@messages("Feedback geben")</a></div>
+    <div style="background:#FAFEF4; border-right: 10px solid #C5F693; width:auto;">
+        <div class="row">
+            <b>@messages("tutor.your.profile.look"):</b>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                @avatar(user)
+            </div>
+        </div>
+        <div class="row">
+            @messages("subject." + tutor.subjects.subject1) · @messages("interest." + tutor.interests.interest1)
+        </div>
+        <div class="row">
+            <strong>@user.firstName @user.lastName</strong>
+        </div>
+        <div id="hover" class="row" style="padding-left: 15px;	padding-right: 10px; text-align: center;">
+            @tutor.description
+        </div>
+        <div class="row">
+            @tutor.wishedSalary € / 90 min
+        </div>
+    </div>
 </div>
+<div class="col-md-8">
+    @calendar()
+</div>
+
 }
 <script>$('#navbar .nav #find-tutee').addClass('active');</script>
