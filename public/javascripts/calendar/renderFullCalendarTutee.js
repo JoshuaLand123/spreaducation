@@ -43,6 +43,7 @@ $(document).ready(function() {
                     eventData.title = 'Meeting Requested';
                     eventData.start = date.clone();
                     eventData.end = date.add(1, 'hours').add(30, 'minutes');
+                    eventData.constraint = 'available';
                         $.ajax({
                               url: '/events/request',
                               data: {
@@ -69,7 +70,7 @@ $(document).ready(function() {
         maxTime: '22:00:00',
         defaultTimedEventDuration: '01:30:00',
         eventOverlap: function(stillEvent, movingEvent) {
-            return stillEvent.rendering == "background" && stillEvent.id == 'available';
+            return stillEvent.rendering == "background" && stillEvent.id == "available";
         },
         eventDrop: function(event, delta, revertFunc) {
             if (!confirm("Are you sure you want to change this event?")) {
@@ -81,9 +82,7 @@ $(document).ready(function() {
                         start: event.start.format(),
                         end: event.end.format()
                     },
-                    type: 'GET',
                     success: function(response) {
-                        event.id = response;
                         $('#calendar').fullCalendar('updateEvent', event);
                     },
                     error: function(e) {
@@ -95,7 +94,10 @@ $(document).ready(function() {
 
         },
         eventRender: function(event, element) {
-            if(event.title == 'temp') return false;
+            if(event.title == 'temp') {
+                $('#calendar').fullCalendar('removeEvents', event._id);
+                return false;
+            }
             if(event.rendering != 'background') {
                 element.find(".fc-bg").css("pointer-events", "none");
                 element.append("<div style='position:absolute;bottom:0px;right:0px' ><button type='button' id='btnDeleteEvent' class='btn btn-sm btn-block btn-primary btn-flat'>X</button></div>");
@@ -103,7 +105,6 @@ $(document).ready(function() {
                     if (confirm("Are you sure you want to delete this event?")) {
                         $.ajax({
                             url: '/events/' + event.id + '/delete',
-                            type: 'GET',
                             success: function(response) {
                                 $('#calendar').fullCalendar('removeEvents', event._id);
                             },

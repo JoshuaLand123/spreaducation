@@ -24,8 +24,9 @@ case class Event(
   start: LocalDateTime,
   end: LocalDateTime,
   rendering: Option[String] = None,
+  constraint: Option[String] = None,
   color: Option[String] = None,
-  borderColor: Option[String] = None
+  borderColor: Option[String] = None,
 //allDay: Boolean
 //end: Option[Date],
 //allDay: Boolean,

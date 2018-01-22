@@ -58,7 +58,7 @@ class MeetingController @Inject() (
     meetingService.tutorMeetings(tutorId, start, end).map(a => Ok(Json.toJson(a.map {
       case m if m.meetingType == MeetingType.Availability =>
         m.toEvent.copy(id = "available", rendering = Some("background"))
-      case m if m.tuteeID.contains(request.identity.userID) => m.toEvent
+      case m if m.tuteeID.contains(request.identity.userID) => m.toEvent.copy(constraint = Some("available"));
       case m => m.toEvent.copy(rendering = Some("background"), color = Some("#ff9f89"))
     })))
   }
