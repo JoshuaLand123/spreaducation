@@ -1,17 +1,17 @@
 body {
-    padding-top: 50px;
+    padding-top: 30px;
     background: #C5F693;
     font-size: 18px;
     font-family: Abrade Medium;
 }
 
 h1 {
-    text-align: center;
+
     font-size: 24px;
 }
 
 main{
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 input:hover, input:focus {
@@ -21,7 +21,7 @@ input:hover, input:focus {
 }
 
 fieldset {
-    margin-top: 60px;
+    padding-top: 60px;
 	font-family: 'Abrade Medium', sans-serif;
 }
 legend {
@@ -32,6 +32,7 @@ legend {
 }
 a {
     cursor: pointer;
+    color: #FFFFFF;
 }
 
 .provider {
@@ -49,11 +50,13 @@ a {
 .vk { background: #567ca4; }
 
 .social-providers,
-.sign-in-now,
+.sign-in-now {
+    color: #FFFFFF;
+}
 .already-member,
 .not-a-member {
     text-align: center;
-    margin-top: 20px;
+    color: #FFFFFF;
 }
 
 .user {
@@ -65,6 +68,10 @@ a {
 
 .form-control {
     border-radius: 0;
+}
+
+.form-inline {
+    font-size: 22px;
 }
 
 [class^='ion-'] {
@@ -84,8 +91,6 @@ a {
     padding-left: 42.5px;
 }
 
-
-
 .navbar-default .navbar-nav > .active {
     color: #000000 !important;
     background: #FAFEF4;
@@ -97,18 +102,6 @@ a {
     background-color: #FAFEF4;
     background-image: none;
     box-shadow: none;
-}
-
-.btn {
-    border-radius: 2px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
-    color: #000000;
-    background: #C5F693;
-    border: 2px solid #C5F693;
-}
-
-.btn-lg {
-    font-size: 18px;
 }
 
 .user{
@@ -166,7 +159,6 @@ a {
 .starter-template {
     padding: 0px 15px;
 }
-
 
 meter {
     /* Reset the default appearance */
@@ -233,13 +225,11 @@ meter::-webkit-meter-optimum-value {
     margin: auto;
     max-width: 25%;
 	min-width: 200px;
-    height: 100;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .row {
-	margin-top: 20px;
-
+	padding-top: 20px;
 }
 
 .slider-tick.round.in-selection{
@@ -254,16 +244,6 @@ meter::-webkit-meter-optimum-value {
 
 #page1 {
 	background: #7ED321;
-}
-
-.btn-sec {
-	color: #FFFFFF;
-	background: #7ED321;
-	border: 2px solid #FFFFFF;
-	position: relative;
-	margin-top: -100px;
-	text-align: center;
-	left: 500px;
 }
 
 .thumbnail__description {
@@ -284,9 +264,39 @@ meter::-webkit-meter-optimum-value {
   max-height: 250px;
   margin-bottom: 1rem;
 }
+.btn {
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+    color: #000000;
+    background: #C5F693;
+    border: 2px solid #C5F693;
+    font-size: 18px;
+    margin: auto;
+}
+
+.btn-signup {
+    font-size: 18px;
+    display: block;
+    float: right;
+}
+
+.btn-signin {
+	font-size: 18px;
+    display: block;
+}
 
 .btn-edit:hover {
 	background:#FFFFFF;
+}
+
+.btn-find-tutor {
+	color: #FFFFFF;
+	background: #7ED321;
+	border: 2px solid #FFFFFF;
+	text-align: center;
+
+
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
 }
 
 .btn-edit {
@@ -294,20 +304,19 @@ meter::-webkit-meter-optimum-value {
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
 	position: relative;
-	margin-bottom: 5px;
-	left: 100px;
+
 }
 
 .btn-feedback {
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
-	position: relative;
 }
 
-.tutor-card {
-	float: left;
-	margin: auto;
+.btn-default {
+    color: #FFFFFF;
+    background: #7ED321;
+    border: 2px solid #FFFFFF;
 }
 
 .btn-edit-tutor {
@@ -316,7 +325,7 @@ meter::-webkit-meter-optimum-value {
 	border: 2px solid #FFFFFF;
 	position: relative;
 	margin-bottom: 19px;
-	left: 100px;
+
 	margin-top:16px;
 }
 
@@ -325,9 +334,21 @@ meter::-webkit-meter-optimum-value {
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
 	position: relative;
-	margin-top: -150px;
+
 	text-align: center;
-	right: -400px;
+
+}
+
+#shower {
+    color: #FFFFFF;
+    background: #7ED321;
+    border: 2px solid #FFFFFF;
+    padding: 5px;
+    text-align: center;
+    font-size: 16;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+
+
 }
 
 #hover.row {
@@ -335,7 +356,7 @@ meter::-webkit-meter-optimum-value {
     height: 2.4em;
     overflow: hidden;   
 	overflow-y: hidden;
-	
+	text-align: center;
 }
 
 #hover.row:hover {
@@ -343,10 +364,9 @@ meter::-webkit-meter-optimum-value {
     overflow-y: auto;	
 }
 
-.btn-default {
-	color: #FFFFFF;
-	background: #7ED321;
-	border: 2px solid #FFFFFF;
+.tutor-card {
+	float: left;
+	margin: auto;
 }
 
 .user.row.data.col-md-3 {
@@ -356,13 +376,131 @@ meter::-webkit-meter-optimum-value {
 	width:auto;
 }
 
+.feedback {
+    border: 2px solid white;
+    background: white;
+}
+
 .feedback-logo {
 	max-width: 200px;
-	
 }
 
 .user.row.data.col-md-8 {
 	background: #C5F693;
 	border: 2px solid white;
 	margin-top: 10px;
+}
+
+.user {
+    background: white;
+    display: none;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+     .user {
+        position: fixed;
+        right: 0;
+        z-index: 10;
+        width: 24%;
+        height: 100%;
+        top: 70px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
+        text-align: left;
+        overflow: scroll;
+
+    }
+}
+
+.psychogram {
+    background: white;
+    padding: 15px;
+    margin: auto;
+}
+
+@media screen and (min-width: 1068px) {
+     .psychogram {
+       left: 22%;
+    }
+}
+
+.user-matching {
+    background: white;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+     .user-matching {
+        position: fixed;
+        right: 0;
+        z-index: 10;
+        width: 24%;
+        height: 100%;
+        top: 70px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
+        text-align: left;
+
+        padding: 20px;
+    }
+}
+
+.user-tutor {
+    background: white;
+    display: none;
+    text-align: center;
+
+}
+
+@media screen and (min-width: 768px) {
+     .user-tutor {
+        position: fixed;
+        right: 0;
+        z-index: 10;
+        width: 24%;
+        height: 90.5%;
+        top: 70px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
+        text-align: left;
+        overflow: scroll;
+    }
+}
+
+.matching {
+    background:#FAFEF4;
+    border-right: 10px solid #C5F693;
+    border-left: 10px solid #C5F693;
+    border-bottom: 20px solid #C5F693;
+    padding: 10px;
+    margin: auto;
+}
+
+.img-circle {
+    width:200px;
+    height:200px;
+    object-fit:cover;
+}
+
+.matching-students {
+    margin-top:20px;
+    margin-left:20px;
+    padding: 50px;
+}
+
+.tutor-your-profile {
+    background:#FAFEF4;
+    border-right: 10px solid #C5F693;
+    padding: 30px;
+}
+
+.tutor-message {
+    font-size:20px;
+    margin-top:100px
+}
+
+.description {
+    padding-left: 15px;
+    padding-right: 10px;
 }

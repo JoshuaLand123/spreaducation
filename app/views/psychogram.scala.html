@@ -10,6 +10,15 @@
     @*<img class="userpic" src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))">*@
 
     <svg width="@width" height="@height" viewBox="0 0 788 726" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g>
+            <rect x="0" y="680" width="250" height="70" rx="35" ry="35" fill="white"/>
+            <image xlink:href="@assets.path("images/cursor.png")" x="0" y="630" height="40" width="40"/>
+            <text font-family="Abrade Medium" font-size="16" font-weight="300" fill="#000000">
+                <tspan x="0" y="680">Bewege den Mauszeiger</tspan>
+                <tspan x="0" y="700">über die Kategorien,</tspan>
+                <tspan x="0" y="720">um weitere Details anzuzeigen.</tspan>
+            </text>
+        </g>
         <defs>
             <polygon id="path-1" points="169.994287 0 288.26029 0 461.883299 255.322188 0.450094178 255.322188"></polygon>
             <polygon id="path-2" points="0 0 477 0 307.0625 220 169.9375 220"></polygon>
@@ -295,15 +304,7 @@
                 </text>
             </g>
         </g>
-        <g>
-            <rect x="0" y="680" width="250" height="70" rx="15" ry="15" fill="#b9e88b"/>
-            <image xlink:href="@assets.path("images/cursor.png")" x="0" y="690" height="40" width="40"/>
-            <text font-family="Helvetica-Light, Helvetica" font-size="15" font-weight="300" fill="#000000">
-                <tspan x="35" y="700">Bewege den Mauszeiger</tspan>
-                <tspan x="35" y="720">über die Kategorien,</tspan>
-                <tspan x="35" y="740">um weitere Details anzuzeigen.</tspan>
-            </text>
-        </g>
+
     </svg>
 
     <script>

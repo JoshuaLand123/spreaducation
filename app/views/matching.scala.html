@@ -6,16 +6,27 @@
 @(user: models.User, tutors: Seq[models.TutorMatch])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("matching.title"), Some(user)) {
-<div class="col-md-12">
+<div class="col-md-10">
+
+    <div id="tutee" class="user-matching data">
+        <div class="col-md-12">
+            <div class="row text-center">
+                @avatar(user)
+            </div>
+            <div class="row text-center">
+                <p<strong>@user.firstName.getOrElse("None") @user.lastName.getOrElse("None")</strong></p>
+            </div>
+        </div>
+    </div>
         @tutors.grouped(3).toList.map { grouped =>
-            <div class="row" style="margin-top:20px; margin-bottom:20px;">
+            <div class="row col-md-12">
                 @grouped.map { tutor =>
-                    <div class="col-md-4 text-center" style="background:#FAFEF4; border-right: 20px solid #C5F693; ">
+                    <div class="matching col-md-4 text-center">
                         <div class="row">
                             @if(!tutor.isFake) {
-                                <img class="img-circle" src='@controllers.routes.ApplicationController.image(tutor.userID)' style="width:200px; height:200px; object-fit:cover;">
+                                <img class="img-circle" src='@controllers.routes.ApplicationController.image(tutor.userID)'>
                             } else {
-                                <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl.get)}' style="width:200px; height:200px; object-fit:cover;">
+                                <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl.get)}'>
                             }
                         </div>
                         <div class="row>">
@@ -37,10 +48,14 @@
                         <div class="row">
                             <a href="@controllers.routes.ApplicationController.feedback(tutor.order, tutor.userID)" class="btn btn-default">@messages("matching.choose")</a>
                         </div>
+
                     </div>
+
                 }
             </div>
         }
+
 </div>
+
 }
 <script>$('#navbar .nav #find-tutor').addClass('active');</script>
