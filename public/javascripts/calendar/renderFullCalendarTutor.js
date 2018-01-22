@@ -30,7 +30,6 @@ $(document).ready(function() {
                 if (confirm("Are you sure you want to delete this event?")) {
                     $.ajax({
                         url: '/events/' + event.id + '/delete',
-                        type: 'GET',
                         success: function(response) {
                             $('#calendar').fullCalendar('removeEvents', event._id);
                         },
@@ -50,8 +49,11 @@ $(document).ready(function() {
                 revertFunc();
             } else {
                 $.ajax({
-                    url: '/events/' + event.id + '/update?start=' + event.start.format() + '&end=' + event.end.format(),
-                    type: 'GET',
+                    url: '/events/' + event.id + '/update',
+                    data: {
+                        start: event.start.format(),
+                        end: event.end.format()
+                    },
                     success: function(response) {
                         event.id = response;
                         $('#calendar').fullCalendar('updateEvent', event);
@@ -69,10 +71,13 @@ $(document).ready(function() {
                 revertFunc();
             } else {
                 $.ajax({
-                    url: '/events/' + event.id + '/update?start=' + event.start.format() + '&end=' + event.end.format(),
+                    url: '/events/' + event.id + '/update',
+                    data: {
+                        start: event.start.format(),
+                        end: event.end.format()
+                    },
                     type: 'GET',
                     success: function(response) {
-                        event.id = response;
                         $('#calendar').fullCalendar('updateEvent', event);
                     },
                     error: function(e) {

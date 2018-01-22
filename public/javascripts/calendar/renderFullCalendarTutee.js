@@ -118,14 +118,12 @@ $(document).ready(function() {
             }
         },
         events: function(start, end, timezone, callback) {
-            var start = start.format("YYYY-MM-DD[T]HH:mm:ss");
-            var end = end.format("YYYY-MM-DD[T]HH:mm:ss");
             $.ajax({
                 url: '/events/tutor',
                 data: {
                     tutorID: tutorID,
-                    start: start,
-                    end: end
+                    start: start.format("YYYY-MM-DD[T]HH:mm:ss");
+                    end: end.format("YYYY-MM-DD[T]HH:mm:ss");
                 },
                 success: function(response) {
                     callback(response);
