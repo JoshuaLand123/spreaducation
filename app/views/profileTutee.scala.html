@@ -7,20 +7,16 @@
 @(user: models.User, profile: Option[models.TuteeProfile], psychogramData: String)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
-<div class="col-md-12">
-        
-    <div class="user row data col-md-4">
+<div class="tutee-profile col-md-12">
+
+
+    <div id="tutee" class="user data">
         <div class="col-md-12">
-            <div class="col-md-8 col-md-offset-1">
+            <div class="row text-center">
                 @avatar(user)
             </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("first.name"):</strong></p>
-                <p class="col-md-6">@user.firstName.getOrElse("None")</p>
-            </div>
-            <div class="row">
-                <p class="col-md-6"><strong>@messages("last.name"):</strong></p>
-                <p class="col-md-6">@user.lastName.getOrElse("None")</p>
+            <div class="row text-center">
+                <p><strong>@user.firstName.getOrElse("None") @user.lastName.getOrElse("None")</strong></p>
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.gender"):</strong></p>
@@ -42,14 +38,26 @@
                 <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
                 <p class="col-md-6">@profile.map(l => messages("language."+l.mainLanguage)).getOrElse("")</p>
             </div>
-            </div>
-            <a href="@controllers.routes.TuteeProfileController.edit" class="btn btn-edit"><span class="glyphicon glyphicon-edit"></span> @messages("edit")</a>
-        </div>
 
-    <div class="col-md-6 col-md-offset-1" style="display:block;">
-        @psychogram("600px", "600px", user, psychogramData)
-        <a href="@controllers.routes.MatchingController.view" class="btn btn-sec"><span class="glyphicon glyphicon-search"></span>  @messages("Finde jetzt deinen Tutor passend zu deinen Profil")</a>
+            </div>
+        <div class="text-center"> <a href="@controllers.routes.TuteeProfileController.edit" class="btn btn-edit"><span class="glyphicon glyphicon-edit"></span> @messages("edit")</a></div>
+
     </div>
+
+    <div class="psychogram col-md-6 text-center">
+
+
+        @psychogram("width: 100%", "height: 100%", user, psychogramData)
+        <button id="shower" class="col-xs-12 col-md-6">Profil zeigen/verbergen</button>
+        <a href="@controllers.routes.MatchingController.view" class="col-xs-12 col-md-6 btn btn-find-tutor"><span class="glyphicon glyphicon-search"></span>  @messages("Tutor Finden")</a>
+    </div>
+
+    <script>
+$( "button" ).click(function() {
+  $( "#tutee" ).toggle( "slow" );
+});
+</script>
+
 	<script>$('#navbar .nav #my-profile').addClass('active');</script>
 </div>
 }
