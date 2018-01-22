@@ -87,7 +87,7 @@ $(document).ready(function() {
             var start = start.format("YYYY-MM-DD[T]HH:mm:ss");
             var end = end.format("YYYY-MM-DD[T]HH:mm:ss");
             $.ajax({
-                url: '/saveEvent?start=' + start + '&end=' + end,
+                url: '/events/save?start=' + start + '&end=' + end,
                 type: 'GET',
                 success: function(response) {
                     var eventData = {
