@@ -1,0 +1,22 @@
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+@import utils.TemplateHelpers._
+
+@(user: models.User, tutorID: String)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main(messages("feedback.title"), Some(user)) {
+<script src='@assets.path("javascripts/calendar/renderFullCalendarTutee.js")'></script>
+<div class="col-md-2 text-center">
+    <div id="tutorID" class="hidden">@tutorID</div>
+    <div id='external-events'>
+        Drag&Drop this meeting to available slot on the calendar. Duration is 90 minutes.
+        <div class='fc-event'>Meeting</div>
+    </div>
+
+</div>
+<div class="col-md-10">
+    @calendar()
+</div>
+}

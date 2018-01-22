@@ -7,7 +7,7 @@ GET         /                                controllers.ApplicationController.i
 GET         /feedback                        controllers.ApplicationController.feedback(order: Int, userID: java.util.UUID)
 #GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
 GET         /getImage                        controllers.ApplicationController.getImage
-GET        /image/:userId                    controllers.ApplicationController.image(userId: java.util.UUID)
+GET         /image/:userId                    controllers.ApplicationController.image(userId: java.util.UUID)
 
 GET         /questions                       controllers.QuestionsController.index
 GET         /questions/:page                 controllers.QuestionsController.view(page: Int)
@@ -23,6 +23,13 @@ GET         /tutor/profile                   controllers.TutorProfileController.
 GET         /tutor/profile/edit              controllers.TutorProfileController.edit
 POST        /tutor/profile                   controllers.TutorProfileController.submit
 GET         /tutor/students                  controllers.TutorProfileController.students
+
+GET         /events                          controllers.MeetingController.events(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /events/save                     controllers.MeetingController.addEvent(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /events/request                  controllers.MeetingController.requestEvent(tutorID: java.util.UUID, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /events/:eventID/delete          controllers.MeetingController.delete(eventID: Long)
+GET         /events/:eventID/update          controllers.MeetingController.update(eventID: Long, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /events/tutor                    controllers.MeetingController.tutorMeetings(tutorID: java.util.UUID, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
 
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)

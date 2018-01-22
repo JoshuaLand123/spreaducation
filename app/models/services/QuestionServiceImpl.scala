@@ -3,8 +3,8 @@ package models.services
 import java.util.UUID
 import javax.inject.Inject
 
-import models.{ Answer, User }
 import models.daos.QuestionDAO
+import models.{ Answer, User }
 
 import scala.concurrent.ExecutionContext.Implicits.global
 

@@ -7,8 +7,8 @@
 @()(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 <link rel="stylesheet" href='@assets.path("javascripts/fullcalendar-3.8.0/fullcalendar.min.css")'>
 <link rel="stylesheet" href='@assets.path("javascripts/fullcalendar-3.8.0/fullcalendar.print.min.css")' media="print">
+<script src='@assets.path("javascripts/fullcalendar-3.8.0/lib/jquery-ui.min.js")'></script>
 <script src='@assets.path("javascripts/fullcalendar-3.8.0/fullcalendar.min.js")'></script>
-<script src='@assets.path("javascripts/calendar/renderFullCalendar.js")'></script>
 <script src='@assets.path("javascripts/fullcalendar-3.8.0/locale-all.js")'></script>
 
 <div id='calendar'></div>

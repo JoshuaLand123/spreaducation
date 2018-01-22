@@ -6,6 +6,7 @@
 @(user: models.User, tutor: models.TutorProfile)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("tutor.my.students.title"), Some(user)) {
+<script src='@assets.path("javascripts/calendar/renderFullCalendarTutor.js")'></script>
 <div class="col-md-4 text-center" style="margin-top:20px; ">
     <div style="font-size:20px;">@messages("tutor.wait.for.students")</div>
     <div><a href="https://docs.google.com/forms/d/1t42zSseAa1h_pPMYeXevbKTsZxiYATtIoJvh4i5O8QA" class="btn btn-feedback">@messages("Feedback geben")</a></div>
