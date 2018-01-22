@@ -77,8 +77,8 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
             && Seq(profile.subjectImprove1, profile.subjectImprove2).contains(subject) => subject
         }.take(2)
 
-      val subject1 = subjects.headOption.map(s => messages(s"subject.$s")).getOrElse("")
-      val subject2 = if (subjects.size > 1) Some(messages(s"subject.${subjects.tail.head}")) else None
+      val subject1 = subjects.headOption.getOrElse("")
+      val subject2 = if (subjects.size > 1) Some(subjects.tail.head) else None
       val interest = messages(s"interest.${Seq(Some(tutorMatchDB.interest1), tutorMatchDB.interest2, tutorMatchDB.interest3).flatten.find(Seq(profile.interest1, profile.interest2, profile.interest3).contains).getOrElse(tutorMatchDB.interest1)}")
       TutorMatch(
         userID = tutorMatchDB.userID,
@@ -97,6 +97,15 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
       )
     }
 
-    userDAO.findMatches(profile.userID).map(_.map(convert).filter(_.subject1 != "").sortBy(-_.price).zipWithIndex.map { case (a, order) => a.copy(order = order + 1, matchingScore = 100 - (order + 1) * 5 + order) })
+    val matchesWithSubject = userDAO.findMatches(profile.userID).map(_.map(convert).filter(_.subject1 != ""))
+    matchesWithSubject.map { allMatches =>
+      val bothSubjectsTutors = allMatches.collect {
+        case m if m.subject2.isDefined && Seq(profile.subjectImprove1, profile.subjectImprove2).contains(m.subject1) && Seq(profile.subjectImprove1, profile.subjectImprove2).contains(m.subject2.get) => m
+      }.sortBy(-_.price).map(m => m.copy(subject1 = messages(s"subject.${m.subject1}"), subject2 = Some(messages(s"subject.${m.subject2.get}"))))
+      val oneSubjectTutors = allMatches.collect {
+        case m if m.subject2.isEmpty => m
+      }.sortBy(-_.price).map(m => m.copy(subject1 = messages(s"subject.${m.subject1}")))
+      (bothSubjectsTutors ++ oneSubjectTutors).zipWithIndex.map { case (a, order) => a.copy(order = order + 1, matchingScore = 100 - (order + 1) * 5 + order) }
+    }
   }
 }
