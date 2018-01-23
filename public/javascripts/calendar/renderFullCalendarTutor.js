@@ -55,7 +55,6 @@ $(document).ready(function() {
                         end: event.end.format()
                     },
                     success: function(response) {
-                        event.id = response;
                         $('#calendar').fullCalendar('updateEvent', event);
                     },
                     error: function(e) {
@@ -89,11 +88,12 @@ $(document).ready(function() {
 
         },
         select: function(start, end) {
-            var start = start.format("YYYY-MM-DD[T]HH:mm:ss");
-            var end = end.format("YYYY-MM-DD[T]HH:mm:ss");
             $.ajax({
-                url: '/events/save?start=' + start + '&end=' + end,
-                type: 'GET',
+                url: '/events/save',
+                data: {
+                    start: start.format("YYYY-MM-DD[T]HH:mm:ss");
+                    end: end.format("YYYY-MM-DD[T]HH:mm:ss");
+                },
                 success: function(response) {
                     var eventData = {
                         id: response,
