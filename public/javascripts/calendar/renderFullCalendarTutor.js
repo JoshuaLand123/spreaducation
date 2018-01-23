@@ -91,8 +91,8 @@ $(document).ready(function() {
             $.ajax({
                 url: '/events/save',
                 data: {
-                    start: start.format("YYYY-MM-DD[T]HH:mm:ss");
-                    end: end.format("YYYY-MM-DD[T]HH:mm:ss");
+                    start: start.format("YYYY-MM-DD[T]HH:mm:ss"),
+                    end: end.format("YYYY-MM-DD[T]HH:mm:ss")
                 },
                 success: function(response) {
                     var eventData = {
