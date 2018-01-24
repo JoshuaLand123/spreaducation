@@ -11,7 +11,7 @@
 @main(messages("questionnaire.title"), Some(user)) {
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 
-    <div class="user col-md-10 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1">
         <div class="row">
             @if(user.userType == models.enums.UserType.Tutor) {
                 <legend>@messages("questionnaire.tutor")</legend>
