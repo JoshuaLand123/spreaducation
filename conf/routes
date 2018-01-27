@@ -22,14 +22,22 @@ POST        /tutee/profile                   controllers.TuteeProfileController.
 GET         /tutor/profile                   controllers.TutorProfileController.view
 GET         /tutor/profile/edit              controllers.TutorProfileController.edit
 POST        /tutor/profile                   controllers.TutorProfileController.submit
-GET         /tutor/students                  controllers.TutorProfileController.students
 
-GET         /events                          controllers.MeetingController.events(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
-GET         /events/save                     controllers.MeetingController.addEvent(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
-GET         /events/request                  controllers.MeetingController.requestEvent(tutorID: java.util.UUID, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
-GET         /events/:eventID/delete          controllers.MeetingController.delete(eventID: Long)
-GET         /events/:eventID/update          controllers.MeetingController.update(eventID: Long, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
-GET         /events/tutor                    controllers.MeetingController.tutorMeetings(tutorID: java.util.UUID, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /events/:eventID/delete          controllers.EventController.delete(eventID: Long)
+GET         /events/:eventID/update          controllers.EventController.update(eventID: Long, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+
+GET         /tutee/lessons                   controllers.EventTuteeController.myLessons
+GET         /tutee/events.json               controllers.EventTuteeController.events(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /tutee/events/request            controllers.EventTuteeController.requestLesson(tutorID: java.util.UUID, start: java.time.LocalDateTime, end: java.time.LocalDateTime, description: String)
+GET         /tutee/tutorEvents.json          controllers.EventTuteeController.tutorEvents(tutorID: java.util.UUID, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /tutee/events/:eventID/details   controllers.EventTuteeController.details(eventID: Long)
+
+GET         /tutor/lessons                   controllers.EventTutorController.myLessons
+GET         /tutor/events.json               controllers.EventTutorController.events(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /tutor/events/addAvailability    controllers.EventTutorController.addAvailability(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /tutor/events/:eventID/details   controllers.EventTutorController.details(eventID: Long)
+GET         /tutor/events/:eventID/confirm   controllers.EventTutorController.confirm(eventID: Long)
+GET         /tutor/events/:eventID/decline   controllers.EventTutorController.decline(eventID: Long, reason: String)
 
 GET         /signOut                         controllers.ApplicationController.signOut
 GET         /authenticate/:provider          controllers.SocialAuthController.authenticate(provider)

@@ -5,7 +5,7 @@ import java.time.{ LocalDate, LocalDateTime }
 import models.enums.DiscType.DiscType
 import models.enums.Language.Language
 import models.enums.LessonType.LessonType
-import models.enums.MeetingType.MeetingType
+import models.enums.EventType.EventType
 import models.enums.UserType.UserType
 import models.enums._
 import play.api.libs.json.{ Format, JsSuccess, JsValue, Json }
@@ -28,9 +28,9 @@ package object models {
     s => Language.withName(s)
   )
 
-  implicit val meetingTypeMapper = MappedColumnType.base[MeetingType, String](
+  implicit val eventTypeMapper = MappedColumnType.base[EventType, String](
     e => e.toString,
-    s => MeetingType.withName(s)
+    s => EventType.withName(s)
   )
 
   implicit val dateMapper = MappedColumnType.base[java.util.Date, java.sql.Timestamp](

@@ -51,12 +51,15 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             @user.map { u =>
-                            @if(u.userType == models.enums.UserType.Tutor) {
-                                <li id="find-tutee"><a href="@controllers.routes.TutorProfileController.students">@messages("tutor.my.students")</a></li>
-                            } else {
+                            @if(u.userType == models.enums.UserType.Tutee) {
                                 <li id="find-tutor">
                                     <a href="@controllers.routes.MatchingController.view">@messages("profile.tutor.find")</a>
                                 </li>
+                                <li id="my-lessons">
+                                    <a href="@controllers.routes.EventTuteeController.myLessons">@messages("my.lessons")</a>
+                                </li>
+                            } else {
+                                <li id="my-lessons"><a href="@controllers.routes.EventTutorController.myLessons">@messages("my.lessons")</a></li>
                             }
                             <li id="my-profile" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

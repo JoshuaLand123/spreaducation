@@ -8,6 +8,7 @@ $(document).ready(function() {
             right: 'agendaWeek,agendaDay,listMonth'
         },
         defaultView: 'agendaWeek',
+        nowIndicator: true,
         locale: 'de',
         navLinks: true, // can click day/week names to navigate views
         editable: true,
@@ -19,40 +20,46 @@ $(document).ready(function() {
         slotDuration: '00:30:00',
         slotLabelFormat: 'H:mm',
         slotLabelInterval: '01:00:00',
-        forceEventDuration: true,
         minTime: '08:00:00',
         maxTime: '22:00:00',
         defaultTimedEventDuration: '01:30:00',
+        forceEventDuration: true,
         eventRender: function(event, element) {
-            element.find(".fc-bg").css("pointer-events", "none");
-            element.append("<div style='position:absolute;bottom:0px;right:0px' ><button type='button' id='btnDeleteEvent' class='btn btn-sm btn-block btn-primary btn-flat'>X</button></div>");
-            element.find("#btnDeleteEvent").click(function() {
-                if (confirm("Are you sure you want to delete this event?")) {
-                    $.ajax({
-                        url: '/events/' + event.id + '/delete',
-                        success: function(response) {
-                            $('#calendar').fullCalendar('removeEvents', event._id);
-                        },
-                        error: function(e) {
-                            alert(e);
-                        }
-                    });
-                }
+            if (event.editable) {
+                element.find(".fc-bg").css("pointer-events", "none");
+                element.append("<div style='position:absolute;bottom:0px;right:0px' ><button type='button' id='btnDeleteEvent' class='btn btn-sm btn-block btn-primary btn-flat'>X</button></div>");
+                element.find("#btnDeleteEvent").click(function() {
+                    if (confirm("Are you sure you want to delete this event?")) {
+                        $.ajax({
+                            url: '/events/' + event.id + '/delete',
+                            success: function(response) {
+                                $('#calendar').fullCalendar('removeEvents', event._id);
+                            },
+                            error: function(e) {
+                                alert(e);
+                            }
+                        });
+                    }
 
-            });
+                });
+            }
         },
-        eventOverlap: function(stillEvent, movingEvent) {
-            return stillEvent.rendering == "background";
-        },
+        eventOverlap: false,
         eventResize: function(event, delta, revertFunc) {
             if (!confirm("Are you sure you want to change this event?")) {
                 revertFunc();
             } else {
+                var start = event.start;
+                var end = event.end;
+                if (moment.duration(end.diff(start)).asHours() < 1.5) {
+                    end = start.clone().add(1.5, 'hours');
+                    event.end = end;
+                }
                 $.ajax({
                     url: '/events/' + event.id + '/update',
                     data: {
-                        start: event.start.format(),
-                        end: event.end.format()
+                        start: start.format(),
+                        end: end.format()
                     },
                     success: function(response) {
                         $('#calendar').fullCalendar('updateEvent', event);
@@ -88,21 +95,85 @@ $(document).ready(function() {
 
         },
         select: function(start, end) {
-            $.ajax({
-                url: '/events/save',
-                data: {
-                    start: start.format("YYYY-MM-DD[T]HH:mm:ss"),
-                    end: end.format("YYYY-MM-DD[T]HH:mm:ss")
-                },
+            var isValid = true;
+            if (moment.duration(end.diff(start)).asHours() < 1.5) {
+                end = start.clone().add(1.5, 'hours');
+                isValid = $.grep($('#calendar').fullCalendar('clientEvents'), function (v) {
+                    return v.start < end && v.end > end;
+                }).length == 0;
+            }
+            if (isValid) {
+                $.ajax({
+                    url: '/tutor/events/addAvailability',
+                    data: {
+                        start: start.format("YYYY-MM-DD[T]HH:mm:ss"),
+                        end: end.format("YYYY-MM-DD[T]HH:mm:ss")
+                    },
+                    success: function(response) {
+                        var eventData = {
+                            id: response,
+                            title: 'Available',
+                            start: start,
+                            end: end,
+                            editable: true,
+                            color: '#7dd322'
+                        };
+                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                    },
+                    error: function(e) {
+                        alert(e);
+                    }
+                });
+            }
+            $('#calendar').fullCalendar('unselect');
+        },
+        eventClick: function(event, jsEvent) {
+           if (event.title == 'Available' || document.elementFromPoint(jsEvent.pageX, jsEvent.pageY).id == 'btnDeleteEvent') return;
+           $.ajax({
+                url: '/tutor/events/' + event.id + '/details',
                 success: function(response) {
-                    var eventData = {
-                        id: response,
-                        title: 'Available',
-                        start: start,
-                        end: end
-                    };
-                    $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-                    $('#calendar').fullCalendar('unselect');
+                    $('#modalTitle').html(event.title);
+                    $('#name').html(response.firstName + ' ' + response.lastName);
+                    $('#time').html(event.start.format('HH:mm') + ' - ' + event.end.format('HH:mm'));
+                    $('#subjects').html(response.subjectImprove1 + ', ' + response.subjectImprove2);
+                    if (response.eventDescription) { $('#eventDescription').html(response.eventDescription);
+                    } else { $('#eventDescription').html('None'); }
+
+                    if (response.eventType == 'Requested') { $('#buttons-request').show(); $('#buttons-cancel').hide(); }
+                        else { $('#buttons-request').hide(); $('#buttons-cancel').show(); }
+                     $('#confirm').unbind("click").click(function() {
+                        $.ajax({
+                            url: '/tutor/events/' + event.id + '/confirm',
+                            success: function(response) {
+                                event.color = 'green';
+                                event.title = 'Confirmed';
+                                $('#calendar').fullCalendar('updateEvent', event);
+                            },
+                            error: function(e) {
+                                alert(e);
+                            }
+                        });
+                     });
+                     $('#decline').unbind("click").click(function() {
+                         var reason = prompt("Please provide reason:");
+                         if (reason) {
+                            $.ajax({
+                                url: '/tutor/events/' + event.id + '/decline',
+                                data: {
+                                    reason: reason
+                                },
+                                success: function(response) {
+                                    $('#calendar').fullCalendar('removeEvents', event._id);
+                                },
+                                error: function(e) {
+                                    alert(e);
+                                }
+                            });
+                            }
+                     });
+
+                    $('#fullCalModal').modal();
+
                 },
                 error: function(e) {
                     alert(e);
@@ -111,7 +182,7 @@ $(document).ready(function() {
         },
         events: function(start, end, timezone, callback) {
             $.ajax({
-                url: '/events',
+                url: '/tutor/events.json',
                 data: {
                     start: start.format("YYYY-MM-DD[T]HH:mm:ss"),
                     end: end.format("YYYY-MM-DD[T]HH:mm:ss")

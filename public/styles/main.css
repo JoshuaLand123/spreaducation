@@ -273,6 +273,11 @@ meter::-webkit-meter-optimum-value {
     font-size: 18px;
     margin: auto;
 }
+.btn-danger {
+    background: #d9534f;
+    border: 2px solid #d9534f;
+
+}
 
 .btn-signup {
     font-size: 18px;
@@ -329,7 +334,7 @@ meter::-webkit-meter-optimum-value {
 	margin-top:16px;
 }
 
-.btn-find-student {
+.btn-my-lessons {
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;

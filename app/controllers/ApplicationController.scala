@@ -46,7 +46,7 @@ class ApplicationController @Inject() (
 
   def feedback(order: Int, tutorID: UUID) = silhouette.SecuredAction.async { implicit request =>
     userService.retrieveTuteeProfile(request.identity.userID).map(_.map(p => userService.saveTuteeProfile(p.copy(tutorOrder = Some(order), tutorID = Some(tutorID)))))
-    Future.successful(Ok(views.html.requestLesson(request.identity, tutorID.toString)))
+    Future.successful(Ok(views.html.tuteeRequestLessons(request.identity, tutorID.toString)))
   }
 
   def getImage = silhouette.SecuredAction.async { implicit request =>

@@ -70,13 +70,6 @@ class TutorProfileController @Inject() (
     )
   }
 
-  def students = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveTutorProfile(request.identity.userID).map {
-      case Some(p) => Ok(views.html.tutorMyStudents(request.identity, p))
-      case None => Redirect(routes.TutorProfileController.edit)
-    }
-  }
-
   private def psychogramDataJsonString(profile: TutorProfile, psychoSubcategoryResult: Seq[(String, String, Double)], messages: Messages): String = {
     import PsychogramData._
     import utils.ScoreUtils._

@@ -1,0 +1,41 @@
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+@import utils.TemplateHelpers._
+
+@(user: models.User, tutorID: String)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main(messages("feedback.title"), Some(user)) {
+<script src='@assets.path("javascripts/calendar/renderFullCalendarTuteeRequestLessons.js")'></script>
+<div class="col-md-2 text-center">
+    <div id="tutorID" class="hidden">@tutorID</div>
+    <div id='external-events'>
+        Drag&Drop this lesson to available slot on the calendar. Duration is 90 minutes.
+        <div class='fc-event'>Request Lesson</div>
+    </div>
+
+</div>
+<div class="col-md-10">
+    @calendar()
+</div>
+<div id="fullCalModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <div class="col-md-4">Name:</div><div id="name" class="col-md-8 text-center"></div>
+                <div class="col-md-4">Time:</div><div id="time" class="col-md-8 text-center"></div>
+                <div class="col-md-4">Subjects: </div><div id="subjects" class="col-md-8 text-center"></div>
+                <div class="col-md-4">Description:</div><div id="eventDescription" class="col-md-8 text-center"></div>
+            </div>
+            <div class="modal-footer" style="border-top: none;">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+}
