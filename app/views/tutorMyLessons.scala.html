@@ -23,12 +23,20 @@
                 <h4 id="modalTitle" class="modal-title"></h4>
             </div>
             <div id="modalBody" class="modal-body">
+                <div class="row">
                     <div class="col-md-4">@messages("full.name"):</div><div id="name" class="col-md-8 text-center"></div>
+                </div>
+                <div class="row">
                     <div class="col-md-4">@messages("time"):</div><div id="time" class="col-md-8 text-center"></div>
+                </div>
+                <div class="row">
                     <div class="col-md-4">@messages("interested.in.subjects"):</div><div id="subjects" class="col-md-8 text-center"></div>
+                </div>
+                <div class="row">
                     <div class="col-md-4">@messages("description"):</div><div id="eventDescription" class="col-md-8 text-center"></div>
+                </div>
             </div>
-            <div class="modal-footer" style="align: center; border-top: none;">
+            <div class="modal-footer" style="align: center;">
                 <div id="buttons-request" class="text-center">
                     <button id="confirm" type="button" class="btn btn-success glyphicon glyphicon-ok" data-dismiss="modal">@messages("confirm")</button>
                     <button id="decline" type="button" class="btn btn-danger glyphicon glyphicon-remove" data-dismiss="modal">@messages("decline")</button>

@@ -7,10 +7,11 @@ import javax.inject.Inject
 import com.mohiva.play.silhouette.api._
 import models.Event
 import models.enums.EventType
-import models.services.EventService
+import models.services.{ EventService, UserService }
 import org.webjars.play.WebJarsUtil
-import play.api.i18n.I18nSupport
+import play.api.i18n.{ I18nSupport, Messages }
 import play.api.libs.json.Json
+import play.api.libs.mailer.{ Email, MailerClient }
 import play.api.mvc.{ AbstractController, ControllerComponents }
 import utils.auth.DefaultEnv
 
@@ -19,7 +20,9 @@ import scala.concurrent.{ ExecutionContext, Future }
 class EventTuteeController @Inject() (
   components: ControllerComponents,
   silhouette: Silhouette[DefaultEnv],
-  eventService: EventService
+  eventService: EventService,
+  userService: UserService,
+  mailerClient: MailerClient
 )(
   implicit
   webJarsUtil: WebJarsUtil,
@@ -58,6 +61,15 @@ class EventTuteeController @Inject() (
 
   def requestLesson(tutorId: UUID, start: LocalDateTime, end: LocalDateTime, description: String) = silhouette.SecuredAction.async { implicit request =>
     val event = Event(None, "Requested", start, end, Some(request.identity.userID), tutorId, EventType.Requested, Some(description))
+    userService.retrieve(tutorId).map(_.map { tutor =>
+      mailerClient.send(Email(
+        subject = "Lesson requested",
+        from = Messages("email.from"),
+        to = Seq(tutor.email.get),
+        bodyText = Some(s"Someone requested a lesson from you!"),
+        bodyHtml = Some(s"<p>Someone requested a lesson from you!</p>")
+      ))
+    })
     eventService.save(event).map(id => Ok(id.get.toString))
   }
 

@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api._
-import models.services.{ EventService, UserService }
+import models.services.EventService
 import org.webjars.play.WebJarsUtil
 import play.api.i18n.I18nSupport
 import play.api.mvc.{ AbstractController, ControllerComponents }

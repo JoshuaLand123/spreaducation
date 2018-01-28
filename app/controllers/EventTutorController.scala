@@ -1,7 +1,6 @@
 package controllers
 
 import java.time.LocalDateTime
-import java.util.UUID
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api._
@@ -9,18 +8,20 @@ import models.Event
 import models.enums.EventType
 import models.services.{ EventService, UserService }
 import org.webjars.play.WebJarsUtil
-import play.api.i18n.I18nSupport
+import play.api.i18n.{ I18nSupport, Messages }
 import play.api.libs.json.Json
+import play.api.libs.mailer.{ Email, MailerClient }
 import play.api.mvc.{ AbstractController, ControllerComponents }
 import utils.auth.DefaultEnv
 
-import scala.concurrent.{ ExecutionContext, Future }
+import scala.concurrent.ExecutionContext
 
 class EventTutorController @Inject() (
   components: ControllerComponents,
   silhouette: Silhouette[DefaultEnv],
   eventService: EventService,
-  userService: UserService
+  userService: UserService,
+  mailerClient: MailerClient
 )(
   implicit
   webJarsUtil: WebJarsUtil,
@@ -63,10 +64,32 @@ class EventTutorController @Inject() (
   }
 
   def confirm(eventID: Long) = silhouette.SecuredAction.async { implicit request =>
-    eventService.find(eventID).map(_.map(_.copy(title = "Confirmed", eventType = EventType.Confirmed)).map(eventService.save)).map(_ => Ok(""))
+    eventService.find(eventID).map(_.map { event =>
+      userService.retrieve(event.tuteeID.get).map(_.map { tutee =>
+        mailerClient.send(Email(
+          subject = "Lesson confirmed",
+          from = Messages("email.from"),
+          to = Seq(tutee.email.get),
+          bodyText = Some("Your lesson request was confirmed"),
+          bodyHtml = Some("<p>Your lesson request was confirmed</p>")
+        ))
+      })
+      event.copy(title = "Confirmed", eventType = EventType.Confirmed)
+    }.map(eventService.save)).map(_ => Ok(""))
   }
 
   def decline(eventID: Long, reason: String) = silhouette.SecuredAction.async { implicit request =>
-    eventService.find(eventID).map(_.map(_.copy(title = "Declined", eventType = EventType.Declined, declineReason = Some(reason))).map(eventService.save)).map(_ => Ok(""))
+    eventService.find(eventID).map(_.map { event =>
+      userService.retrieve(event.tuteeID.get).map(_.map { tutee =>
+        mailerClient.send(Email(
+          subject = "Lesson declined",
+          from = Messages("email.from"),
+          to = Seq(tutee.email.get),
+          bodyText = Some(s"Your lesson request was declined. Reason: $reason"),
+          bodyHtml = Some(s"<p>Your lesson request was declined. Reason: $reason</p>")
+        ))
+      })
+      event.copy(title = "Declined", eventType = EventType.Declined, declineReason = Some(reason))
+    }.map(eventService.save)).map(_ => Ok(""))
   }
 }
