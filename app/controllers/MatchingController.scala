@@ -28,8 +28,8 @@ class MatchingController @Inject() (
     userService.retrieveTuteeProfile(request.identity.userID).flatMap {
       case Some(profile) => {
         userService.findMatches(profile, messages).map {
-          case Nil     => Ok(views.html.matching(request.identity, TutorGenerator.generateTutors(profile, messages)))
-          case matches => Ok(views.html.matching(request.identity, matches))
+          case Nil     => Ok(views.html.matching(request.identity, profile, TutorGenerator.generateTutors(profile, messages)))
+          case matches => Ok(views.html.matching(request.identity, profile, matches))
         }
       }
       case None => Future.successful(Redirect(routes.TuteeProfileController.edit()).flashing("error" -> "Please fill your profile first"))

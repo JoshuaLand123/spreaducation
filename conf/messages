@@ -401,4 +401,14 @@ working.Working-techniques.description.tutor = Dein Arbeitstechnik-Score. Du has
 working.Learning-techniques.tutor = Lerntechnik
 working.Learning-techniques.description.tutor = Dein Lerntechnik-Score. Du hast tolle Techniken, um deine Schüler gut auf Klassenarbeiten vorzubereiten. Grün = ja , rot = eher weniger.
 
+# Calendar:
 
+calendar.tutor.hint = Please create your availability calendar.
+calendar.tutee.hint = Drag&Drop this lesson to available slot on the calendar. Duration is 90 minutes.
+calendar.request.lesson = Request Lesson
+close = Close
+decline = Decline
+confirm = Confirm
+description = Description
+time = Time
+interested.in.subjects = Interested in subjects

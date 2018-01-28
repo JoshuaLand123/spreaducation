@@ -14,17 +14,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">@messages("close")</span></button>
                 <h4 id="modalTitle" class="modal-title"></h4>
             </div>
             <div id="modalBody" class="modal-body">
-                <div class="col-md-4">Name:</div><div id="name" class="col-md-8 text-center"></div>
-                <div class="col-md-4">Time:</div><div id="time" class="col-md-8 text-center"></div>
-                <div class="col-md-4">Subjects: </div><div id="subjects" class="col-md-8 text-center"></div>
-                <div class="col-md-4">Description:</div><div id="eventDescription" class="col-md-8 text-center"></div>
+                <div class="col-md-4">@messages("full.name"):</div><div id="name" class="col-md-8 text-center"></div>
+                <div class="col-md-4">@messages("time"):</div><div id="time" class="col-md-8 text-center"></div>
+                <div class="col-md-4">@messages("interested.in.subjects"):</div><div id="subjects" class="col-md-8 text-center"></div>
+                <div class="col-md-4">@messages("description"):</div><div id="eventDescription" class="col-md-8 text-center"></div>
             </div>
             <div class="modal-footer" style="border-top: none;">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@messages("close")</button>
             </div>
         </div>
     </div>

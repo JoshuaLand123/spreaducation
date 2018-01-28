@@ -2,8 +2,9 @@
 @import play.api.mvc.RequestHeader
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
+@import utils.TemplateHelpers._
 
-@(user: models.User, tutors: Seq[models.TutorMatch])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(user: models.User, profile: models.TuteeProfile, tutors: Seq[models.TutorMatch])(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("matching.title"), Some(user)) {
 <div class="col-md-10">
@@ -14,8 +15,29 @@
                 @avatar(user)
             </div>
             <div class="row text-center">
-                <p<strong>@user.firstName.getOrElse("None") @user.lastName.getOrElse("None")</strong></p>
+                <p><strong>@user.firstName.getOrElse("None") @user.lastName.getOrElse("None")</strong></p>
             </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.gender"):</strong></p>
+                <p class="col-md-6">@messages("gender." + profile.gender)</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.dob"):</strong></p>
+                <p class="col-md-6">@parseDate(profile.dob)</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.class.level"):</strong></p>
+                <p class="col-md-6">@profile.classLevel</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.school.name"):</strong></p>
+                <p class="col-md-6">@profile.schoolName</p>
+            </div>
+            <div class="row">
+                <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
+                <p class="col-md-6">@messages("language."+profile.mainLanguage)</p>
+            </div>
+
         </div>
     </div>
         @tutors.grouped(3).toList.map { grouped =>
