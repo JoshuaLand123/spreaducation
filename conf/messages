@@ -104,6 +104,17 @@ email.activate.account.hello = Hallo {0},
 email.activate.account.html.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf <a href="{0}">diesen Link</a>, um dein neues Konto zu bestätigen und zu aktivieren.
 email.activate.account.txt.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0}
 
+#Calendar
+email.request.lesson.subject = Neue Unterrichtsanfrage auf Spreaducation
+email.request.lesson.hello = Hallo {0},
+email.request.lesson.text = gerade hat ein Schüler bei dir eine Unterrichtseinheit angefragt. Bestätige sie auf <a href="{0}">diesem Link</a>. Viel Freude beim Unterrichten. 
+email.confirm.lesson.subject = Deine Unterrichtsanfrage wurde bestätigt.
+email.confirm.lesson.hello = Hallo {0},
+email.confirm.lesson.text = Wir freuen uns, dir mitteilen zu können, dass deine Unterrichtsanfrage bestätigt wurden. Schau dir die Details <a href="{0}">hier</a> an. Viel Freude mit deinem Tutor.
+email.decline.lesson.subject = Deine Unterrichtsanfrage wurde abgelehnt.
+email.decline.lesson.hello = Hallo {0},
+email.decline.lesson.text = Leider müssen wir dir mitteilen, dass deine Unterrichtsanfrage abgelehnt wurde. Schau dir die Details <a href="{0}">hier</a> an. Stelle doch einfach einem anderen Tutor eine Anfrage.
+
 # Dashboard
 dashboard = Meine Übersicht
 
@@ -155,7 +166,7 @@ tutee.feedback = Feedback geben
 tutee.feedback.text1 = Wir arbeiten gerade daran, dich mit deinem Tutor zu verbinden.
 tutee.feedback.text2 = Wir melden uns bei dir sobald es klappt.
 
-tutor.my.students = Meine Schüler
+tutor.my.students = Mein Unterricht
 tutor.your.profile.look = So werden deine Schüler dein Profil sehen
 tutor.wait.for.students = Danke für deine Registrierung. Wir sind noch dabei die am besten zu dir passenden Schüler zu finden … Komm doch morgen nochmal vorbei :)
 tutor.feedback = Feedback geben
@@ -403,12 +414,12 @@ working.Learning-techniques.description.tutor = Dein Lerntechnik-Score. Du hast 
 
 # Calendar:
 
-calendar.tutor.hint = Please create your availability calendar.
-calendar.tutee.hint = Drag&Drop this lesson to available slot on the calendar. Duration is 90 minutes.
-calendar.request.lesson = Request Lesson
-close = Close
-decline = Decline
-confirm = Confirm
-description = Description
-time = Time
-interested.in.subjects = Interested in subjects
+calendar.tutor.hint = Bitte erstelle in deinem Kalender Zeiten, in denen du unterrichten kannst. Klicke dazu einfach auf einen bestimmten Tag. Du kannst deine verfügbaren Zeiten solange verändern, bis ein Schüler eine Unterrichtseinheit in einem deiner verfügbaren Zeiträume gebucht hat. Um Details einer Unterrichtseinheit anzuzeigen, klicke sie an.
+calendar.tutee.hint = Nehme die Unterrichtsanfrage und ziehe sie in einen der verfügbaren Zeiträume deines Tutors. Er kann dann entscheiden, ob er sie annehmen möchte oder nicht. Die Unterrichtseinheit dauert 90 Minuten. Um Details einer Unterrichtseinheit anzuzeigen, klicke sie an.
+calendar.request.lesson = Unterrichtsanfrage
+close = Schließen
+decline = Ablehnen
+confirm = Annehmen
+description = Beschreibung über dich und konkrete schulische Probleme
+time = Zeit
+interested.in.subjects = interessiert an diesen Fächern 
