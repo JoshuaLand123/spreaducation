@@ -71,7 +71,6 @@ class ForgotPasswordController @Inject() (
                 subject = Messages("email.reset.password.subject"),
                 from = Messages("email.from"),
                 to = Seq(email),
-                bodyText = Some(views.txt.emails.resetPassword(user, url).body),
                 bodyHtml = Some(views.html.emails.resetPassword(user, url).body)
               ))
               result

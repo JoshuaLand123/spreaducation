@@ -67,11 +67,10 @@ class EventTutorController @Inject() (
     eventService.find(eventID).map(_.map { event =>
       userService.retrieve(event.tuteeID.get).map(_.map { tutee =>
         mailerClient.send(Email(
-          subject = "Lesson confirmed",
+          subject = Messages("email.lesson.confirm.subject"),
           from = Messages("email.from"),
           to = Seq(tutee.email.get),
-          bodyText = Some("Your lesson request was confirmed"),
-          bodyHtml = Some("<p>Your lesson request was confirmed</p>")
+          bodyHtml = Some(views.html.emails.lessonConfirm(tutee, routes.EventTuteeController.myLessons.absoluteURL()).body)
         ))
       })
       event.copy(title = "Confirmed", eventType = EventType.Confirmed)
@@ -82,11 +81,10 @@ class EventTutorController @Inject() (
     eventService.find(eventID).map(_.map { event =>
       userService.retrieve(event.tuteeID.get).map(_.map { tutee =>
         mailerClient.send(Email(
-          subject = "Lesson declined",
+          Messages("email.lesson.decline.subject"),
           from = Messages("email.from"),
           to = Seq(tutee.email.get),
-          bodyText = Some(s"Your lesson request was declined. Reason: $reason"),
-          bodyHtml = Some(s"<p>Your lesson request was declined. Reason: $reason</p>")
+          bodyHtml = Some(views.html.emails.lessonDecline(tutee, routes.EventTuteeController.myLessons.absoluteURL()).body)
         ))
       })
       event.copy(title = "Declined", eventType = EventType.Declined, declineReason = Some(reason))

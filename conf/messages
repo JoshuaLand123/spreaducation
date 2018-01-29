@@ -79,41 +79,35 @@ facebook = Facebook
 ##########
 
 email.from = Spreaducation <team@spreaducation.de>
+email.hello = Hallo {0},
 
 # Sign Up
 email.sign.up.subject = Herzlich Willkommen bei Spreaducation.
-email.sign.up.hello = Hallo {0},
 email.sign.up.html.text = Wir freuen uns dich bei uns begrüßen zu dürfen. Klicke auf <a href="{0}">diesen Link</a>, um dein neues Konto zu bestätigen und zu aktivieren. Freue dich auf ein einzigartiges gemeinsames Lernen!
-email.sign.up.txt.text = Wir freuen uns dich bei uns begrüßen zu dürfen. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0} . Freue dich auf ein einzigartiges gemeinsames Lernen!
 
 # Already Signed Up
 email.already.signed.up.subject = Herzlich willkommen
-email.already.signed.up.hello = Hallo {0},
 email.already.signed.up.html.text = Du hast bereits ein Konto angelegt. Folge <a href="{0}">diesem Link</a>, um dich in dein Konto einzuloggen.
-email.already.signed.up.txt.text = Du hast bereits ein Konto angelegt. Folge diesem Link, um dich in dein Konto einzuloggen: {0}
 
 # Reset Password
 email.reset.password.subject = Passwort zurücksetzen
-email.reset.password.hello = Hallo {0},
 email.reset.password.html.text = Bitte folge <a href="{0}">diesem Link</a>, um dein Passwort zurückzusetzen.
-email.reset.password.txt.text = Bitte folge diesem Link, um dein Passwort zurückzusetzen: {0}
 
 # Activate Account
 email.activate.account.subject = Konto aktivieren
-email.activate.account.hello = Hallo {0},
 email.activate.account.html.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf <a href="{0}">diesen Link</a>, um dein neues Konto zu bestätigen und zu aktivieren.
-email.activate.account.txt.text = Wir freuen uns, dass du dich angemeldet hast. Klicke auf den Link zur Bestätigung und Aktivierung deines neuen Kontos: {0}
 
-#Calendar
-email.request.lesson.subject = Neue Unterrichtsanfrage auf Spreaducation
-email.request.lesson.hello = Hallo {0},
-email.request.lesson.text = gerade hat ein Schüler bei dir eine Unterrichtseinheit angefragt. Bestätige sie auf <a href="{0}">diesem Link</a>. Viel Freude beim Unterrichten. 
-email.confirm.lesson.subject = Deine Unterrichtsanfrage wurde bestätigt.
-email.confirm.lesson.hello = Hallo {0},
-email.confirm.lesson.text = Wir freuen uns, dir mitteilen zu können, dass deine Unterrichtsanfrage bestätigt wurden. Schau dir die Details <a href="{0}">hier</a> an. Viel Freude mit deinem Tutor.
-email.decline.lesson.subject = Deine Unterrichtsanfrage wurde abgelehnt.
-email.decline.lesson.hello = Hallo {0},
-email.decline.lesson.text = Leider müssen wir dir mitteilen, dass deine Unterrichtsanfrage abgelehnt wurde. Schau dir die Details <a href="{0}">hier</a> an. Stelle doch einfach einem anderen Tutor eine Anfrage.
+# Calendar Lesson Request
+email.lesson.request.subject = Neue Unterrichtsanfrage auf Spreaducation
+email.lesson.request.html.text = Gerade hat ein Schüler bei dir eine Unterrichtseinheit angefragt. Bestätige sie auf <a href="{0}">diesem Link</a>. Viel Freude beim Unterrichten.
+
+# Calendar Lesson Confirm
+email.lesson.confirm.subject = Deine Unterrichtsanfrage wurde bestätigt.
+email.lesson.confirm.html.text = Wir freuen uns, dir mitteilen zu können, dass deine Unterrichtsanfrage bestätigt wurden. Schau dir die Details <a href="{0}">hier</a> an. Viel Freude mit deinem Tutor.
+
+# Calendar Lesson Decline
+email.lesson.decline.subject = Deine Unterrichtsanfrage wurde abgelehnt.
+email.lesson.decline.html.text = Leider müssen wir dir mitteilen, dass deine Unterrichtsanfrage abgelehnt wurde. Schau dir die Details <a href="{0}">hier</a> an. Stelle doch einfach einem anderen Tutor eine Anfrage.
 
 # Dashboard
 dashboard = Meine Übersicht

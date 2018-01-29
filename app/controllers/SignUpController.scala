@@ -78,7 +78,6 @@ class SignUpController @Inject() (
               subject = Messages("email.already.signed.up.subject"),
               from = Messages("email.from"),
               to = Seq(data.email),
-              bodyText = Some(views.txt.emails.alreadySignedUp(user, url).body),
               bodyHtml = Some(views.html.emails.alreadySignedUp(user, url).body)
             ))
 
@@ -107,7 +106,6 @@ class SignUpController @Inject() (
                 subject = Messages("email.sign.up.subject"),
                 from = Messages("email.from"),
                 to = Seq(data.email),
-                bodyText = Some(views.txt.emails.signUp(user, url).body),
                 bodyHtml = Some(views.html.emails.signUp(user, url).body)
               ))
 

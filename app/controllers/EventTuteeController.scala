@@ -63,11 +63,10 @@ class EventTuteeController @Inject() (
     val event = Event(None, "Requested", start, end, Some(request.identity.userID), tutorId, EventType.Requested, Some(description))
     userService.retrieve(tutorId).map(_.map { tutor =>
       mailerClient.send(Email(
-        subject = "Lesson requested",
+        subject = Messages("email.lesson.request.subject"),
         from = Messages("email.from"),
         to = Seq(tutor.email.get),
-        bodyText = Some(s"Someone requested a lesson from you!"),
-        bodyHtml = Some(s"<p>Someone requested a lesson from you!</p>")
+        bodyHtml = Some(views.html.emails.lessonRequest(tutor, routes.EventTutorController.myLessons.absoluteURL()).body)
       ))
     })
     eventService.save(event).map(id => Ok(id.get.toString))
