@@ -26,7 +26,7 @@ $(document).ready(function() {
                 element.find(".fc-bg").css("pointer-events", "none");
                 element.append("<div style='position:absolute;bottom:0px;right:0px' ><button type='button' id='btnDeleteEvent' class='btn btn-sm btn-block btn-primary btn-flat'>X</button></div>");
                 element.find("#btnDeleteEvent").click(function() {
-                    if (confirm("Are you sure you want to delete this event?")) {
+                    if (confirm("Bist du sicher, dass du dieses Ereignis löschen willst?")) {
                         $.ajax({
                             url: '/events/' + event.id + '/delete',
                             success: function(response) {

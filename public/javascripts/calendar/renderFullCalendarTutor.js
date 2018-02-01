@@ -29,7 +29,7 @@ $(document).ready(function() {
                 element.find(".fc-bg").css("pointer-events", "none");
                 element.append("<div style='position:absolute;bottom:0px;right:0px' ><button type='button' id='btnDeleteEvent' class='btn btn-sm btn-block btn-primary btn-flat'>X</button></div>");
                 element.find("#btnDeleteEvent").click(function() {
-                    if (confirm("Are you sure you want to delete this event?")) {
+                    if (confirm("Bist du sicher, dass du dieses Ereignis löschen willst?")) {
                         $.ajax({
                             url: '/events/' + event.id + '/delete',
                             success: function(response) {
@@ -46,7 +46,7 @@ $(document).ready(function() {
         },
         eventOverlap: false,
         eventResize: function(event, delta, revertFunc) {
-            if (!confirm("Are you sure you want to change this event?")) {
+            if (!confirm("Bist du sicher, dass du dieses Ereignis ändern willst?")) {
                 revertFunc();
             } else {
                 var start = event.start;
@@ -73,7 +73,7 @@ $(document).ready(function() {
 
         },
         eventDrop: function(event, delta, revertFunc) {
-            if (!confirm("Are you sure you want to change this event?")) {
+            if (!confirm("Bist du sicher, dass du dieses Ereignis ändern willst?")) {
                 revertFunc();
             } else {
                 $.ajax({
@@ -155,7 +155,7 @@ $(document).ready(function() {
                         });
                      });
                      $('#decline').unbind("click").click(function() {
-                         var reason = prompt("Please provide reason:");
+                         var reason = prompt("Bitte gebe deine Gründe an:");
                          if (reason) {
                             $.ajax({
                                 url: '/tutor/events/' + event.id + '/decline',
