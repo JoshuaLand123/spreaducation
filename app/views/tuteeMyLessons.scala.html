@@ -7,8 +7,9 @@
 
 @main(messages("my.lessons"), Some(user)) {
 <script src='@assets.path("javascripts/calendar/renderFullCalendarTutee.js")'></script>
-
+<div class="calendar">
     @calendar()
+</div>
 }
 <div id="fullCalModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">

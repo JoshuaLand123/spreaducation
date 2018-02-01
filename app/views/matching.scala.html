@@ -17,6 +17,7 @@
             <div class="row text-center">
                 <p><strong>@user.firstName.getOrElse("None") @user.lastName.getOrElse("None")</strong></p>
             </div>
+
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.gender"):</strong></p>
                 <p class="col-md-6">@messages("gender." + profile.gender)</p>
@@ -38,10 +39,12 @@
                 <p class="col-md-6">@messages("language."+profile.mainLanguage)</p>
             </div>
 
+
         </div>
     </div>
+    </div>
         @tutors.grouped(3).toList.map { grouped =>
-            <div class="row col-md-12">
+            <div class="row col-md-10">
                 @grouped.map { tutor =>
                     <div class="matching col-md-4 text-center">
                         <div class="row">
@@ -50,15 +53,16 @@
                             } else {
                                 <img class="img-circle" src='@{assets.path("images/" + tutor.avatarUrl.get)}'>
                             }
+
                         </div>
-                        <div class="row>">
-                            @tutor.matchingScore % Match
+                        <div class="circle row text-center>">
+                            @tutor.matchingScore%
+                        </div>
+                        <div class="row">
+                            <strong>@tutor.firstName @tutor.lastName</strong>
                         </div>
                         <div class="row">
                             @tutor.subject1 · @if(tutor.subject2.isDefined) {@tutor.subject2.get ·} @tutor.interest
-                        </div>
-                        <div class="row">
-                           <strong>@tutor.firstName @tutor.lastName</strong>
                         </div>
                         <br>
                         <div class="thumbnail__description">

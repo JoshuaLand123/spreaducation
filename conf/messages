@@ -33,6 +33,7 @@ last.name = Nachname
 full.name = Name
 email = E-Mail Adresse
 password = Passwort
+confirm_password = Passwort bestätigen
 send = Senden
 change = Ändern
 reset = Zurücksetzen
@@ -41,7 +42,7 @@ sign.in = Einloggen
 sign.out = Ausloggen
 sign.in.now = Logge dich jetzt ein.
 sign.up.now = Erstelle jetzt ein neues Konto.
-already.a.member = Schon Mitglied?
+already.a.member = Du bist schon registriert?
 not.a.member = Kein Mitglied?
 forgot.your.password = Hast du dein Passwort vergessen?
 forgot.password = Passwort vergessen
@@ -189,6 +190,8 @@ choose.one = Bitte Auswählen
 upload.image = Bild hochladen
 thanks = Lieben Dank
 my.lessons = Mein Unterricht
+Tutee = Schüler
+Tutor = Tutor
 
 # Gender
 

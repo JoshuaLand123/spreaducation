@@ -12,14 +12,8 @@
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
 
     <div class="col-md-10 col-md-offset-1">
-        <div class="row">
-            @if(user.userType == models.enums.UserType.Tutor) {
-                <legend>@messages("questionnaire.tutor")</legend>
-            } else {
-                <legend>@messages("questionnaire.tutee")</legend>
-            }
-        </div>
-        <div class="col-md-12">
+
+        <div class="questionaire col-md-12">
             @helper.form(action = controllers.routes.QuestionsController.submit()) {
             @helper.CSRF.formField
                 @for(i <- 0 to questions.length - 1) {
@@ -28,10 +22,8 @@
                         <input type="hidden" name='questions[@i].answerId' value='@questions(i).answerId' />
                         <input type="hidden" name='page' value='@currentPage' />
                         <div class="row" style="padding-top:10px">
-                            <div class="col-md-6" >
+                            <div class="col-md-12 text-center">
                                 <p>@questions(i).questionText</p>
-                            </div>
-                            <div class="col-md-5 col-md-offset-1 text-center">
                                 <input id="slider-@questions(i).questionId" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("strongly.disagree")", "@messages("strongly.agree")"]' data-slider-tooltip="hide" name='questions[@i].value' data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@questions(i).score'/>
                             </div>
                         </div>

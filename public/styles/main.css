@@ -148,6 +148,7 @@ a {
 }
 .navbar-brand>img {
     height: 60px;
+    position: fixed;
 }
 .slider-handle.round {
     background: #7ED321;
@@ -229,7 +230,7 @@ meter::-webkit-meter-optimum-value {
 }
 
 .row {
-	padding-top: 20px;
+	padding-top: 15px;
 }
 
 .slider-tick.round.in-selection{
@@ -290,8 +291,19 @@ meter::-webkit-meter-optimum-value {
     display: block;
 }
 
+.btn-xs {
+    color: #FFFFFF;
+    background: #7ED321;
+    border: 2px solid #FFFFFF;
+    text-align: center;
+}
+
+.btn-xs:hover {
+    background:#C5F693;
+}
+
 .btn-edit:hover {
-	background:#FFFFFF;
+	background:#C5F693;
 }
 
 .btn-find-tutor {
@@ -308,20 +320,21 @@ meter::-webkit-meter-optimum-value {
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
-	position: relative;
-
+	margin-bottom: 15px;
 }
 
 .btn-feedback {
 	color: #FFFFFF;
 	background: #7ED321;
 	border: 2px solid #FFFFFF;
+	margin-bottom: 15px;
 }
 
 .btn-default {
     color: #FFFFFF;
     background: #7ED321;
     border: 2px solid #FFFFFF;
+    margin-bottom: 15px;
 }
 
 .btn-edit-tutor {
@@ -396,14 +409,14 @@ meter::-webkit-meter-optimum-value {
 	margin-top: 10px;
 }
 
-.user {
+.user-tutee {
     background: white;
     display: none;
     text-align: center;
 }
 
 @media screen and (min-width: 768px) {
-     .user {
+     .user-tutee {
         position: fixed;
         right: 0;
         z-index: 10;
@@ -414,7 +427,6 @@ meter::-webkit-meter-optimum-value {
         box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
         text-align: left;
         overflow: scroll;
-
     }
 }
 
@@ -431,7 +443,7 @@ meter::-webkit-meter-optimum-value {
 }
 
 .user-matching {
-    background: white;
+    background: rgba(255,255,255,0.9);;
     text-align: center;
 }
 
@@ -502,10 +514,90 @@ meter::-webkit-meter-optimum-value {
 
 .tutor-message {
     font-size:20px;
-    margin-top:100px
 }
 
 .description {
     padding-left: 15px;
     padding-right: 10px;
+}
+
+.edit-profile-tutee {
+    background: white;
+    margin-bottom: 15px;
+}
+
+@media screen and (min-width: 1068px) {
+     .edit-profile-tutee {
+       left: 18%;
+    }
+}
+
+.edit-profile-tutor {
+    background: white;
+    margin-bottom: 15px;
+}
+
+@media screen and (min-width: 1068px) {
+     .edit-profile-tutor {
+       left: 18%;
+    }
+}
+
+.circle {
+    width: 65px;
+    height: 65px;
+    background: #C5F693;
+    border-radius: 50px;
+    font-size: 24px;
+    margin: auto;
+}
+
+.class-level {
+    float: right;
+    width:45%;
+}
+
+.school-name {
+    float: right;
+    width:45%;
+}
+
+.dob {
+    float: left;
+    width:45%;
+}
+
+.language {
+    float: left;
+    width:45%;
+}
+
+.gender {
+    font-size: 20px;
+}
+
+.main-language {
+    float: right;
+    width: 45%;
+}
+
+.working-language {
+
+    width: 45%;
+}
+
+.calendar {
+    background: white;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.questionaire {
+    background: white;
+    padding-top: 15px;
+    border-radius: 20px;
+}
+
+.glyphicon-search {
+    margin-right: 6px;
 }

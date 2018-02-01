@@ -1,0 +1,46 @@
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+
+@(user: models.User, tutor: models.TutorProfile)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main(messages("tutor.my.students.title"), Some(user)) {
+<script src='@assets.path("javascripts/calendar/renderFullCalendarTutor.js")'></script>
+<div class="col-md-4 text-center">
+
+    <div class="tutor-your-profile">
+        <div class="row">
+            <b>@messages("tutor.your.profile.look"):</b>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="text-center">
+                @avatar(user)
+            </div>
+        </div>
+        <div class="row">
+            @messages("subject." + tutor.subjects.subject1) · @messages("interest." + tutor.interests.interest1)
+        </div>
+        <div class="row">
+            <strong>@user.firstName @user.lastName</strong>
+        </div>
+        <div id="hover" class="description">
+            @tutor.description
+        </div>
+        <div class="row">
+            @tutor.wishedSalary € / 90 min
+        </div>
+    </div>
+    <br/>
+    <div class="tutor-message">@messages("tutor.wait.for.students")</div>
+    <br/>
+
+    <div><a href="https://docs.google.com/forms/d/1t42zSseAa1h_pPMYeXevbKTsZxiYATtIoJvh4i5O8QA" class="btn btn-feedback">@messages("Feedback geben")</a></div>
+</div>
+<div class="calendar col-md-8">
+    @calendar()
+</div>
+
+}
+<script>$('#navbar .nav #find-tutee').addClass('active');</script>

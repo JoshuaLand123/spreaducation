@@ -8,8 +8,9 @@
 @(profileForm: Form[models.TutorProfile], user: models.User, allowedToEditQuestions: Boolean)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main(messages("profile.title"), Some(user)) {
+<div class="edit-profile-tutor col-md-8">
 <script src='@assets.path("javascripts/bootstrap-slider.min.js")'></script>
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-md-10 col-md-offset-1">
 		<div class="row">
 			<div class="text-center">
 				@avatar(user)
@@ -24,12 +25,15 @@
 						<input id="upload" type="file" style="visibility:hidden;" name="upload" accept="image/*" >
 					</div>
 					<div class="form-group">
-						@b3.select(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender", '_default -> "choose.one")
-						@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control", 'required -> "true")
-						@b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit", '_default -> "choose.one")
-						@b3.select(profileForm("workingLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.working.language.edit", '_default -> "choose.one")
+						<div class="gender text-center">@b3.radio(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender", '_default -> "choose.one", '_inline -> true)</div>
+						<div class="main-language">@b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit", '_default -> "choose.one")</div>
+							<div class="dob">@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control", 'required -> "true")</div>
+						<div class="school-name">@b3.textarea(profileForm("instituteAttended"), '_label -> "profile.institute.attended.edit")</div>
+
+						<div class="working-language">@b3.select(profileForm("workingLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.working.language.edit", '_default -> "choose.one")</div>
+
 						@b3.textarea(profileForm("description"), '_label -> "profile.description.edit")
-						@b3.textarea(profileForm("instituteAttended"), '_label -> "profile.institute.attended.edit")
+
 						<label for="occupation">@messages("profile.occupation.degree.edit")</label>
 						<div id="occupation" class="row">
 							<div class="col-md-6">
@@ -115,4 +119,5 @@
 
 			</script>
 	</div>
+</div>
 }
