@@ -142,7 +142,7 @@ profile.occupation.degree.edit = Was ist dein höchster Abschluss und in welcher
 profile.institute.attended = Schulen und Universitäten
 profile.institute.attended.edit = Welche Schulen oder Universitäten hast du bisher besucht?
 profile.description = Kurzbeschreibung
-profile.description.edit = Füge eine Kurzbeschreibung über dich hinzu. Lass deine Schüler erfahren wer du bist und wann du in der Woche Zeit hast. 
+profile.description.edit = Füge eine Kurzbeschreibung über dich hinzu. Lass deine Schüler erfahren, was dich besonders macht. 
 profile.working.language = Alltagssprache
 profile.working.language.edit = Welche Sprache sprichst du im Alltag?
 profile.subject.able.to.teach = Meine Fächer
@@ -411,7 +411,7 @@ working.Learning-techniques.description.tutor = Dein Lerntechnik-Score. Du hast 
 
 # Calendar:
 
-calendar.tutor.hint = Bitte erstelle in deinem Kalender Zeiten, in denen du unterrichten kannst. Klicke dazu einfach auf einen bestimmten Tag. Du kannst deine verfügbaren Zeiten solange verändern, bis ein Schüler eine Unterrichtseinheit in einem deiner verfügbaren Zeiträume gebucht hat. Um Details einer Unterrichtseinheit anzuzeigen, klicke sie an.
+calendar.tutor.hint = Bitte erstelle in deinem Kalender Zeiten, in denen du unterrichten kannst. Klicke dazu einfach auf einen bestimmten Tag. Du kannst deine verfügbaren Zeiträume solange verändern, bis ein Schüler eine Unterrichtseinheit in einem deiner verfügbaren Zeiträume gebucht hat. Um Details einer Unterrichtseinheit anzuzeigen, klicke sie an.
 calendar.tutee.hint = Nehme die Unterrichtsanfrage und ziehe sie in einen der verfügbaren Zeiträume deines Tutors. Er kann dann entscheiden, ob er sie annehmen möchte oder nicht. Die Unterrichtseinheit dauert 90 Minuten. Um Details einer Unterrichtseinheit anzuzeigen, klicke sie an.
 calendar.request.lesson = Unterrichtsanfrage
 close = Schließen
