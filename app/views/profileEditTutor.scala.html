@@ -102,13 +102,13 @@
 		</div>
 		<script>
 				$('input[id^="slider-"]').slider();
-				if ($('#lessonType :selected').text() == 'Online') {
+				if ($('#lessonType :selected').val() == 'Online') {
 						$('#postalCode').removeAttr('required');
 						$('#postalCode_field').hide();
 				};
 
 				$('#lessonType').change(function() {
-					if ($('#lessonType :selected').text() == 'Online') {
+					if ($('#lessonType :selected').val() == 'Online') {
 						$('#postalCode').removeAttr('required');
 						$('#postalCode_field').hide("slow");
 					} else {

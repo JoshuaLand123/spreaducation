@@ -94,11 +94,11 @@
 				readURL(this);
 			});
 
-			if ($('#lessonType :selected').text() == 'Online') {
+			if ($('#lessonType :selected').val() == 'Online') {
 				$('#address input').removeAttr('required');
 				$('#skype').attr('required', 'true');
 				$('#address').hide();
-			} else if ($('#lessonType :selected').text() == 'Offline') {
+			} else if ($('#lessonType :selected').val() == 'Offline') {
 				$('#skype').removeAttr('required');
 				$('#address input').attr('required', 'true');
 				$('#skype_field').hide();
@@ -108,12 +108,12 @@
 			}
 
 			$('#lessonType').change(function() {
-				if ($('#lessonType :selected').text() == 'Online') {
+				if ($('#lessonType :selected').val() == 'Online') {
 					$('#address input').removeAttr('required');
 					$('#address').hide("slow");
 					$('#skype_field').show("slow");
 					$('#skype').attr('required', 'true');
-				} else if ($('#lessonType :selected').text() == 'Offline') {
+				} else if ($('#lessonType :selected').val() == 'Offline') {
 					$('#skype').removeAttr('required');
 					$('#skype_field').hide("slow");
 					$('#address').show("slow");
