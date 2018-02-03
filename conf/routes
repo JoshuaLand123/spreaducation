@@ -4,7 +4,6 @@
 
 # Home page
 GET         /                                controllers.ApplicationController.index
-GET         /feedback                        controllers.ApplicationController.feedback(order: Int, userID: java.util.UUID)
 #GET         /lang/:lang                      controllers.ApplicationController.changeLanguage(lang: String)
 GET         /getImage                        controllers.ApplicationController.getImage
 GET         /image/:userId                    controllers.ApplicationController.image(userId: java.util.UUID)
@@ -26,6 +25,7 @@ POST        /tutor/profile                   controllers.TutorProfileController.
 GET         /events/:eventID/delete          controllers.EventController.delete(eventID: Long)
 GET         /events/:eventID/update          controllers.EventController.update(eventID: Long, start: java.time.LocalDateTime, end: java.time.LocalDateTime)
 
+GET         /tutee/tutor/:tutorID/calendar   controllers.EventTuteeController.tutorCalendar(tutorID: java.util.UUID)
 GET         /tutee/lessons                   controllers.EventTuteeController.myLessons
 GET         /tutee/events.json               controllers.EventTuteeController.events(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
 GET         /tutee/events/request            controllers.EventTuteeController.requestLesson(tutorID: java.util.UUID, start: java.time.LocalDateTime, end: java.time.LocalDateTime, description: String)

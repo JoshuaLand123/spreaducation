@@ -29,65 +29,105 @@
 						<div class="dob">@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control", 'required -> "true")</div>
 						<div class="school-name">@b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control")</div>
 						<div class="language">@b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit", '_default -> "choose.one")</div>
+						@b3.textarea(profileForm("description"), '_label -> "profile.description.edit")
 
 						<label for="subjectsImprove">@messages("profile.subject.improve.edit")</label>
 						<div id="subjectsImprove" class="col-md-6 text-center">
-							@b3.select(profileForm("subjectImprove1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.radio(profileForm("scoreSubjectImprove1"),  options=(1 to 6).map(s => s.toString -> s.toString), '_default -> "choose.one", '_inline -> true)
+							@b3.select(profileForm("subjects.subjectImprove1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
+							@b3.radio(profileForm("subjects.scoreSubjectImprove1"),  options=(1 to 6).map(s => s.toString -> s.toString), '_default -> "choose.one", '_inline -> true)
 						</div>
 						<div class="col-md-6 text-center">
-							@b3.select(profileForm("subjectImprove2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.radio(profileForm("scoreSubjectImprove2"),  options=(1 to 6).map(s => s.toString -> s.toString), '_default -> "choose.one", '_inline -> true)
+							@b3.select(profileForm("subjects.subjectImprove2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
+							@b3.radio(profileForm("subjects.scoreSubjectImprove2"),  options=(1 to 6).map(s => s.toString -> s.toString), '_default -> "choose.one", '_inline -> true)
 						</div>
 
 						<label for="subjectsGoodAt">@messages("profile.subject.goodat.edit")</label>
 						<div id="subjectsGoodAt" class="col-md-6 text-center">
-							@b3.select(profileForm("subjectGoodAt1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.radio(profileForm("scoreSubjectGoodAt1"),  options=(1 to 6).map(s => s.toString -> s.toString), '_default -> "choose.one", '_inline -> true)
+							@b3.select(profileForm("subjects.subjectGoodAt1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
+							@b3.radio(profileForm("subjects.scoreSubjectGoodAt1"),  options=(1 to 6).map(s => s.toString -> s.toString), '_default -> "choose.one", '_inline -> true)
 						</div>
 						<div class="col-md-6 text-center">
-							@b3.select(profileForm("subjectGoodAt2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
-							@b3.radio(profileForm("scoreSubjectGoodAt2"),  options=(1 to 6).map(s => s.toString -> s.toString), '_default -> "choose.one", '_inline -> true)
+							@b3.select(profileForm("subjects.subjectGoodAt2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
+							@b3.radio(profileForm("subjects.scoreSubjectGoodAt2"),  options=(1 to 6).map(s => s.toString -> s.toString), '_default -> "choose.one", '_inline -> true)
 						</div>
 
 						<label for="interests">@messages("profile.interest.edit")</label>
 						<div id="interests" class="col-md-6">
-							@b3.select(profileForm("interest1"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
+							@b3.select(profileForm("interests.interest1"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6 text-center sliders">
-							<p><input id="slider-interest1" class="slider" name='timeInterest1' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest1")'/></p>
+							<p><input id="slider-interest1" class="slider" name='interests.timeInterest1' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest1")'/></p>
 						</div>
 						<div class="col-md-6">
-							@b3.select(profileForm("interest2"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
+							@b3.select(profileForm("interests.interest2"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6 text-center sliders">
-							<p><input id="slider-interest2" class="slider" name='timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest2")'/></p>
+							<p><input id="slider-interest2" class="slider" name='interests.timeInterest2' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest2")'/></p>
 
 						</div>
 						<div class="col-md-6">
-							@b3.select(profileForm("interest3"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
+							@b3.select(profileForm("interests.interest3"), options=models.enums.Interest.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6 text-center sliders">
-							<p><input id="slider-interest3" class="slider" name='timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
-
+							<p><input id="slider-interest3" class="slider" name='interests.timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
 						</div>
-						<div class="col-md-6 ">
+						@b3.select(profileForm("lessonType"), options=models.enums.LessonType.selectList(messages), '_label -> "profile.lesson.type.edit")
+						@b3.text(profileForm("skype"), '_label -> "Skype")
+						<div id="address">
+							<div class="col-md-8">
+								@b3.text(profileForm("address.street"), '_label -> "Street")
+							</div>
+							<div class="col-md-4">
+								@b3.text(profileForm("address.postalCode"), '_label -> "profile.tutor.postalCode.description")
+							</div>
 						</div>
 						@if(allowedToEditQuestions) {
 							<button type="submit" class="btn btn-edit pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
 						} else {
 							<button type="submit" class="btn btn-edit pull-right">@messages("save")<span class="glyphicon glyphicon-ok"></span></button>
 						}
-						}
 					</div>
-			</div>
-		</div>
-		<script>
+				}
+				<script>
 			$('input[id^="slider-"]').slider();
 			$("#upload").change(function() {
 				readURL(this);
 			});
+
+			if ($('#lessonType :selected').text() == 'Online') {
+				$('#address input').removeAttr('required');
+				$('#skype').attr('required', 'true');
+				$('#address').hide();
+			} else if ($('#lessonType :selected').text() == 'Offline') {
+				$('#skype').removeAttr('required');
+				$('#address input').attr('required', 'true');
+				$('#skype_field').hide();
+			} else {
+				$('#skype').attr('required', 'true');
+				$('#address input').attr('required', 'true');
+			}
+
+			$('#lessonType').change(function() {
+				if ($('#lessonType :selected').text() == 'Online') {
+					$('#address input').removeAttr('required');
+					$('#address').hide("slow");
+					$('#skype_field').show("slow");
+					$('#skype').attr('required', 'true');
+				} else if ($('#lessonType :selected').text() == 'Offline') {
+					$('#skype').removeAttr('required');
+					$('#skype_field').hide("slow");
+					$('#address').show("slow");
+					$('#address input').attr('required', 'true');
+				} else {
+					$('#address').show("slow");
+					$('#skype_field').show("slow");
+					$('#skype').attr('required', 'true');
+					$('#address input').attr('required', 'true');
+				}
+			});
 		</script>
-	</div>
+			</div>
+		</div>
+</div>
 </div>
 }

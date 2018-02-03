@@ -75,16 +75,16 @@ class TuteeProfileController @Inject() (
     import utils.ScoreUtils._
     // TODO: refactor this whole method
     val subjects = "subjects" -> PsychogramCategoryData(List(
-      PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt1), reverseTuteeSubjectScore(profile.scoreSubjectGoodAt1), messages("subject." + profile.subjectGoodAt1)),
-      PsychogramSubcategoryData(messages("subject." + profile.subjectGoodAt2), reverseTuteeSubjectScore(profile.scoreSubjectGoodAt2), messages("subject." + profile.subjectGoodAt2)),
-      PsychogramSubcategoryData(messages("subject." + profile.subjectImprove1), reverseTuteeSubjectScore(profile.scoreSubjectImprove1), messages("subject." + profile.subjectImprove1)),
-      PsychogramSubcategoryData(messages("subject." + profile.subjectImprove2), reverseTuteeSubjectScore(profile.scoreSubjectImprove2), messages("subject." + profile.subjectImprove2))
+      PsychogramSubcategoryData(messages("subject." + profile.subjects.subjectGoodAt1), reverseTuteeSubjectScore(profile.subjects.scoreSubjectGoodAt1), messages("subject." + profile.subjects.subjectGoodAt1)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjects.subjectGoodAt2), reverseTuteeSubjectScore(profile.subjects.scoreSubjectGoodAt2), messages("subject." + profile.subjects.subjectGoodAt2)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjects.subjectImprove1), reverseTuteeSubjectScore(profile.subjects.scoreSubjectImprove1), messages("subject." + profile.subjects.subjectImprove1)),
+      PsychogramSubcategoryData(messages("subject." + profile.subjects.subjectImprove2), reverseTuteeSubjectScore(profile.subjects.scoreSubjectImprove2), messages("subject." + profile.subjects.subjectImprove2))
     ).sortBy(_.name)(Ordering[String].reverse), messages("subjects.description.tutee"))
 
     val interests = "interests" -> PsychogramCategoryData(List(
-      PsychogramSubcategoryData(messages("interest." + profile.interest1), profile.timeInterest1, messages("interest." + profile.interest1)),
-      PsychogramSubcategoryData(messages("interest." + profile.interest2), profile.timeInterest2, messages("interest." + profile.interest2)),
-      PsychogramSubcategoryData(messages("interest." + profile.interest3), profile.timeInterest3, messages("interest." + profile.interest3))
+      PsychogramSubcategoryData(messages("interest." + profile.interests.interest1), profile.interests.timeInterest1, messages("interest." + profile.interests.interest1)),
+      PsychogramSubcategoryData(messages("interest." + profile.interests.interest2), profile.interests.timeInterest2, messages("interest." + profile.interests.interest2)),
+      PsychogramSubcategoryData(messages("interest." + profile.interests.interest3), profile.interests.timeInterest3, messages("interest." + profile.interests.interest3))
     ).sortBy(_.name), messages("interests.description.tutee"))
 
     def psychoDataForSubcategory(subcategory: String) = {

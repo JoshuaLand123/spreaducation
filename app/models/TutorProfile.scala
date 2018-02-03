@@ -16,7 +16,7 @@ case class TutorProfile(
   interests: TutorInterests,
   wishedSalary: Double,
   lessonType: String,
-  place: Option[String]
+  postalCode: Option[String]
 )
 
 case class TutorSubjects(subject1: String, subject1Level: Int, subject2: Option[String], subject2Level: Option[Int], subject3: Option[String], subject3Level: Option[Int], subject4: Option[String], subject4Level: Option[Int])

@@ -3,6 +3,8 @@ package tables
 
 import java.util.{ Date, UUID }
 
+import slick.collection.heterogeneous.HNil
+import slick.collection.heterogeneous.syntax.{ ::, HNil }
 import slick.jdbc.PostgresProfile.api._
 
 class TuteeProfileTable(tag: Tag) extends Table[TuteeProfile](tag, "tutee_profile") {
@@ -13,6 +15,7 @@ class TuteeProfileTable(tag: Tag) extends Table[TuteeProfile](tag, "tutee_profil
   def classLevel = column[Int]("class_level")
   def schoolName = column[String]("school_name")
   def mainLanguage = column[String]("main_language")
+  def description = column[String]("description")
   def subjectImprove1 = column[String]("subject_improve_1")
   def scoreSubjectImprove1 = column[Int]("score_subject_improve_1")
   def subjectImprove2 = column[String]("subject_improve_2")
@@ -27,9 +30,30 @@ class TuteeProfileTable(tag: Tag) extends Table[TuteeProfile](tag, "tutee_profil
   def timeInterest2 = column[Int]("time_interest_2")
   def interest3 = column[String]("interest_3")
   def timeInterest3 = column[Int]("time_interest_3")
-  def tutorOrder = column[Option[Int]]("tutor_order")
-  def tutorID = column[Option[UUID]]("tutor_id")
+  def lessonType = column[String]("lesson_type")
+  def skype = column[Option[String]]("skype")
+  def street = column[Option[String]]("street")
+  def postalCode = column[Option[String]]("postal_code")
 
-  override def * = (userID, gender, dob, classLevel, schoolName, mainLanguage, subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2, interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3, tutorOrder, tutorID) <> (TuteeProfile.tupled, TuteeProfile.unapply)
+  override def * = (userID :: gender :: dob :: classLevel :: schoolName :: mainLanguage :: description :: subjectImprove1 :: scoreSubjectImprove1 :: subjectImprove2 :: scoreSubjectImprove2 :: subjectGoodAt1 :: scoreSubjectGoodAt1 :: subjectGoodAt2 :: scoreSubjectGoodAt2 :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: lessonType :: skype :: street :: postalCode :: HNil) <> (tuple, unapply)
 
+  type TuteeProfileHList = UUID :: String :: Date :: Int :: String :: String :: String :: String :: Int :: String :: Int :: String :: Int :: String :: Int :: String :: Int :: String :: Int :: String :: Int :: String :: Option[String] :: Option[String] :: Option[String] :: HNil
+
+  def tuple(data: TuteeProfileHList): TuteeProfile = data match {
+
+    case userID :: gender :: dob :: classLevel :: schoolName :: mainLanguage :: description :: subjectImprove1 :: scoreSubjectImprove1 :: subjectImprove2 :: scoreSubjectImprove2 :: subjectGoodAt1 :: scoreSubjectGoodAt1 :: subjectGoodAt2 :: scoreSubjectGoodAt2 :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: lessonType :: skype :: street :: postalCode :: HNil =>
+      if (street.isDefined && postalCode.isDefined)
+        TuteeProfile(userID, gender, dob, classLevel, schoolName, mainLanguage, description, TuteeSubjects(subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2), TuteeInterests(interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3), lessonType, skype, Some(Address(street.get, postalCode.get)))
+      else
+        TuteeProfile(userID, gender, dob, classLevel, schoolName, mainLanguage, description, TuteeSubjects(subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2), TuteeInterests(interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3), lessonType, skype, None)
+  }
+
+  def unapply(tuteeProfile: TuteeProfile): Option[TuteeProfileHList] = tuteeProfile match {
+
+    case TuteeProfile(userID, gender, dob, classLevel, schoolName, mainLanguage, description, TuteeSubjects(subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2), TuteeInterests(interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3), lessonType, skype, None) =>
+      Some(userID :: gender :: dob :: classLevel :: schoolName :: mainLanguage :: description :: subjectImprove1 :: scoreSubjectImprove1 :: subjectImprove2 :: scoreSubjectImprove2 :: subjectGoodAt1 :: scoreSubjectGoodAt1 :: subjectGoodAt2 :: scoreSubjectGoodAt2 :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: lessonType :: skype :: None :: None :: HNil)
+    case TuteeProfile(userID, gender, dob, classLevel, schoolName, mainLanguage, description, TuteeSubjects(subjectImprove1, scoreSubjectImprove1, subjectImprove2, scoreSubjectImprove2, subjectGoodAt1, scoreSubjectGoodAt1, subjectGoodAt2, scoreSubjectGoodAt2), TuteeInterests(interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3), lessonType, skype, Some(Address(street, postalCode))) =>
+      Some(userID :: gender :: dob :: classLevel :: schoolName :: mainLanguage :: description :: subjectImprove1 :: scoreSubjectImprove1 :: subjectImprove2 :: scoreSubjectImprove2 :: subjectGoodAt1 :: scoreSubjectGoodAt1 :: subjectGoodAt2 :: scoreSubjectGoodAt2 :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: lessonType :: skype :: Some(street) :: Some(postalCode) :: HNil)
+
+  }
 }

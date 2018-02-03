@@ -30,6 +30,10 @@ class EventTuteeController @Inject() (
   ex: ExecutionContext
 ) extends AbstractController(components) with I18nSupport {
 
+  def tutorCalendar(tutorID: UUID) = silhouette.SecuredAction.async { implicit request =>
+    Future.successful(Ok(views.html.tuteeRequestLessons(request.identity, tutorID.toString)))
+  }
+
   def events(start: LocalDateTime, end: LocalDateTime) = silhouette.SecuredAction.async { implicit request =>
     eventService.myEvents(request.identity, start, end).map(a => Ok(Json.toJson(a.map {
       case m =>

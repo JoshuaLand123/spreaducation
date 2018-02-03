@@ -38,6 +38,16 @@
                 <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
                 <p class="col-md-6">@profile.map(l => messages("language."+l.mainLanguage)).getOrElse("")</p>
             </div>
+            @if(profile.flatMap(_.address).isDefined) {
+            <div class="row">
+                <p class="col-md-6"><strong>Address:</strong></p>
+                <p class="col-md-6">@profile.flatMap(_.address).get.street, @profile.flatMap(_.address).get.postalCode</p>
+            </div>
+            }
+            <div id="hover" class="row">
+                <p class="col-md-6"><strong>@messages("profile.description"):</strong></p>
+                <p class="col-md-6">@profile.map(_.description).getOrElse("")</p>
+            </div>
 
             </div>
         <div class="text-center"> <a href="@controllers.routes.TuteeProfileController.edit" class="btn btn-edit"><span class="glyphicon glyphicon-edit"></span> @messages("edit")</a></div>
@@ -49,7 +59,7 @@
 
         @psychogram("100%", "100%", user, psychogramData)
         <button id="shower" class="col-xs-12 col-md-6">Profil zeigen/verbergen</button>
-        <a href="@controllers.routes.MatchingController.view" class="col-xs-12 col-md-6 btn btn-find-tutor"><span class="glyphicon glyphicon-search"></span>  @messages("Tutor Finden")</a>
+        <a href="@controllers.routes.MatchingController.view" class="col-xs-12 col-md-6 btn btn-find-tutor"><span class="glyphicon glyphicon-search"></span>@messages("profile.tutor.find")</a>
     </div>
 
     <script>

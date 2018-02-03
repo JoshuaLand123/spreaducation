@@ -90,8 +90,8 @@ object TutorGenerator {
       val index = Math.abs(tuteeProfile.userID.hashCode() + order)
       val tutor = predefinedTutors(index % predefinedTutors.size)
       val otherInterest = Interest.values.toList(index % Interest.values.size).toString
-      val interest = messages(s"interest.${if (order <= 2) tuteeProfile.interest1 else otherInterest}")
-      val subject = messages(s"subject.${tuteeProfile.subjectImprove1}")
+      val interest = messages(s"interest.${if (order <= 2) tuteeProfile.interests.interest1 else otherInterest}")
+      val subject = messages(s"subject.${tuteeProfile.subjects.subjectImprove1}")
       val gender = tutor._3
       val descriptionList = predefinedDescriptions(subject, interest, gender)
       val description = descriptionList(index % descriptionList.size)

@@ -72,7 +72,7 @@
                             @tutor.price.ceil.toInt € / 90 min
                         </div>
                         <div class="row">
-                            <a href="@controllers.routes.ApplicationController.feedback(tutor.order, tutor.userID)" class="btn btn-default">@messages("matching.choose")</a>
+                            <a href="@controllers.routes.EventTuteeController.tutorCalendar(tutor.userID)" class="btn btn-default">@messages("matching.choose")</a>
                         </div>
 
                     </div>

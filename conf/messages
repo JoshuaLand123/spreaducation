@@ -152,8 +152,8 @@ profile.lesson.type = Unterrichtsform
 profile.lesson.type.edit = Unterrichtest du lieber bei einem Schüler in deiner Nähe oder online?
 profile.wished.salary = Gewünschter Unterrichtslohn
 profile.wished.salary.edit = Was möchtest du pro Unterrichtseinheit (90 min) verdienen?
-profile.tutor.place = Wohnort
-profile.tutor.place.description = Gebe deinen Wohnort ein.
+profile.tutor.postalCode = Postleitzahl
+profile.tutor.postalCode.description = Postleitzahl
 profile.error.duplicate.subjects.or.interests = Bitte wähle verschiedene Fächer und Interessen.
 
 

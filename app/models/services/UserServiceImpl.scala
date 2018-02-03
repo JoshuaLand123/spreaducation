@@ -74,12 +74,12 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
         (tutorMatchDB.subject4, tutorMatchDB.subject4Level)
       ).collect {
           case (Some(subject), Some(level)) if level >= profile.classLevel
-            && Seq(profile.subjectImprove1, profile.subjectImprove2).contains(subject) => subject
+            && Seq(profile.subjects.subjectImprove1, profile.subjects.subjectImprove2).contains(subject) => subject
         }.take(2)
 
       val subject1 = subjects.headOption.getOrElse("")
       val subject2 = if (subjects.size > 1) Some(subjects.tail.head) else None
-      val interest = messages(s"interest.${Seq(Some(tutorMatchDB.interest1), tutorMatchDB.interest2, tutorMatchDB.interest3).flatten.find(Seq(profile.interest1, profile.interest2, profile.interest3).contains).getOrElse(tutorMatchDB.interest1)}")
+      val interest = messages(s"interest.${Seq(Some(tutorMatchDB.interest1), tutorMatchDB.interest2, tutorMatchDB.interest3).flatten.find(Seq(profile.interests.interest1, profile.interests.interest2, profile.interests.interest3).contains).getOrElse(tutorMatchDB.interest1)}")
       TutorMatch(
         userID = tutorMatchDB.userID,
         firstName = tutorMatchDB.firstName,
@@ -100,7 +100,7 @@ class UserServiceImpl @Inject() (userDAO: UserDAO) extends UserService {
     val matchesWithSubject = userDAO.findMatches(profile.userID).map(_.map(convert).filter(_.subject1 != ""))
     matchesWithSubject.map { allMatches =>
       val bothSubjectsTutors = allMatches.collect {
-        case m if m.subject2.isDefined && Seq(profile.subjectImprove1, profile.subjectImprove2).contains(m.subject1) && Seq(profile.subjectImprove1, profile.subjectImprove2).contains(m.subject2.get) => m
+        case m if m.subject2.isDefined && Seq(profile.subjects.subjectImprove1, profile.subjects.subjectImprove2).contains(m.subject1) && Seq(profile.subjects.subjectImprove1, profile.subjects.subjectImprove2).contains(m.subject2.get) => m
       }.sortBy(-_.price).map(m => m.copy(subject1 = messages(s"subject.${m.subject1}"), subject2 = Some(messages(s"subject.${m.subject2.get}"))))
       val oneSubjectTutors = allMatches.collect {
         case m if m.subject2.isEmpty => m

@@ -52,10 +52,10 @@
                     <p class="col-md-6"><strong>@messages("profile.lesson.type"):</strong></p>
                     <p class="col-md-6">@profile.map(p => messages("lessonType." + p.lessonType)).getOrElse("")</p>
                 </div>
-                @if(profile.flatMap(_.place).isDefined) {
+                @if(profile.flatMap(_.postalCode).isDefined) {
                 <div class="row">
-                    <p class="col-md-6"><strong>@messages("profile.tutor.place"):</strong></p>
-                    <p class="col-md-6">@profile.flatMap(_.place).getOrElse("")</p>
+                    <p class="col-md-6"><strong>@messages("profile.tutor.postalCode"):</strong></p>
+                    <p class="col-md-6">@profile.flatMap(_.postalCode).getOrElse("")</p>
                 </div>
                 }
                 <div id="hover" class="row">

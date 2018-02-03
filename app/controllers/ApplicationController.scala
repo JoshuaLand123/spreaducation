@@ -44,11 +44,6 @@ class ApplicationController @Inject() (
     silhouette.env.authenticatorService.discard(request.authenticator, result)
   }
 
-  def feedback(order: Int, tutorID: UUID) = silhouette.SecuredAction.async { implicit request =>
-    userService.retrieveTuteeProfile(request.identity.userID).map(_.map(p => userService.saveTuteeProfile(p.copy(tutorOrder = Some(order), tutorID = Some(tutorID)))))
-    Future.successful(Ok(views.html.tuteeRequestLessons(request.identity, tutorID.toString)))
-  }
-
   def getImage = silhouette.SecuredAction.async { implicit request =>
     request.identity.image match {
       case Some(image) => Future.successful(Ok(image).as("image/jpg"))
