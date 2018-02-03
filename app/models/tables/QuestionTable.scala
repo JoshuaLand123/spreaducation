@@ -1,7 +1,7 @@
 package models.tables
 
-import models.enums.DiscType.DiscType
 import models.Question
+import models.enums.DiscType.DiscType
 import models.enums.UserType.UserType
 import slick.jdbc.PostgresProfile.api._
 
@@ -23,6 +23,14 @@ class QuestionTable(tag: Tag) extends Table[Question](tag, "questions") {
 
   def questionOrder = column[Int]("question_order")
 
-  override def * = (id, questionText, questionUserType, discCategory, psychoCategory, psychoSubcategory, psychoScoreReverse, questionOrder) <> (Question.tupled, Question.unapply)
+  override def * =
+    (id,
+     questionText,
+     questionUserType,
+     discCategory,
+     psychoCategory,
+     psychoSubcategory,
+     psychoScoreReverse,
+     questionOrder) <> (Question.tupled, Question.unapply)
 
 }

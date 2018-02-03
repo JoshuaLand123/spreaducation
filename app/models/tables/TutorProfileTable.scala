@@ -12,12 +12,11 @@ class TutorProfileTable(tag: Tag) extends Table[TutorProfile](tag, "tutor_profil
   def userID = column[UUID]("user_id", O.PrimaryKey)
   def gender = column[String]("gender")
   def dob = column[Date]("dob")
-  def mainLanguage = column[String]("main_language")
   def description = column[String]("description")
   def instituteAttended = column[String]("institute_attended")
   def occupation = column[String]("occupation")
   def occupationDegree = column[String]("occupation_degree")
-  def workingLanguage = column[String]("working_language")
+  def teachingLanguage = column[String]("teaching_language")
   def subject1 = column[String]("subject_1")
   def subject1Level = column[Int]("subject_1_level")
   def subject2 = column[Option[String]]("subject_2")
@@ -36,19 +35,19 @@ class TutorProfileTable(tag: Tag) extends Table[TutorProfile](tag, "tutor_profil
   def lessonType = column[String]("lesson_type")
   def postalCode = column[Option[String]]("postal_code")
 
-  override def * = (userID :: gender :: dob :: mainLanguage :: description :: instituteAttended :: occupation :: occupationDegree :: workingLanguage :: subject1 :: subject1Level :: subject2 :: subject2Level :: subject3 :: subject3Level :: subject4 :: subject4Level :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: wishedSalary :: lessonType :: postalCode :: HNil) <> (tuple, unapply)
+  override def * = (userID :: gender :: dob :: description :: instituteAttended :: occupation :: occupationDegree :: teachingLanguage :: subject1 :: subject1Level :: subject2 :: subject2Level :: subject3 :: subject3Level :: subject4 :: subject4Level :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: wishedSalary :: lessonType :: postalCode :: HNil) <> (tuple, unapply)
 
-  type TutorProfileHList = UUID :: String :: Date :: String :: String :: String :: String :: String :: String :: String :: Int :: Option[String] :: Option[Int] :: Option[String] :: Option[Int] :: Option[String] :: Option[Int] :: String :: Int :: String :: Int :: String :: Int :: Double :: String :: Option[String] :: HNil
+  type TutorProfileHList = UUID :: String :: Date :: String :: String :: String :: String :: String :: String :: Int :: Option[String] :: Option[Int] :: Option[String] :: Option[Int] :: Option[String] :: Option[Int] :: String :: Int :: String :: Int :: String :: Int :: Double :: String :: Option[String] :: HNil
 
   def tuple(data: TutorProfileHList): TutorProfile = data match {
 
-    case userID :: gender :: dob :: mainLanguage :: description :: instituteAttended :: occupation :: occupationDegree :: workingLanguage :: subject1 :: subject1Level :: subject2 :: subject2Level :: subject3 :: subject3Level :: subject4 :: subject4Level :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: wishedSalary :: lessonType :: postalCode :: HNil =>
-      TutorProfile(userID, gender, dob, mainLanguage, description, instituteAttended, occupation, occupationDegree, workingLanguage, TutorSubjects(subject1, subject1Level, subject2, subject2Level, subject3, subject3Level, subject4, subject4Level), TutorInterests(interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3), wishedSalary, lessonType, postalCode)
+    case userID :: gender :: dob :: description :: instituteAttended :: occupation :: occupationDegree :: teachingLanguage :: subject1 :: subject1Level :: subject2 :: subject2Level :: subject3 :: subject3Level :: subject4 :: subject4Level :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: wishedSalary :: lessonType :: postalCode :: HNil =>
+      TutorProfile(userID, gender, dob, description, instituteAttended, occupation, occupationDegree, teachingLanguage, TutorSubjects(subject1, subject1Level, subject2, subject2Level, subject3, subject3Level, subject4, subject4Level), TutorInterests(interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3), wishedSalary, lessonType, postalCode)
   }
 
   def unapply(tutorProfile: TutorProfile): Option[TutorProfileHList] = tutorProfile match {
 
-    case TutorProfile(userID, gender, dob, mainLanguage, description, instituteAttended, occupation, occupationDegree, workingLanguage, TutorSubjects(subject1, subject1Level, subject2, subject2Level, subject3, subject3Level, subject4, subject4Level), TutorInterests(interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3), wishedSalary, lessonType, postalCode) =>
-      Some(userID :: gender :: dob :: mainLanguage :: description :: instituteAttended :: occupation :: occupationDegree :: workingLanguage :: subject1 :: subject1Level :: subject2 :: subject2Level :: subject3 :: subject3Level :: subject4 :: subject4Level :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: wishedSalary :: lessonType :: postalCode :: HNil)
+    case TutorProfile(userID, gender, dob, description, instituteAttended, occupation, occupationDegree, teachingLanguage, TutorSubjects(subject1, subject1Level, subject2, subject2Level, subject3, subject3Level, subject4, subject4Level), TutorInterests(interest1, timeInterest1, interest2, timeInterest2, interest3, timeInterest3), wishedSalary, lessonType, postalCode) =>
+      Some(userID :: gender :: dob :: description :: instituteAttended :: occupation :: occupationDegree :: teachingLanguage :: subject1 :: subject1Level :: subject2 :: subject2Level :: subject3 :: subject3Level :: subject4 :: subject4Level :: interest1 :: timeInterest1 :: interest2 :: timeInterest2 :: interest3 :: timeInterest3 :: wishedSalary :: lessonType :: postalCode :: HNil)
   }
 }

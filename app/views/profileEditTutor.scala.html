@@ -26,13 +26,13 @@
 					</div>
 					<div class="form-group">
 						<div class="gender text-center">@b3.radio(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender", '_default -> "choose.one", '_inline -> true)</div>
-						<div class="main-language">@b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit", '_default -> "choose.one")</div>
-							<div class="dob">@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control", 'required -> "true")</div>
+						<div class="dob">@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control", 'required -> "true")</div>
 						<div class="school-name">@b3.textarea(profileForm("instituteAttended"), '_label -> "profile.institute.attended.edit")</div>
+						<div class="teaching-language">@b3.select(profileForm("teachingLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.teaching.language.edit", '_default -> "choose.one")</div>
+						<label for="phoneNumber">@messages("profile.phone"):</label>
+						<input type="text" name="phoneNumber" id="phoneNumber" />
 
-						<div class="working-language">@b3.select(profileForm("workingLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.working.language.edit", '_default -> "choose.one")</div>
-
-						@b3.textarea(profileForm("description"), '_label -> "profile.description.edit")
+						@b3.textarea(profileForm("description"), '_label -> "profile.tutor.description.edit")
 
 						<label for="occupation">@messages("profile.occupation.degree.edit")</label>
 						<div id="occupation" class="row">
@@ -48,25 +48,25 @@
 						@b3.select(profileForm("subjects.subject1"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
-						@b3.select(profileForm("subjects.subject1Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one", 'required -> "true")
+						@b3.select(profileForm("subjects.subject1Level"),  options=(1 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur") :+ ("14" -> "MSA"), '_default -> "choose.one", 'required -> "true")
 						</div>
 						<div class="col-md-6">
 						@b3.select(profileForm("subjects.subject2"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
-						@b3.select(profileForm("subjects.subject2Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+						@b3.select(profileForm("subjects.subject2Level"),  options=(1 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur") :+ ("14" -> "MSA"), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
 						@b3.select(profileForm("subjects.subject3"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
-						@b3.select(profileForm("subjects.subject3Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+						@b3.select(profileForm("subjects.subject3Level"),  options=(1 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur") :+ ("14" -> "MSA"), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
 						@b3.select(profileForm("subjects.subject4"),  options=models.enums.Subject.selectList(messages), '_default -> "choose.one")
 						</div>
 						<div class="col-md-6">
-						@b3.select(profileForm("subjects.subject4Level"),  options=(7 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur"), '_default -> "choose.one")
+						@b3.select(profileForm("subjects.subject4Level"),  options=(1 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur") :+ ("14" -> "MSA"), '_default -> "choose.one")
 						</div>
 
 						<label for="interests">@messages("profile.interest.edit")</label>
@@ -90,7 +90,7 @@
 						</div>
 						@b3.select(profileForm("wishedSalary"), options=List((20, "Frischling"), (30, "Fortgeschritten"), (40, "Halb-Profi"), (50, "Profi"), (60, "Legende")).map { case (s, d) => s.toString -> s"$s € ($d)"}, '_label -> "profile.wished.salary.edit")
 						@b3.select(profileForm("lessonType"), options=models.enums.LessonType.selectList(messages), '_label -> "profile.lesson.type.edit")
-						@b3.text(profileForm("postalCode"), '_label -> "profile.tutor.postalCode.description", 'required -> "true")
+						@b3.text(profileForm("postalCode"), '_label -> "profile.postalCode", 'required -> "true")
 						@if(allowedToEditQuestions) {
 							<button type="submit" class="btn btn-default pull-right">@messages("next")<span class="glyphicon glyphicon-chevron-right"></span></button>
 						} else {

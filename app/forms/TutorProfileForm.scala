@@ -14,12 +14,11 @@ object TutorProfileForm {
       "userID" -> ignored(UUID.randomUUID()),
       "gender" -> nonEmptyText,
       "dob" -> date,
-      "mainLanguage" -> nonEmptyText,
       "description" -> nonEmptyText,
       "instituteAttended" -> nonEmptyText,
       "occupation" -> nonEmptyText,
       "occupationDegree" -> nonEmptyText,
-      "workingLanguage" -> nonEmptyText,
+      "teachingLanguage" -> nonEmptyText,
       "subjects" -> mapping(
         "subject1" -> nonEmptyText,
         "subject1Level" -> number,

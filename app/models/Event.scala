@@ -46,7 +46,7 @@ case class TuteeEventDetails(
   firstName: Option[String],
   lastName: Option[String],
   //image: Option[Array[Byte]] = None,
-  mainLanguage: String,
+  learningLanguage: String,
   subjectImprove1: String,
   scoreSubjectImprove1: Int,
   subjectImprove2: String,

@@ -25,11 +25,13 @@
 					@b3.hidden(profileForm("userID"), 'value -> java.util.UUID.randomUUID())
 					<div class="form-group">
 						<div class="gender text-center">@b3.radio(profileForm("gender"),  options=models.enums.Gender.values.toSeq.map(g => g.toString -> ("gender."+g.toString)), '_label -> "profile.gender", '_default -> "choose.one", '_inline -> true)</div>
-						<div class="class-level">@b3.select(profileForm("classLevel"), options=(7 to 13).map(s => s.toString -> (s.toString + ". " + messages("profile.class.level"))), '_label -> "profile.class.level.edit", '_default -> "choose.one")</div>
+						<div class="class-level">@b3.select(profileForm("classLevel"), options=(1 to 12).map(s => s.toString -> s"Klasse $s") :+ ("13" -> "Abitur") :+ ("14" -> "MSA"), '_label -> "profile.class.level.edit", '_default -> "choose.one")</div>
 						<div class="dob">@b3.date(profileForm("dob"), '_label -> "profile.dob.edit", 'class -> "form-control", 'required -> "true")</div>
 						<div class="school-name">@b3.text(profileForm("schoolName"), '_label -> "profile.school.name.edit", 'class -> "form-control")</div>
-						<div class="language">@b3.select(profileForm("mainLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit", '_default -> "choose.one")</div>
-						@b3.textarea(profileForm("description"), '_label -> "profile.description.edit")
+						<div class="language">@b3.select(profileForm("learningLanguage"),  options=models.enums.Language.selectList(messages), '_label -> "profile.language.edit", '_default -> "choose.one")</div>
+						<label for="phoneNumber">@messages("profile.phone"):</label>
+						<input type="text" name="phoneNumber" id="phoneNumber" />
+						@b3.textarea(profileForm("description"), '_label -> "profile.tutee.description.edit")
 
 						<label for="subjectsImprove">@messages("profile.subject.improve.edit")</label>
 						<div id="subjectsImprove" class="col-md-6 text-center">
@@ -75,10 +77,10 @@
 						@b3.text(profileForm("skype"), '_label -> "Skype")
 						<div id="address">
 							<div class="col-md-8">
-								@b3.text(profileForm("address.street"), '_label -> "Street")
+								@b3.text(profileForm("address.street"), '_label -> "profile.street")
 							</div>
 							<div class="col-md-4">
-								@b3.text(profileForm("address.postalCode"), '_label -> "profile.tutor.postalCode.description")
+								@b3.text(profileForm("address.postalCode"), '_label -> "profile.postalCode")
 							</div>
 						</div>
 						@if(allowedToEditQuestions) {

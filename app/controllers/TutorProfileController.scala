@@ -55,16 +55,20 @@ class TutorProfileController @Inject() (
         Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> messages("error"))),
       profileSuccess => {
         val bytes: Option[Array[Byte]] = request.body.file("upload").map(p => Files.readAllBytes(p.ref))
+        val phoneNumber: Option[String] = request.body.dataParts("phoneNumber").headOption
         val profile = profileSuccess.copy(userID = request.identity.userID)
         /*val subjects: List[String] = List(Some(profile.subjects.subject1), profile.subjects.subject2, profile.subjects.subject3, profile.subjects.subject4).flatten
         if (subjects.size != subjects.distinct.size ||
           List(profile.interests.interest1, profile.interests.interest2, profile.interests.interest3).distinct.size < 3)
           Future.successful(Redirect(routes.TutorProfileController.edit).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests")))
         else {*/
-          if (bytes.isDefined && bytes.get.nonEmpty) {
-            userService.save(request.identity.copy(image = bytes))
-          }
-          userService.saveTutorProfile(profile).map(_ => Redirect(routes.QuestionsController.index))
+        if (bytes.isDefined && bytes.get.nonEmpty && !request.identity.image.contains(bytes.get)) {
+          userService.save(request.identity.copy(image = bytes))
+        }
+        if (phoneNumber.isDefined && !request.identity.phoneNumber.contains(phoneNumber.get)) {
+          userService.save(request.identity.copy(phoneNumber = phoneNumber))
+        }
+        userService.saveTutorProfile(profile).map(_ => Redirect(routes.QuestionsController.index))
         //}
       }
     )

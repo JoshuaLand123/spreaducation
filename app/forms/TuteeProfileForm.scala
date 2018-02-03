@@ -15,7 +15,7 @@ object TuteeProfileForm {
       "dob" -> date,
       "classLevel" -> number(min = 1, max = 14),
       "schoolName" -> nonEmptyText,
-      "mainLanguage" -> nonEmptyText,
+      "learningLanguage" -> nonEmptyText,
       "description" -> nonEmptyText,
       "subjects" -> mapping(
         "subjectImprove1" -> nonEmptyText,

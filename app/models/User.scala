@@ -12,6 +12,7 @@ case class User(
   lastName: Option[String],
   fullName: Option[String],
   email: Option[String],
+  phoneNumber: Option[String] = None,
   avatarURL: Option[String],
   userType: UserType,
   activated: Boolean,

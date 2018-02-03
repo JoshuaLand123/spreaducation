@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.class.level"):</strong></p>
-                <p class="col-md-6">@profile.map(_.classLevel).getOrElse("")</p>
+                <p class="col-md-6">@profile.map(p => if (p.classLevel == 13) "Abitur" else if (p.classLevel == 14) "MSA" else p.classLevel).getOrElse("")</p>
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.school.name"):</strong></p>
@@ -36,11 +36,11 @@
             </div>
             <div class="row">
                 <p class="col-md-6"><strong>@messages("profile.language"):</strong></p>
-                <p class="col-md-6">@profile.map(l => messages("language."+l.mainLanguage)).getOrElse("")</p>
+                <p class="col-md-6">@profile.map(l => messages("language."+l.learningLanguage)).getOrElse("")</p>
             </div>
             @if(profile.flatMap(_.address).isDefined) {
             <div class="row">
-                <p class="col-md-6"><strong>Address:</strong></p>
+                <p class="col-md-6"><strong>@messages("profile.address"):</strong></p>
                 <p class="col-md-6">@profile.flatMap(_.address).get.street, @profile.flatMap(_.address).get.postalCode</p>
             </div>
             }

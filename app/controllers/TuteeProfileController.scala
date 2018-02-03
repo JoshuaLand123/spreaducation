@@ -55,14 +55,18 @@ class TuteeProfileController @Inject() (
         Future.successful(Redirect(routes.TuteeProfileController.edit).flashing("error" -> s"Error: ${errors.toString}")),
       profileSuccess => {
         val bytes: Option[Array[Byte]] = request.body.file("upload").map(p => Files.readAllBytes(p.ref))
+        val phoneNumber: Option[String] = request.body.dataParts("phoneNumber").headOption
         val profile = profileSuccess.copy(userID = request.identity.userID)
         /*        if (profile.subjectImprove1 == profile.subjectImprove2 ||
           profile.subjectGoodAt1 == profile.subjectGoodAt2 ||
           List(profile.interest1, profile.interest2, profile.interest3).distinct.size < 3)
           Future.successful(Redirect(routes.TuteeProfileController.edit()).flashing("error" -> messages("profile.error.duplicate.subjects.or.interests")))
         else {*/
-        if (bytes.isDefined && bytes.get.nonEmpty) {
-          userService.save(request.identity.copy(image = bytes))
+        if (bytes.isDefined && bytes.get.nonEmpty && !request.identity.image.contains(bytes.get)) {
+          userService.save(request.identity.copy(image = bytes, phoneNumber = phoneNumber))
+        }
+        if (phoneNumber.isDefined && !request.identity.phoneNumber.contains(phoneNumber.get)) {
+          userService.save(request.identity.copy(phoneNumber = phoneNumber))
         }
         userService.saveTuteeProfile(profile).map(_ => Redirect(routes.QuestionsController.index))
         //}

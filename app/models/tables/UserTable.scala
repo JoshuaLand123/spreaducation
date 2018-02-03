@@ -12,6 +12,7 @@ case class DbUser(
   lastName: Option[String],
   fullName: Option[String],
   email: Option[String],
+  phoneNumber: Option[String],
   avatarUrl: Option[String],
   userType: UserType,
   activated: Boolean,
@@ -75,6 +76,8 @@ class UserTable(tag: Tag) extends Table[DbUser](tag, "users") {
 
   def email = column[Option[String]]("email")
 
+  def phoneNumber = column[Option[String]]("phone_number")
+
   def avatarURL = column[Option[String]]("avatar_url")
 
   def activated = column[Boolean]("activated")
@@ -83,7 +86,7 @@ class UserTable(tag: Tag) extends Table[DbUser](tag, "users") {
 
   def image = column[Option[Array[Byte]]]("image")
 
-  override def * = (userID, firstName, lastName, fullName, email, avatarURL, userType, activated, image) <> (DbUser.tupled, DbUser.unapply)
+  override def * = (userID, firstName, lastName, fullName, email, phoneNumber, avatarURL, userType, activated, image) <> (DbUser.tupled, DbUser.unapply)
 
 }
 

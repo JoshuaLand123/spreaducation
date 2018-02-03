@@ -8,7 +8,7 @@ case class TuteeProfile(
   dob: Date,
   classLevel: Int,
   schoolName: String,
-  mainLanguage: String,
+  learningLanguage: String,
   description: String,
   subjects: TuteeSubjects,
   interests: TuteeInterests,
