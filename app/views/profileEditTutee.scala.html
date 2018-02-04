@@ -73,7 +73,7 @@
 						<div class="col-md-6 text-center sliders">
 							<p><input id="slider-interest3" class="slider" name='interests.timeInterest3' data-slider-id='ex1Slider' type="text" data-slider-ticks="[1, 5]" data-slider-ticks-labels='["@messages("profile.interest.time.very.little")", "@messages("profile.interest.time.many.hours")"]' data-slider-tooltip="hide" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value='@profileForm.data.get("timeInterest3")'/></p>
 						</div>
-						@b3.select(profileForm("lessonType"), options=models.enums.LessonType.selectList(messages), '_label -> "profile.lesson.type.edit")
+						@b3.select(profileForm("lessonType"), options=models.enums.LessonType.selectList(messages), '_label -> "profile.tutee.lesson.type.edit")
 						@b3.text(profileForm("skype"), '_label -> "Skype")
 						<div id="address">
 							<div class="col-md-8">
