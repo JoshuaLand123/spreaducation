@@ -128,7 +128,7 @@ $(document).ready(function() {
             $('#calendar').fullCalendar('unselect');
         },
         eventClick: function(event, jsEvent) {
-           if (event.title == 'Available' || document.elementFromPoint(jsEvent.pageX, jsEvent.pageY).id == 'btnDeleteEvent') return;
+           if (event.title == 'Available' || document.elementFromPoint(jsEvent.pageX - window.pageXOffset, jsEvent.pageY - window.pageYOffset).id == 'btnDeleteEvent') return;
            $.ajax({
                 url: '/tutor/events/' + event.id + '/details',
                 success: function(response) {
