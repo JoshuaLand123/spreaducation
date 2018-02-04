@@ -34,6 +34,11 @@ a {
     cursor: pointer;
     color: #FFFFFF;
 }
+.fc-day-header a {
+    color: black;
+    text-decoration: underline;
+    font-weight: normal;
+}
 
 .provider {
     display: inline-block;
