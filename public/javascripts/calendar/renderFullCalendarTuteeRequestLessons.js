@@ -119,7 +119,8 @@ $(document).ready(function() {
             }
         },
         eventClick: function(event, jsEvent) {
-           if (document.elementFromPoint(jsEvent.pageX, jsEvent.pageY).id == 'btnDeleteEvent') return;
+           alert(jsEvent.pageX + ' ' +  jsEvent.pageY);
+           if (document.elementFromPoint(jsEvent.pageX - window.pageXOffset, jsEvent.pageY - window.pageYOffset).id == 'btnDeleteEvent') return;
            $.ajax({
                 url: '/tutee/events/' + event.id + '/details',
                 success: function(response) {
