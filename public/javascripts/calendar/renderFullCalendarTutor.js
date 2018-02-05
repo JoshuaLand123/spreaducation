@@ -104,15 +104,15 @@ $(document).ready(function() {
             }
             if (isValid) {
                 $.ajax({
-                    url: '/tutor/events/addAvailability',
+                    url: '/tutor/events/addAvailable',
                     data: {
                         start: start.format("YYYY-MM-DD[T]HH:mm:ss"),
                         end: end.format("YYYY-MM-DD[T]HH:mm:ss")
                     },
                     success: function(response) {
                         var eventData = {
-                            id: response,
-                            title: 'Available',
+                            id: response.id,
+                            title: response.title,
                             start: start,
                             end: end,
                             editable: true,
@@ -128,7 +128,7 @@ $(document).ready(function() {
             $('#calendar').fullCalendar('unselect');
         },
         eventClick: function(event, jsEvent) {
-           if (event.title == 'Available' || document.elementFromPoint(jsEvent.pageX - window.pageXOffset, jsEvent.pageY - window.pageYOffset).id == 'btnDeleteEvent') return;
+           if (event.eventType == 'Available' || document.elementFromPoint(jsEvent.pageX - window.pageXOffset, jsEvent.pageY - window.pageYOffset).id == 'btnDeleteEvent') return;
            $.ajax({
                 url: '/tutor/events/' + event.id + '/details',
                 success: function(response) {
@@ -137,16 +137,16 @@ $(document).ready(function() {
                     $('#time').html(event.start.format('HH:mm') + ' - ' + event.end.format('HH:mm'));
                     $('#subjects').html(response.subjectImprove1 + ', ' + response.subjectImprove2);
                     if (response.eventDescription) { $('#eventDescription').html(response.eventDescription);
-                    } else { $('#eventDescription').html('None'); }
+                    } else { $('#eventDescription').html('-'); }
 
                     if (response.eventType == 'Requested') { $('#buttons-request').show(); $('#buttons-cancel').hide(); }
                         else { $('#buttons-request').hide(); $('#buttons-cancel').show(); }
                      $('#confirm').unbind("click").click(function() {
                         $.ajax({
                             url: '/tutor/events/' + event.id + '/confirm',
-                            success: function(response) {
+                            success: function(title) {
                                 event.color = 'green';
-                                event.title = 'Confirmed';
+                                event.title = title;
                                 $('#calendar').fullCalendar('updateEvent', event);
                             },
                             error: function(e) {

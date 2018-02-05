@@ -12,7 +12,6 @@ import slick.jdbc.PostgresProfile.api._
 class EventTable(tag: Tag) extends Table[Event](tag, "events") {
 
   def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-  def title = column[String]("title")
   def start = column[LocalDateTime]("start_time")
   def end = column[LocalDateTime]("end_time")
   def tuteeID = column[Option[UUID]]("tutee_id")
@@ -21,19 +20,21 @@ class EventTable(tag: Tag) extends Table[Event](tag, "events") {
   def description = column[Option[String]]("description")
   def declineReason = column[Option[String]]("decline_reason")
 
-  override def * = (id.? :: title :: start :: end :: tuteeID :: tutorID :: eventType :: description :: declineReason :: HNil) <> (tuple, unapply)
+  override def * =
+    (id.? :: start :: end :: tuteeID :: tutorID :: eventType :: description :: declineReason :: HNil) <> (tuple, unapply)
 
-  type EventHList = Option[Long] :: String :: LocalDateTime :: LocalDateTime :: Option[UUID] :: UUID :: EventType :: Option[String] :: Option[String] :: HNil
+  type EventHList = Option[Long] :: LocalDateTime :: LocalDateTime :: Option[UUID] :: UUID :: EventType ::
+    Option[String] :: Option[String] :: HNil
 
   def tuple(data: EventHList): Event = data match {
 
-    case id :: title :: start :: end :: tuteeID :: tutorID :: eventType :: description :: declineReason :: HNil =>
-      Event(id, title, start, end, tuteeID, tutorID, eventType, description, declineReason)
+    case id :: start :: end :: tuteeID :: tutorID :: eventType :: description :: declineReason :: HNil =>
+      Event(id, start, end, tuteeID, tutorID, eventType, description, declineReason)
   }
 
   def unapply(event: Event): Option[EventHList] = event match {
 
-    case Event(id, title, start, end, tuteeID, tutorID, eventType, description, declineReason) =>
-      Some(id :: title :: start :: end :: tuteeID :: tutorID :: eventType :: description :: declineReason :: HNil)
+    case Event(id, start, end, tuteeID, tutorID, eventType, description, declineReason) =>
+      Some(id :: start :: end :: tuteeID :: tutorID :: eventType :: description :: declineReason :: HNil)
   }
 }

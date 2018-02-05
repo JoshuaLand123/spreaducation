@@ -34,10 +34,8 @@ a {
     cursor: pointer;
     color: #FFFFFF;
 }
-.fc-day-header a {
+.fc-day-header a, .fc-list-heading a {
     color: black;
-    text-decoration: underline;
-    font-weight: normal;
 }
 
 .provider {

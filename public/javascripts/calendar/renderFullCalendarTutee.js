@@ -55,7 +55,7 @@ $(document).ready(function() {
                     if (response.subject4) subjects += ', ' + response.subject4;
                     $('#subjects').html(subjects);
                     if(response.eventDescription) { $('#eventDescription').html(response.eventDescription); }
-                        else { $('#eventDescription').html('None'); }
+                        else { $('#eventDescription').html('-'); }
                     $('#fullCalModal').modal();
 
                 },

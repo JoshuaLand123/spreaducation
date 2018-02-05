@@ -554,3 +554,9 @@ confirm = Annehmen
 description = Beschreibung des gewünschten Stundeninhalts
 time = Zeit
 interested.in.subjects = Interessiert an diesen Fächern
+
+Available = Verfügbar
+Requested = Angefordert
+Confirmed = Bestätigt
+Declined = Abgelehnt
+Finished = Finished

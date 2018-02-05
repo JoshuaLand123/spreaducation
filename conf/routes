@@ -34,7 +34,7 @@ GET         /tutee/events/:eventID/details   controllers.EventTuteeController.de
 
 GET         /tutor/lessons                   controllers.EventTutorController.myLessons
 GET         /tutor/events.json               controllers.EventTutorController.events(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
-GET         /tutor/events/addAvailability    controllers.EventTutorController.addAvailability(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
+GET         /tutor/events/addAvailable   controllers.EventTutorController.addAvailable(start: java.time.LocalDateTime, end: java.time.LocalDateTime)
 GET         /tutor/events/:eventID/details   controllers.EventTutorController.details(eventID: Long)
 GET         /tutor/events/:eventID/confirm   controllers.EventTutorController.confirm(eventID: Long)
 GET         /tutor/events/:eventID/decline   controllers.EventTutorController.decline(eventID: Long, reason: String)
